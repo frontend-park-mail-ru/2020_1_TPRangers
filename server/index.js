@@ -1,5 +1,7 @@
 const moduleDataBase = require('./DataBase.js');
+const cookieDataBase = require('./CookieDataBase.js')
 const database = new moduleDataBase;
+const cookiebase = new cookieDataBase;
 
 const express = require('express');
 const body = require('body-parser');
@@ -36,13 +38,26 @@ app.post('/signup', function (req, res) {
 
     /*Есть ли в бд*/
     if(!isDataAlreadyExist(login)){
-        return -1;
+        res.status(400).json("Such user already exist")
     }
+
+
+
+    // generating cookie id and adding them to cookie
+    cooId = uuid();
+    cookiebase.addCookie(cooId);
+    res.cookie('cookie-id', cooId, {expires: new Date(Date.now() + 1000 * 60 * 10)});
 
     database.add(req.body);
     console.log(database.getByLogin(login));
+
+
+    
     
     /*Вернуть json status*/
+
+    // что отправлять фронту ? 
+    res.status(201)
     console.log("======================");
 
 
