@@ -3,10 +3,10 @@ console.log('topkek');
 const application = document.getElementById('application');
 
 const menuItems = {
-	signup: 'Регистрация',
-	login: 'Авторизация',
-	profile: 'Профиль',
-	about: 'О себе',
+    signup: 'Регистрация',
+    login: 'Авторизация',
+    profile: 'Профиль',
+    about: 'О себе',
 };
 
 function createInput(type, text, name) {
@@ -19,15 +19,15 @@ function createInput(type, text, name) {
 }
 
 function createMenu() {
-	application.innerHTML = '';
-	Object.keys(menuItems).forEach(function (key) {
-		const menuItem = document.createElement('a');
-		menuItem.textContent = menuItems[key];
-		menuItem.href = `/${key}`;
-		menuItem.dataset.section = key;
+    application.innerHTML = '';
+    Object.keys(menuItems).forEach(function(key) {
+        const menuItem = document.createElement('a');
+        menuItem.textContent = menuItems[key];
+        menuItem.href = `/${key}`;
+        menuItem.dataset.section = key;
 
-		application.appendChild(menuItem);
-	});
+        application.appendChild(menuItem);
+    });
 }
 
 function ajax(method, url, body = null, callback) {
@@ -52,12 +52,7 @@ function ajax(method, url, body = null, callback) {
 }
 
 
-function createProfile() {
-    application.innerHTML = '';
-    ajax('GET', '/profile', null, function(status, responseText) {
 
-    });
-}
 
 function createSignUp() {
     application.innerHTML = '';
@@ -106,86 +101,64 @@ function createSignUp() {
 }
 
 function createLogin() {
-	application.innerHTML = '';
-	const form = document.createElement('form');
+    application.innerHTML = '';
+    const form = document.createElement('form');
 
-	const emailInput = createInput('email', 'Емайл', 'email');
-	const passwordInput = createInput('password', 'Пароль', 'password');
+    const emailInput = createInput('email', 'Емайл', 'email');
+    const passwordInput = createInput('password', 'Пароль', 'password');
 
-	const submitBtn = document.createElement('input');
-	submitBtn.type = 'submit';
-	submitBtn.value = 'Авторизироваться!';
+    const submitBtn = document.createElement('input');
+    submitBtn.type = 'submit';
+    submitBtn.value = 'Авторизироваться!';
 
-	form.appendChild(emailInput);
-	form.appendChild(passwordInput);
-	form.appendChild(submitBtn);
+    form.appendChild(emailInput);
+    form.appendChild(passwordInput);
+    form.appendChild(submitBtn);
 
-	const back = document.createElement('a');
-	back.href = '/menu';
-	back.textContent = 'Назад';
-	back.dataset.section = 'menu';
+    const back = document.createElement('a');
+    back.href = '/menu';
+    back.textContent = 'Назад';
+    back.dataset.section = 'menu';
 
-	form.addEventListener('submit', function(e) {
-		e.preventDefault();
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
 
-		const email = emailInput.value.trim();
-		const password = passwordInput.value.trim();
+        const email = emailInput.value.trim();
+        const password = passwordInput.value.trim();
 
-		ajax(
-			'POST',
-			'/login',
-			{email, password},
-			function (status, response) {
-				if (status === 200) {
-					createProfile();
-				} else {
-					const {error} = JSON.parse(response);
-					alert(error);
-				}
-			}
-		)
+        ajax(
+            'POST',
+            '/login', { email, password },
+            function(status, response) {
+                if (status === 200) {
+                    createProfile();
+                } else {
+                    const { error } = JSON.parse(response);
+                    alert(error);
+                }
+            }
+        )
 
-	});
+    });
 
-	application.appendChild(form);
-	application.appendChild(back);
+    application.appendChild(form);
+    application.appendChild(back);
 }
 
 function createProfile() {
-	application.innerHTML = '';
-	ajax('GET', '/me', null, function (status, responseText) {
-		let isMe = false;
-		if (status === 200) {
-			isMe = true;
-		}
-
-		if (status === 401) {
-			isMe = false;
-		}
-
-		if (isMe) {
-			const responseBody = JSON.parse(responseText);
-
-			application.innerHTML = '';
-
-			const span = document.createElement('span');
-			span.textContent = `Мне ${responseBody.age} и я крутой на ${responseBody.score} очков`;
-
-			application.appendChild(span);
-		} else {
-			alert('АХТУНГ нет авторизации');
-			createLogin();
-		}
-	});
+    application.innerHTML = '';
+    ajax('GET', '/profile', null, function(status, responseText) {
+        console.log(responseText)
+    });
 }
 
 
 const routes = {
-	menu: createMenu,
-	signup: createSignUp,
-	login: createLogin,
-	profile: createProfile,
-	about: null,
+    menu: createMenu,
+    signup: createSignUp,
+    login: createLogin,
+    profile: createProfile,
+    about: null,
 };
 
 application.addEventListener('click', function(evt) {
