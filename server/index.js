@@ -1,5 +1,3 @@
-
-
 const moduleDataBase = require('./DataBase.js');
 const database = new moduleDataBase;
 
@@ -30,7 +28,7 @@ function isDataAlreadyExist(login){
 }
 
 app.post('/signup', function (req, res) {
-    console.log("kekdfdf");
+    console.log("=========SIGNUP=============");
     const password = req.body.password;
     const login = req.body.email;
     const age = req.body.age;
@@ -45,7 +43,7 @@ app.post('/signup', function (req, res) {
     console.log(database.getByLogin(login));
     
     /*Вернуть json status*/
-    console.log("kek");
+    console.log("======================");
 
 
   });
