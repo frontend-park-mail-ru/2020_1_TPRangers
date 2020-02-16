@@ -1,31 +1,31 @@
-class DataBase{
+class DataBase {
 
-    constructor(){
+    constructor() {
         this.loginId = new Map();
         this.idData = new Map();
         this._id = 0;
     }
-    add(data){
+    add(data) {
         this.loginId[data.email] = this._id;
 
-        this.idData[this._id] = { 
-            login : data.email,
-            password : data.password,
-            age : data.age,
+        this.idData[this._id] = {
+            login: data.email,
+            password: data.password,
+            age: data.age,
         }
         this._id++;
 
-        
-        }
 
-    getById(id){
-        if(typeof this.idData[id] === undefined){
+    }
+
+    getById(id) {
+        if (typeof this.idData[id] === undefined) {
             return -1;
         }
         return this.idData[id];
     }
-    getByLogin(login){
-        if(typeof this.loginId[login] === undefined){
+    getByLogin(login) {
+        if (typeof this.loginId[login] === undefined) {
             return -1;
         }
 
@@ -38,4 +38,4 @@ class DataBase{
 
 
 
-module.exports = DataBase , CookieDataBase
+module.exports = DataBase

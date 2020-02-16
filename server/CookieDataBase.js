@@ -1,14 +1,18 @@
-class CookieDataBase{
-    constructor(){
+class CookieDataBase {
+    constructor() {
         this.cookieSaver = new Map();
-    }  
-
-    addCookie(id){
-        this.cookieSaver.set(id,1)
     }
 
-    checkCookie(id){
+    addCookie(id, login) {
+        this.cookieSaver.set(id, login)
+    }
+
+    checkCookie(id) {
         return this.cookieSaver.has(id);
+    }
+
+    dataByCookie(id) {
+        return this.cookieSaver.get(id);
     }
 
 }
