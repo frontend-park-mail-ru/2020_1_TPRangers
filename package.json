@@ -1,0 +1,25 @@
+{
+  "name": "2020_1_tprangers",
+  "version": "1.0.0",
+  "description": "Проект VK команды TPRangers",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frontend-park-mail-ru/2020_1_TPRangers.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/frontend-park-mail-ru/2020_1_TPRangers/issues"
+  },
+  "homepage": "https://github.com/frontend-park-mail-ru/2020_1_TPRangers#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.4",
+    "express": "^4.17.1",
+    "morgan": "^1.9.1",
+    "uuid": "^3.4.0"
+  }
+}
