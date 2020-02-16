@@ -5,13 +5,15 @@ class DataBase {
         this.idData = new Map();
         this._id = 0;
     }
-    add(data) {
+    add(data){
         this.loginId[data.email] = this._id;
 
-        this.idData[this._id] = {
-            login: data.email,
-            password: data.password,
-            age: data.age,
+        this.idData[this._id] = { 
+            login : data.email,
+            password : data.password,
+            age : data.age,
+
+
         }
         this._id++;
 
