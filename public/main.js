@@ -1,4 +1,5 @@
 import createLinks from "./modules/create_links.js";
+import {createLogin} from "./modules/login.js";
 
 const dataForMainPage = {
   login: {
@@ -7,9 +8,9 @@ const dataForMainPage = {
     cl: 'main_link',
   },
   registration: {
-     name: 'Регистрация',
-     link: "registration",
-     cl: 'main_link',
+    name: 'Регистрация',
+    link: "registration",
+    cl: 'main_link',
   },
   about: {
     name: 'О проекте',
@@ -18,14 +19,26 @@ const dataForMainPage = {
   },
 };
 
+const routes = {
+  login: createLogin,
+  about: null,
+};
+
 function createMainPage() {
   let app = document.getElementById("application")
   createLinks(dataForMainPage, app);
+
+  app.addEventListener('click', function (evt) {
+    const {target} = evt;
+
+    if (target instanceof HTMLAnchorElement) {
+      evt.preventDefault();
+      routes[target.dataset.section]();
+    }
+  });
 }
 
 createMainPage();
-
-
 
 
 
