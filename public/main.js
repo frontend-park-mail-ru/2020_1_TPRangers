@@ -1,5 +1,6 @@
 import {createLogin} from "./modules/login.js";
 import {createMainPage} from "./modules/createMainPage.js"
+import {createProfile} from "./modules/createProfile.js";
 
 const app = document.getElementById("application");
 
@@ -19,8 +20,7 @@ app.addEventListener('load', (event) => {
 const routes = {
   main: createMainPage,
   login: createLogin,
-  about: null,
+  about: createProfile,
 };
-
 
 createMainPage(app);

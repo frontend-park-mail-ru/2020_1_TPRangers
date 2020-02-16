@@ -19,5 +19,8 @@ const dataForMainPage = {
 };
 
 export function createMainPage(parent) {
-  createLinks(dataForMainPage, parent);
+  parent.innerHTML = '';
+  Object.values(dataForMainPage).forEach(function (key, val) {
+    parent.appendChild(createLinks(key));
+  });
 }
