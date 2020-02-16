@@ -38,7 +38,7 @@ app.post('/signup', function (req, res) {
 
     /*Есть ли в бд*/
     if(!isDataAlreadyExist(login)){
-        res.status(400).json("Such user already exist")
+        res.status(400).json({error : "Such user already exist"})
     }
 
 
@@ -57,7 +57,7 @@ app.post('/signup', function (req, res) {
     /*Вернуть json status*/
 
     // что отправлять фронту ? 
-    res.status(201)
+    res.status(200)
     console.log("======================");
 
 
