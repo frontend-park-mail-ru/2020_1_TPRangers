@@ -23,7 +23,7 @@ app.get('/', function (req, res) {
 });
 
 function isDataAlreadyExist(login){
-    if(database.getByLogin(login) == -1){
+    if(database.getByLogin(login) === undefined){
         return false;
     }
     return true;
@@ -31,17 +31,15 @@ function isDataAlreadyExist(login){
 
 app.post('/signup', function (req, res) {
     console.log("=========SIGNUP=============");
-    const password = req.body.password;
     const login = req.body.email;
-    const age = req.body.age;
     
 
     /*Есть ли в бд*/
-    if(!isDataAlreadyExist(login)){
+    if(isDataAlreadyExist(login)){
         res.status(400).json({error : "Such user already exist"})
+        console.log("User already Exist");
+        return;
     }
-
-
 
     // generating cookie id and adding them to cookie
     cooId = uuid();
@@ -49,10 +47,7 @@ app.post('/signup', function (req, res) {
     res.cookie('cookie-id', cooId, {expires: new Date(Date.now() + 1000 * 60 * 10)});
 
     database.add(req.body);
-    console.log(database.getByLogin(login));
 
-
-    
     
     /*Вернуть json status*/
 
@@ -60,8 +55,47 @@ app.post('/signup', function (req, res) {
     res.status(200)
     console.log("======================");
 
+    console.log(database.getByLogin(login));
+
 
   });
+
+
+function isSignInOk(data){
+
+  if(database.getByLogin(data.email) === undefined){
+    return false;
+  }
+  const AuthUser = database.getByLogin(data.email);
+  console.log("AuthUser: ");
+  console.log(AuthUser);
+  if(AuthUser.login === data.email || AuthUser.password === data.password){
+    return true;
+  } else{
+    false;
+  }
+}
+
+app.post('/login', function (req, res) {
+    console.log("=========SIGNIN=============");
+    
+
+    /*Есть ли в бд*/
+    
+    if(isSignInOk(req.body)){
+      res.status(200)
+      console.log("======================");
+       
+    } else {
+      res.status(400).json({error : "User doesn't exist"})
+      console.log("User doesn't exist");
+    }
+
+    // generating cookie id and adding them to cookie
+
+
+  });
+
 
 
 

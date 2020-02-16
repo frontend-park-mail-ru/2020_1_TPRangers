@@ -6,10 +6,10 @@ class DataBase{
         this._id = 0;
     }
     add(data){
-        this.loginId[data.login] = this._id;
+        this.loginId[data.email] = this._id;
 
         this.idData[this._id] = { 
-            login : data.login,
+            login : data.email,
             password : data.password,
             age : data.age,
         }
@@ -35,4 +35,4 @@ class DataBase{
 
 
 
-module.exports = DataBase , CookieDataBase
+module.exports = DataBase
