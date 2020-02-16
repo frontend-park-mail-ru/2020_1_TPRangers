@@ -1,7 +1,5 @@
 {
-
   "name": "2020_1_tprangers",
-
   "version": "1.0.0",
   "description": "Проект VK команды TPRangers",
   "main": "index.js",
@@ -23,9 +21,5 @@
     "express": "^4.17.1",
     "morgan": "^1.9.1",
     "uuid": "^3.4.0"
-
-  },
-  "devDependencies": {}
   }
-
 }

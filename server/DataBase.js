@@ -1,52 +1,35 @@
-
-'use strict'
-
-class CookieDataBase{
-    constructor(){
-        this.cookieSaver = new Map();
-    }  
-
-    addCookie(id){
-        this.cookieSaver.set(id,1)
-    }
-
-    checkCookie(id){
-        return this.cookieSaver.has(id);
-    }
-
-let database = class DataBase{
-    _id
+class DataBase{
 
     constructor(){
         this.loginId = new Map();
         this.idData = new Map();
-        _id = 0;
+        this._id = 0;
     }
     add(data){
-        this.loginId[data.login] = count;
+        this.loginId[data.login] = this._id;
 
-        this.idData[count] = { 
+        this.idData[this._id] = { 
             login : data.login,
             password : data.password,
             age : data.age,
         }
-        _id++;
+        this._id++;
         }
 
     getById(id){
-        if(idData[id] === undefined){
+        if(typeof this.idData[id] === undefined){
             return -1;
         }
         return this.idData[id];
     }
     getByLogin(login){
-        if(loginId[login] === undefined){
+        if(typeof this.loginId[login] === undefined){
             return -1;
         }
-        return idData[loginId[login]];
+        return this.idData[this.loginId[login]];
     }
-
 
 }
 
 
+module.exports = DataBase

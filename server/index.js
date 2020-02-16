@@ -1,9 +1,7 @@
 
-'use strict'
 
-
-
-let moduleDataBase = require('./DataBase');
+const moduleDataBase = require('./DataBase.js');
+const database = new moduleDataBase;
 
 const express = require('express');
 const body = require('body-parser');
@@ -19,33 +17,10 @@ app.use(body.json());
 app.use(cookie());
 
 
-const database = moduleDataBase.database;
 
 app.get('/', function (req, res) {
   res.send('Hello World!');
 });
-
-
-app.post('/signup', function (req, res) {
-  const password = req.body.password;
-  const email = req.body.email;
-  const age = req.body.age;
-
-  
-
-  console.log(password , email , age)
-
-  id = uuid()
-
-  res.cookie('coockie-id', id, {expires: new Date(Date.now() + 1000 * 60 * 10)});
-
-  
-});
-
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
-});
-
 
 function isDataAlreadyExist(login){
     if(database.getByLogin(login) == -1){
@@ -55,20 +30,22 @@ function isDataAlreadyExist(login){
 }
 
 app.post('/signup', function (req, res) {
+    console.log("kekdfdf");
     const password = req.body.password;
     const login = req.body.email;
     const age = req.body.age;
     
 
     /*Есть ли в бд*/
-    if(isDataAlreadyExist(login)){
+    if(!isDataAlreadyExist(login)){
         return -1;
     }
 
     database.add(req.body);
+    console.log(database.getByLogin(login));
     
     /*Вернуть json status*/
-    console.log(database.getByLogin(login));
+    console.log("kek");
 
 
   });
@@ -78,4 +55,3 @@ app.post('/signup', function (req, res) {
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!');
 });
-
