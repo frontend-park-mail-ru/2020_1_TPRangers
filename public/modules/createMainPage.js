@@ -18,9 +18,6 @@ const dataForMainPage = {
   },
 };
 
-function createMainPage() {
-  let app = document.getElementById("application");
-  createLinks(dataForMainPage, app);
+export function createMainPage(parent) {
+  createLinks(dataForMainPage, parent);
 }
-
-createMainPage();

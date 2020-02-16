@@ -1,8 +1,5 @@
 import {createInput, createFormButton} from "./createForm.js";
 
-const application = document.getElementById("application");
-
-
 const loginItems = {
     email: {
         name: 'email',
@@ -40,5 +37,4 @@ function createLoginForm (formItems = {
     const form = createLoginForm(loginItems);
     parent.appendChild(form);
 }
-createLogin(application);
 
