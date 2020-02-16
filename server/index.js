@@ -75,7 +75,7 @@ function isSignInOk(data) {
     const AuthUser = database.getByLogin(data.email);
     console.log("AuthUser: ");
     console.log(AuthUser);
-    if (AuthUser.login === data.email || AuthUser.password === data.password) {
+    if (AuthUser.login === data.email && AuthUser.password === data.password) {
         return true;
     } else {
         false;
