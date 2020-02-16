@@ -1,12 +1,22 @@
 import {createDefaultForm} from "./createForm.js";
 import createBackButton from "./createBackButton.js";
 
-const regItems = {
+const settingsItems = {
+    avatar: {
+        title: 'Загрузите/обновите аватар',
+        name: 'avatar',
+        type: 'file',
+    },
     username: {
         title: 'Ваше имя',
         name: 'username',
         placeholder: 'Иван Иванов',
         type: 'text',
+    },
+    date: {
+        title: 'Дата рождения',
+        name: 'date',
+        type: 'date',
     },
     email: {
         title: 'Email',
@@ -20,30 +30,19 @@ const regItems = {
         placeholder: '+7 910 777 77 77',
         type: 'text'
     },
-    date: {
-        title: 'Дата рождения',
-        name: 'date',
-        type: 'date',
-    },
     password: {
         title: 'Пароль',
         name: 'password',
         placeholder: '',
         type: 'password'
     },
-    passwordRepeat: {
-        title: 'Повторите пароль',
-        name: 'password-repeat',
-        placeholder: '',
-        type: 'password'
-    }
 }
 
 
 
-export function createRegistration(parent = document.body) {
+export function createSettings(parent = document.body) {
     parent.innerHTML = '';
-    const form = createDefaultForm(regItems, 'Регистрация');
+    const form = createDefaultForm(settingsItems, 'Сохранить');
     parent.appendChild(form);
     createBackButton(parent);
 }

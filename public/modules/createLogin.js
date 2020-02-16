@@ -18,7 +18,7 @@ const loginItems = {
 
  export function createLogin(parent = document.body) {
     parent.innerHTML = '';
-    const form = createDefaultForm(loginItems);
+    const form = createDefaultForm(loginItems, 'Войти');
     parent.appendChild(form);
     createBackButton(parent);
 }

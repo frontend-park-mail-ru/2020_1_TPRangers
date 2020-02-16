@@ -35,7 +35,7 @@ export function createDefaultForm (formItems = {
         placeholder: undefined,
         name: undefined,
         type: undefined}
-}) {
+}, buttonName = 'Подтвердите') {
     const form = document.createElement('form');
     Object.values(formItems).forEach( (item) => {
         const title = createTitle(item.title );
@@ -43,7 +43,7 @@ export function createDefaultForm (formItems = {
         const input = createInput(item);
         form.appendChild(input);
     });
-    const submit = createFormButton('submit', 'Войти');
+    const submit = createFormButton('submit', buttonName);
     form.appendChild(submit);
     form.action = '#';
     return form;

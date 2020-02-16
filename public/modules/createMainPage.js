@@ -3,17 +3,22 @@ import createLinks from "./createLinks.js";
 const dataForMainPage = {
   login: {
     name: 'Вход',
-    link: "login",
+    link: 'login',
     cl: 'main_link',
   },
   registration: {
     name: 'Регистрация',
-    link: "registration",
+    link: 'registration',
+    cl: 'main_link',
+  },
+  settings: {
+    name: 'Настройки',
+    link: 'settings',
     cl: 'main_link',
   },
   about: {
     name: 'О проекте',
-    link: "about",
+    link: 'about',
     cl: 'main_link',
   },
 };
