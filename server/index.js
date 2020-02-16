@@ -104,7 +104,7 @@ app.get('/profile', function(req, res) {
 
     userProfile = database.getByLogin(login);
 
-    if (userProfile === -1) {
+    if (userProfile === undefined) {
         res.status(401).json({ error: "we've got some issuses" });
     } else {
         console.log(userProfile);

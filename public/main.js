@@ -151,33 +151,7 @@ function createLogin() {
 	application.appendChild(back);
 }
 
-function createProfile() {
-	application.innerHTML = '';
-	ajax('GET', '/me', null, function (status, responseText) {
-		let isMe = false;
-		if (status === 200) {
-			isMe = true;
-		}
 
-		if (status === 401) {
-			isMe = false;
-		}
-
-		if (isMe) {
-			const responseBody = JSON.parse(responseText);
-
-			application.innerHTML = '';
-
-			const span = document.createElement('span');
-			span.textContent = `Мне ${responseBody.age} и я крутой на ${responseBody.score} очков`;
-
-			application.appendChild(span);
-		} else {
-			alert('АХТУНГ нет авторизации');
-			createLogin();
-		}
-	});
-}
 
 
 const routes = {
