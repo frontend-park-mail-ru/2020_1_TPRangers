@@ -3,6 +3,10 @@
     background-color: #f7f7f7;
 }
 
+img {
+    filter: grayscale(100%);
+}
+
 input {
     display: block;
 }
