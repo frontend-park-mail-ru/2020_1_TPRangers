@@ -81,7 +81,6 @@ function createSignUp() {
 
 
 
-
 application.addEventListener('click', function (evt) {
 	const {target} = evt;
 
@@ -90,8 +89,6 @@ application.addEventListener('click', function (evt) {
 		routes[target.dataset.section]();
 	}
 });
-
-// createMenu();
 
 
 createSignUp();
