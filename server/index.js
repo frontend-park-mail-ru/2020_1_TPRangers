@@ -46,14 +46,10 @@ app.post('/signup', function (req, res) {
     // generating cookie id and adding them to cookie
     cooId = uuid();
     cookiebase.addCookie(cooId);
-    res.cookie('cookie-id', cooId, {expires: new Date(Date.now() + 1000 * 60 * 10)});
+    res.cookie('cookie-id', cooId, {expires: new Date(Date.now() + 10e10)});
 
     database.add(req.body);
 
-
-
-    
-    
     /*Вернуть json status*/
 
     res.status(200)
