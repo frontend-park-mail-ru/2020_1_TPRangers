@@ -1,17 +1,15 @@
-
 export default function createLinks(data = {
   by_default: {
     name: 'undefined',
     link: 'undefined',
     cl: 'main_link'
-  } }, parent = document.body) {
-  Object.values(data).forEach(function (item) {
-    const pageItem = document.createElement('a');
-    pageItem.textContent = item.name;
-    pageItem.href = `/${item.link}`;
-    pageItem.dataset.section = item.link;
-    pageItem.classList.add(item.cl);
 
-    parent.appendChild(pageItem);
-  });
+  } }) {
+  const pageItem = document.createElement('a');
+  pageItem.textContent = data.name;
+  pageItem.href = `/${data.link}`;
+  pageItem.dataset.section = data.link;
+  pageItem.classList.add(data.cl);
+
+  return pageItem;
 }

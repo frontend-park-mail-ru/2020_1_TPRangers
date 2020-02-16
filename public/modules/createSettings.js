@@ -44,5 +44,6 @@ export function createSettings(parent = document.body) {
     parent.innerHTML = '';
     const form = createDefaultForm(settingsItems, 'Сохранить');
     parent.appendChild(form);
-    createBackButton(parent);
+    const backButton = createBackButton();
+    parent.appendChild(backButton);
 }

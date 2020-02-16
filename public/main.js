@@ -2,6 +2,8 @@ import {createLogin} from "./modules/createLogin.js";
 import {createMainPage} from "./modules/createMainPage.js"
 import {createRegistration} from "./modules/createRegistration.js";
 import {createSettings} from "./modules/createSettings.js";
+import {createProfile} from "./modules/createProfile.js";
+
 
 const app = document.getElementById("application");
 
@@ -23,8 +25,7 @@ const routes = {
   login: createLogin,
   registration: createRegistration,
   settings: createSettings,
-  about: null,
+  about: createProfile,
 };
-
 
 createMainPage(app);

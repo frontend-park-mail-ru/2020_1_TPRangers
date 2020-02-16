@@ -9,5 +9,6 @@ const backButton = {
 };
 
 export default function createBackButton(parent) {
-    createLinks(backButton, parent);
+    const button = createLinks(backButton);
+    return button;
 }

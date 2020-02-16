@@ -20,5 +20,6 @@ const loginItems = {
     parent.innerHTML = '';
     const form = createDefaultForm(loginItems, 'Войти');
     parent.appendChild(form);
-    createBackButton(parent);
+    const backButton = createBackButton();
+    parent.appendChild(backButton);
 }

@@ -25,5 +25,8 @@ const dataForMainPage = {
 
 export function createMainPage(parent) {
   parent.innerHTML = '';
-  createLinks(dataForMainPage, parent);
+  Object.values(dataForMainPage).forEach(function (key, val) {
+    parent.appendChild(createLinks(key));
+  });
+
 }

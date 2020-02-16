@@ -45,5 +45,6 @@ export function createRegistration(parent = document.body) {
     parent.innerHTML = '';
     const form = createDefaultForm(regItems, 'Регистрация');
     parent.appendChild(form);
-    createBackButton(parent);
+    const backButton = createBackButton();
+    parent.appendChild(backButton);
 }
