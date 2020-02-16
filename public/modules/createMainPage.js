@@ -1,4 +1,4 @@
-import createLinks from "./create_links.js";
+import createLinks from "./createLinks.js";
 
 const dataForMainPage = {
   login: {
