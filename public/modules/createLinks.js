@@ -5,7 +5,6 @@ export default function createLinks(data = {
     link: 'undefined',
     cl: 'main_link'
   } }, parent = document.body) {
-  parent.innerHTML = '';
   Object.values(data).forEach(function (item) {
     const pageItem = document.createElement('a');
     pageItem.textContent = item.name;

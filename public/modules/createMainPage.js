@@ -19,5 +19,6 @@ const dataForMainPage = {
 };
 
 export function createMainPage(parent) {
+  parent.innerHTML = '';
   createLinks(dataForMainPage, parent);
 }

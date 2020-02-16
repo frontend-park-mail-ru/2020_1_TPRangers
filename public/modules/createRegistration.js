@@ -1,4 +1,5 @@
 import {createDefaultForm} from "./createForm.js";
+import createBackButton from "./createBackButton.js";
 
 const regItems = {
     username: {
@@ -39,4 +40,5 @@ export function createRegistration(parent = document.body) {
     parent.innerHTML = '';
     const form = createDefaultForm(regItems);
     parent.appendChild(form);
+    createBackButton(parent);
 }

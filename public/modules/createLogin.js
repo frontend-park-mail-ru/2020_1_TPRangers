@@ -1,5 +1,5 @@
 import {createDefaultForm} from "./createForm.js";
-
+import createBackButton from "./createBackButton.js";
 
 const loginItems = {
     email: {
@@ -16,11 +16,9 @@ const loginItems = {
     }
 };
 
-
-
-
  export function createLogin(parent = document.body) {
     parent.innerHTML = '';
     const form = createDefaultForm(loginItems);
     parent.appendChild(form);
+    createBackButton(parent);
 }
