@@ -32,4 +32,20 @@ class DataBase{
 }
 
 
-module.exports = DataBase
+class CookieDataBase{
+    constructor(){
+        this.cookieSaver = new Map();
+    }  
+
+    addCookie(id){
+        this.cookieSaver.set(id,1)
+    }
+
+    checkCookie(id){
+        return this.cookieSaver.has(id);
+    }
+
+}
+
+
+module.exports = DataBase , CookieDataBase
