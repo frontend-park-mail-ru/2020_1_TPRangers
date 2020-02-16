@@ -1,6 +1,19 @@
 import {createPost} from './createPost.js';
 import createLinks from "./create_links.js";
 
+const dataForLeft = {
+  friends: {
+    name: 'Список друзей',
+    link: "friendList",
+    cl: 'button_link',
+  },
+  news: {
+    name: 'Новости',
+    link: "news",
+    cl: 'button_link',
+  },
+};
+
 export function createProfile(parent, user = {
   name: 'UserName',
   dateOfB: '00',
@@ -45,6 +58,9 @@ export function createProfile(parent, user = {
   }
 
   leftBlock.appendChild(avatar);
+  Object.values(dataForLeft).forEach(function (key, val) {
+    leftBlock.appendChild(createLinks(key));
+  });
 
   parent.appendChild(leftBlock);
   parent.appendChild(rightBlock);

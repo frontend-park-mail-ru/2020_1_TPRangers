@@ -8,24 +8,28 @@ input {
 }
 
 .main_link {
+    font-size: 1.4em;
     color: #413f41;
     width: 50%;
+    padding: 2%;
     min-height: 20px;
     margin-right: 50%;
     margin-top: 10%;
     transform: translate(50%, -50%);
     text-align: center;
-    border: black solid 1px;
+    border: dimgray solid 1px;
     border-radius: 100px;
     display: block;
+    text-decoration: none;
 }
 
 .main_link:hover {
-    color: black;
+    color: #f7f7f7;
+    background-color: dimgray;
 }
 
 .postCard {
-    border: black solid 1px;
+    border: dimgray solid 1px;
     border-radius: 10px;
     width: 94%;
     min-height: 310px;
@@ -95,5 +99,25 @@ input {
 }
 
 .userSettings:hover {
-    color: black;
+    color: dimgray;
+}
+
+.button_link {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    flex-grow: 1;
+    margin-left: 4%;
+    margin-top: 10px;
+    border: dimgray solid 1px;
+    border-radius: 6px;
+    padding: 2%;
+    text-decoration: none;
+    color: dimgray;
+    justify-content: center;
+}
+
+.button_link:hover {
+    color: #f7f7f7;
+    background-color: dimgray;
 }
