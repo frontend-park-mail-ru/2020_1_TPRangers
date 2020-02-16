@@ -18,9 +18,10 @@ app.use(cookie());
 
 
 
-app.get('/', function (req, res) {
-  res.send('Hello World!');
+app.get('/', function(req, res) {
+    res.send('Hello World!');
 });
+
 
 function isDataAlreadyExist(login){
     if(database.getByLogin(login) === undefined){
@@ -29,7 +30,7 @@ function isDataAlreadyExist(login){
     return true;
 }
 
-app.post('/signup', function (req, res) {
+app.post('/signup', function(req, res) {
     console.log("=========SIGNUP=============");
     const login = req.body.email;
     
@@ -43,18 +44,17 @@ app.post('/signup', function (req, res) {
 
     // generating cookie id and adding them to cookie
     cooId = uuid();
-    cookiebase.addCookie(cooId);
-    res.cookie('cookie-id', cooId, {expires: new Date(Date.now() + 1000 * 60 * 10)});
+    cookiebase.addCookie(cooId, login);
+    res.cookie('cookie-id', cooId, { expires: new Date(Date.now() + 10e10) });
+    console.log("Cookie ID is :", cooId);
 
     database.add(req.body);
 
-    
     /*Вернуть json status*/
 
-    // что отправлять фронту ? 
-    res.status(200)
+    res.status(201).json({ cooId });
     console.log("======================");
-
+  
     console.log(database.getByLogin(login));
 
 
@@ -93,12 +93,31 @@ app.post('/login', function (req, res) {
 
     // generating cookie id and adding them to cookie
 
+});
 
-  });
+app.get('/profile', function(req, res) {
+
+    console.log("=========PROFILE=============");
+
+    login = cookiebase.dataByCookie(req.cookies['cookie-id']);
+    console.log("Cookie ID is :", req.cookies['cookie-id']);
+
+    userProfile = database.getByLogin(login);
+
+    if (userProfile === -1) {
+        res.status(401).json({ error: "we've got some issuses" });
+    } else {
+        console.log(userProfile);
+        res.status(200).json({ data: userProfile });
+    }
+
+    console.log("======================");
+  
+
+});
 
 
 
-
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
+app.listen(3000, function() {
+    console.log('Example app listening on port 3000!');
 });
