@@ -1,5 +1,6 @@
 import createLinks from "./modules/create_links.js";
 import {createLogin} from "./modules/login.js";
+import {createRegistration} from "./modules/createRegistration.js";
 
 const dataForMainPage = {
   login: {
@@ -21,6 +22,7 @@ const dataForMainPage = {
 
 const routes = {
   login: createLogin,
+  registration: createRegistration,
   about: null,
 };
 

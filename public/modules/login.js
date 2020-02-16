@@ -1,44 +1,28 @@
-import {createInput, createFormButton} from "./createForm.js";
-
-const application = document.getElementById("application");
+import {createDefaultForm} from "./createForm.js";
 
 
 const loginItems = {
     email: {
+        title: 'Логин',
         name: 'email',
-        placeholder: 'Email',
+        placeholder: 'ivan.ivanov@mail.ru',
         type: 'email',
     },
     password: {
+        title: 'Пароль',
         name: 'password',
-        placeholder: 'Пароль',
+        placeholder: '',
         type: 'password'
     }
 };
 
-function createLoginForm (formItems = {
-    by_default: {
-        placeholder: undefined,
-        name: undefined,
-        type: undefined}
-}) {
-    const form = document.createElement('form');
-    Object.values(formItems).forEach( (item) => {
-        const input = createInput(item);
-        form.appendChild(input);
-    });
-    const submit = createFormButton('submit', 'Войти');
-    form.appendChild(submit);
-    form.action = '#';
-    return form;
-}
 
 
 
  export function createLogin(parent = document.body) {
     parent.innerHTML = '';
-    const form = createLoginForm(loginItems);
+    const form = createDefaultForm(loginItems);
     parent.appendChild(form);
 }
-createLogin(application);
+
 
