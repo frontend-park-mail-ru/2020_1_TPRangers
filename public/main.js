@@ -2,6 +2,7 @@ console.log('topkek');
 
 const application = document.getElementById('application');
 
+
 function createInput(type, text, name) {
 	const input = document.createElement('input');
 	input.type = type;
@@ -88,5 +89,6 @@ application.addEventListener('click', function (evt) {
 		routes[target.dataset.section]();
 	}
 });
+
 
 createSignUp();
