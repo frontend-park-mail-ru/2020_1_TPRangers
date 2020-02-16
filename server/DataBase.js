@@ -6,14 +6,16 @@ class DataBase{
         this._id = 0;
     }
     add(data){
-        this.loginId[data.login] = this._id;
+        this.loginId[data.email] = this._id;
 
         this.idData[this._id] = { 
-            login : data.login,
+            login : data.email,
             password : data.password,
             age : data.age,
         }
         this._id++;
+
+        
         }
 
     getById(id){
@@ -26,6 +28,7 @@ class DataBase{
         if(typeof this.loginId[login] === undefined){
             return -1;
         }
+
         return this.idData[this.loginId[login]];
     }
 

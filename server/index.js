@@ -23,7 +23,7 @@ app.get('/', function (req, res) {
 });
 
 function isDataAlreadyExist(login){
-    if(database.getByLogin(login) == -1){
+    if(database.getByLogin(login) === undefined){
         return false;
     }
     return true;
@@ -34,18 +34,21 @@ app.post('/signup', function (req, res) {
     const password = req.body.password;
     const login = req.body.email;
     const age = req.body.age;
-    
 
-    /*Есть ли в бд*/
-    if(!isDataAlreadyExist(login)){
+    if(isDataAlreadyExist(login)){
+        console.log(-1);
         return -1;
     }
 
     database.add(req.body);
-    console.log(database.getByLogin(login));
+    
+
+    /*Есть ли в бд*/
+   
+
     
     /*Вернуть json status*/
-    console.log("kek");
+
 
 
   });
