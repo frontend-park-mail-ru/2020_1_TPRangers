@@ -24,7 +24,7 @@ app.use(cookie());
 
 
 
-app.get('/', function(req, res) {
+app.get('/main', function(req, res) {
     res.send('Hello World!');
 });
 
@@ -36,7 +36,7 @@ function isDataAlreadyExist(login) {
     return true;
 }
 
-app.post('/signup', function(req, res) {
+app.post('/registration', function(req, res) {
     console.log("=========SIGNUP=============");
     const login = req.body.email;
 
@@ -75,7 +75,7 @@ function isSignInOk(data) {
     const AuthUser = database.getByLogin(data.email);
     console.log("AuthUser: ");
     console.log(AuthUser);
-    if (AuthUser.login === data.email || AuthUser.password === data.password) {
+    if (AuthUser.login === data.email && AuthUser.password === data.password) {
         return true;
     } else {
         false;
@@ -85,7 +85,7 @@ function isSignInOk(data) {
 app.post('/login', function(req, res) {
     console.log("=========SIGNIN=============");
 
-
+    console.log(req.body.password);
     /*Есть ли в бд*/
 
 
@@ -111,7 +111,7 @@ app.post('/login', function(req, res) {
 
 });
 
-app.get('/profile', function(req, res) {
+app.get('/about', function(req, res) {
 
     console.log("=========PROFILE=============");
 
