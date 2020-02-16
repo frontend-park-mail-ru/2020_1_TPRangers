@@ -3,6 +3,12 @@ const cookieDataBase = require('./CookieDataBase.js')
 const database = new moduleDataBase;
 const cookiebase = new cookieDataBase;
 
+database.add({
+    email: "123123@yandex.ru",
+    password: "123",
+    age: 123
+})
+
 const express = require('express');
 const body = require('body-parser');
 const cookie = require('cookie-parser');
@@ -87,12 +93,14 @@ app.post('/login', function(req, res) {
     if (isSignInOk(req.body)) {
 
         cooId = uuid();
+        console.log("Cookie ID is :", cooId);
         cookiebase.addCookie(cooId, req.body.email);
         res.cookie('cookie-id', cooId, { expires: new Date(Date.now() + 10e10) });
-        console.log("Cookie ID is :", cooId);
 
-        res.status(200)
+
+        res.status(200).json({ cooId })
         console.log("======================");
+
 
     } else {
         res.status(400).json({ error: "User doesn't exist" })

@@ -145,12 +145,14 @@ function createLogin() {
     application.appendChild(back);
 }
 
+
 function createProfile() {
     application.innerHTML = '';
     ajax('GET', '/profile', null, function(status, responseText) {
         console.log(responseText)
     });
 }
+
 
 
 const routes = {
