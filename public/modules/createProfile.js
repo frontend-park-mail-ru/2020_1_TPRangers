@@ -20,6 +20,12 @@ export function createProfile(parent, user = {
   avatar.classList.add('userAvatar');
   avatar.src = user.avatar;
 
+  const topDataForUserProfile = document.createElement('div');
+  topDataForUserProfile.classList.add('topDataForUserProfile');
+
+  const nameAndDateForUserProfile = document.createElement('div');
+  nameAndDateForUserProfile.classList.add('nameAndDateForUserProfile');
+
   const name = document.createElement('span');
   name.classList.add('userName');
   name.textContent = user.name;
@@ -32,14 +38,17 @@ export function createProfile(parent, user = {
   dateOfB.classList.add('dateOfBUser');
   dateOfB.textContent = `${user.dateOfB}.${user.monthOfB}.${user.yearOfB}`;
 
-  rightBlock.appendChild(name);
-  rightBlock.appendChild(dateOfBLabel);
-  rightBlock.appendChild(dateOfB);
-  rightBlock.appendChild(createLinks({
+  nameAndDateForUserProfile.appendChild(name);
+  nameAndDateForUserProfile.appendChild(dateOfBLabel);
+  nameAndDateForUserProfile.appendChild(dateOfB);
+  topDataForUserProfile.appendChild(nameAndDateForUserProfile);
+  topDataForUserProfile.appendChild(createLinks({
     name: 'Редактировать профиль',
     link: 'settings',
     cl: 'userSettings'
   }));
+  rightBlock.appendChild(topDataForUserProfile);
+
   for (let i = 0; i < 10; ++i) {
     createPost(rightBlock);
   }

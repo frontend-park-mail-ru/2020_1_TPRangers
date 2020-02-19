@@ -8,6 +8,9 @@ export function createPost( parent = document.body,
   const postCard = document.createElement('div');
   postCard.classList.add('postCard');
 
+  const postCardContent = document.createElement('div');
+  postCardContent.classList.add('postCardContent');
+
   const image = document.createElement('img');
   image.classList.add('image');
   image.src = data.imageData;
@@ -21,8 +24,9 @@ export function createPost( parent = document.body,
   text.textContent = data.textData;
 
   postCard.appendChild(name);
-  postCard.appendChild(image);
-  postCard.appendChild(text);
+  postCardContent.appendChild(image);
+  postCardContent.appendChild(text);
+  postCard.appendChild(postCardContent);
 
   parent.appendChild(postCard);
 }
