@@ -42,11 +42,13 @@ export function createProfile(parent, user = {
   nameAndDateForUserProfile.appendChild(dateOfBLabel);
   nameAndDateForUserProfile.appendChild(dateOfB);
   topDataForUserProfile.appendChild(nameAndDateForUserProfile);
-  topDataForUserProfile.appendChild(createLinks({
+
+  topDataForUserProfile.innerHTML += createLinks({
     name: 'Редактировать профиль',
     link: 'settings',
     cl: 'userSettings'
-  }));
+  });
+
   rightBlock.appendChild(topDataForUserProfile);
 
   for (let i = 0; i < 10; ++i) {
