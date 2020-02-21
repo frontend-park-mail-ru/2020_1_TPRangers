@@ -1,0 +1,17 @@
+{
+  "name": "TpRangers",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tmpl": "./node_modules/.bin/fest-build --dir=public\n",
+    "prestart": "npm run tmpl"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fest": "^0.12.1"
+  }
+}

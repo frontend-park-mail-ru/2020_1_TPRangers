@@ -3,6 +3,7 @@ import {createMainPage} from "./modules/createMainPage.js"
 import {createRegistration} from "./modules/createRegistration.js";
 import {createSettings} from "./modules/createSettings.js";
 import {createProfile} from "./modules/createProfile.js";
+import {MainPage} from "./modules/createMainPage.js"
 
 
 const app = document.getElementById("application");
@@ -15,13 +16,8 @@ app.addEventListener('click', function (evt) {
   }
 });
 
-app.addEventListener('load', (event) => {
-  const {target} = event;
-  event.preventDefault();
-});
-
 const routes = {
-  main: createMainPage,
+  main: createMainPage(app),
   login: createLogin,
   registration: createRegistration,
   settings: createSettings,

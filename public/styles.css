@@ -29,6 +29,7 @@ input {
 #application {
     display: flex;
     flex-direction: row;
+    justify-content: center;
 }
 
 .rightBlock {

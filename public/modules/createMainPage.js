@@ -1,34 +1,50 @@
 import createLinks from "./createLinks.js";
 
-let menuStaff = {
-login: {
-  name: 'Вход',
+const dataForMainPage = [
+  {
+    name: 'Вход',
     link: 'login',
-  cl: 'main_link',
-},
-reg: {
-  name: 'Регистрация',
+    cl: 'main_link',
+  },
+  {
+    name: 'Регистрация',
     link: 'registration',
-  cl: 'main_link',
-},
-set: {
-  name: 'Настройки',
+    cl: 'main_link',
+  },
+  {
+    name: 'Настройки',
     link: 'settings',
-  cl: 'main_link',
-},
-about: {
-  name: 'О проекте',
+    cl: 'main_link',
+  },
+  {
+    name: 'О проекте',
     link: 'about',
-  cl: 'main_link',
-},
-};
+    cl: 'main_link',
+  },
+];
 
 export function createMainPage(parent) {
-  let menu = document.createElement('div');
-  menu.classList.add('mainMenu');
-  Object.values(menuStaff).forEach(function (item) {
-    menu.innerHTML += createLinks(item);
-  });
-  parent.appendChild(menu);
+  parent.innerHTML = '';
+  let mainPage = new MainPage();
+  parent.innerHTML = mainPage.render();
 }
 
+export class MainPage {
+  _data = dataForMainPage;
+
+  get data() {
+    return this._data;
+  }
+
+  set data(d) {
+    this._data = d;
+  }
+
+  _renderTmpl() {
+    return window.fest['components/mainPage/startPage.tmpl'](this._data)
+  }
+
+  render() {
+    return this._renderTmpl()
+  }
+}
