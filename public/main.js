@@ -3,7 +3,6 @@ import {createMainPage} from "./modules/createMainPage.js"
 import {createRegistration} from "./modules/createRegistration.js";
 import {createSettings} from "./modules/createSettings.js";
 import {createProfile} from "./modules/createProfile.js";
-import {MainPage} from "./modules/createMainPage.js"
 
 
 const app = document.getElementById("application");

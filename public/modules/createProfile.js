@@ -1,5 +1,4 @@
-import {createPost} from './createPost.js';
-import createLinks from "./createLinks.js";
+import {createPosts} from './createPost.js';
 
 export function createProfile(parent, user = {
   name: 'UserName',
@@ -7,56 +6,37 @@ export function createProfile(parent, user = {
   monthOfB: '00',
   yearOfB: '0000',
   avatar: 'https://picsum.photos/200/300'
-}) {
+}, posts =[ {
+  name: 'Default post name',
+  textData: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+  imageData: 'https://picsum.photos/200/300?grayscale',
+}]) {
   parent.innerHTML = '';
+  let profile = new Profile();
+  profile.data =  {
+    user: user,
+    posts: posts
+  };
+  console.log(profile.data);
+  parent.innerHTML = profile.render();
 
-  const leftBlock = document.createElement('div');
-  leftBlock.classList.add('leftBlock');
+}
 
-  const rightBlock = document.createElement('div');
-  rightBlock.classList.add('rightBlock');
+class Profile {
 
-  const avatar = document.createElement('img');
-  avatar.classList.add('userAvatar');
-  avatar.src = user.avatar;
-
-  const topDataForUserProfile = document.createElement('div');
-  topDataForUserProfile.classList.add('topDataForUserProfile');
-
-  const nameAndDateForUserProfile = document.createElement('div');
-  nameAndDateForUserProfile.classList.add('nameAndDateForUserProfile');
-
-  const name = document.createElement('span');
-  name.classList.add('userName');
-  name.textContent = user.name;
-
-  const dateOfBLabel = document.createElement('span');
-  dateOfBLabel.classList.add('dateOfBLabel');
-  dateOfBLabel.textContent = 'Date of birth: ';
-
-  const dateOfB = document.createElement('span');
-  dateOfB.classList.add('dateOfBUser');
-  dateOfB.textContent = `${user.dateOfB}.${user.monthOfB}.${user.yearOfB}`;
-
-  nameAndDateForUserProfile.appendChild(name);
-  nameAndDateForUserProfile.appendChild(dateOfBLabel);
-  nameAndDateForUserProfile.appendChild(dateOfB);
-  topDataForUserProfile.appendChild(nameAndDateForUserProfile);
-
-  topDataForUserProfile.innerHTML += createLinks({
-    name: 'Редактировать профиль',
-    link: 'settings',
-    cl: 'userSettings'
-  });
-
-  rightBlock.appendChild(topDataForUserProfile);
-
-  for (let i = 0; i < 10; ++i) {
-    createPost(rightBlock);
+  get data() {
+    return this._user;
   }
 
-  leftBlock.appendChild(avatar);
+  set data(d) {
+    this._user = d;
+  }
 
-  parent.appendChild(leftBlock);
-  parent.appendChild(rightBlock);
+  _renderTmpl() {
+    return window.fest['components/pofile/pofile.tmpl'](this._data)
+  }
+
+  render() {
+    return this._renderTmpl()
+  }
 }

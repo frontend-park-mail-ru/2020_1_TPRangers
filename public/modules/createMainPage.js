@@ -1,5 +1,3 @@
-import createLinks from "./createLinks.js";
-
 const dataForMainPage = [
   {
     name: 'Вход',
@@ -29,7 +27,7 @@ export function createMainPage(parent) {
   parent.innerHTML = mainPage.render();
 }
 
-export class MainPage {
+class MainPage {
   _data = dataForMainPage;
 
   get data() {
