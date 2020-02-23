@@ -1,39 +1,40 @@
-import mainPageTmp from '../templates/mainPage.pug'
 
-const dataForMainPage = {
+const btnTmpl = require('../templates/button.pug')
+const buttonsForMainPage = {
   login: {
     name: 'Вход',
     link: 'login',
-    cl: 'main_link',
+    classes: [
+        'mainLink',
+        ]
   },
   registration: {
     name: 'Регистрация',
     link: 'registration',
-    cl: 'main_link',
+    classes: [
+        'mainLink',
+        ]
   },
   settings: {
     name: 'Настройки',
     link: 'settings',
-    cl: 'main_link',
+    classes: [
+        'mainLink',
+    ]
   },
   about: {
     name: 'О проекте',
     link: 'about',
-    cl: 'main_link',
+    classes: [
+        'mainLink',
+    ]
   },
 };
 
 
-
-class MainPage {
-  render() {
-    return mainPageTmp.call({}, dataForMainPage);
-  }
-}
-
 export function createMainPage(parent) {
-  let mainP = new MainPage();
-  let test = mainP.render();
-  console.log(test);
-  parent.innerHTML = test;
+  parent.innerHTML = '';
+  for (let button in buttonsForMainPage) {
+      parent.innerHTML += btnTmpl(buttonsForMainPage[button]);
+  }
 }

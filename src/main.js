@@ -1,15 +1,33 @@
-let template = require("./templates/mainLinks.pug");
+import {createMainPage} from "./modules/createMainPage";
+import {createLogin} from "./modules/createLogin";
+import {createRegistration} from "./modules/createRegistration";
+import {createSettings} from "./modules/createSettings";
 import  "./css/styles.css"
 import  "./css/normalize.css"
 
-let locals = {
-  users: [
-    "user1",
-    "user2",
-    "user3",
-    "user4",
-    "user5"
-  ]
+
+const app = document.getElementById("application");
+
+app.addEventListener('click', function (evt) {
+  const {target} = evt;
+  if (target instanceof HTMLAnchorElement) {
+    evt.preventDefault();
+    routes[target.dataset.section](app);
+  }
+});
+
+app.addEventListener('load', (event) => {
+  const {target} = event;
+  console.log(target)
+  event.preventDefault();
+});
+
+const routes = {
+  main: createMainPage,
+  login: createLogin,
+  registration: createRegistration,
+  settings: createSettings,
+  //about: createProfile,
 };
 
-document.querySelector("main").innerHTML = template(locals);
+createMainPage(app);

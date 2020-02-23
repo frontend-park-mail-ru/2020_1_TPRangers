@@ -1,36 +1,48 @@
-import {createDefaultForm} from "./createForm.js";
-import createBackButton from "./createBackButton.js";
 import ajax from "./ajax.js";
-import {createProfile} from "./createProfile.js";
+import createBackButton from "./createBackButton";
+
+const formTemp = require('../templates/form.pug')
 
 const loginItems = {
-    email: {
-        title: 'Логин',
-        name: 'email',
-        placeholder: 'ivan.ivanov@mail.ru',
-        type: 'email',
+    classes: [
+        'loginForm',
+    ],
+    id: 'loginForm',
+    formItems: {
+        email: {
+            title: 'Логин',
+            name: 'email',
+            placeholder: 'ivan.ivanov@mail.ru',
+            type: 'email',
+        },
+        password: {
+            title: 'Пароль',
+            name: 'password',
+            placeholder: '',
+            type: 'password'
+        }
     },
-    password: {
-        title: 'Пароль',
-        name: 'password',
-        placeholder: '',
-        type: 'password'
-    }
+    buttonName: 'Войти'
 };
 
- export function createLogin(parent = document.body) {
+export function createLogin(parent = document.body) {
     parent.innerHTML = '';
-    const form = createDefaultForm(loginItems, 'Войти');
-    form.addEventListener('submit', function (event) {
+    parent.innerHTML += formTemp(loginItems);
+    parent.innerHTML += createBackButton();
+    const loginForm = document.getElementById("loginForm");
+    console.log(loginForm);
+    loginForm.addEventListener('submit', function (event) {
         event.preventDefault();
 
-        const email = form.elements['email'].value;
-        const password = form.elements['password'].value;
+        const email = loginForm.elements['email'].value;
+        const password = loginForm.elements['password'].value;
+
+
 
         ajax('POST', '/login', {email,password}, (status, response) => {
             if (status === 200) {
-                createProfile(parent);
-                return;
+                // createProfile(parent);
+                // return;
             } else {
                 console.log(JSON.parse(response))
                 const {error} = JSON.parse(response);
@@ -40,7 +52,4 @@ const loginItems = {
         });
 
     });
-    parent.appendChild(form);
-    const backButton = createBackButton();
-    parent.appendChild(backButton);
 }
