@@ -10,9 +10,10 @@ const app = document.getElementById("application");
 
 app.addEventListener('click', function (evt) {
   const {target} = evt;
+  console.log(evt)
   if (target instanceof HTMLAnchorElement) {
     evt.preventDefault();
-    routes[target.dataset.section](app);
+    console.log(target.pathname);
   }
 });
 
@@ -24,10 +25,7 @@ app.addEventListener('load', (event) => {
 
 const routes = {
   main: createMainPage,
-  login: createLogin,
-  registration: createRegistration,
-  settings: createSettings,
-  //about: createProfile,
+  login: createLogin
 };
 
 createMainPage(app);
