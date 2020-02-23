@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const config = {
   entry: {
-    app: './src/main.js'
+    app: './src/main.js',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -17,6 +17,10 @@ const config = {
       {
         test: /\.pug$/,
         use: ['pug-loader']
+      },
+      {
+        test: /\.css$/,
+        use:  ['style-loader', 'css-loader']
       },
     ]
   },

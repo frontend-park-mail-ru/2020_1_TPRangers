@@ -1,4 +1,6 @@
 let template = require("./templates/mainLinks.pug");
+import  "./css/styles.css"
+import  "./css/normalize.css"
 
 let locals = {
   users: [
