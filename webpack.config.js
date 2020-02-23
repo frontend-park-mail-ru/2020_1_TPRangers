@@ -1,30 +1,34 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-module.exports = {
-  mode: 'development',
-  entry: './public/main.js',
+const config = {
+  entry: {
+    app: './src/main.js'
+  },
   output: {
-    path: path.resolve(__dirname, './dist'),
-    filename: 'main.js'
+    path: path.resolve(__dirname, 'dist'),
+    filename: "[name].bundle.js",
   },
   devServer: {
-    host: 'localhost',
     port: 3000,
-    stats: 'errors-only',
-    open: true,
   },
   module: {
     rules: [
       {
-         test: /\.pug$/,
-         use: ['pug-loader']
-      }
+        test: /\.pug$/,
+        use: ['pug-loader']
+      },
     ]
   },
   plugins: [
-     new HtmlWebpackPlugin({
-       template: './public/index.pug'
-     })
-  ]
+    new HtmlWebpackPlugin({
+      template: './src/templates/index.pug',
+    }),
+  ],
+
+};
+module.exports = (env, argv) => {
+  if (argv.mode === 'development') {}
+  if (argv.mode === 'production') {}
+  return config;
 }
