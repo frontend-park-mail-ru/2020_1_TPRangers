@@ -1,5 +1,4 @@
-const formTmpl = require('../templates/form.pug')
-import createBackButton from "./createBackButton.js";
+const formTmpl = require('../templates/form.pug');
 
 const settingsItems = {
     classes: [
@@ -50,7 +49,6 @@ const settingsItems = {
 export function createSettings(parent = document.body) {
     parent.innerHTML = '';
     parent.innerHTML += formTmpl(settingsItems);
-    parent.innerHTML += createBackButton();
     const settingsForm = document.getElementById("settingsForm");
     console.log(settingsForm)
 }

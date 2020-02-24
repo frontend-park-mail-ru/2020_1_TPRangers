@@ -7,17 +7,22 @@ input {
     display: block;
 }
 
+#application {
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    text-decoration: none;
+}
 .mainLink {
     color: #413f41;
-    width: 50%;
+    min-width: 150px;
     min-height: 20px;
-    margin-right: 50%;
-    margin-top: 10%;
-    transform: translate(50%, -50%);
-    text-align: center;
-    border: black solid 1px;
-    border-radius: 100px;
-    display: block;
+    display: flex;
+    justify-content: flex-start;
+    padding-top: 2%;
+    padding-bottom: 2%;
 }
 
 .mainLink:hover {
@@ -25,8 +30,7 @@ input {
 }
 
 .postCard {
-    border: black solid 1px;
-    border-radius: 10px;
+    box-shadow: 0 0 6px rgba(0,0,0,0.5);
     width: 94%;
     min-height: 310px;
     margin-right: 4%;
@@ -81,9 +85,9 @@ input {
 }
 
 .userAvatar {
-    width: 98%;
+    width: 90%;
     margin-left: 4%;
-    border-radius: 10px;
+    margin-right: 4%;
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
@@ -115,6 +119,65 @@ input {
     color: #413f41;
 }
 
-.settingsLinkProfilePage:hover, .back_link:hover {
+.settingsLinkProfilePage:hover, .back_link:hover{
     color: black;
+}
+
+.mainLeftBlock {
+    height: 100%;
+    width: 12%;
+    min-width: 170px;
+    display: flex;
+    padding-top: 20px;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    position: fixed;
+    left: 0;
+}
+
+.header {
+    display: flex;
+    width: 100vw;
+    height: 50px;
+    opacity: 90%;
+    background-color:#77a1c7;
+    justify-content: flex-end;
+    align-items: flex-end;
+    position: fixed;
+    top: 0;
+}
+
+.logRegLink {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: #77a1c7;
+    min-height: 50px;
+    color: #1b1a1b;
+}
+
+.logRegLink:hover {
+    color: black;
+}
+
+.mainRightBlock {
+    margin-left: 12%;
+    margin-bottom: 4%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.mainPage {
+    margin-top: 50px;
+    display: flex;
+}
+
+.newsFeed {
+    display: flex;
+    flex-direction: column;
+    margin-left: 4%;
 }

@@ -1,6 +1,5 @@
-import createBackButton from "./createBackButton";
-
 const formTemp = require('../templates/form.pug');
+
 const regItems = {
     classes: [
         'regForm',
@@ -51,7 +50,6 @@ const regItems = {
 export function createRegistration(parent = document.body) {
     parent.innerHTML = '';
     parent.innerHTML += formTemp(regItems);
-    parent.innerHTML += createBackButton();
     const regForm = document.getElementsByClassName("regForm");
     console.log(regForm);
 }

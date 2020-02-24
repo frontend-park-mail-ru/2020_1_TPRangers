@@ -1,5 +1,4 @@
 import ajax from "./ajax.js";
-import createBackButton from "./createBackButton";
 
 const formTemp = require('../templates/form.pug');
 
@@ -28,8 +27,6 @@ const loginItems = {
 export function createLogin(parent = document.body) {
     parent.innerHTML = '';
     parent.innerHTML += formTemp(loginItems);
-
-    parent.innerHTML += createBackButton();
 
     const loginForm = document.getElementById("loginForm");
     console.log(loginForm);

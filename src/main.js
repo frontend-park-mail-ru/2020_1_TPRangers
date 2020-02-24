@@ -5,7 +5,8 @@ import {createSettings} from "./modules/createSettings";
 import  "./css/styles.css"
 import  "./css/normalize.css"
 import {createProfile} from "./modules/createProfile";
-
+import {dataForRouting} from "./modules/dataForRouting";
+import {createNewsPage} from "./modules/newsPage"
 
 const app = document.getElementById("application");
 
@@ -13,7 +14,7 @@ app.addEventListener('click', function (evt) {
   const {target} = evt;
   if (target instanceof HTMLAnchorElement) {
     evt.preventDefault();
-    routes[target.getAttribute('section')](app);
+    routes[target.getAttribute('section')](rightBlock);
   }
 });
 
@@ -23,12 +24,17 @@ app.addEventListener('load', (event) => {
   event.preventDefault();
 });
 
+createMainPage(app, dataForRouting);
+
+const rightBlock = document.getElementById('mainRightBlock');
+
 const routes = {
   main: createMainPage,
   login: createLogin,
   registration: createRegistration,
   settings: createSettings,
-  about: createProfile,
+  profile: createProfile,
+  news: createNewsPage,
 };
 
-createMainPage(app);
+createNewsPage(rightBlock);

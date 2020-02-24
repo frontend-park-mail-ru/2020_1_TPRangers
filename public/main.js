@@ -27,6 +27,7 @@ const routes = {
   registration: createRegistration,
   settings: createSettings,
   about: createProfile,
+  //newsFeed: createNewsFeed,
 };
 
 createMainPage(app);
