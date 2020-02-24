@@ -46,5 +46,4 @@ export default function createSettings(parent = document.body) {
   parent.innerHTML = '';
   parent.innerHTML += formTmpl(settingsItems);
   const settingsForm = document.getElementById('settingsForm');
-  console.log(settingsForm);
 }

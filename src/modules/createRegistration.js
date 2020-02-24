@@ -47,5 +47,4 @@ export default function createRegistration(parent = document.body) {
   parent.innerHTML = '';
   parent.innerHTML += formTemp(regItems);
   const regForm = document.getElementsByClassName('regForm');
-  console.log(regForm);
 }

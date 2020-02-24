@@ -98,6 +98,5 @@ export default function createNewsPage(
   },
 ) {
   parent.innerHTML = '';
-  console.log('news!!!');
   parent.innerHTML += newsTmpl(data);
 }
