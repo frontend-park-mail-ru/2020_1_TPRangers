@@ -11,6 +11,7 @@ const config = {
   },
   devServer: {
     port: 3000,
+    open: true,
   },
   module: {
     rules: [
