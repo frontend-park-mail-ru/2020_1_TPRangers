@@ -39,17 +39,34 @@ export function createLogin(parent = document.body) {
 
 
 
-        ajax('POST', '/login', {email,password}, (status, response) => {
-            if (status === 200) {
-                // createProfile(parent);
-                // return;
-            } else {
-                console.log(JSON.parse(response))
-                const {error} = JSON.parse(response);
-                alert(error);
-            }
+       let response = fetch('http://localhost:3001/login', {
+		    method: 'POST',
+            headers: {
+            'Access-Control-Allow-Origin' : 'http://localhost:3001',
+        }
 
-        });
+        
+    })
+    let txt = response.txt;
+    console.log(txt);
+
+    // if (response.ok) { 
+    //      let json = await response.json();
+    // } else {
+    //      alert("Ошибка HTTP: " + response.status);
+    // }
+
+        // ajax('POST', 'localhost:3001/login' ,{email,password}, (status, response) => {
+        //     if (status === 200) {
+        //         // createProfile(parent);
+        //         // return;
+        //     } else {
+        //         console.log(JSON.parse(response))
+        //         const {error} = JSON.parse(response);
+        //         alert(error);
+        //     }
+
+        // });
 
     });
 }
