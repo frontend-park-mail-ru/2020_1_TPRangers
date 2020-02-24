@@ -1,19 +1,82 @@
-export default function ajax(method, url, body = null, callback) {
-  const xhr = new XMLHttpRequest();
-  xhr.open(method, url, true);
-  xhr.withCredentials = true;
+(function () {
+    class FetchModule {
 
-  xhr.addEventListener('readystatechange', () => {
-    if (xhr.readyState !== 4) return;
+        _fetchApi ({ method = 'GET',
+                      url = '/',
+                      body = null,
+                      callback = () => void 0,
+                  } = {}) {
+            let headers = {};
+            if (body) {
+                headers = {
+                    "Content-Type" : "application/json"
+                }
+            }
+            fetch(url, {
+                method: method,
+                headers: headers,
+                body: JSON.stringify(body),
+                mode: "cors",
+                credentials: "same-origin",
+            }).then(callback)
+                .catch(err => {
+                   console.log(`Fetch error: ${err}`)
+                })
+        }
 
-    callback(xhr.status, xhr.responseText);
-  });
+        fetchGET ({url = '/',
+                  callback = () => void 0,
+                  } = {}){
+            this._fetchApi({
+                method: 'GET',
+                url: url,
+                callback: callback,
+            })
 
-  if (body) {
-    xhr.setRequestHeader('Content-type', 'application/json; charset=utf8');
-    xhr.send(JSON.stringify(body));
-    return;
-  }
+        }
 
-  xhr.send();
-}
+        fetchPOST ({
+                       url = '/',
+                       body = null,
+                       callback = () => void 0,
+                   } = {}) {
+            this._fetchApi({
+                method: 'POST',
+                url: url,
+                body: body,
+                callback: callback,
+            })
+        }
+
+        fetchPUT ({
+                      url = '/',
+                      body = null,
+                      callback = () => void 0,
+                  } = {}) {
+            this._fetchApi({
+                method:'PUT',
+                url: url,
+                body: body,
+                callback: callback,
+            })
+        }
+
+        fetchDELETE ({
+                         url = '/',
+                         body = null,
+                         callback = () => void 0,
+                     } = {}) {
+            this._fetchApi({
+                method:'DELETE',
+                url: url,
+                body: body,
+                callback: callback,
+            })
+        }
+
+    }
+
+    globalThis.FetchModule = new FetchModule();
+})();
+
+
