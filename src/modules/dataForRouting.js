@@ -2,41 +2,29 @@ export const dataForRouting = {
   login: {
     name: 'Вход',
     link: 'login',
-    classes: [
-      'logRegLink',
-    ]
+    classes: ['logRegLink'],
   },
   reg: {
     name: 'Регистрация',
     link: 'registration',
-    classes:
-      [
-        'logRegLink',
-      ]
+    classes: ['logRegLink'],
   },
 
   dataLink: [
     {
       name: 'Профиль',
       link: 'profile',
-      classes:
-        [
-          'mainLink',
-        ]
-    }, {
+      classes: ['mainLink'],
+    },
+    {
       name: 'Настройки',
       link: 'settings',
-      classes:
-        [
-          'mainLink',
-        ]
-    }, {
+      classes: ['mainLink'],
+    },
+    {
       name: 'Новости',
       link: 'news',
-      classes:
-        [
-          'mainLink',
-        ]
+      classes: ['mainLink'],
     },
-  ]
+  ],
 };

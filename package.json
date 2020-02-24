@@ -5,7 +5,19 @@
   "scripts": {
     "build": "webpack --mode=production",
     "build:dev": "webpack --mode=development",
-    "server": "webpack-dev-server --mode=development"
+    "server": "prettier --write src/**/*.js\neslint --debug src/ --fix\nwebpack-dev-server --mode=development",
+
+    "lint": "eslint --debug src/",
+    "lint:write": "eslint --debug src/ --fix",
+    "prettier": "prettier --write src/**/*.js"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit":  "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.(js|jsx)": ["npm run lint:write", "git add"]
   },
   "keywords": [],
   "author": "",
@@ -25,6 +37,19 @@
     "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-jest-enzyme": "^7.1.2",
+    "eslint-plugin-babel": "^5.3.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jest": "^23.8.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.18.3",
+    "express": "^4.17.1",
+    "husky": "^4.2.3",
+    "lint-staged": "^10.0.7",
+    "prettier": "^1.19.1"
   }
 }
