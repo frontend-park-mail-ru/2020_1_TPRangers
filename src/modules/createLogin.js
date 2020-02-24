@@ -14,15 +14,17 @@ const loginItems = {
             name: 'email',
             placeholder: 'ivan.ivanov@mail.ru',
             type: 'email',
+            errorMsg: 'Некоррекнтый email'
         },
         password: {
             title: 'Пароль',
             name: 'password',
             placeholder: '',
-            type: 'password'
+            type: 'password',
+            errorMsg: 'Неправильный логин и/или пароль',
         }
     },
-    buttonName: 'Войти'
+    buttonName: 'Войти',
 };
 
 export function createLogin(parent = document.body) {
@@ -30,7 +32,29 @@ export function createLogin(parent = document.body) {
     parent.innerHTML += formTemp(loginItems);
     parent.innerHTML += createBackButton();
     const loginForm = document.getElementById("loginForm");
-    console.log(loginForm);
+
+    loginForm.elements['email'].addEventListener('input', function () {
+        let errEmail = document.getElementById("error-email");
+        if (/.+@.+\..+/i.test(loginForm.elements['email'].value) || loginForm.elements['email'].value==='') {
+            errEmail.classList.remove('visible');
+            errEmail.classList.add('hidden');
+        } else {
+            errEmail.classList.remove('hidden');
+            errEmail.classList.add('visible');
+        }
+    });
+
+    loginForm.elements['password'].addEventListener('input', function () {
+        let errPass = document.getElementById("error-password");
+        if (loginForm.elements['password'].value === '123' || loginForm.elements['password'].value==='') {
+            errPass.classList.remove('visible');
+            errPass.classList.add('hidden');
+        } else {
+            errPass.classList.remove('hidden');
+            errPass.classList.add('visible');
+        }
+    });
+
     loginForm.addEventListener('submit', function (event) {
         event.preventDefault();
 

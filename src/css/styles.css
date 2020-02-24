@@ -97,3 +97,11 @@ input {
 .userSettings:hover {
     color: black;
 }
+
+.visible {
+    opacity: 1;
+}
+
+.hidden {
+    opacity: 0;
+}

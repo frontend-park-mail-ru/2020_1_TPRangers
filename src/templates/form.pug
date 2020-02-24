@@ -3,4 +3,6 @@ form(action="#", class=classes,id=id)
         div
             span #{item.title}
         input(type=item.type, name=item.name, placeholder=item.placeholder)
+        div(id="error-"+item.name).hidden
+            span #{item.errorMsg}
     input(type="submit", value=buttonName)

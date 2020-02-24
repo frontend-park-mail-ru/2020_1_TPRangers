@@ -4,7 +4,7 @@ import {createRegistration} from "./modules/createRegistration";
 import {createSettings} from "./modules/createSettings";
 import  "./css/styles.css"
 import  "./css/normalize.css"
-import {createProfile} from "./modules/createProfile";
+// import {createProfile} from "./modules/createProfile";
 
 
 const app = document.getElementById("application");
