@@ -72,16 +72,17 @@ export function createLogin(parent = document.body) {
         //         console.log('Fetch Error :-S', err);
         //     });
 
-        ajax('POST', 'http://localhost:3001/login',response => {
-            if (response.status !== 200) {
-                console.log('Looks like there was a problem. Status Code: ' +
-                    response.status);
-                return;
-            }
-            response.json().then(function (data) {
-                console.log(data);
-            })
-        });
+        //
+
+        FetchModule.fetchPOST({url: 'http://localhost:3001/login', body: {name: 'Hello, world'},callback: response => {
+                        if (response.status !== 200) {
+                            console.log('Looks like there was a problem. Status Code: ' +
+                                response.status);
+                            return;
+                        }
+                        response.json().then(function(data) {
+                            console.log(data);
+                        });            }})
 
     });
 }

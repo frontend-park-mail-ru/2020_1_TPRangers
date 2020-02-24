@@ -2,14 +2,20 @@ package main
 
 
 import (
+	"encoding/json"
 	// "encoding/json"
 	"fmt"
+	"io/ioutil"
+
 	// "log"
 	"net/http"
 	// "sync"
+
 )
 
-
+type Message struct {
+Name string `json:"name"`
+}
 
 
 func makeCorsHeaders(w *http.ResponseWriter) {
@@ -26,6 +32,10 @@ func main() {
 	http.HandleFunc("/login", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("login")
 		makeCorsHeaders(&w)
+		body, _ := ioutil.ReadAll(r.Body)
+		var msg Message
+		json.Unmarshal(body, &msg)
+		fmt.Println(msg)
 		w.Write([]byte(`{"text":"hello"}`))
 	})
 
