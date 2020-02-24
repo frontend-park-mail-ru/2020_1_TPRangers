@@ -11,14 +11,6 @@
     "lint:write": "eslint --debug src/ --fix",
     "prettier": "prettier --write src/**/*.js"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit":  "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.(js|jsx)": ["npm run lint:write", "git add"]
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
