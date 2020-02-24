@@ -28,7 +28,7 @@ const routes = {
   login: createLogin,
   registration: createRegistration,
   settings: createSettings,
-  // about: createProfile,
+  about: createProfile,
 };
 
 createMainPage(app);

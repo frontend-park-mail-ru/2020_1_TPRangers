@@ -53,13 +53,13 @@ input {
     margin-right: 1%;
 }
 
-.rightBlock {
+.rightBlockProfile {
     margin-top: 2%;
     width: 74%;
     float: right;
 }
 
-.leftBlock {
+.leftBlockProfile {
     margin-top: 2%;
     width: 24%;
     float: left;
@@ -95,5 +95,26 @@ input {
 }
 
 .userSettings:hover {
+    color: black;
+}
+
+.topUserDataBlock {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.userData {
+    display: flex;
+    flex-direction: column;
+}
+
+.settingsLinkProfilePage, .back_link {
+    display: flex;
+    margin: 1% 4%;
+    color: #413f41;
+}
+
+.settingsLinkProfilePage:hover, .back_link:hover {
     color: black;
 }
