@@ -1,11 +1,13 @@
-const btnTmpl = require('../templates/button.pug')
+const btnTmpl = require('../templates/button.pug');
 
 const backButton = {
-        name: 'Назад в меню',
-        link: "main",
-        classes: [
-            'back_link',
-        ],
+    link: {
+      name: 'Назад в меню',
+      link: "main",
+      classes: [
+        'back_link',
+      ],
+    }
     };
 
 export default function createBackButton() {

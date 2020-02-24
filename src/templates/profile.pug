@@ -1,0 +1,19 @@
+include ./postCard
+include ./includes/buttonMixin
+
+div(class="leftBlockProfile")
+    img(src=user.avatar alt="user avatar" class="userAvatar")
+    - let link1 = {name: "Назад в главное меню", link: "main", classes: ["back_link"]}
+    + createLink(link1)
+div(class="rightBlockProfile")
+    div(class="topUserDataBlock")
+        div(class="userData")
+            span(class="userName") #{user.name}
+            span(class="dateOfBLabel") Дата рождения:
+            span(class="dateOfBUser") #{user.dateOfB}.#{user.monthOfB}.#{user.yearOfB}
+        if user.isMe
+            - let link2 = {name: "Редактировать профиль", link: "settings", classes: ["settingsLinkProfilePage"]}
+            + createLink(link2)
+
+    each post in posts
+        + postCard(post)
