@@ -1,5 +1,6 @@
 import ajax from "./ajax.js";
 import createBackButton from "./createBackButton";
+import {addValidation} from "./checkFormField";
 
 const formTemp = require('../templates/form.pug')
 
@@ -14,6 +15,7 @@ const loginItems = {
             name: 'email',
             placeholder: 'ivan.ivanov@mail.ru',
             type: 'email',
+            regExp: /.+@.+\..+/i,
             errorMsg: 'Некоррекнтый email'
         },
         password: {
@@ -21,6 +23,7 @@ const loginItems = {
             name: 'password',
             placeholder: '',
             type: 'password',
+            regExp: "123",
             errorMsg: 'Неправильный логин и/или пароль',
         }
     },
@@ -33,27 +36,10 @@ export function createLogin(parent = document.body) {
     parent.innerHTML += createBackButton();
     const loginForm = document.getElementById("loginForm");
 
-    loginForm.elements['email'].addEventListener('input', function () {
-        let errEmail = document.getElementById("error-email");
-        if (/.+@.+\..+/i.test(loginForm.elements['email'].value) || loginForm.elements['email'].value==='') {
-            errEmail.classList.remove('visible');
-            errEmail.classList.add('hidden');
-        } else {
-            errEmail.classList.remove('hidden');
-            errEmail.classList.add('visible');
-        }
-    });
-
-    loginForm.elements['password'].addEventListener('input', function () {
-        let errPass = document.getElementById("error-password");
-        if (loginForm.elements['password'].value === '123' || loginForm.elements['password'].value==='') {
-            errPass.classList.remove('visible');
-            errPass.classList.add('hidden');
-        } else {
-            errPass.classList.remove('hidden');
-            errPass.classList.add('visible');
-        }
-    });
+   addValidation({
+       form: loginForm,
+       formItems: loginItems.formItems,
+   });
 
     loginForm.addEventListener('submit', function (event) {
         event.preventDefault();
