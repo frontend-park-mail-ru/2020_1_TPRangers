@@ -1,5 +1,5 @@
 import createMainPage from './createMainPage';
-import { createLogin } from './createLogin';
+import createLogin from './createLogin';
 import createRegistration from './createRegistration';
 import createSettings from './createSettings';
 import createProfile from './createProfile';

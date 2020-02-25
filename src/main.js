@@ -6,6 +6,7 @@ import createNewsPage from './modules/newsPage';
 import { routes } from './modules/routes';
 
 
+
 const app = document.getElementById('application');
 
 createMainPage(app, dataForRouting);
