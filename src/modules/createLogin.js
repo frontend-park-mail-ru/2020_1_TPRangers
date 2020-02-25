@@ -1,3 +1,5 @@
+import { fetchPOST } from './ajax';
+
 const formTemp = require('../templates/form.pug');
 
 const loginItems = {
@@ -20,7 +22,7 @@ const loginItems = {
   buttonName: 'Войти',
 };
 
-export default function createLogin(parent = document.body) {
+export function createLogin(parent = document.body) {
   parent.innerHTML = '';
   parent.innerHTML += formTemp(loginItems);
 
@@ -30,8 +32,7 @@ export default function createLogin(parent = document.body) {
 
     const email = loginForm.elements['email'].value;
     const password = loginForm.elements['password'].value;
-
-    FetchModule.fetchPOST({
+    fetchPOST({
       url: 'http://localhost:3001/login',
       body: { name: 'Hello, world' },
       callback: response => {

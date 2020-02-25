@@ -1,60 +1,51 @@
-(function() {
-  class FetchModule {
-    _fetchApi({ method = 'GET', url = '/', body = null, callback = () => void 0 } = {}) {
-      let headers = {};
-      if (body) {
-        headers = {
-          'Content-Type': 'application/json',
-        };
-      }
-      fetch(url, {
-        method: method,
-        headers: headers,
-        body: JSON.stringify(body),
-        mode: 'cors',
-        credentials: 'same-origin',
-      })
-        .then(callback)
-        .catch(err => {
-          console.log(`Fetch error: ${err}`);
-        });
-    }
+function fetchApi({ method = 'GET', url = '/', headers = {}, body = null, callback = () => void 0 } = {}) {
+  fetch(url, {
+    method: method,
+    headers: headers,
+    body: JSON.stringify(body),
+    mode: 'cors',
+    credentials: 'same-origin',
+  })
+    .then(callback)
+    .catch(err => {
+      console.log(`Fetch error: ${err}`);
+    });
+}
 
-    fetchGET({ url = '/', callback = () => void 0 } = {}) {
-      this._fetchApi({
-        method: 'GET',
-        url: url,
-        callback: callback,
-      });
-    }
+export function fetchGET({ url = '/', callback = () => void 0 } = {}) {
+  return fetchApi({
+    method: 'GET',
+    url: url,
+    callback: callback,
+  });
+}
 
-    fetchPOST({ url = '/', body = null, callback = () => void 0 } = {}) {
-      this._fetchApi({
-        method: 'POST',
-        url: url,
-        body: body,
-        callback: callback,
-      });
-    }
+export function fetchPOST({ url = '/', body = null, headers = {"Content-Type":"application/json"},callback = () => void 0 } = {}) {
+  return fetchApi({
+    method: 'POST',
+    url: url,
+    body: body,
+    headers: headers,
+    callback: callback,
+  });
+}
 
-    fetchPUT({ url = '/', body = null, callback = () => void 0 } = {}) {
-      this._fetchApi({
-        method: 'PUT',
-        url: url,
-        body: body,
-        callback: callback,
-      });
-    }
+export function fetchPUT({ url = '/', body = null, headers = {"Content-Type":"application/json"},callback = () => void 0 } = {}) {
+  return fetchApi({
+    method: 'PUT',
+    url: url,
+    body: body,
+    headers:headers,
+    callback: callback,
+  });
+}
 
-    fetchDELETE({ url = '/', body = null, callback = () => void 0 } = {}) {
-      this._fetchApi({
-        method: 'DELETE',
-        url: url,
-        body: body,
-        callback: callback,
-      });
-    }
-  }
-
-  globalThis.FetchModule = new FetchModule();
-})();
+export function fetchDELETE({ url = '/', body = null, headers = {},callback = () => void 0 } = {}) {
+  return fetchApi({
+    method: 'DELETE',
+    url: url,
+    body: body,
+    headers:headers,
+    callback: callback,
+  });
+}
