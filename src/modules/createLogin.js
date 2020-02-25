@@ -35,6 +35,7 @@ export function createLogin(parent = document.body) {
     fetchPOST({
       url: 'http://localhost:3001/login',
       body: { name: 'Hello, world' },
+
       callback: response => {
         if (response.status !== 200) {
           console.log('Looks like there was a problem. Status Code: ' + response.status);
