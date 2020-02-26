@@ -86,7 +86,7 @@ export default function createRegistration(parent = document.body) {
       body: {
         body: [
           {
-            login: email,
+            email: email,
             password: password,
             name: name,
             phone: phone,
