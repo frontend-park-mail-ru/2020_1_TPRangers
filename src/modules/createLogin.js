@@ -20,7 +20,7 @@ const loginItems = {
       name: 'password',
       placeholder: '',
       type: 'password',
-      regExp: '123',
+      regExp: '',
       errorMsg: 'Неправильный логин и/или пароль',
     },
   },
@@ -50,13 +50,22 @@ export default function createLogin(parent = document.body) {
       const password = loginForm.elements['password'].value;
       fetchPOST({
         url: 'http://localhost:3001/login',
-        body: { name: 'Hello, world' },
+        body: {
+          body: [
+            {
+              login: email,
+              password: password,
+            },
+          ],
+        },
 
         callback: response => {
+          console.log(response);
           if (response.status !== 200) {
             console.log('Looks like there was a problem. Status Code: ' + response.status);
             return;
           }
+          console.log('ok');
           response.json().then(function(data) {
             console.log(data);
           });
