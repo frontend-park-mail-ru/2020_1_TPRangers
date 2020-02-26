@@ -66,9 +66,6 @@ func (db *DataBase) CheckCookie(cookie string, login string) bool {
 }
 
 
-
-
-
 func (db *DataBase) AddUser(login string, data MetaData) (error, MetaData) {
 
 	if db.CheckUser(login) {
@@ -86,6 +83,10 @@ func (db *DataBase) AddUser(login string, data MetaData) (error, MetaData) {
 
 func (db *DataBase) GetUserDataLogin(login string) MetaData {
 	return db.IdMeta[db.UserId[login]]
+}
+
+func (db *DataBase) GetPasswordByLogin(login string) string {
+	return db.IdMeta[db.UserId[login]].Password
 }
 
 func (db *DataBase) GetIdByLogin(login string) int64 {

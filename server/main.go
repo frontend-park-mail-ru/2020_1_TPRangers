@@ -72,11 +72,12 @@ func (dh DataHandler) Login(w http.ResponseWriter, r *http.Request) {
 
 	login := mapData["login"].(string)
 	password := mapData["password"].(string)
+	
 
-	// if !DataHandler.dataBase.CheckUser(login) {
-	// 	fmt.Println("Doesn't exit")
-	// 	return
-	// }
+	if !dh.dataBase.CheckUser(login) || password != dh.dataBase.GetPasswordByLogin(login){
+		fmt.Println("Doesn't exit")
+		return
+	}
 
 	
 
