@@ -6,8 +6,8 @@ import {
   checkPasswordValidity,
 } from './formValidation';
 
-import SettingsPage from './createSettings';
-import {routes} from "./routes";
+// eslint-disable-next-line import/no-cycle
+import { routes } from './routes';
 
 const formTmpl = require('../templates/form.pug');
 
@@ -148,7 +148,7 @@ class RegistrationPage {
               return;
             }
 
-            routes['settings'](parent);
+            routes.settings(parent);
           },
         });
       }

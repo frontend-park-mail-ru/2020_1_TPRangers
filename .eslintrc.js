@@ -33,11 +33,13 @@ module.exports = {
     'operator-linebreak': [2, 'after'],
 
     'max-len': ['error', 100, 2, { ignoreUrls: true, }],
-    'no-console': 'error', // airbnb использует warn
+    'no-console': 'warn', // airbnb использует warn
     'no-alert': 'error', // airbnb использует warn
-
+    'no-void': 'off',
     'no-param-reassign': 'off',
     "radix": "off",
+    "no-restricted-syntax": 'off',
+    'guard-for-in': 'off',
 
     'react/require-default-props': 'off', // airbnb использует error
     'react/forbid-prop-types': 'off', // airbnb использует error

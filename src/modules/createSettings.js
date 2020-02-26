@@ -94,6 +94,7 @@ class SettingsPage {
   }
 
   renderTmpl(parent) {
+    this.parent = parent;
     this.parent.innerHTML = '';
     fetchGET({
       url: 'http://localhost:3001/settings',

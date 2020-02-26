@@ -1,5 +1,7 @@
 import MainPage from './createMainPage';
+// eslint-disable-next-line import/no-cycle
 import LoginPage from './createLogin';
+// eslint-disable-next-line import/no-cycle
 import RegistrationPage from './createRegistration';
 import SettingsPage from './createSettings';
 import ProfilePage from './createProfile';

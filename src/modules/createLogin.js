@@ -1,8 +1,7 @@
 import { fetchPOST } from './ajax';
 import { addRegExpValidationAll, checkRegExpValidity } from './formValidation';
-import RegistrationPage from './createRegistration';
-import NewsPage from './newsPage';
-import {routes} from "./routes";
+// eslint-disable-next-line import/no-cycle
+import { routes } from './routes';
 
 const formTmpl = require('../templates/form.pug');
 
@@ -79,11 +78,11 @@ class LoginPage {
 
           callback: response => {
             if (response.status !== 200) {
-              routes['registration'](parent);
+              routes.registration(parent);
               return;
             }
 
-            routes['news'](parent);
+            routes.news(parent);
           },
         });
       }
