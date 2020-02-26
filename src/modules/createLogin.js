@@ -1,4 +1,4 @@
-import { fetchPOST } from './ajax';
+import {fetchGET, fetchPOST} from './ajax';
 import { addRegExpValidationAll, checkRegExpValidity } from './formValidation';
 // eslint-disable-next-line import/no-cycle
 import { routes } from './routes';
@@ -78,11 +78,23 @@ class LoginPage {
 
           callback: response => {
             if (response.status !== 200) {
-              routes.registration(parent);
+              console.log(`Looks like there was a problem. Status Code: ${response.status}`);
               return;
             }
 
-            routes.news(parent);
+            fetchGET({
+              url: 'http://localhost:3001/registration',
+              headers: {
+                'Login' : login,
+              },
+              callback: response => {
+
+                routes.profile(parent);
+
+              },
+            });
+
+
           },
         });
       }
