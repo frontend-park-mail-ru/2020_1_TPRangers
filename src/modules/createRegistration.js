@@ -7,6 +7,7 @@ import {
 } from './formValidation';
 
 import SettingsPage from './createSettings';
+import {routes} from "./routes";
 
 const formTmpl = require('../templates/form.pug');
 
@@ -128,7 +129,7 @@ class RegistrationPage {
 
         fetchPOST({
           url: 'http://localhost:3001/registration',
-          body: {
+          body: JSON.stringify({
             body: [
               {
                 email,
@@ -138,7 +139,7 @@ class RegistrationPage {
                 date,
               },
             ],
-          },
+          }),
 
           callback: response => {
             console.log(response);
@@ -146,7 +147,8 @@ class RegistrationPage {
               console.log(`Looks like there was a problem. Status Code: ${response.status}`);
               return;
             }
-            SettingsPage.renderTmpl(this.parent);
+
+            routes['settings'](parent);
           },
         });
       }

@@ -2,6 +2,7 @@ import { fetchPOST } from './ajax';
 import { addRegExpValidationAll, checkRegExpValidity } from './formValidation';
 import RegistrationPage from './createRegistration';
 import NewsPage from './newsPage';
+import {routes} from "./routes";
 
 const formTmpl = require('../templates/form.pug');
 
@@ -67,22 +68,22 @@ class LoginPage {
         const password = loginForm.elements.password.value;
         fetchPOST({
           url: 'http://localhost:3001/login',
-          body: {
+          body: JSON.stringify({
             body: [
               {
                 login: email,
                 password,
               },
             ],
-          },
+          }),
 
           callback: response => {
             if (response.status !== 200) {
-              RegistrationPage.renderTmpl(this.parent);
+              routes['registration'](parent);
               return;
             }
 
-            NewsPage.renderTmpl(this.parent);
+            routes['news'](parent);
           },
         });
       }

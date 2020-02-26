@@ -94,6 +94,7 @@ class SettingsPage {
   }
 
   renderTmpl(parent) {
+    this.parent.innerHTML = '';
     fetchGET({
       url: 'http://localhost:3001/settings',
       callback: response => {
@@ -109,7 +110,6 @@ class SettingsPage {
       },
     });
 
-    this.parent.innerHTML = '';
     this.parent.innerHTML += formTmpl(settingsItems);
     const settingsForm = document.getElementById('settingsForm');
     addRegExpValidationAll({
@@ -148,7 +148,7 @@ class SettingsPage {
 
         fetchPOST({
           url: 'http://localhost:3001/settings/json',
-          body: {
+          body: JSON.stringify({
             body: [
               {
                 email,
@@ -158,7 +158,7 @@ class SettingsPage {
                 date,
               },
             ],
-          },
+          }),
 
           callback: response => {
             console.log(response);
