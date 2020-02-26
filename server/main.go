@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"github.com/gorilla/mux"
 	"net/http"
+	"github.com/pkg/errors"
 	// "time"
 )
 
@@ -17,6 +18,20 @@ type DataHandler struct {
 type JsonStruct struct {
 	Body interface{} `json:"body,omitempty"`
 	Err  []string    `json:"err,omitempty"`
+}
+
+func getDataFromJson(userData JsonStruct) (data map[string]interface{}, errConvert error) {
+
+	defer func() {
+
+		if err := recover(); err != nil {
+			data = make(map[string]interface{})
+			errConvert = errors.New("decode err")
+		}
+
+	}()
+
+	return userData.Body.([]interface{})[0].(map[string]interface{}), nil
 }
 
 
@@ -44,6 +59,24 @@ func (dh DataHandler) Login(w http.ResponseWriter, r *http.Request) {
 	// тут получение данных с сервера
 	fmt.Print("=============Login=============\n")
 	makeCorsHeaders(&w)
+
+
+	// decoder := json.NewDecoder(r.Body)
+	// defer r.Body.Close()
+	// var userData JsonStruct
+	// // err := decoder.Decode(&userData)
+	// mapData, convertionError := getDataFromJson(userData)
+
+	fmt.Println(r)
+
+	// if err != nil || convertionError != nil {
+	// 	fmt.Print(err, " ", convertionError, "\n")
+	// 	SetErrors([]string{ET.DecodeError}, http.StatusBadRequest, &w)
+	// 	return
+	// }
+
+	// login := mapData["login"].(string)
+	// password := mapData["password"].(string)
 
 }
 
