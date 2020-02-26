@@ -85,7 +85,7 @@ class LoginPage {
             fetchGET({
               url: 'http://localhost:3001/login',
               headers: {
-                'Login' : login,
+                'Login' : email,
               },
               callback: response => {
 
