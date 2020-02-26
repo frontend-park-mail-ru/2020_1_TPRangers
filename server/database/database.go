@@ -85,15 +85,15 @@ func (db *DataBase) AddUser(login string, data MetaData) (error, MetaData) {
 }
 
 func (db *DataBase) GetUserDataLogin(login string) MetaData {
-
 	return db.IdMeta[db.UserId[login]]
+}
 
+func (db *DataBase) GetIdByLogin(login string) int64 {
+	return db.UserId[login]
 }
 
 func (db *DataBase) GetUserDataId(id int64) MetaData {
-
 	return db.IdMeta[id]
-
 }
 
 func (db *DataBase) DeleteUser(login string) {

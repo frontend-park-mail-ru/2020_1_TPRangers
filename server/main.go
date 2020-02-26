@@ -55,27 +55,30 @@ func (dh DataHandler) Register(w http.ResponseWriter, r *http.Request) {
 }
 
 func (dh DataHandler) Login(w http.ResponseWriter, r *http.Request) {
-
-	// тут получение данных с сервера
 	fmt.Print("=============Login=============\n")
 	makeCorsHeaders(&w)
 
 	decoder := json.NewDecoder(r.Body)
 	defer r.Body.Close()
+
 	var userData JsonStruct
 	err := decoder.Decode(&userData)
 	mapData, convertionError := getDataFromJson(userData)
 
-	fmt.Println(r)
-
 	if err != nil || convertionError != nil {
-		fmt.Print(err, " ", convertionError, "\n")
 		// SetErrors([]string{ET.DecodeError}, http.StatusBadRequest, &w)
 		return
 	}
 
 	login := mapData["login"].(string)
 	password := mapData["password"].(string)
+
+	// if !DataHandler.dataBase.CheckUser(login) {
+	// 	fmt.Println("Doesn't exit")
+	// 	return
+	// }
+
+	
 
 	fmt.Println(login)
 	fmt.Println(password)
