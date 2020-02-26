@@ -10,7 +10,7 @@ function fetchApi({
     headers,
     body,
     mode: 'cors',
-    credentials: 'same-origin',
+    credentials: 'include',
   })
     .then(callback)
     .catch(err => {

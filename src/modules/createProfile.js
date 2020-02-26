@@ -1,3 +1,5 @@
+import {fetchGET} from "./ajax";
+
 const profileTmpl = require('../templates/profile.pug');
 
 const data = {
@@ -73,6 +75,21 @@ class ProfilePage {
   renderTmpl(parent) {
     this.parent = parent;
     this.parent.innerHTML = '';
+
+    fetchGET({
+      url: 'http://localhost:3001/profile',
+      callback: response => {
+        console.log(response);
+        if (response.status !== 200) {
+          console.log(`Looks like there was a problem. Status Code: ${response.status}`);
+          return;
+        }
+
+        response.json().then(data => {
+          console.log(data);
+        });
+      },
+    });
     this.parent.innerHTML += profileTmpl(data);
   }
 }

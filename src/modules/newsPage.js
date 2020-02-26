@@ -1,3 +1,5 @@
+import {fetchGET} from "./ajax";
+
 const newsTmpl = require('../templates/newsFeedPage.pug');
 
 const data = {
@@ -107,6 +109,22 @@ class NewsPage {
   }
 
   renderTmpl(parent) {
+
+    fetchGET({
+      url: 'http://localhost:3001/news',
+      callback: response => {
+        console.log(response);
+        if (response.status !== 200) {
+          console.log(`Looks like there was a problem. Status Code: ${response.status}`);
+          return;
+        }
+
+        response.json().then(data => {
+          console.log(data);
+        });
+      },
+    });
+
     this.parent = parent;
     this.parent.innerHTML = '';
     this.parent.innerHTML += newsTmpl(data);
