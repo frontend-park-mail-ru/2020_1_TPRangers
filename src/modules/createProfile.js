@@ -1,4 +1,4 @@
-import {fetchGET} from "./ajax";
+import { fetchGET } from './ajax';
 
 const profileTmpl = require('../templates/profile.pug');
 

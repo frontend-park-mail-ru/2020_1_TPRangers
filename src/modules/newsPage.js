@@ -1,4 +1,4 @@
-import {fetchGET} from "./ajax";
+import { fetchGET } from './ajax';
 
 const newsTmpl = require('../templates/newsFeedPage.pug');
 
@@ -109,7 +109,6 @@ class NewsPage {
   }
 
   renderTmpl(parent) {
-
     fetchGET({
       url: 'http://localhost:3001/news',
       callback: response => {

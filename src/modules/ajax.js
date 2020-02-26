@@ -6,9 +6,9 @@ function fetchApi({
   callback = () => void 0,
 } = {}) {
   fetch(url, {
-    method: method,
-    headers: headers,
-    body: body,
+    method,
+    headers,
+    body,
     mode: 'cors',
     credentials: 'include',
   })
