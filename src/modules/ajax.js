@@ -8,7 +8,7 @@ function fetchApi({
   fetch(url, {
     method: method,
     headers: headers,
-    body: JSON.stringify(body),
+    body: body,
     mode: 'cors',
     credentials: 'same-origin',
   })
