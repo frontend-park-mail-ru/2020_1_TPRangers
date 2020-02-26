@@ -34,7 +34,7 @@ const regItems = {
     date: {
       title: 'Дата рождения',
       name: 'date',
-      type: 'date',
+      type: 'text',
       regExp: /(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d/i,
       errorMsg: 'Некорректная дата',
     },

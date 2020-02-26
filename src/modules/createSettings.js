@@ -1,4 +1,5 @@
 import { addRegExpValidationAll, addPasswordValidation } from './formValidation';
+import { fetchPOST } from './ajax';
 
 const formTmpl = require('../templates/form.pug');
 
@@ -38,7 +39,7 @@ const settingsItems = {
     date: {
       title: 'Дата рождения',
       name: 'date',
-      type: 'date',
+      type: 'text',
       regExp: /(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d/i,
       errorMsg: 'Некорректная дата',
     },
@@ -76,4 +77,68 @@ export default function createSettings(parent = document.body) {
     settingsItems.formItems.password.name,
     settingsItems.formItems.passwordRepeat.name,
   );
+
+  settingsForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const email = settingsForm.elements['email'].value;
+    const password = settingsForm.elements['password'].value;
+    const name = settingsForm.elements['username'].value;
+    const phone = settingsForm.elements['phone'].value;
+    const date = settingsForm.elements['date'].value;
+
+    const avatar = new FormData();
+    avatar.append('avatar', settingsForm.files[0]);
+
+    console.log(avatar);
+
+    fetchPOST({
+      url: 'http://localhost:3001/settings/json',
+      body: {
+        body: [
+          {
+            email: email,
+            password: password,
+            name: name,
+            phone: phone,
+            date: date,
+          },
+        ],
+      },
+
+      callback: response => {
+        console.log(response);
+        if (response.status !== 200) {
+          console.log('Looks like there was a problem. Status Code: ' + response.status);
+          return;
+        }
+        console.log('ok');
+        response.json().then(function(data) {
+          console.log(data);
+        });
+      },
+    });
+
+
+
+    fetchPOST({
+      url: 'http://localhost:3001/settings/avatar',
+      headers: { 'Content-Type': 'multipart/form-data' },
+      body: {
+        body: avatar,
+      },
+
+      callback: response => {
+        console.log(response);
+        if (response.status !== 200) {
+          console.log('Looks like there was a problem. Status Code: ' + response.status);
+          return;
+        }
+        console.log('ok');
+        response.json().then(function(data) {
+          console.log(data);
+        });
+      },
+    });
+  });
 }

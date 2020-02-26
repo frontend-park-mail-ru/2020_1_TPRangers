@@ -29,7 +29,7 @@ export function fetchGET({ url = '/', callback = () => void 0 } = {}) {
 export function fetchPOST({
   url = '/',
   body = null,
-  headers = { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
+  headers = { 'Content-Type': 'application/json'},
   callback = () => void 0,
 } = {}) {
   return fetchApi({
@@ -44,7 +44,7 @@ export function fetchPOST({
 export function fetchPUT({
   url = '/',
   body = null,
-  headers = { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
+  headers = { 'Content-Type': 'application/json'},
   callback = () => void 0,
 } = {}) {
   return fetchApi({
