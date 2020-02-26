@@ -124,17 +124,30 @@ a {
     color: black;
 }
 
+.mainPage {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: row;
+}
+
 .mainLeftBlock {
     height: 100%;
     width: 12%;
-    min-width: 170px;
+    min-width: 120px;
     display: flex;
-    padding-top: 20px;
+    margin-top: 3%;
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
-    position: fixed;
-    left: 0;
+    margin-left: 4%;
+}
+
+.mainRightBlock {
+  margin-bottom: 4%;
+  margin-top: 2%;
+  width: 90%;
+  display: flex;
+  justify-content: center;
 }
 
 .header {
@@ -163,20 +176,6 @@ a {
 .logRegLink:hover {
     color: black;
 }
-
-.mainRightBlock {
-    margin-left: 12%;
-    margin-bottom: 4%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
-.mainPage {
-    margin-top: 50px;
-    display: flex;
-}
-
 .newsFeed {
   display: flex;
   flex-direction: column;
@@ -188,4 +187,177 @@ a {
 
 .hidden {
     opacity: 0;
+}
+
+.mainRightBlock.loginForm {
+  align-items: center;
+}
+
+.loginForm {
+  display: flex;
+  min-width: 500px;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 2%;
+}
+
+div.formLb {
+  margin-top: 4%;
+  margin-bottom: 2%;
+}
+
+.inputIcons {
+  display: flex;
+  flex-direction: row;
+  width: 40vw;
+  border: #c7c7c7 solid 1px;
+  margin-bottom: 4%;
+}
+
+.icon {
+  padding-top: 12px;
+  padding-left: 15px;
+  min-width: 30px;
+  border-right: #c7c7c7 solid 1px;
+}
+
+.inputField {
+  width: 88%;
+  height: 20px;
+  padding: 10px;
+  text-align: left;
+  border: none;
+  outline:none;
+}
+
+.anim {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.err>.tooltip {
+  position: relative;
+  background: #ff3466;
+  padding: 5px 12px;
+  margin: 5px;
+  font-size: 15px;
+  border-radius: 100%;
+  color: #FFF;
+}
+
+.correct>.tooltip {
+  position: relative;
+  background: transparent;
+  padding: 5px 12px;
+  margin: 5px;
+  font-size: 15px;
+  border-radius: 100%;
+  color: #18b130;
+}
+
+.correct>.tooltip:before {
+  border-width: 10px 8px 0 8px;
+  border-style: solid;
+  border-color:   transparent transparent transparent transparent;
+  top: -15px;
+  transform: translateY(20px);
+}
+
+.correct>.tooltip:after {
+  content: attr(data-tooltip);
+  background:  transparent;
+  width: 160px;
+  height: 40px;
+  font-size: 13px;
+  font-weight: 300;
+  top: -75px;
+  left: -10px;
+  padding: 10px;
+  border-radius: 5px;
+  letter-spacing: 1px;
+  transform: translateY(20px);
+}
+
+.tooltip:before,
+.tooltip:after {
+  position: absolute;
+  content: '';
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+.err>.tooltip:before {
+  border-width: 10px 8px 0 8px;
+  border-style: solid;
+  border-color: #ff3466 transparent transparent transparent;
+  top: -15px;
+  transform: translateY(20px);
+}
+
+.err>.tooltip:after {
+  content: attr(data-tooltip);
+  background: #ff3466;
+  width: 160px;
+  height: 40px;
+  font-size: 13px;
+  font-weight: 300;
+  top: -75px;
+  left: -10px;
+  padding: 10px;
+  border-radius: 5px;
+  letter-spacing: 1px;
+  transform: translateY(20px);
+}
+
+.err>.tooltip:hover::before,
+.err>.tooltip:hover::after {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+
+@keyframes shake {
+  0% {
+    transform: rotate(2deg);
+  }
+  50% {
+    transform: rotate(-3deg);
+  }
+  70% {
+    transform: rotate(3deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+.anim:hover {
+  animation: shake 500ms ease-in-out forwards;
+}
+
+.buttonInForm {
+  height: 50px;
+  width: 50%;
+  margin-top: 2%;
+  min-height: 50px;
+  outline: none;
+}
+
+.buttonInForm:hover {
+
+}
+
+.formBody {
+  display: flex;
+  flex-direction: column;
+  width: 40vw;
+  align-items: center;
+  box-shadow: 0 0 6px rgba(0,0,0,0.5);
+  padding: 4%;
+}
+
+.formName {
+  margin: 4%;
+  font-size: 1.4em;
 }

@@ -10,6 +10,8 @@ const settingsItems = {
       title: 'Загрузите/обновите аватар',
       name: 'avatar',
       type: 'file',
+      class: 'formLb',
+      fa_item: 'fas fa-camera-retro',
     },
     username: {
       title: 'Ваше имя',
@@ -18,6 +20,8 @@ const settingsItems = {
       type: 'text',
       regExp: /^[a-zA-Zа-яА-Я]{0,20}$/i,
       errorMsg: 'Некорректное имя пользователя',
+      class: 'formLb',
+      fa_item: 'fas fa-user',
     },
     email: {
       title: 'Email',
@@ -26,6 +30,8 @@ const settingsItems = {
       type: 'email',
       regExp: /.+@.+\..+/i,
       errorMsg: 'Некорректный адрес почты',
+      class: 'formLb',
+      fa_item: 'fas fa-at',
     },
     phone: {
       title: 'Телефон',
@@ -34,6 +40,8 @@ const settingsItems = {
       type: 'text',
       regExp: /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/,
       errorMsg: 'Некорректный телефон',
+      class: 'formLb',
+      fa_item: 'fas fa-phone',
     },
     date: {
       title: 'Дата рождения',
@@ -41,6 +49,8 @@ const settingsItems = {
       type: 'date',
       regExp: /(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d/i,
       errorMsg: 'Некорректная дата',
+      class: 'formLb',
+      fa_item: 'fas fa-birthday-cake',
     },
     password: {
       title: 'Пароль',
@@ -50,6 +60,8 @@ const settingsItems = {
       regExp: /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/i,
       errorMsg:
         'Пароль должен содержать одну заглавную, одну строчную букву, цифру и не менее 8 симвлолов',
+      class: 'formLb',
+      fa_item: 'fas fa-key',
     },
     passwordRepeat: {
       title: 'Повторите пароль',
@@ -57,19 +69,36 @@ const settingsItems = {
       placeholder: '',
       type: 'password',
       errorMsg: 'Пароли не совпадают',
+      class: 'formLb',
+      fa_item: 'fas fa-key',
     },
   },
   buttonName: 'Обновить профиль',
 };
 
-export default function createSettings(parent = document.body) {
-  parent.innerHTML = '';
-  parent.innerHTML += formTmpl(settingsItems);
-  const settingsForm = document.getElementById('settingsForm');
-  addValidation({
-    form: settingsForm,
-    formItems: settingsItems.formItems,
-  });
+class SettingsPage {
+  set parent(parent) {
+    // eslint-disable-next-line no-underscore-dangle
+    this._parent = parent;
+  }
 
-  addPasswordValidation(settingsForm);
+  get parent() {
+    // eslint-disable-next-line no-underscore-dangle
+    return this._parent;
+  }
+
+  renderTmpl(parent) {
+    this.parent = parent;
+    this.parent.innerHTML = '';
+    this.parent.innerHTML += formTmpl(settingsItems);
+    const settingsForm = document.getElementById('settingsForm');
+    addValidation({
+      form: settingsForm,
+      formItems: settingsItems.formItems,
+    });
+
+    addPasswordValidation(settingsForm);
+  }
 }
+
+export default new SettingsPage();

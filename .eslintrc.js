@@ -26,7 +26,7 @@ module.exports = {
     'arrow-parens': 'off', // несовместимо с prettier
     'object-curly-newline': 'off', // несовместимо с prettier
     'no-mixed-operators': 'off', // несовместимо с prettier
-    'arrow-body-style': 'on',
+    'arrow-body-style': 'off',
     'function-paren-newline': 'off', // несовместимо с prettier
     'no-plusplus': 'off',
     'space-before-function-paren': 0, // несовместимо с prettier

@@ -6,7 +6,6 @@
     "build": "webpack --mode=production",
     "build:dev": "webpack --mode=development",
     "server": "prettier --write src/**/*.js\neslint --debug src/ --fix\nwebpack-dev-server --mode=development",
-
     "lint": "eslint --debug src/",
     "lint:write": "eslint --debug src/ --fix",
     "prettier": "prettier --write src/**/*.js"

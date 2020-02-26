@@ -14,6 +14,8 @@ const loginItems = {
       type: 'email',
       regExp: /.+@.+\..+/i,
       errorMsg: 'Некоррекнтый email',
+      class: 'formLb',
+      fa_item: 'fas fa-at',
     },
     password: {
       title: 'Пароль',
@@ -22,46 +24,70 @@ const loginItems = {
       type: 'password',
       regExp: '123',
       errorMsg: 'Неправильный логин и/или пароль',
+      class: 'formLb',
+      fa_item: 'fas fa-key',
     },
   },
   buttonName: 'Войти',
 };
 
-export default function createLogin(parent = document.body) {
-  parent.innerHTML = '';
-  parent.innerHTML += formTmpl(loginItems);
-  const loginForm = document.getElementById('loginForm');
+class LoginPage {
+  set parent(parent) {
+    // eslint-disable-next-line no-underscore-dangle
+    this._parent = parent;
+  }
 
-  addValidation({
-    form: loginForm,
-    formItems: loginItems.formItems,
-  });
+  get parent() {
+    // eslint-disable-next-line no-underscore-dangle
+    return this._parent;
+  }
 
-  loginForm.addEventListener('submit', function(event) {
-    event.preventDefault();
+  renderTmpl(parent) {
+    this.parent = parent;
+    this.parent.innerHTML = '';
+    this.parent.innerHTML += formTmpl(loginItems);
 
-    const email = loginForm.elements['email'].value;
-    const password = loginForm.elements['password'].value;
+    const loginForm = document.getElementById('loginForm');
+    addValidation({
+      // eslint-disable-next-line no-undef
+      form: loginForm,
+      formItems: loginItems.formItems,
+    });
 
-    loginForm.addEventListener('submit', function(event) {
+    loginForm.addEventListener('submit', event => {
       event.preventDefault();
 
-      const email = loginForm.elements['email'].value;
-      const password = loginForm.elements['password'].value;
-      fetchPOST({
-        url: 'http://localhost:3001/login',
-        body: { name: 'Hello, world' },
+      // eslint-disable-next-line no-unused-vars
+      const email = loginForm.elements.email.value;
+      // eslint-disable-next-line no-unused-vars
+      const password = loginForm.elements.password.value;
 
-        callback: response => {
-          if (response.status !== 200) {
-            console.log('Looks like there was a problem. Status Code: ' + response.status);
-            return;
-          }
-          response.json().then(function(data) {
-            console.log(data);
-          });
-        },
+      loginForm.addEventListener('submit', event => {
+        event.preventDefault();
+
+        // eslint-disable-next-line no-undef,no-shadow,no-unused-vars
+        const email = loginForm.elements.email.value;
+        // eslint-disable-next-line no-shadow,no-undef,no-unused-vars
+        const password = loginForm.elements.password.value;
+        fetchPOST({
+          url: 'http://localhost:3001/login',
+          body: { name: 'Hello, world' },
+
+          callback: response => {
+            if (response.status !== 200) {
+              // eslint-disable-next-line no-console
+              console.log(`Looks like there was a problem. Status Code: ${response.status}`);
+              return;
+            }
+            response.json().then(data => {
+              // eslint-disable-next-line no-console
+              console.log(data);
+            });
+          },
+        });
       });
     });
-  });
+  }
 }
+
+export default new LoginPage();
