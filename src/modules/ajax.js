@@ -18,9 +18,10 @@ function fetchApi({
     });
 }
 
-export function fetchGET({ url = '/', callback = () => void 0 } = {}) {
+export function fetchGET({ url = '/', headers = {}, callback = () => void 0 } = {}) {
   return fetchApi({
     method: 'GET',
+    headers: headers,
     url,
     callback,
   });

@@ -1,4 +1,4 @@
-import {fetchGET, fetchPOST} from './ajax';
+import { fetchGET, fetchPOST } from './ajax';
 import { addRegExpValidationAll, checkRegExpValidity } from './formValidation';
 // eslint-disable-next-line import/no-cycle
 import { routes } from './routes';
@@ -85,16 +85,12 @@ class LoginPage {
             fetchGET({
               url: 'http://localhost:3001/login',
               headers: {
-                'Login' : email,
+                'X-Login': email,
               },
               callback: response => {
-
                 routes.profile(parent);
-
               },
             });
-
-
           },
         });
       }
