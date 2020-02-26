@@ -1,5 +1,5 @@
 import { addRegExpValidationAll, addPasswordValidation } from './formValidation';
-import {fetchPOST} from "./ajax";
+import { fetchPOST } from './ajax';
 
 const formTmpl = require('../templates/form.pug');
 
@@ -79,7 +79,8 @@ export default function createRegistration(parent = document.body) {
     const password = regForm.elements['password'].value;
     const name = regForm.elements['username'].value;
     const phone = regForm.elements['phone'].value;
-    const data = regForm.elements['data'].value;
+    const date = regForm.elements['date'].value;
+
 
     fetchPOST({
       url: 'http://localhost:3001/registration',
@@ -90,7 +91,7 @@ export default function createRegistration(parent = document.body) {
             password: password,
             name: name,
             phone: phone,
-            data: data,
+            date: date,
           },
         ],
       },
