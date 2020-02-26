@@ -2,7 +2,7 @@ package main
 
 import (
 	myDataB "./database"
-	// "encoding/json"
+	"encoding/json"
 	"fmt"
 	"github.com/gorilla/mux"
 	"net/http"
@@ -60,23 +60,28 @@ func (dh DataHandler) Login(w http.ResponseWriter, r *http.Request) {
 	fmt.Print("=============Login=============\n")
 	makeCorsHeaders(&w)
 
-
-	// decoder := json.NewDecoder(r.Body)
-	// defer r.Body.Close()
-	// var userData JsonStruct
-	// // err := decoder.Decode(&userData)
-	// mapData, convertionError := getDataFromJson(userData)
+	decoder := json.NewDecoder(r.Body)
+	defer r.Body.Close()
+	var userData JsonStruct
+	err := decoder.Decode(&userData)
+	mapData, convertionError := getDataFromJson(userData)
 
 	fmt.Println(r)
 
-	// if err != nil || convertionError != nil {
-	// 	fmt.Print(err, " ", convertionError, "\n")
-	// 	SetErrors([]string{ET.DecodeError}, http.StatusBadRequest, &w)
-	// 	return
-	// }
+	if err != nil || convertionError != nil {
+		fmt.Print(err, " ", convertionError, "\n")
+		// SetErrors([]string{ET.DecodeError}, http.StatusBadRequest, &w)
+		return
+	}
 
-	// login := mapData["login"].(string)
-	// password := mapData["password"].(string)
+	login := mapData["login"].(string)
+	password := mapData["password"].(string)
+
+	fmt.Println(login)
+	fmt.Println(password)
+
+	json.NewEncoder(w).Encode(&JsonStruct{Body: "test"})
+	(w).WriteHeader(http.StatusOK)
 
 }
 
