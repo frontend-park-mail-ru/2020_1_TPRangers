@@ -83,7 +83,6 @@ class LoginPage {
             }
 
             NewsPage.renderTmpl(this.parent);
-
           },
         });
       }
