@@ -1,5 +1,7 @@
 import { fetchPOST } from './ajax';
 import { addRegExpValidationAll, checkRegExpValidity } from './formValidation';
+import RegistrationPage from './createRegistration';
+import NewsPage from './newsPage';
 
 const formTmpl = require('../templates/form.pug');
 
@@ -75,15 +77,13 @@ class LoginPage {
           },
 
           callback: response => {
-            console.log(response);
             if (response.status !== 200) {
-              console.log(`Looks like there was a problem. Status Code: ${response.status}`);
+              RegistrationPage.renderTmpl(this.parent);
               return;
             }
-            console.log('ok');
-            response.json().then(data => {
-              console.log(data);
-            });
+
+            NewsPage.renderTmpl(this.parent);
+
           },
         });
       }
