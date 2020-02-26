@@ -1,4 +1,4 @@
-import { fetchPOST } from './ajax';
+import {fetchGET, fetchPOST} from './ajax';
 import {
   addRegExpValidationAll,
   addPasswordValidation,
@@ -148,7 +148,19 @@ class RegistrationPage {
               return;
             }
 
-            routes.settings(parent);
+            fetchGET({
+              url: 'http://localhost:3001/registration',
+              headers: {
+                'Login' : email,
+              },
+              callback: response => {
+
+                routes.settings(parent);
+
+              },
+            });
+
+
           },
         });
       }
