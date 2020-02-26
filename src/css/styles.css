@@ -288,33 +288,26 @@ div.formLb {
   transition: all 0.4s ease;
 }
 
-.err>.tooltip:before {
-  border-width: 10px 8px 0 8px;
-  border-style: solid;
-  border-color: #ff3466 transparent transparent transparent;
-  top: -15px;
-  transform: translateY(20px);
-}
 
 .err>.tooltip:after {
   content: attr(data-tooltip);
   background: #ff3466;
   width: 160px;
-  height: 40px;
+  height: auto;
   font-size: 13px;
   font-weight: 300;
-  top: -75px;
-  left: -10px;
+  top: -15px;
+  left: 75px;
   padding: 10px;
   border-radius: 5px;
   letter-spacing: 1px;
-  transform: translateY(20px);
+  transform: translateY(50%);
 }
 
 .err>.tooltip:hover::before,
 .err>.tooltip:hover::after {
   opacity: 1;
-  transform: translateY(-2px);
+  transform: translateY(2px);
 }
 
 

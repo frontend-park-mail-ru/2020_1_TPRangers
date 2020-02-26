@@ -1,16 +1,29 @@
 function addRegExpValidation(form, fieldName, regExp) {
   form.elements[`${fieldName}`].addEventListener('input', () => {
     const err = document.getElementById(`error-${fieldName}`);
+    const infoText = document.getElementById(`tooltip-${fieldName}`);
+    err.classList.add('visible');
+    err.classList.remove('hidden');
     const innerRegExp = new RegExp(regExp);
     if (
       innerRegExp.test(form.elements[`${fieldName}`].value) ||
       form.elements[`${fieldName}`].value === ''
     ) {
-      err.classList.remove('visible');
-      err.classList.add('hidden');
+      if (form.elements[`${fieldName}`].value === '') {
+        err.classList.add('hidden');
+        err.classList.remove('visible');
+      }
+      if (err.classList.contains('err')) {
+        err.classList.remove('err');
+      }
+      err.classList.add('correct');
+      infoText.innerText = '✔';
     } else {
-      err.classList.remove('hidden');
-      err.classList.add('visible');
+      if (err.classList.contains('correct')) {
+        err.classList.remove('correct');
+      }
+      err.classList.add('err');
+      infoText.innerText = '!';
     }
   });
 }
@@ -24,15 +37,28 @@ export function addRegExpValidationAll({ form = null, formItems = null } = {}) {
 export function addPasswordValidation(form, passwordField, passwordRepeatField) {
   form.elements[`${passwordRepeatField}`].addEventListener('input', () => {
     const err = document.getElementById(`error-${passwordRepeatField}`);
+    err.classList.add('visible');
+    err.classList.remove('hidden');
+    const infoText = document.getElementById('tooltip-password-repeat');
     if (
       form.elements[`${passwordField}`].value === form.elements[`${passwordRepeatField}`].value ||
       form.elements[`${passwordRepeatField}`].value === ''
     ) {
-      err.classList.remove('visible');
-      err.classList.add('hidden');
+      if (form.elements['password-repeat'].value === '') {
+        err.classList.add('hidden');
+        err.classList.remove('visible');
+      }
+      if (err.classList.contains('err')) {
+        err.classList.remove('err');
+      }
+      err.classList.add('correct');
+      infoText.innerText = '✔';
     } else {
-      err.classList.remove('hidden');
-      err.classList.add('visible');
+      if (err.classList.contains('correct')) {
+        err.classList.remove('correct');
+      }
+      err.classList.add('err');
+      infoText.innerText = '!';
     }
   });
 }
