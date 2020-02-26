@@ -83,7 +83,7 @@ class LoginPage {
             }
 
             fetchGET({
-              url: 'http://localhost:3001/registration',
+              url: 'http://localhost:3001/login',
               headers: {
                 'Login' : login,
               },
