@@ -1,5 +1,10 @@
-import { addRegExpValidationAll, addPasswordValidation } from './formValidation';
 import { fetchPOST } from './ajax';
+import {
+  addRegExpValidationAll,
+  addPasswordValidation,
+  checkRegExpValidity,
+  checkPasswordValidity,
+} from './formValidation';
 
 const formTmpl = require('../templates/form.pug');
 
@@ -74,40 +79,53 @@ export default function createRegistration(parent = document.body) {
 
   regForm.addEventListener('submit', function(event) {
     event.preventDefault();
+    if (
+      checkRegExpValidity({
+        form: regForm,
+        formItems: regItems.formItems,
+      }) &&
+      checkPasswordValidity({
+        form: regForm,
+        passwordField: regItems.formItems.password.name,
+        passwordRepeatField: regItems.formItems.passwordRepeat.name,
+      })
+    ) {
+      event.preventDefault();
 
-    const email = regForm.elements['email'].value;
-    const password = regForm.elements['password'].value;
-    const name = regForm.elements['username'].value;
-    const phone = regForm.elements['phone'].value;
-    const date = regForm.elements['date'].value;
+      const email = regForm.elements['email'].value;
+      const password = regForm.elements['password'].value;
+      const name = regForm.elements['username'].value;
+      const phone = regForm.elements['phone'].value;
+      const date = regForm.elements['date'].value;
 
-    console.log(date);
+      console.log(date);
 
-    fetchPOST({
-      url: 'http://localhost:3001/registration',
-      body: {
-        body: [
-          {
-            email: email,
-            password: password,
-            name: name,
-            phone: phone,
-            date: date,
-          },
-        ],
-      },
+      fetchPOST({
+        url: 'http://localhost:3001/registration',
+        body: {
+          body: [
+            {
+              email: email,
+              password: password,
+              name: name,
+              phone: phone,
+              date: date,
+            },
+          ],
+        },
 
-      callback: response => {
-        console.log(response);
-        if (response.status !== 200) {
-          console.log('Looks like there was a problem. Status Code: ' + response.status);
-          return;
-        }
-        console.log('ok');
-        response.json().then(function(data) {
-          console.log(data);
-        });
-      },
-    });
+        callback: response => {
+          console.log(response);
+          if (response.status !== 200) {
+            console.log('Looks like there was a problem. Status Code: ' + response.status);
+            return;
+          }
+          console.log('ok');
+          response.json().then(function(data) {
+            console.log(data);
+          });
+        },
+      });
+    }
   });
 }

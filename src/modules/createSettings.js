@@ -1,4 +1,9 @@
-import { addRegExpValidationAll, addPasswordValidation } from './formValidation';
+import {
+  addRegExpValidationAll,
+  addPasswordValidation,
+  checkRegExpValidity,
+  checkPasswordValidity,
+} from './formValidation';
 import { fetchPOST } from './ajax';
 
 const formTmpl = require('../templates/form.pug');
@@ -79,66 +84,74 @@ export default function createSettings(parent = document.body) {
   );
 
   settingsForm.addEventListener('submit', function(event) {
-    event.preventDefault();
+    if (
+      checkRegExpValidity({
+        form: settingsForm,
+        formItems: settingsForm.formItems,
+      }) &&
+      checkPasswordValidity({
+        form: settingsForm,
+        passwordField: settingsForm.formItems.password.name,
+        passwordRepeatField: settingsForm.formItems.passwordRepeat.name,
+      })
+    ) {
+      event.preventDefault();
 
-    const email = settingsForm.elements['email'].value;
-    const password = settingsForm.elements['password'].value;
-    const name = settingsForm.elements['username'].value;
-    const phone = settingsForm.elements['phone'].value;
-    const date = settingsForm.elements['date'].value;
+      const email = settingsForm.elements['email'].value;
+      const password = settingsForm.elements['password'].value;
+      const name = settingsForm.elements['username'].value;
+      const phone = settingsForm.elements['phone'].value;
+      const date = settingsForm.elements['date'].value;
 
-    const avatar = new FormData();
-    avatar.append('avatar', settingsForm.files[0]);
+      const avatar = new FormData();
+      avatar.append('avatar', settingsForm.files[0]);
 
-    console.log(avatar);
+      fetchPOST({
+        url: 'http://localhost:3001/settings/json',
+        body: {
+          body: [
+            {
+              email: email,
+              password: password,
+              name: name,
+              phone: phone,
+              date: date,
+            },
+          ],
+        },
 
-    fetchPOST({
-      url: 'http://localhost:3001/settings/json',
-      body: {
-        body: [
-          {
-            email: email,
-            password: password,
-            name: name,
-            phone: phone,
-            date: date,
-          },
-        ],
-      },
+        callback: response => {
+          console.log(response);
+          if (response.status !== 200) {
+            console.log('Looks like there was a problem. Status Code: ' + response.status);
+            return;
+          }
+          console.log('ok');
+          response.json().then(function(data) {
+            console.log(data);
+          });
+        },
+      });
 
-      callback: response => {
-        console.log(response);
-        if (response.status !== 200) {
-          console.log('Looks like there was a problem. Status Code: ' + response.status);
-          return;
-        }
-        console.log('ok');
-        response.json().then(function(data) {
-          console.log(data);
-        });
-      },
-    });
+      fetchPOST({
+        url: 'http://localhost:3001/settings/avatar',
+        headers: { 'Content-Type': 'multipart/form-data' },
+        body: {
+          body: avatar,
+        },
 
-
-
-    fetchPOST({
-      url: 'http://localhost:3001/settings/avatar',
-      headers: { 'Content-Type': 'multipart/form-data' },
-      body: {
-        body: avatar,
-      },
-
-      callback: response => {
-        console.log(response);
-        if (response.status !== 200) {
-          console.log('Looks like there was a problem. Status Code: ' + response.status);
-          return;
-        }
-        console.log('ok');
-        response.json().then(function(data) {
-          console.log(data);
-        });
-      },
-    });
+        callback: response => {
+          console.log(response);
+          if (response.status !== 200) {
+            console.log('Looks like there was a problem. Status Code: ' + response.status);
+            return;
+          }
+          console.log('ok');
+          response.json().then(function(data) {
+            console.log(data);
+          });
+        },
+      });
+    }
   });
 }
