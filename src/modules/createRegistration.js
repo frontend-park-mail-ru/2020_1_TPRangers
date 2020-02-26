@@ -34,7 +34,7 @@ const regItems = {
     date: {
       title: 'Дата рождения',
       name: 'date',
-      type: 'text',
+      type: 'date',
       regExp: /(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d/i,
       errorMsg: 'Некорректная дата',
     },
@@ -81,6 +81,7 @@ export default function createRegistration(parent = document.body) {
     const phone = regForm.elements['phone'].value;
     const date = regForm.elements['date'].value;
 
+    console.log(date);
 
     fetchPOST({
       url: 'http://localhost:3001/registration',
