@@ -4,7 +4,7 @@ import {
   checkRegExpValidity,
   checkPasswordValidity,
 } from './formValidation';
-import { fetchPOST, fetchGET } from './ajax';
+import { fetchPOST, fetchGET, fetchPUT } from './ajax';
 
 const formTmpl = require('../templates/form.pug');
 
@@ -96,6 +96,7 @@ class SettingsPage {
   renderTmpl(parent) {
     this.parent = parent;
     this.parent.innerHTML = '';
+
     fetchGET({
       url: 'http://localhost:3001/settings',
       callback: response => {
@@ -148,7 +149,7 @@ class SettingsPage {
         avatar.append('avatar', settingsForm.files[0]);
 
         fetchPOST({
-          url: 'http://localhost:3001/settings/json',
+          url: 'http://localhost:3001/settings',
           body: JSON.stringify({
             body: [
               {
@@ -174,8 +175,8 @@ class SettingsPage {
           },
         });
 
-        fetchPOST({
-          url: 'http://localhost:3001/settings/avatar',
+        fetchPUT({
+          url: 'http://localhost:3001/settings',
           headers: { 'Content-Type': 'multipart/form-data' },
           body: {
             body: avatar,
