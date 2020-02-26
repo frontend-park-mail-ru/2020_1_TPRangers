@@ -4,7 +4,7 @@ import {
   checkRegExpValidity,
   checkPasswordValidity,
 } from './formValidation';
-import { fetchPOST } from './ajax';
+import { fetchPOST, fetchGET } from './ajax';
 
 const formTmpl = require('../templates/form.pug');
 
@@ -94,6 +94,21 @@ class SettingsPage {
   }
 
   renderTmpl(parent) {
+    fetchGET({
+      url: 'http://localhost:3001/settings',
+      callback: response => {
+        console.log(response);
+        if (response.status !== 200) {
+          console.log(`Looks like there was a problem. Status Code: ${response.status}`);
+          return;
+        }
+
+        response.json().then(data => {
+          console.log(data);
+        });
+      },
+    });
+
     this.parent.innerHTML = '';
     this.parent.innerHTML += formTmpl(settingsItems);
     const settingsForm = document.getElementById('settingsForm');

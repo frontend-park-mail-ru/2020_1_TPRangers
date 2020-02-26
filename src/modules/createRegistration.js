@@ -6,6 +6,8 @@ import {
   checkPasswordValidity,
 } from './formValidation';
 
+import SettingsPage from './createSettings';
+
 const formTmpl = require('../templates/form.pug');
 
 const regItems = {
@@ -144,10 +146,7 @@ class RegistrationPage {
               console.log(`Looks like there was a problem. Status Code: ${response.status}`);
               return;
             }
-            console.log('ok');
-            response.json().then(data => {
-              console.log(data);
-            });
+            SettingsPage.renderTmpl(this.parent);
           },
         });
       }
