@@ -72,7 +72,7 @@ func (dh DataHandler) Login(w http.ResponseWriter, r *http.Request) {
 
 	login := mapData["login"].(string)
 	password := mapData["password"].(string)
-	
+
 
 	if !dh.dataBase.CheckUser(login) || password != dh.dataBase.GetPasswordByLogin(login){
 		fmt.Println("Doesn't exit")
@@ -84,7 +84,7 @@ func (dh DataHandler) Login(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(login)
 	fmt.Println(password)
 
-	json.NewEncoder(w).Encode(&JsonStruct{Body: "test"})
+	json.NewEncoder(w).Encode(&JsonStruct{Body: "Authorised"})
 	(w).WriteHeader(http.StatusOK)
 
 }
