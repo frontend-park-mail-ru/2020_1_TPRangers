@@ -1,5 +1,5 @@
 import { fetchPOST } from './ajax';
-import { addRegExpValidationAll } from './formValidation';
+import { addRegExpValidationAll, checkRegExpValidity } from './formValidation';
 
 const formTmpl = require('../templates/form.pug');
 
@@ -45,32 +45,38 @@ export default function createLogin(parent = document.body) {
 
     loginForm.addEventListener('submit', function(event) {
       event.preventDefault();
+      if (
+        checkRegExpValidity({
+          form: loginForm,
+          formItems: loginItems.formItems,
+        })
+      ) {
+        const email = loginForm.elements['email'].value;
+        const password = loginForm.elements['password'].value;
+        fetchPOST({
+          url: 'http://localhost:3001/login',
+          body: {
+            body: [
+              {
+                login: email,
+                password: password,
+              },
+            ],
+          },
 
-      const email = loginForm.elements['email'].value;
-      const password = loginForm.elements['password'].value;
-      fetchPOST({
-        url: 'http://localhost:3001/login',
-        body: {
-          body: [
-            {
-              login: email,
-              password: password,
-            },
-          ],
-        },
-
-        callback: response => {
-          console.log(response);
-          if (response.status !== 200) {
-            console.log('Looks like there was a problem. Status Code: ' + response.status);
-            return;
-          }
-          console.log('ok');
-          response.json().then(function(data) {
-            console.log(data);
-          });
-        },
-      });
+          callback: response => {
+            console.log(response);
+            if (response.status !== 200) {
+              console.log('Looks like there was a problem. Status Code: ' + response.status);
+              return;
+            }
+            console.log('ok');
+            response.json().then(function(data) {
+              console.log(data);
+            });
+          },
+        });
+      }
     });
   });
 }

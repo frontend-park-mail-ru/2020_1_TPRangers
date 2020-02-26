@@ -1,4 +1,9 @@
-import { addRegExpValidationAll, addPasswordValidation } from './formValidation';
+import {
+  addRegExpValidationAll,
+  addPasswordValidation,
+  checkRegExpValidity,
+  checkPasswordValidity
+} from './formValidation';
 
 const formTmpl = require('../templates/form.pug');
 
@@ -70,4 +75,15 @@ export default function createRegistration(parent = document.body) {
     regItems.formItems.password.name,
     regItems.formItems.passwordRepeat.name,
   );
+
+  // regForm.addEventListener('submit', function (event) {
+  //   event.preventDefault();
+  //   if (checkRegExpValidity({form: regForm,  formItems: regItems.formItems}) && checkPasswordValidity({
+  //     form: regForm,
+  //     passwordField: regItems.formItems.password.name,
+  //     passwordRepeatField: regItems.formItems.passwordRepeat.name,
+  //   })) {
+  //   }
+  // });
+
 }

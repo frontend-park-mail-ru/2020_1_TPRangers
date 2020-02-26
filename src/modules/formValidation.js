@@ -36,3 +36,17 @@ export function addPasswordValidation(form, passwordField, passwordRepeatField) 
     }
   });
 }
+
+export function checkRegExpValidity({ form = null, formItems = null } = {}) {
+  for (let element in formItems) {
+    const innerRegExp = new RegExp(formItems[element].regExp);
+    if (!innerRegExp.test(form.elements[formItems[element].name].value)) {
+      return false;
+    }
+  }
+  return true;
+}
+
+export function checkPasswordValidity({form = null, passwordField = null, passwordRepeatField = null} = {}) {
+  return form.elements[`${passwordField}`].value === form.elements[`${passwordRepeatField}`].value;
+}
