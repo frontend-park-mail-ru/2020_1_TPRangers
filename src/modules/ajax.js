@@ -6,8 +6,8 @@ function fetchApi({
   callback = () => void 0,
 } = {}) {
   fetch(url, {
-    method: method,
-    headers: headers,
+    method,
+    headers,
     body: JSON.stringify(body),
     mode: 'cors',
     credentials: 'same-origin',
@@ -21,8 +21,8 @@ function fetchApi({
 export function fetchGET({ url = '/', callback = () => void 0 } = {}) {
   return fetchApi({
     method: 'GET',
-    url: url,
-    callback: callback,
+    url,
+    callback,
   });
 }
 
@@ -34,10 +34,10 @@ export function fetchPOST({
 } = {}) {
   return fetchApi({
     method: 'POST',
-    url: url,
-    body: body,
-    headers: headers,
-    callback: callback,
+    url,
+    body,
+    headers,
+    callback,
   });
 }
 
@@ -49,10 +49,10 @@ export function fetchPUT({
 } = {}) {
   return fetchApi({
     method: 'PUT',
-    url: url,
-    body: body,
-    headers: headers,
-    callback: callback,
+    url,
+    body,
+    headers,
+    callback,
   });
 }
 
@@ -64,9 +64,9 @@ export function fetchDELETE({
 } = {}) {
   return fetchApi({
     method: 'DELETE',
-    url: url,
-    body: body,
-    headers: headers,
-    callback: callback,
+    url,
+    body,
+    headers,
+    callback,
   });
 }

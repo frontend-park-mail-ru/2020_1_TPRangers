@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/prefer-default-export
 export const dataForRouting = {
   login: {
     name: 'Вход',
@@ -14,11 +15,6 @@ export const dataForRouting = {
     {
       name: 'Профиль',
       link: 'profile',
-      classes: ['mainLink'],
-    },
-    {
-      name: 'Настройки',
-      link: 'settings',
       classes: ['mainLink'],
     },
     {

@@ -16,6 +16,8 @@ const settingsItems = {
       title: 'Загрузите/обновите аватар',
       name: 'avatar',
       type: 'file',
+      class: 'formLb',
+      fa_item: 'fas fa-camera-retro',
     },
     username: {
       title: 'Ваше имя',
@@ -24,6 +26,8 @@ const settingsItems = {
       type: 'text',
       regExp: /^[a-zA-Zа-яА-Я]{0,20}$/i,
       errorMsg: 'Некорректное имя пользователя',
+      class: 'formLb',
+      fa_item: 'fas fa-user',
     },
     email: {
       title: 'Email',
@@ -32,6 +36,8 @@ const settingsItems = {
       type: 'email',
       regExp: /.+@.+\..+/i,
       errorMsg: 'Некорректный адрес почты',
+      class: 'formLb',
+      fa_item: 'fas fa-at',
     },
     phone: {
       title: 'Телефон',
@@ -40,13 +46,17 @@ const settingsItems = {
       type: 'text',
       regExp: /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/,
       errorMsg: 'Некорректный телефон',
+      class: 'formLb',
+      fa_item: 'fas fa-phone',
     },
     date: {
       title: 'Дата рождения',
       name: 'date',
       type: 'date',
-      //regExp: /(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d/i,
+      // regExp: /(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d/i,
       errorMsg: 'Некорректная дата',
+      class: 'formLb',
+      fa_item: 'fas fa-birthday-cake',
     },
     password: {
       title: 'Пароль',
@@ -56,6 +66,8 @@ const settingsItems = {
       regExp: /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/i,
       errorMsg:
         'Пароль должен содержать одну заглавную, одну строчную букву, цифру и не менее 8 симвлолов',
+      class: 'formLb',
+      fa_item: 'fas fa-key',
     },
     passwordRepeat: {
       title: 'Повторите пароль',
@@ -63,95 +75,111 @@ const settingsItems = {
       placeholder: '',
       type: 'password',
       errorMsg: 'Пароли не совпадают',
+      class: 'formLb',
+      fa_item: 'fas fa-key',
     },
   },
   buttonName: 'Обновить профиль',
 };
 
-export default function createSettings(parent = document.body) {
-  parent.innerHTML = '';
-  parent.innerHTML += formTmpl(settingsItems);
-  const settingsForm = document.getElementById('settingsForm');
-  addRegExpValidationAll({
-    form: settingsForm,
-    formItems: settingsItems.formItems,
-  });
+class SettingsPage {
+  set parent(parent) {
+    // eslint-disable-next-line no-underscore-dangle
+    this._parent = parent;
+  }
 
-  addPasswordValidation(
-    settingsForm,
-    settingsItems.formItems.password.name,
-    settingsItems.formItems.passwordRepeat.name,
-  );
+  get parent() {
+    // eslint-disable-next-line no-underscore-dangle
+    return this._parent;
+  }
 
-  settingsForm.addEventListener('submit', function(event) {
-    if (
-      checkRegExpValidity({
-        form: settingsForm,
-        formItems: settingsForm.formItems,
-      }) &&
-      checkPasswordValidity({
-        form: settingsForm,
-        passwordField: settingsForm.formItems.password.name,
-        passwordRepeatField: settingsForm.formItems.passwordRepeat.name,
-      })
-    ) {
-      event.preventDefault();
+  renderTmpl(parent) {
+    this.parent.innerHTML = '';
+    this.parent.innerHTML += formTmpl(settingsItems);
+    const settingsForm = document.getElementById('settingsForm');
+    addRegExpValidationAll({
+      form: settingsForm,
+      formItems: settingsItems.formItems,
+    });
 
-      const email = settingsForm.elements['email'].value;
-      const password = settingsForm.elements['password'].value;
-      const name = settingsForm.elements['username'].value;
-      const phone = settingsForm.elements['phone'].value;
-      const date = settingsForm.elements['date'].value;
+    addPasswordValidation(
+      settingsForm,
+      settingsItems.formItems.password.name,
+      settingsItems.formItems.passwordRepeat.name,
+    );
 
-      const avatar = new FormData();
-      avatar.append('avatar', settingsForm.files[0]);
+    settingsForm.addEventListener('submit', event => {
+      if (
+        checkRegExpValidity({
+          form: settingsForm,
+          formItems: settingsForm.formItems,
+        }) &&
+        checkPasswordValidity({
+          form: settingsForm,
+          passwordField: settingsForm.formItems.password.name,
+          passwordRepeatField: settingsForm.formItems.passwordRepeat.name,
+        })
+      ) {
+        event.preventDefault();
 
-      fetchPOST({
-        url: 'http://localhost:3001/settings/json',
-        body: {
-          body: [
-            {
-              email: email,
-              password: password,
-              name: name,
-              phone: phone,
-              date: date,
-            },
-          ],
-        },
+        const email = settingsForm.elements.email.value;
+        const password = settingsForm.elements.password.value;
+        const name = settingsForm.elements.username.value;
+        const phone = settingsForm.elements.phone.value;
+        const date = settingsForm.elements.date.value;
 
-        callback: response => {
-          console.log(response);
-          if (response.status !== 200) {
-            console.log('Looks like there was a problem. Status Code: ' + response.status);
-            return;
-          }
-          console.log('ok');
-          response.json().then(function(data) {
-            console.log(data);
-          });
-        },
-      });
+        const avatar = new FormData();
+        avatar.append('avatar', settingsForm.files[0]);
 
-      fetchPOST({
-        url: 'http://localhost:3001/settings/avatar',
-        headers: { 'Content-Type': 'multipart/form-data' },
-        body: {
-          body: avatar,
-        },
+        fetchPOST({
+          url: 'http://localhost:3001/settings/json',
+          body: {
+            body: [
+              {
+                email,
+                password,
+                name,
+                phone,
+                date,
+              },
+            ],
+          },
 
-        callback: response => {
-          console.log(response);
-          if (response.status !== 200) {
-            console.log('Looks like there was a problem. Status Code: ' + response.status);
-            return;
-          }
-          console.log('ok');
-          response.json().then(function(data) {
-            console.log(data);
-          });
-        },
-      });
-    }
-  });
+          callback: response => {
+            console.log(response);
+            if (response.status !== 200) {
+              console.log(`Looks like there was a problem. Status Code: ${response.status}`);
+              return;
+            }
+            console.log('ok');
+            response.json().then(data => {
+              console.log(data);
+            });
+          },
+        });
+
+        fetchPOST({
+          url: 'http://localhost:3001/settings/avatar',
+          headers: { 'Content-Type': 'multipart/form-data' },
+          body: {
+            body: avatar,
+          },
+
+          callback: response => {
+            console.log(response);
+            if (response.status !== 200) {
+              console.log(`Looks like there was a problem. Status Code: ${response.status}`);
+              return;
+            }
+            console.log('ok');
+            response.json().then(data => {
+              console.log(data);
+            });
+          },
+        });
+      }
+    });
+  }
 }
+
+export default new SettingsPage();

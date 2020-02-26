@@ -1,5 +1,5 @@
 function addRegExpValidation(form, fieldName, regExp) {
-  form.elements[`${fieldName}`].addEventListener('input', function() {
+  form.elements[`${fieldName}`].addEventListener('input', () => {
     const err = document.getElementById(`error-${fieldName}`);
     const innerRegExp = new RegExp(regExp);
     if (
@@ -16,13 +16,13 @@ function addRegExpValidation(form, fieldName, regExp) {
 }
 
 export function addRegExpValidationAll({ form = null, formItems = null } = {}) {
-  for (let element in formItems) {
+  for (const element in formItems) {
     addRegExpValidation(form, formItems[element].name, formItems[element].regExp);
   }
 }
 
 export function addPasswordValidation(form, passwordField, passwordRepeatField) {
-  form.elements[`${passwordRepeatField}`].addEventListener('input', function() {
+  form.elements[`${passwordRepeatField}`].addEventListener('input', () => {
     const err = document.getElementById(`error-${passwordRepeatField}`);
     if (
       form.elements[`${passwordField}`].value === form.elements[`${passwordRepeatField}`].value ||
@@ -38,7 +38,7 @@ export function addPasswordValidation(form, passwordField, passwordRepeatField) 
 }
 
 export function checkRegExpValidity({ form = null, formItems = null } = {}) {
-  for (let element in formItems) {
+  for (const element in formItems) {
     const innerRegExp = new RegExp(formItems[element].regExp);
     if (!innerRegExp.test(form.elements[formItems[element].name].value)) {
       return false;

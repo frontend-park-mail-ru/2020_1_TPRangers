@@ -1,19 +1,16 @@
-import createMainPage from './modules/createMainPage';
+import MainPage from './modules/createMainPage';
 import './css/styles.css';
 import './css/normalize.css';
-import { dataForRouting } from './modules/dataForRouting';
-import createNewsPage from './modules/newsPage';
+import NewsPage from './modules/newsPage';
 import { routes } from './modules/routes';
-
-
 
 const app = document.getElementById('application');
 
-createMainPage(app, dataForRouting);
+MainPage.renderTmpl(app);
 
 const rightBlock = document.getElementById('mainRightBlock');
 
-createNewsPage(rightBlock);
+NewsPage.renderTmpl(rightBlock);
 
 app.addEventListener('click', evt => {
   const { target } = evt;
@@ -24,6 +21,5 @@ app.addEventListener('click', evt => {
 });
 
 app.addEventListener('load', event => {
-  const { target } = event;
   event.preventDefault();
 });
