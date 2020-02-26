@@ -1,5 +1,5 @@
 import { fetchPOST } from './ajax';
-import { addValidation } from './checkFormField';
+import { addRegExpValidationAll } from './formValidation';
 
 const formTmpl = require('../templates/form.pug');
 
@@ -32,7 +32,7 @@ export default function createLogin(parent = document.body) {
   parent.innerHTML += formTmpl(loginItems);
   const loginForm = document.getElementById('loginForm');
 
-  addValidation({
+  addRegExpValidationAll({
     form: loginForm,
     formItems: loginItems.formItems,
   });

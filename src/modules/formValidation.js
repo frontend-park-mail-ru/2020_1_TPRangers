@@ -1,4 +1,4 @@
-function checkFormField(form, fieldName, regExp) {
+function addRegExpValidation(form, fieldName, regExp) {
   form.elements[`${fieldName}`].addEventListener('input', function() {
     const err = document.getElementById(`error-${fieldName}`);
     const innerRegExp = new RegExp(regExp);
@@ -15,18 +15,18 @@ function checkFormField(form, fieldName, regExp) {
   });
 }
 
-export function addValidation({ form = null, formItems = null } = {}) {
+export function addRegExpValidationAll({ form = null, formItems = null } = {}) {
   for (let element in formItems) {
-    checkFormField(form, formItems[element].name, formItems[element].regExp);
+    addRegExpValidation(form, formItems[element].name, formItems[element].regExp);
   }
 }
 
-export function addPasswordValidation(form) {
-  form.elements[`password-repeat`].addEventListener('input', function() {
-    const err = document.getElementById(`error-password-repeat`);
+export function addPasswordValidation(form, passwordField, passwordRepeatField) {
+  form.elements[`${passwordRepeatField}`].addEventListener('input', function() {
+    const err = document.getElementById(`error-${passwordRepeatField}`);
     if (
-      form.elements['password'].value === form.elements['password-repeat'].value ||
-      form.elements[`password-repeat`].value === ''
+      form.elements[`${passwordField}`].value === form.elements[`${passwordRepeatField}`].value ||
+      form.elements[`${passwordRepeatField}`].value === ''
     ) {
       err.classList.remove('visible');
       err.classList.add('hidden');

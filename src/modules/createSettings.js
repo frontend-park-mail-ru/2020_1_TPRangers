@@ -1,4 +1,4 @@
-import { addValidation, addPasswordValidation } from './checkFormField';
+import { addRegExpValidationAll, addPasswordValidation } from './formValidation';
 
 const formTmpl = require('../templates/form.pug');
 
@@ -66,10 +66,14 @@ export default function createSettings(parent = document.body) {
   parent.innerHTML = '';
   parent.innerHTML += formTmpl(settingsItems);
   const settingsForm = document.getElementById('settingsForm');
-  addValidation({
+  addRegExpValidationAll({
     form: settingsForm,
     formItems: settingsItems.formItems,
   });
 
-  addPasswordValidation(settingsForm);
+  addPasswordValidation(
+    settingsForm,
+    settingsItems.formItems.password.name,
+    settingsItems.formItems.passwordRepeat.name,
+  );
 }
