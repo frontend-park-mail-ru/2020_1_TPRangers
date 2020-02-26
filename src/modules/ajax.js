@@ -8,7 +8,7 @@ function fetchApi({
   fetch(url, {
     method: method,
     headers: headers,
-    body: body,
+    body: JSON.stringify(body),
     mode: 'cors',
     credentials: 'same-origin',
   })
@@ -29,7 +29,7 @@ export function fetchGET({ url = '/', callback = () => void 0 } = {}) {
 export function fetchPOST({
   url = '/',
   body = null,
-  headers = { 'Content-Type': 'application/json' },
+  headers = { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
   callback = () => void 0,
 } = {}) {
   return fetchApi({
@@ -44,7 +44,7 @@ export function fetchPOST({
 export function fetchPUT({
   url = '/',
   body = null,
-  headers = { 'Content-Type': 'application/json' },
+  headers = { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
   callback = () => void 0,
 } = {}) {
   return fetchApi({
