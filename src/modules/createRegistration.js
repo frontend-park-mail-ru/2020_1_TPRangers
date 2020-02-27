@@ -152,7 +152,7 @@ class RegistrationPage {
                 'X-Login': email,
               },
               callback: response => {
-                routes.settings(parent);
+                routes.news(parent);
               },
             });
           },

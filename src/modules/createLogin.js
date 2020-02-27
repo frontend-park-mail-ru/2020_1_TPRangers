@@ -79,6 +79,19 @@ class LoginPage {
           callback: response => {
             if (response.status !== 200) {
               console.log(`Looks like there was a problem. Status Code: ${response.status}`);
+              const err = document.getElementById('error-password');
+              const infoText = document.getElementById('tooltip-password');
+              err.classList.add('visible');
+              err.classList.remove('hidden');
+              err.classList.remove('correct');
+              err.classList.add('err');
+              infoText.innerText = '!';
+              if (infoText.hasAttribute('data-tooltip')) {
+                infoText.setAttribute(
+                  'data-tooltip',
+                  'Пользователя с такими данными не существует!',
+                );
+              }
               return;
             }
 
