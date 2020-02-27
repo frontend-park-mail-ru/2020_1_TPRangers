@@ -87,10 +87,13 @@ class ProfilePage {
 
         response.json().then(data => {
           console.log(data);
+          for (const elem in data.body.feed) {
+            console.log(data.body.feed[elem]);
+          }
+          this.parent.innerHTML += profileTmpl(data.body);
         });
       },
     });
-    this.parent.innerHTML += profileTmpl(data);
   }
 }
 

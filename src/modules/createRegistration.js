@@ -146,7 +146,6 @@ class RegistrationPage {
               return;
             }
             routes.news(parent);
-
           },
         });
       }
