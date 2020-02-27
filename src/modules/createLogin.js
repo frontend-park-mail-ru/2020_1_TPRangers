@@ -1,4 +1,4 @@
-import { fetchGET, fetchPOST } from './ajax';
+import { fetchPOST } from './ajax';
 import { addRegExpValidationAll, checkRegExpValidity } from './formValidation';
 // eslint-disable-next-line import/no-cycle
 import { routes } from './routes';

@@ -54,7 +54,8 @@ const settingsItems = {
       name: 'date',
       type: 'text',
       placeholder: '',
-      // regExp: /(19|20)\d\d[-.]((0[1-9]|1[012])-(0[1-9]|[12]\d)|(0[13-9]|1[012])[-.]30|(0[13578]|1[02])-31)/i,
+      // regExp: /(19|20)\d\d[-.]((0[1-9]|1[012])-(0[1-9]|[12]\d)|
+      // (0[13-9]|1[012])[-.]30|(0[13578]|1[02])-31)/i,
       regExp: /(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d/i,
       errorMsg: 'Некорректная дата',
       class: 'formLb',
@@ -127,6 +128,8 @@ class SettingsPage {
               case 'Email':
                 settingsItems.formItems.email.placeholder = data.body.user[elem];
                 break;
+              default:
+                break;
             }
           }
 
@@ -164,9 +167,9 @@ class SettingsPage {
               const avatar = document.querySelector('input[type="file"]');
               console.log(avatar);
 
-              const avatar_data = new FormData();
-              avatar_data.append('uploadedFile', avatar.files[0]);
-              console.log(avatar_data);
+              const avatarData = new FormData();
+              avatarData.append('uploadedFile', avatar.files[0]);
+              console.log(avatarData);
 
               fetchPOST({
                 url: 'http://138.68.77.22:3001/api/v1/settings',
@@ -182,6 +185,7 @@ class SettingsPage {
                   ],
                 }),
 
+                // eslint-disable-next-line no-shadow
                 callback: response => {
                   console.log(response);
                   if (response.status !== 200) {
@@ -189,6 +193,7 @@ class SettingsPage {
                     return;
                   }
                   console.log('ok');
+                  // eslint-disable-next-line no-shadow
                   response.json().then(data => {
                     console.log(data);
                   });
@@ -197,8 +202,9 @@ class SettingsPage {
 
               fetchPUT({
                 url: 'http://138.68.77.22:3001/api/v1/settings',
-                body: avatar_data,
+                body: avatarData,
 
+                // eslint-disable-next-line no-shadow
                 callback: response => {
                   console.log(response);
                   if (response.status !== 200) {
@@ -206,6 +212,7 @@ class SettingsPage {
                     return;
                   }
                   console.log('ok');
+                  // eslint-disable-next-line no-shadow
                   response.json().then(data => {
                     console.log(data);
                   });

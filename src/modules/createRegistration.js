@@ -1,4 +1,4 @@
-import { fetchGET, fetchPOST } from './ajax';
+import { fetchPOST } from './ajax';
 import {
   addRegExpValidationAll,
   addPasswordValidation,

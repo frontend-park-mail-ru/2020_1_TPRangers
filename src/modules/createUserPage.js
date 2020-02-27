@@ -2,7 +2,7 @@ import { fetchGET } from './ajax';
 
 const profileTmpl = require('../templates/profile.pug');
 
-const data = {
+const ptrData = {
   user: {
     name: 'UserName',
     dateOfB: '00',
@@ -90,7 +90,7 @@ class UserPage {
         });
       },
     });
-    this.parent.innerHTML += profileTmpl(data);
+    this.parent.innerHTML += profileTmpl(ptrData);
   }
 }
 
