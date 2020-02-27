@@ -90,6 +90,8 @@ class ProfilePage {
           for (const elem in data.body.feed) {
             console.log(data.body.feed[elem]);
           }
+          data.body.user.isMe = true;
+          console.log(data.body);
           this.parent.innerHTML += profileTmpl(data.body);
         });
       },

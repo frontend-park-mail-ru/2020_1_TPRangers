@@ -77,7 +77,7 @@ class UserPage {
     this.parent.innerHTML = '';
 
     fetchGET({
-      url: 'http://localhost:3001/profile',
+      url: 'http://138.68.77.22:3001/api/v1/profile',
       callback: response => {
         console.log(response);
         if (response.status !== 200) {
@@ -87,10 +87,10 @@ class UserPage {
 
         response.json().then(data => {
           console.log(data);
+          this.parent.innerHTML += profileTmpl(data.body);
         });
       },
     });
-    this.parent.innerHTML += profileTmpl(data);
   }
 }
 
