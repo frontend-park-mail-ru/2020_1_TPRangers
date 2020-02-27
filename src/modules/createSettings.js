@@ -54,7 +54,7 @@ const settingsItems = {
       name: 'date',
       type: 'text',
       placeholder: '',
-      //regExp: /(19|20)\d\d[-.]((0[1-9]|1[012])-(0[1-9]|[12]\d)|(0[13-9]|1[012])[-.]30|(0[13578]|1[02])-31)/i,
+      // regExp: /(19|20)\d\d[-.]((0[1-9]|1[012])-(0[1-9]|[12]\d)|(0[13-9]|1[012])[-.]30|(0[13578]|1[02])-31)/i,
       regExp: /(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d/i,
       errorMsg: 'Некорректная дата',
       class: 'formLb',
@@ -165,7 +165,7 @@ class SettingsPage {
               console.log(avatar);
 
               const avatar_data = new FormData();
-              avatar_data.append('avatar',avatar.files[0]);
+              avatar_data.append('uploadedFile', avatar.files[0], );
               console.log(avatar_data);
 
               fetchPOST({
@@ -197,10 +197,8 @@ class SettingsPage {
 
               fetchPUT({
                 url: 'http://localhost:3001/settings',
-                headers: { 'Content-Type': 'multipart/form-data' },
-                body: {
-                  body: avatar_data,
-                },
+                headers: { 'Content-Type': 'multipart/form-data'},
+                body: avatar_data,
 
                 callback: response => {
                   console.log(response);

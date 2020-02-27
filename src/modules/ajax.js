@@ -45,7 +45,7 @@ export function fetchPOST({
 export function fetchPUT({
   url = '/',
   body = null,
-  headers = { 'Content-Type': 'application/json' },
+  headers = { 'Content-Type': 'multipart/form-data' },
   callback = () => void 0,
 } = {}) {
   return fetchApi({
