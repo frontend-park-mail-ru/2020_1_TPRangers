@@ -1,7 +1,7 @@
 import MainPage from './modules/createMainPage';
 import './css/styles.css';
 import './css/normalize.css';
-import NewsPage from './modules/newsPage';
+import NewsPage from './modules/createNewsPage';
 import { routes } from './modules/routes';
 
 const app = document.getElementById('application');

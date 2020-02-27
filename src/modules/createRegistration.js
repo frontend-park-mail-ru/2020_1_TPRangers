@@ -145,16 +145,8 @@ class RegistrationPage {
               console.log(`Looks like there was a problem. Status Code: ${response.status}`);
               return;
             }
+            routes.news(parent);
 
-            fetchGET({
-              url: 'http://138.68.77.22:3001/api/v1/registration',
-              headers: {
-                'X-Login': email,
-              },
-              callback: response => {
-                routes.news(parent);
-              },
-            });
           },
         });
       }

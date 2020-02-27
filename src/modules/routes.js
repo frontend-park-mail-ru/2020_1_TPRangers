@@ -5,7 +5,7 @@ import LoginPage from './createLogin';
 import RegistrationPage from './createRegistration';
 import SettingsPage from './createSettings';
 import ProfilePage from './createProfile';
-import NewsPage from './newsPage';
+import NewsPage from './createNewsPage';
 
 // eslint-disable-next-line import/prefer-default-export
 export const routes = {

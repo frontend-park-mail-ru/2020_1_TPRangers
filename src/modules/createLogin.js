@@ -92,6 +92,8 @@ class LoginPage {
                   'Пользователя с такими данными не существует!',
                 );
               }
+            } else {
+              routes.profile(parent);
             }
           },
         });

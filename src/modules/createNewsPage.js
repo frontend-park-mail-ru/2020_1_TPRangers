@@ -97,7 +97,7 @@ const data = {
   ],
 };
 
-class NewsPage {
+class CreateNewsPage {
   set parent(parent) {
     // eslint-disable-next-line no-underscore-dangle
     this._parent = parent;
@@ -130,4 +130,4 @@ class NewsPage {
   }
 }
 
-export default new NewsPage();
+export default new CreateNewsPage();
