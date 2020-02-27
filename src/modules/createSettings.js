@@ -126,27 +126,27 @@ class SettingsPage {
     );
 
     settingsForm.addEventListener('submit', event => {
+      event.preventDefault();
       if (
         checkRegExpValidity({
           form: settingsForm,
-          formItems: settingsForm.formItems,
+          formItems: settingsItems.formItems,
         }) &&
         checkPasswordValidity({
           form: settingsForm,
-          passwordField: settingsForm.formItems.password.name,
-          passwordRepeatField: settingsForm.formItems.passwordRepeat.name,
+          passwordField: settingsItems.formItems.password.name,
+          passwordRepeatField: settingsItems.formItems.passwordRepeat.name,
         })
       ) {
-        event.preventDefault();
+
 
         const email = settingsForm.elements.email.value;
         const password = settingsForm.elements.password.value;
         const name = settingsForm.elements.username.value;
         const phone = settingsForm.elements.phone.value;
         const date = settingsForm.elements.date.value;
-
-        const avatar = new FormData();
-        avatar.append('avatar', settingsForm.files[0]);
+        // const avatar = new FormData();
+        // avatar.append('avatar', settingsForm.files[0]);
 
         fetchPOST({
           url: 'http://localhost:3001/settings',
@@ -175,25 +175,25 @@ class SettingsPage {
           },
         });
 
-        fetchPUT({
-          url: 'http://localhost:3001/settings',
-          headers: { 'Content-Type': 'multipart/form-data' },
-          body: {
-            body: avatar,
-          },
-
-          callback: response => {
-            console.log(response);
-            if (response.status !== 200) {
-              console.log(`Looks like there was a problem. Status Code: ${response.status}`);
-              return;
-            }
-            console.log('ok');
-            response.json().then(data => {
-              console.log(data);
-            });
-          },
-        });
+        // fetchPUT({
+        //   url: 'http://localhost:3001/settings',
+        //   headers: { 'Content-Type': 'multipart/form-data' },
+        //   body: {
+        //     body: avatar,
+        //   },
+        //
+        //   callback: response => {
+        //     console.log(response);
+        //     if (response.status !== 200) {
+        //       console.log(`Looks like there was a problem. Status Code: ${response.status}`);
+        //       return;
+        //     }
+        //     console.log('ok');
+        //     response.json().then(data => {
+        //       console.log(data);
+        //     });
+        //   },
+        // });
       }
     });
   }
