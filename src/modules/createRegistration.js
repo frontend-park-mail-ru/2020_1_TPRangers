@@ -145,6 +145,8 @@ class RegistrationPage {
               console.log(`Looks like there was a problem. Status Code: ${response.status}`);
               return;
             }
+            const hide = document.getElementsByClassName('mainLeftBlock')[0];
+            hide.style.display = 'flex';
             routes.news(parent);
           },
         });

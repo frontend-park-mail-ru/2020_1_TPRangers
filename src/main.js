@@ -1,16 +1,13 @@
 import MainPage from './modules/createMainPage';
 import './css/styles.css';
 import './css/normalize.css';
-import NewsPage from './modules/createNewsPage';
 import { routes } from './modules/routes';
 
 const app = document.getElementById('application');
-
+console.log('hello');
 MainPage.renderTmpl(app);
 
 const rightBlock = document.getElementById('mainRightBlock');
-
-NewsPage.renderTmpl(rightBlock);
 
 app.addEventListener('click', evt => {
   const { target } = evt;
@@ -23,3 +20,5 @@ app.addEventListener('click', evt => {
 app.addEventListener('load', event => {
   event.preventDefault();
 });
+
+routes.news(rightBlock);

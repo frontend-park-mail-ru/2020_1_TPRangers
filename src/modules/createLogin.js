@@ -45,6 +45,8 @@ class LoginPage {
   }
 
   renderTmpl(parent) {
+    const hide = document.getElementsByClassName('mainLeftBlock')[0];
+    hide.style.display = 'none';
     this.parent = parent;
     this.parent.innerHTML = '';
     this.parent.innerHTML += formTmpl(loginItems);
@@ -92,6 +94,7 @@ class LoginPage {
                 });
               }
             } else {
+              hide.style.display = 'flex';
               routes.profile(parent);
             }
           },

@@ -1,5 +1,6 @@
 import { fetchGET } from './ajax';
 import ErrorPage from './errorPage';
+import {routes} from "./routes";
 
 const newsTmpl = require('../templates/newsFeedPage.pug');
 
@@ -21,7 +22,8 @@ class CreateNewsPage {
         console.log(response);
         if (response.status !== 200) {
           console.log(`Looks like there was a problem. Status Code: ${response.status}`);
-          ErrorPage.renderTmpl(parent, response.status);
+          //ErrorPage.renderTmpl(parent, response.status);
+          routes.login(parent);
           return;
         }
 

@@ -6,7 +6,8 @@ const ptrData = {
   user: {
     Username: 'Not You',
     Date: '42.42.1982',
-    Photo: 'https://peopletalk.ru/wp-content/uploads/2019/09/snimok-ekrana-2019-09-20-v-18.54.44-640x449.png',
+    Photo:
+      'https://peopletalk.ru/wp-content/uploads/2019/09/snimok-ekrana-2019-09-20-v-18.54.44-640x449.png',
     isMe: false,
   },
 
