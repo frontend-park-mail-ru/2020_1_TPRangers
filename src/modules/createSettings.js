@@ -100,7 +100,7 @@ class SettingsPage {
     this.parent.innerHTML = '';
 
     fetchGET({
-      url: 'http://localhost:3001/settings',
+      url: 'http://localhost:3001/api/v1/settings',
       callback: response => {
         console.log(response);
         if (response.status !== 200) {
@@ -165,11 +165,11 @@ class SettingsPage {
               console.log(avatar);
 
               const avatar_data = new FormData();
-              avatar_data.append('uploadedFile', avatar.files[0], );
+              avatar_data.append('uploadedFile', avatar.files[0]);
               console.log(avatar_data);
 
               fetchPOST({
-                url: 'http://localhost:3001/settings',
+                url: 'http://localhost:3001/api/v1/settings',
                 body: JSON.stringify({
                   body: [
                     {
@@ -196,8 +196,7 @@ class SettingsPage {
               });
 
               fetchPUT({
-                url: 'http://localhost:3001/settings',
-                headers: { 'Content-Type': 'multipart/form-data'},
+                url: 'http://localhost:3001/api/v1/settings',
                 body: avatar_data,
 
                 callback: response => {

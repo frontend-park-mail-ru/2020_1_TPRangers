@@ -110,7 +110,7 @@ class NewsPage {
 
   renderTmpl(parent) {
     fetchGET({
-      url: 'http://localhost:3001/news',
+      url: 'http://localhost:3001/api/v1/news',
       callback: response => {
         console.log(response);
         if (response.status !== 200) {

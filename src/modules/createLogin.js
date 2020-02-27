@@ -66,7 +66,7 @@ class LoginPage {
         const email = loginForm.elements.email.value;
         const password = loginForm.elements.password.value;
         fetchPOST({
-          url: 'http://localhost:3001/login',
+          url: 'http://localhost:3001/api/v1/login',
           body: JSON.stringify({
             body: [
               {
@@ -96,7 +96,7 @@ class LoginPage {
             }
 
             fetchGET({
-              url: 'http://localhost:3001/login',
+              url: 'http://localhost:3001/api/v1/login',
               headers: {
                 'X-Login': email,
               },

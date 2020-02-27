@@ -1,9 +1,9 @@
 function fetchApi({
   method = 'GET',
   url = '/',
-  headers = {},
   body = null,
   callback = () => void 0,
+  headers,
 } = {}) {
   fetch(url, {
     method,
@@ -45,14 +45,13 @@ export function fetchPOST({
 export function fetchPUT({
   url = '/',
   body = null,
-  headers = { 'Content-Type': 'multipart/form-data' },
+  // headers = { 'Content-Type': 'multipart/form-data' },
   callback = () => void 0,
 } = {}) {
   return fetchApi({
     method: 'PUT',
     url,
     body,
-    headers,
     callback,
   });
 }

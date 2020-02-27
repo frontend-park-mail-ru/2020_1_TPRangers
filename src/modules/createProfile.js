@@ -77,7 +77,7 @@ class ProfilePage {
     this.parent.innerHTML = '';
 
     fetchGET({
-      url: 'http://localhost:3001/profile',
+      url: 'http://localhost:3001/api/v1/profile',
       callback: response => {
         console.log(response);
         if (response.status !== 200) {
