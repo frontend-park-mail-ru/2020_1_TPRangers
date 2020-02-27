@@ -92,18 +92,7 @@ class LoginPage {
                   'Пользователя с такими данными не существует!',
                 );
               }
-              return;
             }
-
-            fetchGET({
-              url: 'http://138.68.77.22:3001/api/v1/login',
-              headers: {
-                'X-Login': email,
-              },
-              callback: response => {
-                routes.profile(parent);
-              },
-            });
           },
         });
       }
