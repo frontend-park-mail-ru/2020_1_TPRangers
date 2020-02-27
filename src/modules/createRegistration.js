@@ -117,8 +117,6 @@ class RegistrationPage {
           passwordRepeatField: regItems.formItems.passwordRepeat.name,
         })
       ) {
-        event.preventDefault();
-
         const email = regForm.elements.email.value;
         const password = regForm.elements.password.value;
         const name = regForm.elements.username.value;
