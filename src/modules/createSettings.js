@@ -52,8 +52,9 @@ const settingsItems = {
     date: {
       title: 'Дата рождения',
       name: 'date',
-      type: 'date',
-      // regExp: /(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d/i,
+      type: 'text',
+      placeholder: '',
+      regExp: /(19|20)\d\d-((0[1-9]|1[012])-(0[1-9]|[12]\d)|(0[13-9]|1[012])-30|(0[13578]|1[02])-31)/i,
       errorMsg: 'Некорректная дата',
       class: 'formLb',
       fa_item: 'fas fa-birthday-cake',
@@ -93,7 +94,6 @@ class SettingsPage {
     return this._parent;
   }
 
-
   renderTmpl(parent) {
     this.parent = parent;
     this.parent.innerHTML = '';
@@ -109,7 +109,7 @@ class SettingsPage {
 
         response.json().then(data => {
           console.log(data);
-          for (let elem in data.body.user) {
+          for (const elem in data.body.user) {
             switch (elem) {
               case 'Username':
                 settingsItems.formItems.username.placeholder = data.body.user[elem];
@@ -117,7 +117,7 @@ class SettingsPage {
               case 'Telephone':
                 settingsItems.formItems.phone.placeholder = data.body.user[elem];
                 break;
-              case'Date':
+              case 'Date':
                 settingsItems.formItems.date.placeholder = data.body.user[elem];
                 break;
               case 'Photo':
@@ -208,7 +208,6 @@ class SettingsPage {
               // });
             }
           });
-
         });
       },
     });
