@@ -4,18 +4,16 @@ const profileTmpl = require('../templates/profile.pug');
 
 const ptrData = {
   user: {
-    name: 'UserName',
-    dateOfB: '00',
-    monthOfB: '00',
-    yearOfB: '0000',
-    avatar: 'https://picsum.photos/200/300',
+    Username: 'Not You',
+    Date: '42.42.1982',
+    Photo: 'https://peopletalk.ru/wp-content/uploads/2019/09/snimok-ekrana-2019-09-20-v-18.54.44-640x449.png',
     isMe: false,
   },
 
-  posts: [
+  feed: [
     {
-      postName: 'Default post name',
-      textData:
+      PostName: 'Default post name',
+      PostText:
         'Lorem Ipsum is simply dummy text of the printing and ' +
         'typesetting industry. Lorem Ipsum has been the industrys' +
         ' standard dummy text ever since the 1500s, when an unknown' +
@@ -26,11 +24,11 @@ const ptrData = {
         ' Letraset sheets containing Lorem Ipsum passages, and more recently' +
         ' with desktop publishing software like Aldus PageMaker including ' +
         'versions of Lorem Ipsum.',
-      imageData: 'https://picsum.photos/200/300?grayscale',
+      PostPhoto: 'https://picsum.photos/200/300?grayscale',
     },
     {
-      postName: 'Default post name',
-      textData:
+      PostName: 'Default post name',
+      PostText:
         'Lorem Ipsum is simply dummy text of the printing and ' +
         'typesetting industry. Lorem Ipsum has been the industrys' +
         ' standard dummy text ever since the 1500s, when an unknown' +
@@ -41,11 +39,11 @@ const ptrData = {
         ' Letraset sheets containing Lorem Ipsum passages, and more recently' +
         ' with desktop publishing software like Aldus PageMaker including ' +
         'versions of Lorem Ipsum.',
-      imageData: 'https://picsum.photos/200/300?grayscale',
+      PostPhoto: 'https://picsum.photos/200/300?grayscale',
     },
     {
-      postName: 'Default post name',
-      textData:
+      PostName: 'Default post name',
+      PostText:
         'Lorem Ipsum is simply dummy text of the printing and ' +
         'typesetting industry. Lorem Ipsum has been the industrys' +
         ' standard dummy text ever since the 1500s, when an unknown' +
@@ -56,7 +54,7 @@ const ptrData = {
         ' Letraset sheets containing Lorem Ipsum passages, and more recently' +
         ' with desktop publishing software like Aldus PageMaker including ' +
         'versions of Lorem Ipsum.',
-      imageData: 'https://picsum.photos/200/300?grayscale',
+      PostPhoto: 'https://picsum.photos/200/300?grayscale',
     },
   ],
 };
@@ -87,7 +85,7 @@ class UserPage {
 
         response.json().then(data => {
           console.log(data);
-          //this.parent.innerHTML += profileTmpl(data.body);
+          // this.parent.innerHTML += profileTmpl(data.body);
         });
       },
     });

@@ -7,6 +7,7 @@ import SettingsPage from './createSettings';
 import ProfilePage from './createProfile';
 import NewsPage from './createNewsPage';
 import ErrorPage from './errorPage';
+import UserPage from './createUserPage';
 
 // eslint-disable-next-line import/prefer-default-export
 export const routes = {
@@ -17,4 +18,5 @@ export const routes = {
   profile: ProfilePage.renderTmpl,
   news: NewsPage.renderTmpl,
   err: ErrorPage.renderTmpl,
+  user: UserPage.renderTmpl,
 };
