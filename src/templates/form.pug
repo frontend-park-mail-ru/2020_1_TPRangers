@@ -8,7 +8,7 @@ form(action="#", class=classes, id=id)
             span #{item.title}
           div(class="inputIcons")
             i(class=item.fa_item + ' icon')
-            input(type=item.type, name=item.name, placeholder=item.placeholder class='inputField')
+            input(type=item.type, name=item.name, id=item.name,placeholder=item.placeholder class='inputField')
             div(id="error-"+item.name class="anim").hidden
               span(class="tooltip" id="tooltip-"+item.name data-tooltip=item.errorMsg) !
     input(type="submit", value=buttonName class="buttonInForm")

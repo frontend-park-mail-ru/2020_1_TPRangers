@@ -54,7 +54,8 @@ const settingsItems = {
       name: 'date',
       type: 'text',
       placeholder: '',
-      regExp: /(19|20)\d\d-((0[1-9]|1[012])-(0[1-9]|[12]\d)|(0[13-9]|1[012])-30|(0[13578]|1[02])-31)/i,
+      //regExp: /(19|20)\d\d[-.]((0[1-9]|1[012])-(0[1-9]|[12]\d)|(0[13-9]|1[012])[-.]30|(0[13578]|1[02])-31)/i,
+      regExp: /(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d/i,
       errorMsg: 'Некорректная дата',
       class: 'formLb',
       fa_item: 'fas fa-birthday-cake',
@@ -123,6 +124,9 @@ class SettingsPage {
               case 'Photo':
                 settingsItems.formItems.avatar.placeholder = data.body.user[elem];
                 break;
+              case 'Email':
+                settingsItems.formItems.email.placeholder = data.body.user[elem];
+                break;
             }
           }
 
@@ -157,8 +161,12 @@ class SettingsPage {
               const name = settingsForm.elements.username.value;
               const phone = settingsForm.elements.phone.value;
               const date = settingsForm.elements.date.value;
-              // const avatar = new FormData();
-              // avatar.append('avatar', settingsForm.files[0]);
+              const avatar = document.querySelector('input[type="file"]');
+              console.log(avatar);
+
+              const avatar_data = new FormData();
+              avatar_data.append('avatar',avatar.files[0]);
+              console.log(avatar_data);
 
               fetchPOST({
                 url: 'http://localhost:3001/settings',
@@ -187,25 +195,25 @@ class SettingsPage {
                 },
               });
 
-              // fetchPUT({
-              //   url: 'http://localhost:3001/settings',
-              //   headers: { 'Content-Type': 'multipart/form-data' },
-              //   body: {
-              //     body: avatar,
-              //   },
-              //
-              //   callback: response => {
-              //     console.log(response);
-              //     if (response.status !== 200) {
-              //       console.log(`Looks like there was a problem. Status Code: ${response.status}`);
-              //       return;
-              //     }
-              //     console.log('ok');
-              //     response.json().then(data => {
-              //       console.log(data);
-              //     });
-              //   },
-              // });
+              fetchPUT({
+                url: 'http://localhost:3001/settings',
+                headers: { 'Content-Type': 'multipart/form-data' },
+                body: {
+                  body: avatar_data,
+                },
+
+                callback: response => {
+                  console.log(response);
+                  if (response.status !== 200) {
+                    console.log(`Looks like there was a problem. Status Code: ${response.status}`);
+                    return;
+                  }
+                  console.log('ok');
+                  response.json().then(data => {
+                    console.log(data);
+                  });
+                },
+              });
             }
           });
         });
