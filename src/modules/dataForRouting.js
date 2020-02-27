@@ -18,8 +18,18 @@ export const dataForRouting = {
       classes: ['mainLink'],
     },
     {
+      name: 'Не мой профиль',
+      link: 'user',
+      classes: ['mainLink'],
+    },
+    {
       name: 'Новости',
       link: 'news',
+      classes: ['mainLink'],
+    },
+    {
+      name: 'Ошибка',
+      link: 'err',
       classes: ['mainLink'],
     },
   ],
