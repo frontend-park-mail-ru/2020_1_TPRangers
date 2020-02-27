@@ -1,6 +1,6 @@
 import { fetchGET } from './ajax';
 import ErrorPage from './errorPage';
-import {routes} from "./routes";
+import { routes } from './routes';
 
 const newsTmpl = require('../templates/newsFeedPage.pug');
 
@@ -22,13 +22,19 @@ class CreateNewsPage {
         console.log(response);
         if (response.status !== 200) {
           console.log(`Looks like there was a problem. Status Code: ${response.status}`);
-          //ErrorPage.renderTmpl(parent, response.status);
+          // ErrorPage.renderTmpl(parent, response.status);
           routes.login(parent);
           return;
         }
 
         response.json().then(data => {
           console.log(data);
+          const toHide = document.getElementsByClassName('logRegLink');
+          for (let it in toHide) {
+            if (it < 2) {
+              toHide[it].style.display = 'none';
+            }
+          }
           this.parent.innerHTML += newsTmpl(data.body);
         });
       },

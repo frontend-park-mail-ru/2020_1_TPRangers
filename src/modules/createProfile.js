@@ -35,6 +35,12 @@ class ProfilePage {
           }
           data.body.user.isMe = true;
           console.log(data.body);
+          const toHide = document.getElementsByClassName('logRegLink');
+          for (let it in toHide) {
+            if (it < 2) {
+              toHide[it].style.display = 'none';
+            }
+          }
           this.parent.innerHTML += profileTmpl(data.body);
         });
       },
