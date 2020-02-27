@@ -9,9 +9,9 @@ div(class="rightBlockProfile")
             span(class="userName") #{user.Username}
             span(class="dateOfBLabel") Дата рождения:
             span(class="dateOfBUser") #{user.Date}
-        //if user.isMe
-        //    - let link2 = {name: "Редактировать профиль", link: "settings", classes: ["settingsLinkProfilePage"]}
-        //    + createLink(link2)
+        if user.isMe
+            - let link2 = {name: "Редактировать профиль", link: "settings", classes: ["settingsLinkProfilePage"]}
+            + createLink(link2)
 
     each post in feed
         + postCard(post)
