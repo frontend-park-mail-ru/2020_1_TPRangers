@@ -87,10 +87,14 @@ class LoginPage {
               err.classList.add('err');
               infoText.innerText = '!';
               if (infoText.hasAttribute('data-tooltip')) {
-                infoText.setAttribute(
-                  'data-tooltip',
-                  'Пользователя с такими данными не существует!',
-                );
+                let resString = '';
+                response.json().then(data => {
+                  for (const elem in data.err) {
+                    console.log(data.err[elem]);
+                    resString += data.err[elem];
+                  }
+                  infoText.setAttribute('data-tooltip', resString);
+                });
               }
               return;
             }
