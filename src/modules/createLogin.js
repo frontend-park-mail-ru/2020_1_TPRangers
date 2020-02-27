@@ -87,13 +87,8 @@ class LoginPage {
               err.classList.add('err');
               infoText.innerText = '!';
               if (infoText.hasAttribute('data-tooltip')) {
-                let resString = '';
                 response.json().then(data => {
-                  for (const elem in data.err) {
-                    console.log(data.err[elem]);
-                    resString += data.err[elem];
-                  }
-                  infoText.setAttribute('data-tooltip', resString);
+                  infoText.setAttribute('data-tooltip', data.err[0]);
                 });
               }
               return;
