@@ -93,6 +93,7 @@ class SettingsPage {
     return this._parent;
   }
 
+
   renderTmpl(parent) {
     this.parent = parent;
     this.parent.innerHTML = '';
@@ -108,93 +109,108 @@ class SettingsPage {
 
         response.json().then(data => {
           console.log(data);
+          for (let elem in data.body.user) {
+            switch (elem) {
+              case 'Username':
+                settingsItems.formItems.username.placeholder = data.body.user[elem];
+                break;
+              case 'Telephone':
+                settingsItems.formItems.phone.placeholder = data.body.user[elem];
+                break;
+              case'Date':
+                settingsItems.formItems.date.placeholder = data.body.user[elem];
+                break;
+              case 'Photo':
+                settingsItems.formItems.avatar.placeholder = data.body.user[elem];
+                break;
+            }
+          }
+
+          this.parent.innerHTML += formTmpl(settingsItems);
+          const settingsForm = document.getElementById('settingsForm');
+          addRegExpValidationAll({
+            form: settingsForm,
+            formItems: settingsItems.formItems,
+          });
+
+          addPasswordValidation(
+            settingsForm,
+            settingsItems.formItems.password.name,
+            settingsItems.formItems.passwordRepeat.name,
+          );
+
+          settingsForm.addEventListener('submit', event => {
+            event.preventDefault();
+            if (
+              checkRegExpValidity({
+                form: settingsForm,
+                formItems: settingsItems.formItems,
+              }) &&
+              checkPasswordValidity({
+                form: settingsForm,
+                passwordField: settingsItems.formItems.password.name,
+                passwordRepeatField: settingsItems.formItems.passwordRepeat.name,
+              })
+            ) {
+              const email = settingsForm.elements.email.value;
+              const password = settingsForm.elements.password.value;
+              const name = settingsForm.elements.username.value;
+              const phone = settingsForm.elements.phone.value;
+              const date = settingsForm.elements.date.value;
+              // const avatar = new FormData();
+              // avatar.append('avatar', settingsForm.files[0]);
+
+              fetchPOST({
+                url: 'http://localhost:3001/settings',
+                body: JSON.stringify({
+                  body: [
+                    {
+                      email,
+                      password,
+                      name,
+                      phone,
+                      date,
+                    },
+                  ],
+                }),
+
+                callback: response => {
+                  console.log(response);
+                  if (response.status !== 200) {
+                    console.log(`Looks like there was a problem. Status Code: ${response.status}`);
+                    return;
+                  }
+                  console.log('ok');
+                  response.json().then(data => {
+                    console.log(data);
+                  });
+                },
+              });
+
+              // fetchPUT({
+              //   url: 'http://localhost:3001/settings',
+              //   headers: { 'Content-Type': 'multipart/form-data' },
+              //   body: {
+              //     body: avatar,
+              //   },
+              //
+              //   callback: response => {
+              //     console.log(response);
+              //     if (response.status !== 200) {
+              //       console.log(`Looks like there was a problem. Status Code: ${response.status}`);
+              //       return;
+              //     }
+              //     console.log('ok');
+              //     response.json().then(data => {
+              //       console.log(data);
+              //     });
+              //   },
+              // });
+            }
+          });
+
         });
       },
-    });
-
-    this.parent.innerHTML += formTmpl(settingsItems);
-    const settingsForm = document.getElementById('settingsForm');
-    addRegExpValidationAll({
-      form: settingsForm,
-      formItems: settingsItems.formItems,
-    });
-
-    addPasswordValidation(
-      settingsForm,
-      settingsItems.formItems.password.name,
-      settingsItems.formItems.passwordRepeat.name,
-    );
-
-    settingsForm.addEventListener('submit', event => {
-      event.preventDefault();
-      if (
-        checkRegExpValidity({
-          form: settingsForm,
-          formItems: settingsItems.formItems,
-        }) &&
-        checkPasswordValidity({
-          form: settingsForm,
-          passwordField: settingsItems.formItems.password.name,
-          passwordRepeatField: settingsItems.formItems.passwordRepeat.name,
-        })
-      ) {
-
-
-        const email = settingsForm.elements.email.value;
-        const password = settingsForm.elements.password.value;
-        const name = settingsForm.elements.username.value;
-        const phone = settingsForm.elements.phone.value;
-        const date = settingsForm.elements.date.value;
-        // const avatar = new FormData();
-        // avatar.append('avatar', settingsForm.files[0]);
-
-        fetchPOST({
-          url: 'http://localhost:3001/settings',
-          body: JSON.stringify({
-            body: [
-              {
-                email,
-                password,
-                name,
-                phone,
-                date,
-              },
-            ],
-          }),
-
-          callback: response => {
-            console.log(response);
-            if (response.status !== 200) {
-              console.log(`Looks like there was a problem. Status Code: ${response.status}`);
-              return;
-            }
-            console.log('ok');
-            response.json().then(data => {
-              console.log(data);
-            });
-          },
-        });
-
-        // fetchPUT({
-        //   url: 'http://localhost:3001/settings',
-        //   headers: { 'Content-Type': 'multipart/form-data' },
-        //   body: {
-        //     body: avatar,
-        //   },
-        //
-        //   callback: response => {
-        //     console.log(response);
-        //     if (response.status !== 200) {
-        //       console.log(`Looks like there was a problem. Status Code: ${response.status}`);
-        //       return;
-        //     }
-        //     console.log('ok');
-        //     response.json().then(data => {
-        //       console.log(data);
-        //     });
-        //   },
-        // });
-      }
     });
   }
 }
