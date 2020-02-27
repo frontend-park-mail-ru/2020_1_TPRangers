@@ -126,7 +126,7 @@ class RegistrationPage {
         console.log(date);
 
         fetchPOST({
-          url: 'http://localhost:3001/api/v1/registration',
+          url: 'http://138.68.77.22:3001/api/v1/registration',
           body: JSON.stringify({
             body: [
               {
@@ -147,7 +147,7 @@ class RegistrationPage {
             }
 
             fetchGET({
-              url: 'http://localhost:3001/api/v1/registration',
+              url: 'http://138.68.77.22:3001/api/v1/registration',
               headers: {
                 'X-Login': email,
               },

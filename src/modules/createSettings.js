@@ -100,7 +100,7 @@ class SettingsPage {
     this.parent.innerHTML = '';
 
     fetchGET({
-      url: 'http://localhost:3001/api/v1/settings',
+      url: 'http://138.68.77.22:3001/api/v1/settings',
       callback: response => {
         console.log(response);
         if (response.status !== 200) {
@@ -169,7 +169,7 @@ class SettingsPage {
               console.log(avatar_data);
 
               fetchPOST({
-                url: 'http://localhost:3001/api/v1/settings',
+                url: 'http://138.68.77.22:3001/api/v1/settings',
                 body: JSON.stringify({
                   body: [
                     {
@@ -196,7 +196,7 @@ class SettingsPage {
               });
 
               fetchPUT({
-                url: 'http://localhost:3001/api/v1/settings',
+                url: 'http://138.68.77.22:3001/api/v1/settings',
                 body: avatar_data,
 
                 callback: response => {
