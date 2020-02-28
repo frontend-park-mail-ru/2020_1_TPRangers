@@ -1,3 +1,11 @@
+/**
+ * Базовая функция для FetchAPI
+ * @string method
+ * @string url
+ * @json body
+ * @function callback
+ * @json headers
+ */
 function fetchApi({
   method = 'GET',
   url = '/',
@@ -18,6 +26,12 @@ function fetchApi({
     });
 }
 
+/**
+ * Замыкание для GET запроса для FetchAPI
+ * @string url
+ * @json headers
+ * @function callback
+ */
 export function fetchGET({ url = '/', headers = {}, callback = () => void 0 } = {}) {
   return fetchApi({
     method: 'GET',
@@ -27,6 +41,12 @@ export function fetchGET({ url = '/', headers = {}, callback = () => void 0 } = 
   });
 }
 
+/**
+ * Замыкание для POST запроса для FetchAPI
+ * @string url
+ * @json headers
+ * @function callback
+ */
 export function fetchPOST({
   url = '/',
   body = null,
@@ -42,6 +62,12 @@ export function fetchPOST({
   });
 }
 
+/**
+ * Замыкание для PUT запроса для FetchAPI
+ * @string url
+ * @json headers
+ * @function callback
+ */
 export function fetchPUT({
   url = '/',
   body = null,
@@ -56,6 +82,12 @@ export function fetchPUT({
   });
 }
 
+/**
+ * Замыкание для DELETE запроса для FetchAPI
+ * @string url
+ * @json headers
+ * @function callback
+ */
 export function fetchDELETE({
   url = '/',
   body = null,
