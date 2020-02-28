@@ -1,3 +1,9 @@
+/**
+ * Функция валидации строки формы по регулярному выражению
+ * @DOM-Object form
+ * @string fieldName
+ * @string regExp
+ */
 function addRegExpValidation(form, fieldName, regExp) {
   form.elements[`${fieldName}`].addEventListener('input', () => {
     const err = document.getElementById(`error-${fieldName}`);
@@ -28,12 +34,23 @@ function addRegExpValidation(form, fieldName, regExp) {
   });
 }
 
+/**
+ * Добавляет валидацию на форму по регулярным выражениям
+ * @DOM-Object form
+ * @json formItems
+ */
 export function addRegExpValidationAll({ form = null, formItems = null } = {}) {
   for (const element in formItems) {
     addRegExpValidation(form, formItems[element].name, formItems[element].regExp);
   }
 }
 
+/**
+ * Добавлении к строке валидации пароля
+ * @DOM-Object form
+ * @string passwordField
+ * @string passwordRepeatField
+ */
 export function addPasswordValidation(form, passwordField, passwordRepeatField) {
   form.elements[`${passwordRepeatField}`].addEventListener('input', () => {
     const err = document.getElementById(`error-${passwordRepeatField}`);
@@ -63,6 +80,12 @@ export function addPasswordValidation(form, passwordField, passwordRepeatField) 
   });
 }
 
+/**
+ * Проверка совпадения по регулярным выражениям
+ * @DOM-Object form
+ * @json formItems
+ * @returns {boolean}
+ */
 export function checkRegExpValidity({ form = null, formItems = null } = {}) {
   for (const element in formItems) {
     const innerRegExp = new RegExp(formItems[element].regExp);
@@ -73,6 +96,13 @@ export function checkRegExpValidity({ form = null, formItems = null } = {}) {
   return true;
 }
 
+/**
+ * Проврека совпадения паролей
+ * @DOM-Object form
+ * @string passwordField
+ * @string passwordRepeatField
+ * @returns {boolean}
+ */
 export function checkPasswordValidity({
   form = null,
   passwordField = null,

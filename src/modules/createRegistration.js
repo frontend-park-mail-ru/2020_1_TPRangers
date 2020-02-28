@@ -11,6 +11,10 @@ import { routes } from './routes';
 
 const formTmpl = require('../templates/form.pug');
 
+/**
+ * Данные для отрисовки формы
+ * @type {{buttonName: string, formItems: {date: {name: string, fa_item: string, title: string, type: string, class: string, errorMsg: string}, password: {name: string, fa_item: string, placeholder: string, title: string, type: string, class: string, regExp: RegExp, errorMsg: string}, phone: {name: string, fa_item: string, placeholder: string, title: string, type: string, class: string, regExp: RegExp, errorMsg: string}, passwordRepeat: {name: string, fa_item: string, placeholder: string, title: string, type: string, class: string, errorMsg: string}, email: {name: string, fa_item: string, placeholder: string, title: string, type: string, class: string, regExp: RegExp, errorMsg: string}, username: {name: string, fa_item: string, placeholder: string, title: string, type: string, class: string, regExp: RegExp, errorMsg: string}}, classes: [string], id: string}}
+ */
 const regItems = {
   classes: ['regForm'],
   id: 'regForm',
@@ -78,6 +82,9 @@ const regItems = {
   buttonName: 'Регистрация',
 };
 
+/**
+ * Класс для создания страницы регистрации
+ */
 class RegistrationPage {
   set parent(parent) {
     // eslint-disable-next-line no-underscore-dangle
@@ -89,6 +96,10 @@ class RegistrationPage {
     return this._parent;
   }
 
+  /**
+   * Функция рендера шаблона регистрации
+   * @DOM-Object parent
+   */
   renderTmpl(parent) {
     this.parent = parent;
     this.parent.innerHTML = '';
