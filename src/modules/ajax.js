@@ -1,3 +1,5 @@
+import errorPage from './errorPage';
+
 /**
  * Базовая функция для FetchAPI
  * @string method
@@ -22,6 +24,7 @@ function fetchApi({
   })
     .then(callback)
     .catch(err => {
+      errorPage.renderTmpl(document.getElementById('application'));
       console.log(`Fetch error: ${err}`);
     });
 }

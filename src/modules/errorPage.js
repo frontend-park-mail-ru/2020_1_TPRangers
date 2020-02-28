@@ -32,7 +32,7 @@ class ErrorPage {
     this.parent = parent;
     this.parent.innerHTML = '';
     const body = {
-      errStatus: 400,
+      errStatus: 500,
     };
     this.parent.innerHTML += errorTmpl(body);
   }
