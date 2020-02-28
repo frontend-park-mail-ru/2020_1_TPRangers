@@ -195,13 +195,12 @@ class SettingsPage {
               fetchPOST({
                 url: 'http://138.68.77.22:3001/api/v1/settings',
                 body: JSON.stringify({
-                      email,
-                      password,
-                      name,
-                      phone,
-                      date,
-                    },
-                  ),
+                  email,
+                  password,
+                  name,
+                  phone,
+                  date,
+                }),
 
                 // eslint-disable-next-line no-shadow
                 callback: response => {

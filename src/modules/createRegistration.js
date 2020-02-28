@@ -148,15 +148,13 @@ class RegistrationPage {
 
         fetchPOST({
           url: 'http://138.68.77.22:3001/api/v1/registration',
-          body: JSON.stringify(
-              {
-                email,
-                password,
-                name,
-                phone,
-                date,
-              },
-          ),
+          body: JSON.stringify({
+            email,
+            password,
+            name,
+            phone,
+            date,
+          }),
 
           callback: response => {
             console.log(response);
