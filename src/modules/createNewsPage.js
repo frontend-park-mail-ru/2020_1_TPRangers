@@ -1,9 +1,22 @@
+/**
+ * модуль для отрисовки страницы новостей
+ * @module newsTmpl
+ */
+
 import { fetchGET } from './ajax';
 // eslint-disable-next-line import/no-cycle
 import { routes } from './routes';
 
+/**
+ * @description Хранит в себе шаблон для страницы
+ * @const {function}
+ */
 const newsTmpl = require('../templates/newsFeedPage.pug');
 
+/**
+ * @class CreateNewsPage
+ * @classdesc Отрисовывает шаблон  с данными о постах в новостной ленте, которые приодят с сервера
+ */
 class CreateNewsPage {
   set parent(parent) {
     // eslint-disable-next-line no-underscore-dangle
@@ -15,6 +28,12 @@ class CreateNewsPage {
     return this._parent;
   }
 
+  /**
+   *  Отправляет GET запрос на сервер и отрисовывает страницу с новостями в родительском элементе
+   *  если ответ от сервера не возвращает ошибку, иначе отрисовывает модуль для отрисовки страницы
+   *  с ошибкой
+   * @param parent  элемент html страницы, в котором будет происходить отрисовка
+   */
   renderTmpl(parent) {
     fetchGET({
       url: 'http://138.68.77.22:3001/api/v1/news',
@@ -45,4 +64,5 @@ class CreateNewsPage {
   }
 }
 
+/** Возвращает объект класса, у которого можно вызвать параметры для отрисовки */
 export default new CreateNewsPage();

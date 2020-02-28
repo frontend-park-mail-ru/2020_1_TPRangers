@@ -1,3 +1,8 @@
+/**
+ * модуль хранящий в себе роутинг проекта
+ * @module routes
+ */
+
 import MainPage from './createMainPage';
 // eslint-disable-next-line import/no-cycle
 import LoginPage from './createLogin';
@@ -10,6 +15,12 @@ import NewsPage from './createNewsPage';
 import ErrorPage from './errorPage';
 import UserPage from './createUserPage';
 
+/**
+ * @description Настройка роутов для проекта, вызов различных функций для разных рутов
+ * @const {
+ *   routName: routeFunction
+ * }
+ */
 // eslint-disable-next-line import/prefer-default-export
 export const routes = {
   main: MainPage.renderTmpl,
