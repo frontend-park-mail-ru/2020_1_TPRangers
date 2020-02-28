@@ -1,5 +1,5 @@
 import { fetchGET } from './ajax';
-import ErrorPage from './errorPage';
+// eslint-disable-next-line import/no-cycle
 import { routes } from './routes';
 
 const newsTmpl = require('../templates/newsFeedPage.pug');

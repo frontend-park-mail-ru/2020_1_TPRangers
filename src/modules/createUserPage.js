@@ -3,7 +3,9 @@ import { fetchGET } from './ajax';
 const profileTmpl = require('../templates/profile.pug');
 /**
  * Данные заглушка для рендера страницы другого пользователя
- * @type {{feed: [{PostText: string, PostName: string, PostPhoto: string}, {PostText: string, PostName: string, PostPhoto: string}, {PostText: string, PostName: string, PostPhoto: string}], user: {isMe: boolean, Username: string, Photo: string, Date: string}}}
+ * @type {{feed: [{PostText: string, PostName: string, PostPhoto: string}, {PostText: string,
+ * PostName: string, PostPhoto: string}, {PostText: string, PostName: string, PostPhoto: string}],
+ * user: {isMe: boolean, Username: string, Photo: string, Date: string}}}
  */
 const ptrData = {
   user: {

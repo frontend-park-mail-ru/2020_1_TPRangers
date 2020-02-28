@@ -13,7 +13,17 @@ const formTmpl = require('../templates/form.pug');
 
 /**
  * Данные для отрисовки формы
- * @type {{buttonName: string, formItems: {date: {name: string, fa_item: string, title: string, type: string, class: string, errorMsg: string}, password: {name: string, fa_item: string, placeholder: string, title: string, type: string, class: string, regExp: RegExp, errorMsg: string}, phone: {name: string, fa_item: string, placeholder: string, title: string, type: string, class: string, regExp: RegExp, errorMsg: string}, passwordRepeat: {name: string, fa_item: string, placeholder: string, title: string, type: string, class: string, errorMsg: string}, email: {name: string, fa_item: string, placeholder: string, title: string, type: string, class: string, regExp: RegExp, errorMsg: string}, username: {name: string, fa_item: string, placeholder: string, title: string, type: string, class: string, regExp: RegExp, errorMsg: string}}, classes: [string], id: string}}
+ * @type {{buttonName: string, formItems: {date: {name: string, fa_item: string, title:
+ * string, type: string, class: string, errorMsg: string}, password: {name: string,
+ * fa_item: string, placeholder: string, title: string, type: string, class: string,
+ * regExp: RegExp, errorMsg: string}, phone: {name: string, fa_item: string,
+ * placeholder: string, title: string, type: string, class: string, regExp: RegExp,
+ * errorMsg: string}, passwordRepeat: {name: string, fa_item: string,
+ * placeholder: string, title: string, type: string, class: string, errorMsg: string},
+ * email: {name: string, fa_item: string, placeholder: string, title: string,
+ * type: string, class: string, regExp: RegExp, errorMsg: string},
+ * username: {name: string, fa_item: string, placeholder: string, title: string,
+ * type: string, class: string, regExp: RegExp, errorMsg: string}}, classes: [string], id: string}}
  */
 const regItems = {
   classes: ['regForm'],

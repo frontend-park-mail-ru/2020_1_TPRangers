@@ -7,7 +7,11 @@ const formTmpl = require('../templates/form.pug');
 
 /**
  * Данные для рендера базовой формы
- * @type {{buttonName: string, formItems: {password: {name: string, fa_item: string, placeholder: string, title: string, type: string, class: string, regExp: string, errorMsg: string}, email: {name: string, fa_item: string, placeholder: string, title: string, type: string, class: string, regExp: RegExp, errorMsg: string}}, classes: [string], id: string}}
+ * @type {{buttonName: string, formItems: {password: {name: string, fa_item: string,
+ * placeholder: string, title: string, type: string, class: string, regExp: string,
+ * errorMsg: string}, email: {name: string, fa_item: string, placeholder: string,
+ * title: string, type: string, class: string, regExp: RegExp, errorMsg: string}},
+ * classes: [string], id: string}}
  */
 const loginItems = {
   classes: ['loginForm'],
@@ -50,10 +54,11 @@ class LoginPage {
     // eslint-disable-next-line no-underscore-dangle
     return this._parent;
   }
+
   /**
-  * Функция рендера шаблона логина
-  * @DOM-Object parent
-  */
+   * Функция рендера шаблона логина
+   * @DOM-Object parent
+   */
   renderTmpl(parent) {
     const hide = document.getElementsByClassName('mainLeftBlock')[0];
     hide.style.display = 'none';

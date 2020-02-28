@@ -41,10 +41,6 @@ class ProfilePage {
           /**
            * В случае успешного ответа рендер профиля пользователя
            */
-          console.log(data);
-          for (const elem in data.body.feed) {
-            console.log(data.body.feed[elem]);
-          }
           data.body.user.isMe = true;
           console.log(data.body);
           const toHide = document.getElementsByClassName('logRegLink');
@@ -53,6 +49,7 @@ class ProfilePage {
               toHide[it].style.display = 'none';
             }
           }
+          data.body.user.Photo = 'https://picsum.photos/200';
           this.parent.innerHTML += profileTmpl(data.body);
         });
       },

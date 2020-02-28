@@ -5,6 +5,7 @@ import LoginPage from './createLogin';
 import RegistrationPage from './createRegistration';
 import SettingsPage from './createSettings';
 import ProfilePage from './createProfile';
+// eslint-disable-next-line import/no-cycle
 import NewsPage from './createNewsPage';
 import ErrorPage from './errorPage';
 import UserPage from './createUserPage';
