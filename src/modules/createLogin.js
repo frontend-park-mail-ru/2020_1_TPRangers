@@ -84,14 +84,12 @@ class LoginPage {
         const password = loginForm.elements.password.value;
         fetchPOST({
           url: 'http://138.68.77.22:3001/api/v1/login',
-          body: JSON.stringify({
-            body: [
+          body: JSON.stringify(
               {
                 login: email,
                 password,
               },
-            ],
-          }),
+            ),
 
           callback: response => {
             if (response.status !== 200) {
