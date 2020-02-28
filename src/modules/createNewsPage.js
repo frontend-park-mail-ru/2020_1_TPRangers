@@ -30,7 +30,7 @@ class CreateNewsPage {
         response.json().then(data => {
           console.log(data);
           const toHide = document.getElementsByClassName('logRegLink');
-          for (let it in toHide) {
+          for (const it in toHide) {
             if (it < 2) {
               toHide[it].style.display = 'none';
             }
