@@ -1,0 +1,10 @@
+include buttonMixin
+mixin createHeaderAndLeftSide(dataLink, login, reg)
+    div(class="header")
+        + createLink(login)
+        + createLink(reg)
+    div(class="mainPage")
+        div(class="mainLeftBlock")
+            each link in dataLink
+                + createLink(link)
+        div(class="mainRightBlock" id="mainRightBlock")

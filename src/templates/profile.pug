@@ -1,0 +1,17 @@
+include ./postCard
+include ./includes/buttonMixin
+
+div(class="leftBlockProfile")
+    img(src=user.Photo alt="user avatar" class="userAvatar")
+div(class="rightBlockProfile")
+    div(class="topUserDataBlock")
+        div(class="userData")
+            span(class="userName") #{user.Username}
+            span(class="dateOfBLabel") Дата рождения:
+            span(class="dateOfBUser") #{user.Date}
+        if user.isMe
+            - let link2 = {name: "Редактировать профиль", link: "settings", classes: ["settingsLinkProfilePage"]}
+            + createLink(link2)
+
+    each post in feed
+        + postCard(post)

@@ -1,0 +1,6 @@
+mixin postCard(post)
+    div(class="postCard")
+        img(src=post.PostPhoto, class="image")
+        div(class="postCardText")
+            span(class="postName") #{post.PostName}
+            p(class="postText") #{post.PostText}
