@@ -1,7 +1,10 @@
 import { fetchGET } from './ajax';
 
 const profileTmpl = require('../templates/profile.pug');
-
+/**
+ * Данные заглушка для рендера страницы другого пользователя
+ * @type {{feed: [{PostText: string, PostName: string, PostPhoto: string}, {PostText: string, PostName: string, PostPhoto: string}, {PostText: string, PostName: string, PostPhoto: string}], user: {isMe: boolean, Username: string, Photo: string, Date: string}}}
+ */
 const ptrData = {
   user: {
     Username: 'Not You',
@@ -60,6 +63,9 @@ const ptrData = {
   ],
 };
 
+/**
+ * Класс для создания страницы другого пользователя
+ */
 class UserPage {
   set parent(parent) {
     // eslint-disable-next-line no-underscore-dangle
@@ -71,10 +77,16 @@ class UserPage {
     return this._parent;
   }
 
+  /**
+   * Рендер шаблона для страницы другого пользователя
+   * @DOM-Object parent
+   */
   renderTmpl(parent) {
     this.parent = parent;
     this.parent.innerHTML = '';
-
+    /**
+     * GET запрос для полученя данных о пользователе
+     */
     fetchGET({
       url: 'http://138.68.77.22:3001/api/v1/profile',
       callback: response => {
@@ -90,6 +102,9 @@ class UserPage {
         });
       },
     });
+    /**
+     * Рендер заглушки для страницы пользователя
+     */
     this.parent.innerHTML += profileTmpl(ptrData);
   }
 }
