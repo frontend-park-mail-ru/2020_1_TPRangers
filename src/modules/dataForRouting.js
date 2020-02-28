@@ -1,3 +1,17 @@
+/**
+ * модуль для хранения статических ссылок и данных для их отрисовки
+ * @module dataForRouting
+ */
+/**
+ * @description Содержит в себе объекты для отрисовки ссылок бокового меню и шапки
+ * @const {
+ *   linkName: {
+ *     name: Текст ссылки
+ *     link: Значение которое принимает href и section у ссылки
+ *     classes: Классы, которое будут у ссылки
+ *   }
+ * }
+ */
 // eslint-disable-next-line import/prefer-default-export
 export const dataForRouting = {
   login: {
