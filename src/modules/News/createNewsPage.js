@@ -3,15 +3,15 @@
  * @module newsTmpl
  */
 
-import { fetchGET } from './ajax';
+import { fetchGET } from '../../Ajax/ajax';
 // eslint-disable-next-line import/no-cycle
-import { routes } from './routes';
+import { routes } from '../../Routes/routes';
 
 /**
  * @description Хранит в себе шаблон для страницы
  * @const {function}
  */
-const newsTmpl = require('../templates/newsFeedPage.pug');
+const newsTmpl = require('./templates/newsFeedPage.pug');
 
 /**
  * @class CreateNewsPage

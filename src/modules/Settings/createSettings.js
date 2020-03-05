@@ -3,10 +3,10 @@ import {
   addPasswordValidation,
   checkRegExpValidity,
   checkPasswordValidity,
-} from './formValidation';
-import { fetchPOST, fetchGET, fetchPUT } from './ajax';
+} from '../formValidation';
+import { fetchPOST, fetchGET, fetchPUT } from '../../Ajax/ajax';
 
-const formTmpl = require('../templates/form.pug');
+const formTmpl = require('../Registration/templates/form.pug');
 /**
  * Данные для рендера базовой формы настроек
  * @type {{buttonName: string, formItems: {date: {name: string, fa_item: string,

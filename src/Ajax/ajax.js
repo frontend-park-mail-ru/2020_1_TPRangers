@@ -1,4 +1,4 @@
-import errorPage from './errorPage';
+import errorPage from '../modules/Error/errorPage';
 
 /**
  * Базовая функция для FetchAPI

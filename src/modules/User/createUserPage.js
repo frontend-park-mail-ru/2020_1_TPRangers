@@ -1,6 +1,6 @@
-import { fetchGET } from './ajax';
+import { fetchGET } from '../../Ajax/ajax';
 
-const profileTmpl = require('../templates/profile.pug');
+const profileTmpl = require('../Profile/templates/profile.pug');
 /**
  * Данные заглушка для рендера страницы другого пользователя
  * @type {{feed: [{PostText: string, PostName: string, PostPhoto: string}, {PostText: string,

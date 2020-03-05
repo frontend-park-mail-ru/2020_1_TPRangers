@@ -1,7 +1,7 @@
-import { fetchGET } from './ajax';
-import ErrorPage from './errorPage';
+import { fetchGET } from '../../Ajax/ajax';
+import ErrorPage from '../Error/errorPage';
 
-const profileTmpl = require('../templates/profile.pug');
+const profileTmpl = require('./templates/profile.pug');
 
 /**
  * Класс для рендера профиля пользователя

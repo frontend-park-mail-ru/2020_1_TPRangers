@@ -1,22 +1,19 @@
 /**
- * модуль для отрисовки бокового меню и шапки
- * @module MainPage
+ * модуль для отрисовки страницы ошибки, которая приходит с сервера
+ * @module ErrorPage
  */
-
-// eslint-disable-next-line import/no-unresolved
-import { dataForRouting } from './dataForRouting';
 
 /**
  * @description Хранит в себе шаблон для страницы
  * @const {function}
  */
-const mainPageTmpl = require('../templates/mainPage.pug');
+const errorTmpl = require('./templates/errorPage.pug');
 
 /**
- * @class  MainPage
- * @classdesc Отрисовывает шаблон для бокового меню и шапри страницы со статическими ссылками
+ * @class ErrorPage
+ * @classdesc Отрисовывает шаблон  с ошибкой, пришедшей с сервера
  */
-class MainPage {
+class ErrorPage {
   set parent(parent) {
     // eslint-disable-next-line no-underscore-dangle
     this._parent = parent;
@@ -28,15 +25,18 @@ class MainPage {
   }
 
   /**
-   *  Отрисовывает шаблон для бокового меню и шапри страницы со статическими ссылками
+   *  Отрисовывает шаблон  с полученными  с сервера данными в родительском элементе
    * @param parent  элемент html страницы, в котором будет происходить отрисовка
    */
   renderTmpl(parent) {
     this.parent = parent;
     this.parent.innerHTML = '';
-    this.parent.innerHTML += mainPageTmpl(dataForRouting);
+    const body = {
+      errStatus: 500,
+    };
+    this.parent.innerHTML += errorTmpl(body);
   }
 }
 
 /** Возвращает объект класса, у которого можно вызвать параметры для отрисовки */
-export default new MainPage();
+export default new ErrorPage();

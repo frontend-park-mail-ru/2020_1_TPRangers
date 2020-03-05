@@ -3,17 +3,17 @@
  * @module routes
  */
 
-import MainPage from './createMainPage';
+import MainPage from '../modules/Main/createMainPage';
 // eslint-disable-next-line import/no-cycle
-import LoginPage from './createLogin';
+import LoginPage from '../modules/Login/createLogin';
 // eslint-disable-next-line import/no-cycle
-import RegistrationPage from './createRegistration';
-import SettingsPage from './createSettings';
-import ProfilePage from './createProfile';
+import RegistrationPage from '../modules/Registration/createRegistration';
+import SettingsPage from '../modules/Settings/createSettings';
+import ProfilePage from '../modules/Profile/createProfile';
 // eslint-disable-next-line import/no-cycle
-import NewsPage from './createNewsPage';
-import ErrorPage from './errorPage';
-import UserPage from './createUserPage';
+import NewsPage from '../modules/News/createNewsPage';
+import ErrorPage from '../modules/Error/errorPage';
+import UserPage from '../modules/User/createUserPage';
 
 /**
  * @description Настройка роутов для проекта, вызов различных функций для разных рутов

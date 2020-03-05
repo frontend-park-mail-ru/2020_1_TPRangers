@@ -1,9 +1,9 @@
-import { fetchPOST } from './ajax';
-import { addRegExpValidationAll, checkRegExpValidity } from './formValidation';
+import { fetchPOST } from '../../Ajax/ajax';
+import { addRegExpValidationAll, checkRegExpValidity } from '../formValidation';
 // eslint-disable-next-line import/no-cycle
-import { routes } from './routes';
+import { routes } from '../../Routes/routes';
 
-const formTmpl = require('../templates/form.pug');
+const formTmpl = require('../Registration/templates/form.pug');
 
 /**
  * Данные для рендера базовой формы

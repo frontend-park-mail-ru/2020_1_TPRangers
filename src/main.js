@@ -1,7 +1,7 @@
-import MainPage from './modules/createMainPage';
-import './css/styles.css';
-import './css/normalize.css';
-import { routes } from './modules/routes';
+import MainPage from './modules/Main/createMainPage';
+import './Normalize/css/styles.css';
+import './Normalize/css/normalize.css';
+import { routes } from './Routes/routes';
 
 /**
  * Находим куда будет рендерится приложение
