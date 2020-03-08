@@ -4,8 +4,7 @@
  */
 
 import { fetchGET } from '../../Ajax/ajax';
-// eslint-disable-next-line import/no-cycle
-import { routes } from '../../Routes/routes';
+import { Router } from '../../Routes/routes';
 
 /**
  * @description Хранит в себе шаблон для страницы
@@ -35,6 +34,7 @@ class CreateNewsPage {
    * @param parent  элемент html страницы, в котором будет происходить отрисовка
    */
   renderTmpl(parent) {
+    console.log('lading news Page');
     fetchGET({
       url: 'http://138.68.77.22:3001/api/v1/news',
       callback: response => {
@@ -42,7 +42,8 @@ class CreateNewsPage {
         if (response.status !== 200) {
           console.log(`Looks like there was a problem. Status Code: ${response.status}`);
           // ErrorPage.renderTmpl(parent, response.status);
-          routes.login(parent);
+          // routes.login(parent);
+          Router.navigate('login');
           return;
         }
 

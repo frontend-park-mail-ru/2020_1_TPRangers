@@ -6,8 +6,7 @@ import {
   checkPasswordValidity,
 } from '../formValidation';
 
-// eslint-disable-next-line import/no-cycle
-import { routes } from '../../Routes/routes';
+import { Router } from '../../Routes/routes';
 
 const formTmpl = require('./templates/form.pug');
 
@@ -168,7 +167,8 @@ class RegistrationPage {
             }
             const hide = document.getElementsByClassName('mainLeftBlock')[0];
             hide.style.display = 'flex';
-            routes.news(parent);
+            // routes.news(parent);
+            Router.navigate('/news');
           },
         });
       }

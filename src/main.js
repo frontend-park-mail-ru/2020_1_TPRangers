@@ -1,16 +1,15 @@
 import MainPage from './modules/Main/createMainPage';
+import RegistrationPage from './modules/Registration/createRegistration';
+import LoginPage from './modules/Login/createLogin';
 import './Normalize/css/styles.css';
 import './Normalize/css/normalize.css';
-import { routes } from './Routes/routes';
+import { Router } from './Routes/routes';
 
 /**
  * Находим куда будет рендерится приложение
  * @type {HTMLElement}
  */
 const app = document.getElementById('application');
-/**
- * header & left block render
- */
 MainPage.renderTmpl(app);
 
 /**
@@ -19,19 +18,29 @@ MainPage.renderTmpl(app);
  */
 const rightBlock = document.getElementById('mainRightBlock');
 
+Router.config({ mode: 'history' });
+
+Router.add(() => {
+  console.log('main');
+  // LoginPage.renderTmpl(rightBlock);
+})
+  .add(/login/, () => {
+    console.log('login');
+    LoginPage.renderTmpl(rightBlock);
+  })
+  .add(/registration/, () => {
+    console.log('registration2');
+    RegistrationPage.renderTmpl(rightBlock);
+  })
+  .listen();
+
 /**
- * Перехват действий пользователя
+ * Перехват действий ползователя
  */
 app.addEventListener('click', evt => {
   const { target } = evt;
   if (target instanceof HTMLAnchorElement) {
     evt.preventDefault();
-    routes[target.getAttribute('section')](rightBlock);
+    Router.navigate(target.getAttribute('section'));
   }
 });
-
-app.addEventListener('load', event => {
-  event.preventDefault();
-});
-
-routes.news(rightBlock);

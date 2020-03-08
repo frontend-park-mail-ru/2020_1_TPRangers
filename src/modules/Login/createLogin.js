@@ -1,7 +1,6 @@
 import { fetchPOST } from '../../Ajax/ajax';
 import { addRegExpValidationAll, checkRegExpValidity } from '../formValidation';
-// eslint-disable-next-line import/no-cycle
-import { routes } from '../../Routes/routes';
+import { Router } from '../../Routes/routes';
 
 const formTmpl = require('../Registration/templates/form.pug');
 
@@ -110,7 +109,8 @@ class LoginPage {
               }
             } else {
               hide.style.display = 'flex';
-              routes.profile(parent);
+              // routes.profile(parent);
+              Router.navigate('/profile');
             }
           },
         });
