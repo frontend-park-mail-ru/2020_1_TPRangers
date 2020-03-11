@@ -1,0 +1,19 @@
+.img_size_XS {
+    max-height: 40px;
+    max-width: 40px;
+}
+
+.img_size_S {
+    max-height: 60px;
+    max-width: 60px;
+}
+
+.img_size_M {
+    max-height: 200px;
+    max-width: 200px;
+}
+
+.img_size_L {
+    max-height: 250px;
+    max-width: 250px;
+}

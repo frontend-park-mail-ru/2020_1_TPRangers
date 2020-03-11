@@ -1,0 +1,4 @@
+.leftBlock__img {
+  flex-grow: 2;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}

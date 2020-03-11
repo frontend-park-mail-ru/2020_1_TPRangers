@@ -1,0 +1,12 @@
+@import "./leftBlock__linksBlock.css";
+@import "./leftBlock__button.css";
+@import "./leftBlock__img.css";
+
+.left-block {
+  max-width: 60px;
+  min-width: 60px;
+  flex-grow: 1;
+  flex-shrink: 0;
+  justify-content: space-between;
+  align-items: center;
+}

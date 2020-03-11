@@ -1,0 +1,28 @@
+@import "./utils/button/button.css";
+@import "./utils/layout/layout.css";
+@import "./utils/properties/display.css";
+@import "./utils/text/text.css";
+@import "./utils/img/img.css";
+
+@import "./modules/left-block/left-block.css";
+@import "./modules/main-block/main-block.css";
+@import "./modules/right-block/right-block.css";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+html, body {
+  overflow: hidden;
+}
+
+
+.app {
+  min-height: 100vh;
+  align-items: stretch;
+}

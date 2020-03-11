@@ -1,0 +1,13 @@
+.display_flex {
+  display: flex;
+}
+
+.display_flex_row {
+  display: flex;
+  flex-direction: row;
+}
+
+.display_flex_column {
+  display: flex;
+  flex-direction: column;
+}
