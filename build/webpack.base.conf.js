@@ -102,7 +102,8 @@ module.exports = {
       { from: `${PATHS.src}/static`, to: '' },
     ]),
     new webpack.DefinePlugin({  // plugin to define global constants
-      API_KEY: JSON.stringify(process.env.API_KEY)
+      API_KEY: JSON.stringify(process.env.API_KEY),
+      BACKEND_IP: JSON.stringify(process.env.BACKEND_IP),
     }),
 
     ...PAGES.map(page => new HtmlWebpackPlugin({

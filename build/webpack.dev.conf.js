@@ -9,7 +9,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   devServer: {
     historyApiFallback: true,
     contentBase: baseWebpackConfig.externals.paths.dist,
-    port: 8081,
+    port: 3000,
     overlay: {
       warnings: true,
       errors: true
