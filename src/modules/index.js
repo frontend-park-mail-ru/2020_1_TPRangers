@@ -1,7 +1,7 @@
 // Main modules file
 import { Router } from "../Routes/routes";
 
-import Observer from "../Controller/observer";
+import Observer from "./observer";
 
 Observer.on("login", data => {
   console.log(data);

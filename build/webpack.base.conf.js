@@ -110,4 +110,4 @@ module.exports = {
       filename: `./${page.replace(/\.pug/,'.html')}`
     }))
   ],
-}
+};

@@ -20,8 +20,8 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       filename: '[file].map'
     })
   ]
-})
+});
 
 module.exports = new Promise((resolve, reject) => {
   resolve(devWebpackConfig)
-})
+});
