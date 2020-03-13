@@ -145,8 +145,8 @@ window.FontAwesomeKitConfig = {
           e(t);
         });
         })(() => {
-        n.parentNode.insertBefore(a, i ? n : n.nextSibling);
-      });
+          n.parentNode.insertBefore(a, i ? n : n.nextSibling);
+        });
       var s = function(e) {
         for (let t = a.href, n = c.length; n--; ) if (c[n].href === t) return e();
         setTimeout(() => {
@@ -217,12 +217,12 @@ window.FontAwesomeKitConfig = {
           ((l.fetchSvgFrom = i.baseUrl),
           "/releases/" +
             (i.version === "latest" ? "latest" : "v".concat(i.version)) +
-            "/svgs")),
+            '/svgs')),
         i.v4shim.enabled
           && e(s(i, { addOn: '-v4-shims', minify: i.minify.enabled })),
         e(s(i, { minify: i.minify.enabled }), l, o)),
-        "css" ===
-          ((e, t) => {
+      "css"
+          === ((e, t) => {
             let n;
             const i = a.bind(a, ["fa", "fab", "fas", "far", "fal", "fad"]);
             e.autoA11y.enabled

@@ -1,9 +1,11 @@
 // Main modules file
 import { Router } from "../Routes/routes";
 
-import Observer from '../Controller/observer';
+import Observer from "../Controller/observer";
 
-Observer.on('login', data => {console.log(data)});
+Observer.on("login", data => {
+  console.log(data);
+});
 
 const leftBlockTmpl = require("../pug/includes/modules/left-block.pug");
 const testTmpl = require("../pug/pages/news.pug");
