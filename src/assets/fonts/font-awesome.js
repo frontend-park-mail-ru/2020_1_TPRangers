@@ -8,7 +8,7 @@ window.FontAwesomeKitConfig = {
   minify: { enabled: true },
   v4FontFaceShim: { enabled: true },
   v4shim: { enabled: true },
-  version: 'latest',
+  version: 'latest'
 };
 !(function() {
   function r(e) {
@@ -28,17 +28,20 @@ window.FontAwesomeKitConfig = {
       a ? setTimeout(e, 0) : n.push(e);
   }
   !(function() {
-    if (!(void 0 === window.Element || 'classList' in document.documentElement)) {
+    if (
+      !(void 0 === window.Element || 'classList' in document.documentElement)
+    ) {
       let e;
       let t;
-      var n;
-      let i = Array.prototype;
+      let n;
+      const i = Array.prototype;
       var o = i.push;
-      let r = i.splice;
-      let a = i.join;
+      const r = i.splice;
+      const a = i.join;
       (d.prototype = {
         add(e) {
-          this.contains(e) || (o.call(this, e), (this.el.className = this.toString()));
+          this.contains(e)
+            || (o.call(this, e), (this.el.className = this.toString()));
         },
         contains(e) {
           return this.el.className.indexOf(e) != -1;
@@ -56,7 +59,9 @@ window.FontAwesomeKitConfig = {
           return a.call(this, ' ');
         },
         toggle(e) {
-          return this.contains(e) ? this.remove(e) : this.add(e), this.contains(e);
+          return (
+            this.contains(e) ? this.remove(e) : this.add(e), this.contains(e)
+          );
         },
       }),
         (window.DOMTokenList = d),
@@ -65,11 +70,14 @@ window.FontAwesomeKitConfig = {
         (n = function() {
           return new d(this);
         }),
-        Object.defineProperty ? Object.defineProperty(e, t, { get: n }) : e.__defineGetter__(t, n);
+        Object.defineProperty
+        ? Object.defineProperty(e, t, { get: n })
+        : e.__defineGetter__(t, n);
     }
     function d(e) {
       for (
-        let t = (this.el = e).className.replace(/^\s+|\s+$/g, '').split(/\s+/), n = 0;
+        let t = (this.el = e).className.replace(/^\s+|\s+$/g, '').split(/\s+/),
+          n = 0;
         n < t.length;
         n++
       )
@@ -87,7 +95,8 @@ window.FontAwesomeKitConfig = {
       Array.prototype.forEach.call(t, e => {
       (n = e.getAttribute('title')),
       e.setAttribute('aria-hidden', 'true'),
-      (i = !e.nextElementSibling || !e.nextElementSibling.classList.contains('sr-only')),
+      (i =            !e.nextElementSibling
+            || !e.nextElementSibling.classList.contains('sr-only')),
       n
             && i
             && (((o = document.createElement('span')).innerHTML = n),
@@ -110,10 +119,10 @@ window.FontAwesomeKitConfig = {
   const c = function(e, t) {
     !(function(e, t) {
       let n;
-      var i = (t && t.before) || void 0;
-      let o = (t && t.media) || void 0;
-      var r = window.document;
-      let a = r.createElement('link');
+      const i = (t && t.before) || void 0;
+      const o = (t && t.media) || void 0;
+      const r = window.document;
+      const a = r.createElement('link');
       if (
         (t &&
           t.detectingConflicts &&
@@ -136,8 +145,8 @@ window.FontAwesomeKitConfig = {
           e(t);
         });
         })(() => {
-          n.parentNode.insertBefore(a, i ? n : n.nextSibling);
-        });
+        n.parentNode.insertBefore(a, i ? n : n.nextSibling);
+      });
       var s = function(e) {
         for (let t = a.href, n = c.length; n--; ) if (c[n].href === t) return e();
         setTimeout(() => {
@@ -145,9 +154,11 @@ window.FontAwesomeKitConfig = {
         });
       };
       function l() {
-        a.addEventListener && a.removeEventListener('load', l), (a.media = o || 'all');
+        a.addEventListener && a.removeEventListener('load', l),
+        (a.media = o || 'all');
       }
-      a.addEventListener && a.addEventListener('load', l), (a.onloadcssdefined = s)(l);
+      a.addEventListener && a.addEventListener('load', l),
+      (a.onloadcssdefined = s)(l);
     })(e, t);
   };
   const e = function(e, t, n) {
@@ -189,54 +200,75 @@ window.FontAwesomeKitConfig = {
       const f = window.FontAwesomeKitConfig;
       const m = {
         detectingConflicts:
-          f.detectConflictsUntil && new Date() <= new Date(f.detectConflictsUntil),
+          f.detectConflictsUntil
+          && new Date() <= new Date(f.detectConflictsUntil),
         detectionIgnoreAttr: 'data-fa-detection-ignore',
         detectionTimeoutAttr: 'data-fa-detection-timeout',
         detectionTimeout: null,
       };
-      f.method === 'js'
-        && ((o = m),
-        (l = { async: (i = f).asyncLoading.enabled, autoA11y: i.autoA11y.enabled }),
-        i.license === 'pro'
-          && ((l.autoFetchSvg = !0),
-          (l.fetchSvgFrom = i.baseUrl,
-            '/releases/' +
-            (i.version === 'latest' ? 'latest' : 'v'.concat(i.version)) +
-            '/svgs')),
-        i.v4shim.enabled && e(s(i, { addOn: '-v4-shims', minify: i.minify.enabled })),
+      f.method === 'js' &&
+        ((o = m),
+        (l = {
+          async: (i = f).asyncLoading.enabled,
+          autoA11y: i.autoA11y.enabled,
+        }),
+        i.license === 'pro' &&
+          ((l.autoFetchSvg = !0),
+          ((l.fetchSvgFrom = i.baseUrl),
+          "/releases/" +
+            (i.version === "latest" ? "latest" : "v".concat(i.version)) +
+            "/svgs")),
+        i.v4shim.enabled
+          && e(s(i, { addOn: '-v4-shims', minify: i.minify.enabled })),
         e(s(i, { minify: i.minify.enabled }), l, o)),
-        'css' === f.method &&
-          (function(e, t) {
+        "css" ===
+          ((e, t) => {
             let n;
-            const i = a.bind(a, ['fa', 'fab', 'fas', 'far', 'fal', 'fad']);
-            e.autoA11y.enabled &&
-              (r(i),
+            const i = a.bind(a, ["fa", "fab", "fas", "far", "fal", "fad"]);
+            e.autoA11y.enabled
+              && (r(i),
               (n = i),
-              typeof MutationObserver !== 'undefined'
-                && new MutationObserver(n).observe(document, { childList: !0, subtree: !0 })),
-              e.v4shim.enabled &&
-                (e.license,
+              typeof MutationObserver !== "undefined" &&
+                new MutationObserver(n).observe(document, {
+                  childList: !0,
+                  subtree: !0
+                })),
+            e.v4shim.enabled
+                && (e.license,
                 e.asyncLoading.enabled
-                  ? c(s(e, { addOn: '-v4-shims', minify: e.minify.enabled }), t)
-                  : d(s(e, { addOn: '-v4-shims', minify: e.minify.enabled }), t));
-            e.v4FontFaceShim.enabled &&
-              (e.asyncLoading.enabled
-                ? c(s(e, { addOn: '-v4-font-face', minify: e.minify.enabled }), t)
-                : d(s(e, { addOn: '-v4-font-face', minify: e.minify.enabled }), t));
+                  ? c(s(e, { addOn: "-v4-shims", minify: e.minify.enabled }), t)
+                  : d(
+                      s(e, { addOn: "-v4-shims", minify: e.minify.enabled }),
+                      t
+                    ));
+            e.v4FontFaceShim.enabled
+              && (e.asyncLoading.enabled
+                ? c(
+                    s(e, { addOn: "-v4-font-face", minify: e.minify.enabled }),
+                    t
+                  )
+                : d(
+                    s(e, { addOn: "-v4-font-face", minify: e.minify.enabled }),
+                    t
+                  ));
             const o = s(e, { minify: e.minify.enabled });
             e.asyncLoading.enabled ? c(o, t) : d(o, t);
           })(f, m),
         m.detectingConflicts &&
           ((u = document.currentScript.getAttribute(m.detectionTimeoutAttr)) &&
             (m.detectionTimeout = u),
-          document.currentScript.setAttributeNode(document.createAttribute(m.detectionIgnoreAttr)),
+          document.currentScript.setAttributeNode(
+            document.createAttribute(m.detectionIgnoreAttr),
+          ),
           (t = f),
           (n = m),
           r(() => {
             const e = document.createElement('script');
             n &&
               n.detectionIgnoreAttr &&
-              e.setAttributeNode(document.createAttribute(n.detectionIgnoreAttr)),
+              e.setAttributeNode(
+                document.createAttribute(n.detectionIgnoreAttr),
+              ),
               n &&
                 n.detectionTimeoutAttr &&
                 n.detectionTimeout &&
