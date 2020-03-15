@@ -19,7 +19,7 @@ const formItems = {
 let loginRenderCallback = function (data) {
   console.log(`[DEBUG] login:render callback`);
 
-  const loginForm = document.getElementById('loginForm');
+  const loginForm = document.getElementById('js-login-form');
 
   addRegExpValidationAll({
     form: loginForm,
@@ -41,7 +41,7 @@ let loginRenderCallback = function (data) {
 
 let submitCallback = function(data) {
 
-  const loginForm = document.getElementById('loginForm');
+  const loginForm = document.getElementById('js-login-form');
 
   console.log(`[DEBUG] login:submit callback`);
   const email = loginForm.elements.email.value;

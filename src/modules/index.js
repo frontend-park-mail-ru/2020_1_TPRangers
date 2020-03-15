@@ -6,6 +6,7 @@ import Observer from "../controller/observer";
 import {fetchGET } from '../ajax/ajax';
 import LeftView from './View/LeftView';
 import RightView from './View/RightView';
+import RegView from './View/RegView';
 
 
 let onLoadCallback = response => {
@@ -95,6 +96,10 @@ Router.add(/news/, () => {
     let login = new LoginView(mainBlock);
     login.render();
   })
+  .add(/reg/, () => {
+    let reg = new RegView(mainBlock);
+    reg.render();
+  } )
   .listen();
 
 Router.callCurrent();

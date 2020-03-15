@@ -5,7 +5,7 @@ const formTmpl = require('../../pug/includes/modules/form.pug');
 
 const loginItems = {
   classes: ['form form_light login-form'],
-  id: 'loginForm',
+  id: 'js-login-form',
   formItems: {
     email: {
       title: 'Логин',
@@ -34,7 +34,7 @@ const loginItems = {
 export default class LoginView extends IView{
   render() {
     super.render();
-    this._parent.innerHTML += formTmpl(loginItems);
+    this.parent.innerHTML += formTmpl(loginItems);
     Observer.emit('login:render');
   }
 }

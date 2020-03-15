@@ -1,1 +1,2 @@
 import './LoginModel'
+import './RegModel'
