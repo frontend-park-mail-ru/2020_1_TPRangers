@@ -1,4 +1,5 @@
 import IView from './IView';
+import Observer from '../../controller/observer';
 
 const formTmpl = require('../../pug/includes/modules/form.pug');
 
@@ -73,5 +74,6 @@ export default class RegView extends IView{
   render() {
     super.render();
     this.parent.innerHTML += formTmpl(regItems);
+    Observer.emit('reg:render');
   }
 }

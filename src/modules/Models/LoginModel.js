@@ -39,7 +39,7 @@ let loginRenderCallback = function (data) {
   });
 };
 
-let submitCallback = function(data) {
+let loginSubmitCallback = function(data) {
 
   const loginForm = document.getElementById('js-login-form');
 
@@ -53,6 +53,8 @@ let submitCallback = function(data) {
           password,
     }),
     callback: response => {
+      console.log(`[DEBUG] Response is`);
+      console.log(response);
       Observer.emit('login:ajax', response);
     }
   })
@@ -65,5 +67,5 @@ let loginAjaxCallback = function(response) {
 };
 
 Observer.on('login:render', loginRenderCallback);
-Observer.on('login:submit', submitCallback);
+Observer.on('login:submit', loginSubmitCallback);
 Observer.on(`login:ajax`, loginAjaxCallback);
