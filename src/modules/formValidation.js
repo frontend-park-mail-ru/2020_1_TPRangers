@@ -19,16 +19,16 @@ function addRegExpValidation(form, fieldName, regExp) {
         err.classList.add('hidden');
         err.classList.remove('visible');
       }
-      if (err.classList.contains('err')) {
-        err.classList.remove('err');
+      if (err.classList.contains('js-error')) {
+        err.classList.remove('js-error');
       }
-      err.classList.add('correct');
+      err.classList.add('js-correct');
       infoText.innerText = '✔';
     } else {
-      if (err.classList.contains('correct')) {
-        err.classList.remove('correct');
+      if (err.classList.contains('js-correct')) {
+        err.classList.remove('js-correct');
       }
-      err.classList.add('err');
+      err.classList.add('js-error');
       infoText.innerText = '!';
     }
   });
@@ -65,16 +65,16 @@ export function addPasswordValidation(form, passwordField, passwordRepeatField) 
         err.classList.add('hidden');
         err.classList.remove('visible');
       }
-      if (err.classList.contains('err')) {
-        err.classList.remove('err');
+      if (err.classList.contains('js-error')) {
+        err.classList.remove('js-error');
       }
-      err.classList.add('correct');
+      err.classList.add('js-correct');
       infoText.innerText = '✔';
     } else {
-      if (err.classList.contains('correct')) {
-        err.classList.remove('correct');
+      if (err.classList.contains('js-correct')) {
+        err.classList.remove('js-correct');
       }
-      err.classList.add('err');
+      err.classList.add('js-error');
       infoText.innerText = '!';
     }
   });
