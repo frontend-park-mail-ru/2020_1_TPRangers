@@ -4,7 +4,7 @@ import Observer from '../../controller/observer';
 const formTmpl = require('../../pug/includes/modules/form.pug');
 
 const loginItems = {
-  classes: ['loginForm'],
+  classes: ['form form_light login-form'],
   id: 'loginForm',
   formItems: {
     email: {
@@ -14,7 +14,7 @@ const loginItems = {
       type: 'email',
       regExp: /.+@.+\..+/i,
       errorMsg: 'Некоррекнтый email',
-      class: 'formLb',
+      class: 'form__label',
       fa_item: 'fas fa-at',
     },
     password: {
@@ -24,7 +24,7 @@ const loginItems = {
       type: 'password',
       regExp: '',
       errorMsg: 'Неправильный логин и/или пароль',
-      class: 'formLb',
+      class: 'form__label',
       fa_item: 'fas fa-key',
     },
   },

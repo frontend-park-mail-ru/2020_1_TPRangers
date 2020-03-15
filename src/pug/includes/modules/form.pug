@@ -1,14 +1,14 @@
-form(action="#", class=classes, id=id)
-    div(class="formBody")
-        span(class="formName") #{buttonName}
+form(action="#", class="display_flex " + classes, id=id)
+    div(class="form__body display_flex_column")
+        span(class="form__name text text_size_L") #{buttonName}
         each item in formItems
-            div(class="formFowFlex")
-                div(class="formColFlex")
-                    div(class=item.class)
+            div(class="display_flex_row")
+                div(class="display_flex_column")
+                    div(class="text text_size_M " + item.class)
                         span #{item.title}
-                    div(class="inputIcons")
-                        i(class=item.fa_item + ' icon')
-                        input(type=item.type, name=item.name, id=item.name,placeholder=item.placeholder class='inputField')
-                        div(id="error-"+item.name class="anim").hidden
+                    div(class="form__input-and-icon display_flex_row")
+                        i(class="input__icon display_flex " + item.fa_item)
+                        input(type=item.type, name=item.name, id=item.name,placeholder=item.placeholder class="input display_flex")
+                        div(id="error-"+item.name class="error error__anim").hidden
                             span(class="tooltip" id="tooltip-"+item.name data-tooltip=item.errorMsg) !
-        input(type="submit", value=buttonName class="buttonInForm")
+        input(type="submit", value=buttonName, class="button button_dark form__button")

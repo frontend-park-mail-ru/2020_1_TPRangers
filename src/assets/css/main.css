@@ -3,10 +3,14 @@
 @import "./utils/properties/display.css";
 @import "./utils/text/text.css";
 @import "./utils/img/img.css";
+@import "./utils/actions/action.css";
+@import "./utils/form/form.css";
+@import "./utils/input/input.css";
 
 @import "./modules/left-block/left-block.css";
 @import "./modules/main-block/main-block.css";
 @import "./modules/right-block/right-block.css";
+
 
 * {
   margin: 0;
