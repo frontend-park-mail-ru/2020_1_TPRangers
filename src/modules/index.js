@@ -4,22 +4,25 @@ import { Router } from "../Routes/routes";
 import LoginView from './View/LoginView';
 import Observer from "../controller/observer";
 import {fetchGET } from '../ajax/ajax';
+import LeftView from './View/LeftView';
+import RightView from './View/RightView';
 
 
-
-
-
-fetchGET({
-  url: BACKEND_IP+'/api/v1/profile',
-  callback: response => {
-    response.json().then (
-      data => {console.log(data);}
-    )
+let onLoadCallback = response => {
+  if (response.status === 401) {
+    Router.navigate('login');
+  } else {
+    new LeftView(leftBlock).render();
+    new RightView(rightBlock).render();
   }
-});
+};
+
+Observer.on('load', onLoadCallback);
+
+
 
 //const leftBlockTmpl = require("../pug/includes/modules/left-block.pug");
-//const testTmpl = require("../pug/pages/news.pug");
+const testTmpl = require("../pug/pages/news.pug");
 
 
 const app = document.getElementById("application");
@@ -47,52 +50,59 @@ app.addEventListener("click", evt => {
   }
 });
 
-// const leftBlock = document.getElementById("left-block");
-// leftBlock.innerHTML += leftBlockTmpl();
 
-// const mainBlock = document.getElementById("main-block");
-//
-// const rightBlock = document.getElementById('right-block');
+const leftBlock = document.getElementById("left-block");
+
+const mainBlock = document.getElementById("main-block");
+
+const rightBlock = document.getElementById('right-block');
+
+
 
 // TODO: Тут надо добавить обработчики всех страниц
 Router.config({ mode: "history" });
 
 Router.add(/news/, () => {
   console.log("news");
-  app.innerHTML = testTmpl({ data: "Новости" });
+  mainBlock.innerHTML = testTmpl({ data: "Новости" });
 })
   .add(/friends/, () => {
     console.log("friends");
-    app.innerHTML = testTmpl({ data: "Друзья" });
+    mainBlock.innerHTML = testTmpl({ data: "Друзья" });
   })
   .add(/messages/, () => {
     console.log("messages");
-    app.innerHTML = testTmpl({ data: "Сообщения" });
+    mainBlock.innerHTML = testTmpl({ data: "Сообщения" });
   })
   .add(/media/, () => {
     console.log("media");
-    app.innerHTML = testTmpl({ data: "Медиатека" });
+    mainBlock.innerHTML = testTmpl({ data: "Медиатека" });
   })
   .add(/settings/, () => {
     console.log("settings");
-    app.innerHTML = testTmpl({ data: "Настройки" });
+    mainBlock.innerHTML = testTmpl({ data: "Настройки" });
   })
   .add(/profile\/(.*)/, () => {
     console.log(Router.getFragment());
     console.log("profile");
-    app.innerHTML = testTmpl({ data: "Профиль пользователя" });
+    mainBlock.innerHTML = testTmpl({ data: "Профиль пользователя" });
   })
   .add(/main/, () => {
     console.log("main");
-    app.innerHTML = testTmpl({ data: "Главная страница" });
+    mainBlock.innerHTML = testTmpl({ data: "Главная страница" });
   })
   .add(/login/, () => {
-    let login = new LoginView(app);
+    let login = new LoginView(mainBlock);
     login.render();
-    Observer.emit('login:render');
   })
   .listen();
 
 Router.callCurrent();
 
 
+fetchGET({
+  url: BACKEND_IP+'/api/v1/profile',
+  callback: response => {
+    Observer.emit('load', response);
+  }
+});

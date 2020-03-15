@@ -1,5 +1,5 @@
 // JS
-import './modules/Models/LoginModel';
+import './modules/Models';
 import './modules';
 import './assets/fonts/font-awesome.js';
 

@@ -1,6 +1,7 @@
 import Observer from '../../controller/observer'
 import {addRegExpValidationAll, checkRegExpValidity} from '../formValidation';
 import {fetchPOST} from '../../ajax/ajax';
+import { Router } from '../../Routes/routes';
 
 const formItems = {
   email: {
@@ -64,6 +65,7 @@ let submitCallback = function(data) {
 let loginAjaxCallback = function(response) {
   console.log(`[DEBUG] login:ajax callback`);
   console.log(response.status);
+  Router.navigate('news');
 };
 
 Observer.on('login:render', loginRenderCallback);

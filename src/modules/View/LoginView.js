@@ -1,6 +1,7 @@
 import IView from './IView';
+import Observer from '../../controller/observer';
 
-const formTmpl = require('../../pug/layout/form.pug');
+const formTmpl = require('../../pug/includes/modules/form.pug');
 
 const loginItems = {
   classes: ['loginForm'],
@@ -34,5 +35,6 @@ export default class LoginView extends IView{
   render() {
     super.render();
     this._parent.innerHTML += formTmpl(loginItems);
+    Observer.emit('login:render');
   }
 }

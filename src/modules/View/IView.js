@@ -12,6 +12,6 @@ export default class IView {
   }
 
   render() {
-    this._parent.innerHTML = '';
+    this.parent.innerHTML = '';
   }
 }
