@@ -6,5 +6,7 @@
     border: none;
     outline:none;
     justify-content: start;
+
+    flex-grow: 14;
 }
 

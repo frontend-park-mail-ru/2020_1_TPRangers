@@ -2,14 +2,15 @@
 import { Router } from "../Routes/routes";
 
 import LoginView from './View/LoginView';
-import Observer from "../controller/observer";
-import {fetchGET } from '../ajax/ajax';
+import Observer from '../controller/observer';
+import { fetchGET } from '../ajax/ajax';
 import LeftView from './View/LeftView';
 import RightView from './View/RightView';
 import RegView from './View/RegView';
 
 
 let onLoadCallback = response => {
+  console.log(response.status);
   if (response.status === 401) {
     Router.navigate('login');
   } else {
@@ -20,18 +21,15 @@ let onLoadCallback = response => {
 
 Observer.on('load', onLoadCallback);
 
+// const leftBlockTmpl = require("../pug/includes/modules/left-block.pug");
+const testTmpl = require('../pug/pages/news.pug');
 
 
-//const leftBlockTmpl = require("../pug/includes/modules/left-block.pug");
-const testTmpl = require("../pug/pages/news.pug");
+const app = document.getElementById('application');
 
+if (!app) console.log('app not found');
 
-const app = document.getElementById("application");
-if (!app) console.log("app not found");
-
-
-
-app.addEventListener("click", evt => {
+app.addEventListener('click', evt => {
   if (evt.target instanceof Element) {
     if (evt.target.tagName === "IMG") {
       evt.preventDefault();
@@ -72,25 +70,30 @@ Router.add(/news/, () => {
     mainBlock.innerHTML = testTmpl({ data: "Друзья" });
   })
   .add(/messages/, () => {
-    console.log("messages");
-    mainBlock.innerHTML = testTmpl({ data: "Сообщения" });
+    console.log('messages');
+    mainBlock.innerHTML = testTmpl({ data: 'Сообщения' });
   })
   .add(/media/, () => {
-    console.log("media");
-    mainBlock.innerHTML = testTmpl({ data: "Медиатека" });
+    console.log('media');
+    mainBlock.innerHTML = testTmpl({ data: 'Медиатека' });
   })
   .add(/settings/, () => {
-    console.log("settings");
-    mainBlock.innerHTML = testTmpl({ data: "Настройки" });
+    console.log('settings');
+    mainBlock.innerHTML = testTmpl({ data: 'Настройки' });
   })
   .add(/profile\/(.*)/, () => {
     console.log(Router.getFragment());
-    console.log("profile");
-    mainBlock.innerHTML = testTmpl({ data: "Профиль пользователя" });
+    console.log('profile');
+    mainBlock.innerHTML = testTmpl({ data: 'Профиль пользователя не мой' });
+  })
+  .add(/profile/, () => {
+    console.log(Router.getFragment());
+    console.log('profile');
+    mainBlock.innerHTML = testTmpl({ data: 'Профиль пользователя' });
   })
   .add(/main/, () => {
-    console.log("main");
-    mainBlock.innerHTML = testTmpl({ data: "Главная страница" });
+    console.log('main');
+    mainBlock.innerHTML = testTmpl({ data: 'Главная страница' });
   })
   .add(/login/, () => {
     let login = new LoginView(mainBlock);
@@ -106,7 +109,7 @@ Router.callCurrent();
 
 
 fetchGET({
-  url: BACKEND_IP+'/api/v1/profile',
+  url: BACKEND_IP + '/api/v1/profile',
   callback: response => {
     Observer.emit('load', response);
   }
