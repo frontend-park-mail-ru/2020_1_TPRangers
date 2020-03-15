@@ -49,12 +49,8 @@ let submitCallback = function(data) {
   fetchPOST({
     url: BACKEND_IP + '/api/v1/login',
     body: JSON.stringify({
-      body: [
-        {
           login: email,
           password,
-        },
-      ],
     }),
     callback: response => {
       Observer.emit('login:ajax', response);

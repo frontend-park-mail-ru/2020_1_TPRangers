@@ -1,4 +1,4 @@
-bkwindow.FontAwesomeKitConfig = {
+window.FontAwesomeKitConfig = {
   asyncLoading: { enabled: true },
   autoA11y: { enabled: true },
   baseUrl: 'https://kit-free.fontawesome.com',
