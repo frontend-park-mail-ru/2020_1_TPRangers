@@ -7,6 +7,7 @@ import { fetchGET } from '../ajax/ajax';
 import LeftView from './View/LeftView';
 import RightView from './View/RightView';
 import RegView from './View/RegView';
+import SettingsView from './View/SettingsView';
 
 
 let onEnterLoadCallback = response => {
@@ -110,10 +111,6 @@ Router.add(/news/, () => {
     console.log('media');
     mainBlock.innerHTML = testTmpl({ data: 'Медиатека' });
   })
-  .add(/settings/, () => {
-    console.log('settings');
-    mainBlock.innerHTML = testTmpl({ data: 'Настройки' });
-  })
   .add(/profile\/(.*)/, () => {
     console.log(Router.getFragment());
     console.log('profile');
@@ -136,6 +133,10 @@ Router.add(/news/, () => {
     let reg = new RegView(mainBlock);
     reg.render();
   } )
+  .add(/settings/, () => {
+    let settings = new SettingsView(mainBlock);
+    settings.render();
+  })
   .listen();
 
 Router.callCurrent();

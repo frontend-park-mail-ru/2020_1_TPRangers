@@ -1,4 +1,4 @@
--const settingsItems = {
+-const settingsFormItems = {
 -    classes: ['form form_light settings-form'],
 -    id: 'js-settings-form',
 -    formItems: {
@@ -29,7 +29,7 @@
 -       },
 -       phone: {
 -          title: 'Телефон',
--          name: 'phone',
+-          name: 'telephone',
 -          placeholder: '+7 910 777 77 77',
 -          type: 'text',
 -          errorMsg: 'Некорректный телефон',
@@ -47,7 +47,7 @@
 -       },
 -       password: {
 -          title: 'Пароль',
--          name: 'password',
+-          name: 'pass',
 -          placeholder: '',
 -          type: 'password',
 -          errorMsg:
@@ -67,3 +67,6 @@
 -    },
 -    buttonName: 'Обновить профиль',
 -};
+
+include ../utils/mixins
++baseForm(settingsFormItems)
