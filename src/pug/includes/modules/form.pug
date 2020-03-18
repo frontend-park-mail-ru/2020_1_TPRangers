@@ -1,5 +1,5 @@
-mixin(data)
-    form(action="#", class="display_flex " + data.classes, id=id)
+mixin baseForm(data)
+    form(action="#", class="display_flex " + data.classes, id=data.id)
         div(class="form__body display_flex_column")
             span(class="form__name text text_size_L") #{data.buttonName}
             each item in data.formItems

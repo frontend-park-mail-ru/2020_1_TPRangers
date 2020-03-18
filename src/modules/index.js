@@ -10,16 +10,22 @@ import RegView from './View/RegView';
 
 
 let onLoadCallback = response => {
-  console.log(response.status);
+  console.log(`[DEBUG] load callback`);
   if (response.status === 401) {
     Router.navigate('login');
   } else {
-    new LeftView(leftBlock).render();
-    new RightView(rightBlock).render();
+    Observer.emit('load:draw-basic');
   }
 };
 
+let drawBasicCallback = () => {
+  console.log(`[DEBUG] load:draw-basic callback`);
+  new LeftView(leftBlock).render();
+  new RightView(rightBlock).render();
+};
+
 Observer.on('load', onLoadCallback);
+Observer.on('load:draw-basic', drawBasicCallback);
 
 // const leftBlockTmpl = require("../pug/includes/modules/left-block.pug");
 const testTmpl = require('../pug/pages/news.pug');
