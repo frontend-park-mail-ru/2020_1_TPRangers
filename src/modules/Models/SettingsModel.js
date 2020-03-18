@@ -4,7 +4,7 @@ import {
   addRegExpValidationAll, checkPasswordValidity,
   checkRegExpValidity
 } from '../formValidation';
-import { fetchGET, fetchPOST } from '../../ajax/ajax';
+import { fetchGET, fetchPOST, fetchPUT } from '../../ajax/ajax';
 import { Router } from '../../Routes/routes';
 
 let formItems =  {
@@ -87,7 +87,7 @@ let settingsSubmitCallback = () => {
   const phone = settingsForm.elements.telephone.value;
   const date = settingsForm.elements.date.value;
 
-  fetchPOST({
+  fetchPUT({
     url: BACKEND_IP + '/api/v1/settings',
     body: JSON.stringify({
       email,
