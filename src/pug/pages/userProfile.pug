@@ -1,0 +1,7 @@
+include ../utils/userHeader
+
+- let fakeUserData = { name: 'Вика', surname: 'Губанова', online: true, avatar: './assets/img/main-block/fakeUser/avatar.jpg', background: './assets/img/main-block/fakeUser/background.jpg', phone: '+7(995)117-78-08', email: "blablabla@yandex.ru", dateOfB: '10.02.2000' };
+
+div(class="main-block__user")
+    if header
+        + userHeader(fakeUserData)

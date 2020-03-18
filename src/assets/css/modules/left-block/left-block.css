@@ -3,10 +3,11 @@
 @import "./leftBlock__img.css";
 
 .left-block {
-  max-width: 60px;
-  min-width: 60px;
+  max-width: 68px;
+  min-width: 68px;
   flex-grow: 1;
   flex-shrink: 0;
   justify-content: space-between;
   align-items: center;
+  z-index: 6;
 }

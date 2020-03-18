@@ -1,33 +1,29 @@
 - let dataForLinks = [
 -   { name: 'Новости',
 -     link: 'news',
--     class: 'fa-newspaper',
 -   },
 -   { name: 'Друзья',
 -     link: 'friends',
--     class: 'fa-users',
 -   },
 -   { name: 'Сообщения',
 -     link: 'messages',
--     class: 'fa-comments',
 -   },
 -   { name: 'Медиатека',
 -     link: 'media',
--     class: 'fa-photo-video',
 -   },
 -   { name: 'Настройки',
 -     link: 'settings',
--     class: 'fa-cogs',
+-   },
+-   { name: 'Профиль',
+-     link: 'profile',
 -   }
 - ];
 
 .display_flex
     a(href="main", section="main")
-        img(src="https://picsum.photos/seed/picsum/100/100" class="img leftBlock__img img_size_XS display_flex")
+        img(src="../../../assets/img/left-block/logo.png" class="img img_size_S display_flex")
 .leftBlock__linksBlock.display_flex_column
     each link in dataForLinks
-        a(href=link.link, section=link.link class=link.class + " fas button leftBlock__button button_light text_size_L")
-.display_flex
-    a(href="profile", section="profile")
-        img(src="https://picsum.photos/seed/user/100/100" class="img leftBlock__img img_size_XS display_flex")
+        a(href=link.link, section=link.link class="button button_size_s leftBlock__button button_light text_size_L")
+            img(src="../../../assets/img/left-block/" + link.link + ".png" class="img img_size_XXS display_flex")
 
