@@ -103,7 +103,7 @@ let regSubmitCallback = event => {
 let regAjaxCallback = response => {
   console.log(`[DEBUG] reg:ajax callback`);
   console.log(response.status);
-  Observer.emit('load:draw-basic');
+  Observer.emit('draw-basic');
   Router.navigate('news');
 };
 

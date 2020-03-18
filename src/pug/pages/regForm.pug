@@ -1,0 +1,65 @@
+-const regFormItems = {
+-    classes: ['form form_light reg-form'],
+-    id: 'js-reg-form',
+-    formItems: {
+-       username: {
+-           title: 'Ваше имя',
+-           name: 'username',
+-           placeholder: 'Иван Иванов',
+-           type: 'text',
+-           errorMsg: 'Некорректное имя пользователя',
+-           class: 'form__label',
+-           fa_item: 'fas fa-user',
+-       },
+-       email: {
+-           title: 'Email',
+-           name: 'email',
+-           placeholder: 'ivan.ivanov@mail.ru',
+-           type: 'email',
+-           errorMsg: 'Некорректный адрес почты',
+-           class: 'form__label',
+-           fa_item: 'fas fa-at',
+-       },
+-       phone: {
+-           title: 'Телефон',
+-           name: 'phone',
+-           placeholder: '+7 910 777 77 77',
+-           type: 'text',
+-           errorMsg: 'Некорректный телефон',
+-           class: 'form__label',
+-           fa_item: 'fas fa-phone',
+-       },
+-       date: {
+-           title: 'Дата рождения',
+-           name: 'date',
+-           type: 'date',
+-           errorMsg: 'Некорректная дата',
+-           class: 'form__label',
+-           fa_item: 'fas fa-birthday-cake',
+-       },
+-       password: {
+-           title: 'Пароль',
+-           name: 'password',
+-           placeholder: '',
+-           type: 'password',
+-           errorMsg:
+-           'Пароль должен содержать одну заглавную, одну строчную букву, цифру и не менее 8 симвлолов',
+-           class: 'form__label',
+-           fa_item: 'fas fa-key',
+-       },
+-       passwordRepeat: {
+-           title: 'Повторите пароль',
+-           name: 'password-repeat',
+-           placeholder: '',
+-           type: 'password',
+-           errorMsg: 'Пароли не совпадают',
+-           class: 'form__label',
+-           fa_item: 'fas fa-key',
+-       },
+-    },
+-    buttonName: 'Регистрация',
+-};
+
+
+include ../utils/mixins
++baseForm(regFormItems)
