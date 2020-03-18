@@ -119,7 +119,8 @@ let settingsSetInputCallback = response => {
 let settingAjaxCallback = response => {
   console.log(`[DEBUG] settings:ajax callback`);
   console.log(response.status);
-  Router.navigate('profile');
+  if (response.status === 200)
+    Router.navigate('profile');
 };
 
 Observer.on('settings:render', settingsRenderCallback);
