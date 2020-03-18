@@ -1,7 +1,7 @@
 import IView from './IView';
 import Observer from '../../controller/observer';
 
-const formTmpl = require('../../pug/includes/modules/form.pug');
+const formTmpl = require('../../pug/includes/modules/regForm.pug');
 
 const regItems = {data: {
     classes: ['form form_light reg-form'],

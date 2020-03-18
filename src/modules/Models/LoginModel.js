@@ -63,6 +63,7 @@ let loginSubmitCallback = function(data) {
 let loginAjaxCallback = function(response) {
   console.log(`[DEBUG] login:ajax callback`);
   console.log(response.status);
+  Observer.emit('load:draw-basic');
   Router.navigate('news');
 };
 
