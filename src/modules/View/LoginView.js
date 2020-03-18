@@ -1,7 +1,7 @@
 import IView from './IView';
 import Observer from '../../controller/observer';
 
-const formTmpl = require('../../pug/pages/loginForm.pug');
+const formTmpl = require('../../pug/pages/login.pug');
 
 
 export default class LoginView extends IView{
