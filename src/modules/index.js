@@ -9,23 +9,50 @@ import RightView from './View/RightView';
 import RegView from './View/RegView';
 
 
-let onLoadCallback = response => {
+let onEnterLoadCallback = response => {
   console.log(`[DEBUG] load callback`);
-  if (response.status === 401) {
-    Router.navigate('login');
-  } else {
-    Observer.emit('load:draw-basic');
+  if (response.status === 200) {
+    Observer.emit('draw-basic');
+    Router.navigate('news');
   }
 };
 
 let drawBasicCallback = () => {
-  console.log(`[DEBUG] load:draw-basic callback`);
+  console.log(`[DEBUG] draw-basic callback`);
   new LeftView(leftBlock).render();
   new RightView(rightBlock).render();
 };
 
-Observer.on('load', onLoadCallback);
-Observer.on('load:draw-basic', drawBasicCallback);
+let startCheckCallback = () => {
+  if (Router.getFragment() === '') {
+    fetchGET({
+      url: BACKEND_IP + '/api/v1/profile',
+      callback: response => {
+        if (response.status === 200) {
+          Observer.emit('draw-basic');
+          Router.navigate('news');
+        } else {
+          Router.navigate('login');
+        }
+      }
+    });
+  } else {
+    fetchGET({
+      url: BACKEND_IP + '/api/v1/profile',
+      callback: response => {
+        if (response.status === 200) {
+          Observer.emit('draw-basic');
+        } else {
+          Router.navigate('login');
+        }
+      }
+    });
+  }
+}
+
+Observer.on('draw-basic', drawBasicCallback);
+Observer.on('start', startCheckCallback);
+Observer.on('login/reg:load', onEnterLoadCallback);
 
 // const leftBlockTmpl = require("../pug/includes/modules/left-block.pug");
 const testTmpl = require('../pug/pages/news.pug');
@@ -112,11 +139,5 @@ Router.add(/news/, () => {
   .listen();
 
 Router.callCurrent();
-
-
-fetchGET({
-  url: BACKEND_IP + '/api/v1/profile',
-  callback: response => {
-    Observer.emit('load', response);
-  }
-});
+//Initial check to understand if user authorized and to check '/' route
+Observer.emit('start');

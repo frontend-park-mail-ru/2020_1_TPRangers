@@ -1,6 +1,6 @@
 import Observer from '../../controller/observer';
 import {addPasswordValidation, addRegExpValidationAll, checkRegExpValidity, checkPasswordValidity} from '../formValidation';
-import {fetchPOST} from '../../ajax/ajax';
+import { fetchGET, fetchPOST } from '../../ajax/ajax';
 import { Router } from '../../Routes/routes';
 
 let formItems =  {
@@ -33,6 +33,13 @@ let formItems =  {
 
 let regRenderCallback = () => {
   console.log(`[DEBUG] reg:render callback`);
+
+  fetchGET({
+    url: BACKEND_IP + '/api/v1/profile',
+    callback: response => {
+      Observer.emit('login/reg:load', response);
+    }
+  });
 
   const regForm = document.getElementById('js-reg-form');
 

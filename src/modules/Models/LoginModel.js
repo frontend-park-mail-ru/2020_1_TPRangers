@@ -1,6 +1,6 @@
 import Observer from '../../controller/observer'
 import {addRegExpValidationAll, checkRegExpValidity} from '../formValidation';
-import {fetchPOST} from '../../ajax/ajax';
+import { fetchGET, fetchPOST } from '../../ajax/ajax';
 import { Router } from '../../Routes/routes';
 
 const formItems = {
@@ -16,8 +16,16 @@ const formItems = {
 
 
 
+
 let loginRenderCallback = function (data) {
   console.log(`[DEBUG] login:render callback`);
+
+  fetchGET({
+    url: BACKEND_IP + '/api/v1/profile',
+    callback: response => {
+      Observer.emit('login/reg:load', response);
+    }
+  });
 
   const loginForm = document.getElementById('js-login-form');
 
@@ -63,9 +71,10 @@ let loginSubmitCallback = function(data) {
 let loginAjaxCallback = function(response) {
   console.log(`[DEBUG] login:ajax callback`);
   console.log(response.status);
-  Observer.emit('load:draw-basic');
+  Observer.emit('draw-basic');
   Router.navigate('news');
 };
+
 
 Observer.on('login:render', loginRenderCallback);
 Observer.on('login:submit', loginSubmitCallback);
