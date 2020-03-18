@@ -1,5 +1,5 @@
 @import "./img_size.css";
 
 .img {
-    border-radius: 10px;
+    min-width: 20px;
 }

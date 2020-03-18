@@ -7,6 +7,7 @@ import { fetchGET } from '../ajax/ajax';
 import LeftView from './View/LeftView';
 import RightView from './View/RightView';
 import RegView from './View/RegView';
+import UserProfileView from './View/UserProfileView';
 
 
 let onLoadCallback = response => {
@@ -16,6 +17,7 @@ let onLoadCallback = response => {
   } else {
     Observer.emit('load:draw-basic');
   }
+  Observer.emit('load:draw-basic'); // TODO: Убери потом
 };
 
 let drawBasicCallback = () => {
@@ -44,7 +46,7 @@ app.addEventListener('click', evt => {
 
       if (aNode.getAttribute("section") === "profile") {
         // TODO: Тут надо будет добавить обработку id  пользователя, чья страница
-        Router.navigate(`${aNode.getAttribute("section")}/2`);
+        Router.navigate(`${aNode.getAttribute("section")}`);
       } else {
         Router.navigate(aNode.getAttribute("section"));
       }
@@ -90,12 +92,17 @@ Router.add(/news/, () => {
   .add(/profile\/(.*)/, () => {
     console.log(Router.getFragment());
     console.log('profile');
+    
     mainBlock.innerHTML = testTmpl({ data: 'Профиль пользователя не мой' });
   })
   .add(/profile/, () => {
     console.log(Router.getFragment());
     console.log('profile');
-    mainBlock.innerHTML = testTmpl({ data: 'Профиль пользователя' });
+    
+    let userProfile = new UserProfileView(mainBlock);
+    userProfile.render();
+    // mainBlock.innerHTML = testTmpl({ data: 'Профиль пользователя' });
+
   })
   .add(/main/, () => {
     console.log('main');
