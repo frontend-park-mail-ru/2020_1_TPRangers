@@ -1,4 +1,5 @@
-@import "./main-block__user.css";
+@import "./userProfile/main-block__user.css";
+@import "./error/main-block__error.css";
 
 .main-block {
     flex-grow: 7;

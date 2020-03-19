@@ -8,6 +8,7 @@ import LeftView from './View/LeftView';
 import RightView from './View/RightView';
 import RegView from './View/RegView';
 import UserProfileView from './View/UserProfileView';
+import ErrorView from './View/ErrorView';
 
 
 let onEnterLoadCallback = response => {
@@ -136,8 +137,10 @@ Router.add(/news/, () => {
     mainBlock.innerHTML = testTmpl({ data: 'Главная страница' });
   })
   .add(/login/, () => {
-    let login = new LoginView(mainBlock);
-    login.render();
+    // let login = new LoginView(mainBlock);
+    // login.render();
+    let error = new ErrorView(mainBlock);
+    error.render();
   })
   .add(/reg/, () => {
     let reg = new RegView(mainBlock);
