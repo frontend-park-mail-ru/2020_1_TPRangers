@@ -1,3 +1,4 @@
+import Observer from '../controller/observer'
 /**
  * Базовая функция для FetchAPI
  * @string method
@@ -22,7 +23,11 @@ function fetchApi({
   })
     .then(callback)
     .catch(err => {
-      console.log(`Fetch error: ${err}`);
+      Observer.emit('render:error', {
+        status: 500,
+        text: 'Упс.. Скоро мы все починим :)',
+        backButton: false,
+      })
     });
 }
 
