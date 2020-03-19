@@ -14,10 +14,10 @@
 }
 
 .main-block__user__user-header__button_light-blue {
-    border-color: rgb(177, 209, 216);
-    background-image: -moz-linear-gradient( 90deg, rgb(177, 209, 216) 0%,  rgb(177, 209, 216) 100%);
-    background-image: -webkit-linear-gradient( 90deg,  rgb(177, 209, 216) 0%,  rgb(177, 209, 216) 100%);
-    background-image: -ms-linear-gradient( 90deg,  rgb(177, 209, 216) 0%, rgb(177, 209, 216) 100%);
+    border-color: rgb(140, 188, 199);
+    background-image: -moz-linear-gradient( 90deg,rgb(140, 188, 199) 0%, rgb(140, 188, 199) 100%);
+    background-image: -webkit-linear-gradient( 90deg,  rgb(140, 188, 199) 0%, rgb(140, 188, 199) 100%);
+    background-image: -ms-linear-gradient( 90deg, rgb(140, 188, 199) 0%, rgb(140, 188, 199) 100%);
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.32),inset 0px 1px 0px 0px rgba(255, 255, 255, 0.22);
 }
 
