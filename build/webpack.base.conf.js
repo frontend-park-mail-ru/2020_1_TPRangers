@@ -11,7 +11,7 @@ require('dotenv').config();
 // see more: https://github.com/vedees/webpack-template/blob/master/README.md#main-const
 const PATHS = {
   src: path.join(__dirname, '../src'),
-  dist: path.join(__dirname, '/sites/social-hub/dist'),
+  dist: '/sites/social-hub/dist',
   assets: 'assets/'
 };
 
