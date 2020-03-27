@@ -13,6 +13,11 @@
 @import "./modules/right-block/right-block.css";
 
 
+:root {
+  --main-color: rgb(212, 224, 227);
+  --secondary-color: rgb(243, 243, 243);
+}
+
 * {
   margin: 0;
   padding: 0;

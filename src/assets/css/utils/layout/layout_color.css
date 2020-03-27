@@ -1,7 +1,7 @@
 .layout_light_secondary {
-  background-color:rgb(243, 243, 243);
+  background-color: var(--secondary-color, rgb(243, 243, 243));
 }
 
 .layout_light_main {
-  background-color: rgb(212, 224, 227);
+  background-color:var(--main-color, rgb(212, 224, 227));
 }

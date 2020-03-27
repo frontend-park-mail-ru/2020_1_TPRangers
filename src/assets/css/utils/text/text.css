@@ -6,3 +6,7 @@
 .text {
     font-family: Montserrat, serif;
 }
+
+.text_uppercase {
+    text-transform: uppercase;
+}

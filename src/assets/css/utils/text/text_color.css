@@ -1,3 +1,11 @@
 .text_color_green {
     color: rgb(15, 114, 31);
 }
+
+.text_color_gray {
+    color: rgb(68, 68, 68);
+}
+
+.text_color_black {
+    color: black;
+}

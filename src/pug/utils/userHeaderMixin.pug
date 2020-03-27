@@ -6,18 +6,18 @@ mixin userHeader(data)
             img(src=data.avatar class="img img_size_100 main-block__user__user-header__avatar__img display_flex")    
         div(class="display_flex_row layout_light_secondary main-block__user__block main-block__user__user-header__main-info")
             div(class="main-block__user__user-header__main-info__text-info display_flex_column")
-                span(class="text text_size_s main-block__user__user-header__main-info__text-info__span") Телефон: #{data.phone}
-                span(class="text text_size_s main-block__user__user-header__main-info__text-info__span") Email: #{data.email}
+                span(class="text text_size_M main-block__user__user-header__main-info__text-info__span") Телефон: #{data.phone}
+                span(class="text text_size_M main-block__user__user-header__main-info__text-info__span") Email: #{data.email}
             div(class="main-block__user__user-header__main-info__name-and-online display_flex_column")
-                span(class="text main-block__user__user-header__main-info__text-info__username-span") #{data.name} #{data.surname} 
+                span(class="text text_size_SL text_color_black text_weight_bold main-block__user__user-header__main-info__text-info__username-span") #{data.name} #{data.surname} 
                 if data.online
-                    span(class="text main-block__user__user-header__main-info__text-info__online-status-span") В сети
+                    span(class="text text_color_grey text_uppercase text_size_S main-block__user__user-header__main-info__text-info__online-status-span") В сети
                 else
-                    span(class="text main-block__user__user-header__main-info__text-info__online-status-span") не в сети  
+                    span(class="text text_color_grey text_uppercase text_size_S main-block__user__user-header__main-info__text-info__online-status-span") не в сети  
             div(class="main-block__user__user-header__main-info__buttons display_flex_row")
-                a(href="profile", section="profile" class="main-block__user__user-header__button main-block__user__user-header__button_blue display_flex")
+                a(href="profile", section="profile" class="main-block__user__user-header__button button_blue display_flex")
                     img(src="../../../assets/img/main-block/addFriend.png" class="img img_size_XXS display_flex")
-                a(href="messages", section="messages" class="main-block__user__user-header__button main-block__user__user-header__button_light-blue display_flex")
+                a(href="messages", section="messages" class="main-block__user__user-header__button button_light-blue display_flex")
                     img(src="../../../assets/img/main-block/message.png" class="img img_size_XXS display_flex")
-                a(href="settings", section="settings" class="main-block__user__user-header__button main-block__user__user-header__button_orange display_flex")
+                a(href="settings", section="settings" class="button button_orange main-block__user__user-header__button display_flex")
                     img(src="../../../assets/img/main-block/settings.png" class="img img_size_XXS display_flex")        
