@@ -1,6 +1,6 @@
 .leftBlock__linksBlock {
   flex-grow: 4;
-  justify-content: space-around;
+  justify-content: flex-start;
   margin-top: 80%;
   margin-bottom: 20%;
 }

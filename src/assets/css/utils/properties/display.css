@@ -1,15 +1,18 @@
 .display_flex {
   display: flex;
+  flex-shrink: initial;
 }
 
 .display_flex_row {
   display: flex;
   flex-direction: row;
+  flex-shrink: initial;
 }
 
 .display_flex_column {
   display: flex;
   flex-direction: column;
+  flex-shrink: initial;
 }
 
 .display_grow_S {

@@ -10,12 +10,14 @@
 .main-block__user__user-media__album-row {
     width: 100%;
     align-items: center;
-    justify-content: space-around;
-    margin-bottom: 10px;
+    justify-content: center;
+    margin-bottom: 5px;
+    z-index: auto;
 }
 
 .main-block__user__user-media__album-rows {
     padding: 5px;
+    z-index: 10;
     justify-content: space-around;
 }
 
@@ -26,17 +28,18 @@
     -moz-border-radius: 4px;
     -ms-border-radius: 4px;
     -o-border-radius: 4px;
+    margin-left: 5px;
+    z-index: auto;
+    transition: all 200ms ease-in;
+    transform: scale(1);  
 }
 
 .main-block__user__user-media__img:hover {
     box-shadow: 0px 0px 150px #000000;
-    z-index: 2;
-    -webkit-transition: all 200ms ease-in;
-    -webkit-transform: scale(1.5);
-    -ms-transition: all 200ms ease-in;
-    -ms-transform: scale(1.5);   
-    -moz-transition: all 200ms ease-in;
-    -moz-transform: scale(1.5);
-    transition: all 200ms ease-in;
+    z-index: 9999;
     transform: scale(1.5);
+    -webkit-transform: scale(1.5);
+    -moz-transform: scale(1.5);
+    -ms-transform: scale(1.5);
+    -o-transform: scale(1.5);
 }

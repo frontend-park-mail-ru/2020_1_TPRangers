@@ -3,14 +3,14 @@ include ../utils/userSmallMediaMixin
 include ../utils/postMixin
 include ../utils/userAddPostMixin
 
-- let fakeUserData = { name: 'Вика', surname: 'Губанова', online: true, avatar: './assets/img/main-block/fakeUser/avatar.jpg', background: './assets/img/main-block/fakeUser/background.jpg', phone: '+7(995)117-78-08', email: "blablabla@yandex.ru", dateOfB: '10.02.2000', 
-- media: [{ link: 'photo/1', src: 'https://picsum.photos/id/237/200/200' }, { link: 'photo/2', src: 'https://picsum.photos/id/239/200/200' }, { link: 'photo/3', src: 'https://picsum.photos/id/238/200/200' }],
-- posts: [{author: {name: 'Вика', surname: 'Губанова', id: 1, avatar: './assets/img/main-block/fakeUser/avatar.jpg'},  dateOfPost: '12.03.2020', text: "Зенитное часовое число, следуя пионерской работе Эдвина Хаббла, параллельно. Наряду с этим, абсолютная погрешность представляет собой действительный метеорит. Элонгация прекрасно проецирует натуральный логарифм, об этом в минувшую субботу сообщил заместитель администратора NASA. Высота, и это следует подчеркнуть, притягивает вращательный параметр, хотя для имеющих глаза-телескопы туманность Андромеды показалась бы на небе величиной с треть ковша Большой Медведицы.", img: null, likes: 10, comments: 4, reply: 1},
-- {author: {name: 'Вика', surname: 'Губанова', id: 1, avatar: './assets/img/main-block/fakeUser/avatar.jpg'},  dateOfPost: '12.03.2020', text: "Зенитное часовое число, следуя пионерской работе Эдвина Хаббла, параллельно. Наряду с этим, абсолютная погрешность представляет собой действительный метеорит. Элонгация прекрасно проецирует натуральный логарифм, об этом в минувшую субботу сообщил заместитель администратора NASA. Высота, и это следует подчеркнуть, притягивает вращательный параметр, хотя для имеющих глаза-телескопы туманность Андромеды показалась бы на небе величиной с треть ковша Большой Медведицы.", img: "https://picsum.photos/id/235/600/600", likes: 10, comments: 4, reply: 1}]};
+- // С этим работает...
+-  // let fakeUserData = { name: name, surname: surname, online: online, avatar: avatar, background: background, phone: phone, email: email, dateOfB: dateOfB, 
+-  // media: media,
+-  // posts: posts};
 
 div(class="main-block__user")
-    if header
-        + userHeader(fakeUserData)
+    - console.log(fakeUserData)
+    + userHeader(fakeUserData)
     div(class="display_flex_row")
         div(class="main-block__left-block display_grow_L display_flex_column")
             each post in fakeUserData.posts
