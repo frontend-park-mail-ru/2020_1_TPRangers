@@ -1,10 +1,10 @@
 mixin userHeader(data)
-    div(class="main-block__user__user-header display_flex_column")
-        div(class="display_flex layout_light_secondary main-block__user__block main-block__user__user-header__background")
+    div(class="main-block__block boxshadow-block main-block__user__user-header display_flex_column")
+        div(class="display_flex layout_light_secondary main-block__user__user-header__background")
             img(src=data.background class="img main-block__user__user-header__img display_flex")
-        div(class="main-block__user__block main-block__user__user-header__avatar")    
+        div(class="main-block__user__user-header__avatar")    
             img(src=data.avatar class="img img_size_100 main-block__user__user-header__avatar__img display_flex")    
-        div(class="display_flex_row layout_light_secondary main-block__user__block main-block__user__user-header__main-info")
+        div(class="display_flex_row layout_light_secondary main-block__user__user-header__main-info")
             div(class="main-block__user__user-header__main-info__text-info display_flex_column")
                 span(class="text text_size_M main-block__user__user-header__main-info__text-info__span") Телефон: #{data.phone}
                 span(class="text text_size_M main-block__user__user-header__main-info__text-info__span") Email: #{data.email}
@@ -15,9 +15,9 @@ mixin userHeader(data)
                 else
                     span(class="text text_color_grey text_uppercase text_size_S main-block__user__user-header__main-info__text-info__online-status-span") не в сети  
             div(class="main-block__user__user-header__main-info__buttons display_flex_row")
-                a(href="profile", section="profile" class="main-block__user__user-header__button button_blue display_flex")
+                a(href="profile", section="profile" class="main-block__button button_blue display_flex")
                     img(src="../../../assets/img/main-block/addFriend.png" class="img img_size_XXS display_flex")
-                a(href="messages", section="messages" class="main-block__user__user-header__button button_light-blue display_flex")
+                a(href="messages", section="messages" class="main-block__button button_light-blue display_flex")
                     img(src="../../../assets/img/main-block/message.png" class="img img_size_XXS display_flex")
-                a(href="settings", section="settings" class="button button_orange main-block__user__user-header__button display_flex")
+                a(href="settings", section="settings" class="button button_orange main-block__button display_flex")
                     img(src="../../../assets/img/main-block/settings.png" class="img img_size_XXS display_flex")        

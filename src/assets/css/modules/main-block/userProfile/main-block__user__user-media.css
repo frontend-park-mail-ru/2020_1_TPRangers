@@ -1,0 +1,42 @@
+.main-block__user__user-media {
+    flex-grow: 1;
+}
+
+.main-block__user__user-media__header {
+    align-items: center;
+    justify-content: space-between;
+}
+
+.main-block__user__user-media__album-row {
+    width: 100%;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 10px;
+}
+
+.main-block__user__user-media__album-rows {
+    padding: 5px;
+    justify-content: space-around;
+}
+
+
+.main-block__user__user-media__img {
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+}
+
+.main-block__user__user-media__img:hover {
+    box-shadow: 0px 0px 150px #000000;
+    z-index: 2;
+    -webkit-transition: all 200ms ease-in;
+    -webkit-transform: scale(1.5);
+    -ms-transition: all 200ms ease-in;
+    -ms-transform: scale(1.5);   
+    -moz-transition: all 200ms ease-in;
+    -moz-transform: scale(1.5);
+    transition: all 200ms ease-in;
+    transform: scale(1.5);
+}

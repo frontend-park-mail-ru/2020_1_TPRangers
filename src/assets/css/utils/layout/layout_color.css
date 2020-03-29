@@ -3,5 +3,5 @@
 }
 
 .layout_light_main {
-  background-color:var(--main-color, rgb(212, 224, 227));
+  background-color: var(--main-color, rgb(212, 224, 227));
 }

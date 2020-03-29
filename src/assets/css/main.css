@@ -7,6 +7,9 @@
 @import "./utils/form/form.css";
 @import "./utils/input/input.css";
 @import "./utils/error/error.css";
+@import "./utils/hr/hr-line.css";
+@import "./utils/post/post.css";
+@import "./utils/icons/icon.css";
 
 @import "./modules/left-block/left-block.css";
 @import "./modules/main-block/main-block.css";
@@ -16,6 +19,11 @@
 :root {
   --main-color: rgb(212, 224, 227);
   --secondary-color: rgb(243, 243, 243);
+  --like-color: rgb(250, 103, 103);
+  --commit-color: rgb(133, 190, 212);
+  --reply-color: rgb(105, 212, 180);
+  --icon-color: rgb(104, 104, 104);
+  --icon-color-hover:  rgb(133, 190, 212);
 }
 
 * {
@@ -28,7 +36,7 @@ a {
 }
 
 html, body {
-  overflow: hidden;
+  overflow: auto;
 }
 
 

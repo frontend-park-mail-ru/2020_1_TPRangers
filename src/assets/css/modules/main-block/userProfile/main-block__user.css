@@ -1,4 +1,6 @@
 @import "./main-block__user__user-header.css";
+@import "./main-block__user__user-media.css";
+@import "./main-block__user__user-add-post.css";
 
 .main-block__user {
     width: 100%;
@@ -6,6 +8,17 @@
     justify-content: flex-start;
 }
 
-.main-block__user__block {
-    
+.main-block__button {
+    justify-content: center;
+    align-items: center;
+} 
+
+.main-block__button {
+    z-index: 50;
+    width: 60px;
+    height: 60px;
+    border-radius: 3px;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10%;
 }
