@@ -3,7 +3,7 @@
 
 .main-block {
     flex-grow: 6;
-    
+    margin-left: 88px;
     align-items: center;
 }
 

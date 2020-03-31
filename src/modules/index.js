@@ -42,7 +42,61 @@ const mainBlock = document.getElementById("main-block");
 
 const rightBlock = document.getElementById('right-block');
 
-let userProfile = new UserProfileView(mainBlock);
-    userProfile.render();
 
 
+
+
+// TODO: Тут надо добавить обработчики всех страниц
+Router.config({ mode: "history" });
+
+Router.add(/news/, () => {
+  console.log("news");
+  mainBlock.innerHTML = testTmpl({ data: "Новости" });
+})
+    .add(/friends/, () => {
+      console.log("friends");
+      mainBlock.innerHTML = testTmpl({ data: "Друзья" });
+    })
+    .add(/messages/, () => {
+      console.log('messages');
+      mainBlock.innerHTML = testTmpl({ data: 'Сообщения' });
+    })
+    .add(/media/, () => {
+      console.log('media');
+      mainBlock.innerHTML = testTmpl({ data: 'Медиатека' });
+    })
+    .add(/settings/, () => {
+      console.log('settings');
+      mainBlock.innerHTML = testTmpl({ data: 'Настройки' });
+    })
+    .add(/profile\/(.*)/, () => {
+      console.log(Router.getFragment());
+      console.log('profile');
+
+      mainBlock.innerHTML = testTmpl({ data: 'Профиль пользователя не мой' });
+    })
+    .add(/profile/, () => {
+      console.log(Router.getFragment());
+      console.log('profile');
+
+      let userProfile = new UserProfileView(mainBlock);
+      userProfile.render();
+
+    })
+    .add(/main/, () => {
+      console.log('main');
+      mainBlock.innerHTML = testTmpl({ data: 'Главная страница' });
+    })
+    .add(/login/, () => {
+      let login = new LoginView(mainBlock);
+      login.render();
+    })
+    .add(/reg/, () => {
+      let reg = new RegView(mainBlock);
+      reg.render();
+    } )
+    .listen();
+
+Router.callCurrent();
+//Initial check to understand if user authorized and to check '/' route
+Observer.emit('start');
