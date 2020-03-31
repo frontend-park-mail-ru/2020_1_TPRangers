@@ -1,7 +1,17 @@
 include ../utils/userHeaderMixin
+include ../utils/userSmallMediaMixin
+include ../utils/postMixin
+include ../utils/userAddPostMixin
 
-- let fakeUserData = { name: 'Вика', surname: 'Губанова', online: true, avatar: './assets/img/main-block/fakeUser/avatar.jpg', background: './assets/img/main-block/fakeUser/background.jpg', phone: '+7(995)117-78-08', email: "blablabla@yandex.ru", dateOfB: '10.02.2000' };
-
-div(class="main-block__user boxshadow-block")
-    if header
+div(class="main-block__user")
+    if page
         + userHeader(fakeUserData)
+        div(class="display_flex_row")
+            div(class="main-block__left-block display_grow_L display_flex_column")
+                each post in fakeUserData.posts
+                    + postMixin(post)
+            div(class="display_grow_S display_flex_column")
+                div(class="main-block__block display_flex_row")
+                    + userAddPostMixin()
+                div(class="main-block__block display_flex_row")
+                    + userSmallMediaMixin(fakeUserData)

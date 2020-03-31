@@ -1,0 +1,11 @@
+.icon {
+    text-decoration: none;
+}
+
+.icon__color__main {
+    color: var( --icon-color, rgb(104, 104, 104));;
+}
+
+.icon__color__main:hover {
+    color: var( --icon-color-hover,  rgb(133, 190, 212));
+}

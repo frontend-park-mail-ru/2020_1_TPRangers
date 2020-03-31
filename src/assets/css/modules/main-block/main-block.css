@@ -2,10 +2,20 @@
 @import "./error/main-block__error.css";
 
 .main-block {
-    flex-grow: 7;
+    flex-grow: 6;
+    
     align-items: center;
 }
 
 .main-block__layout {
     padding: 25px 25px;
+}
+
+.main-block__block {
+    margin-bottom: 20px;
+}
+
+.main-block__left-block {
+    margin-bottom: 20px;
+    margin-right: 20px;
 }
