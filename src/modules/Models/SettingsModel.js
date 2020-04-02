@@ -8,8 +8,8 @@ import { fetchGET, fetchPOST, fetchPUT } from '../../ajax/ajax';
 import { Router } from '../../Routes/routes';
 
 let formItems =  {
-  username: {
-    name: 'username',
+  name: {
+    name: 'name',
     regExp: /^[a-zA-Zа-яА-Я]{0,20}$/i,
   },
   email: {
@@ -86,7 +86,7 @@ let settingsSubmitCallback = () => {
 
   const email = settingsForm.elements.email.value;
   const password = settingsForm.elements.pass.value;
-  const name = settingsForm.elements.username.value;
+  const name = settingsForm.elements.name.value;
   const phone = settingsForm.elements.telephone.value;
   const date = settingsForm.elements.date.value;
 
@@ -110,6 +110,7 @@ let settingsSetInputCallback = response => {
   if (response.status === 200) {
     response.json().then(data => {
       for (const elem in data.body.user) {
+        console.log(data.body.user);
         const settingsElem = document.getElementById(elem);
         if (settingsElem) {
           settingsElem.placeholder = data.body.user[elem];
