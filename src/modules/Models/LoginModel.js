@@ -14,10 +14,7 @@ const formItems = {
   },
 };
 
-
-
-
-let loginRenderCallback = function (data) {
+let loginRenderCallback = () => {
   console.log(`[DEBUG] login:render callback`);
 
   fetchGET({
@@ -47,7 +44,7 @@ let loginRenderCallback = function (data) {
   });
 };
 
-let loginSubmitCallback = function(data) {
+let loginSubmitCallback = () => {
 
   const loginForm = document.getElementById('js-login-form');
 
@@ -68,7 +65,7 @@ let loginSubmitCallback = function(data) {
   })
 };
 
-let loginAjaxCallback = function(response) {
+let loginAjaxCallback = response => {
   console.log(`[DEBUG] login:ajax callback`);
   console.log(response.status);
   Observer.emit('draw-basic');

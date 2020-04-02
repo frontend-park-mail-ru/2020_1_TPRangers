@@ -4,7 +4,10 @@ import { Router } from "../Routes/routes";
 import LoginView from './View/LoginView';
 import Observer from '../controller/observer';
 import RegView from './View/RegView';
+
 import UserProfileView from './View/UserProfileView';
+
+import SettingsView from './View/SettingsView';
 
 
 // const leftBlockTmpl = require("../pug/includes/modules/left-block.pug");
@@ -67,7 +70,8 @@ Router.add(/news/, () => {
     })
     .add(/settings/, () => {
       console.log('settings');
-      mainBlock.innerHTML = testTmpl({ data: 'Настройки' });
+      let settings = new SettingsView(mainBlock);
+      settings.render();
     })
     .add(/profile\/(.*)/, () => {
       console.log(Router.getFragment());
@@ -96,6 +100,7 @@ Router.add(/news/, () => {
       reg.render();
     } )
     .listen();
+
 
 Router.callCurrent();
 //Initial check to understand if user authorized and to check '/' route
