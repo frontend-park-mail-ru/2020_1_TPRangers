@@ -87,8 +87,10 @@ let settingsSubmitCallback = () => {
   const email = settingsForm.elements.email.value;
   const password = settingsForm.elements.pass.value;
   const name = settingsForm.elements.name.value;
-  const phone = settingsForm.elements.telephone.value;
+  const telephone = settingsForm.elements.telephone.value;
   const date = settingsForm.elements.date.value;
+
+  console.log(email, password, name, telephone, date);
 
   fetchPUT({
     url: BACKEND_IP + '/api/v1/settings',
@@ -96,7 +98,7 @@ let settingsSubmitCallback = () => {
       email,
       password,
       name,
-      phone,
+      telephone,
       date
     }),
     callback: response => {

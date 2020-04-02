@@ -85,8 +85,10 @@ let regSubmitCallback = event => {
   const email = regForm.elements.email.value;
   const password = regForm.elements.password.value;
   const name = regForm.elements.username.value;
-  const phone = regForm.elements.phone.value;
+  const telephone = regForm.elements.phone.value;
   const date = regForm.elements.date.value;
+
+
 
   fetchPOST({
     url: BACKEND_IP+'/api/v1/registration',
@@ -94,7 +96,7 @@ let regSubmitCallback = event => {
       email,
       password,
       name,
-      phone,
+      telephone,
       date,
     }),
     callback: response => {
