@@ -75,6 +75,7 @@ let settingsRenderCallback = () => {
   });
 };
 
+//TODO загрузка фото на сервер с фотографиями
 let settingsSubmitCallback = () => {
   console.log(`[DEBUG] settings:submit callback`);
 
