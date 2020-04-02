@@ -5,7 +5,7 @@ import LoginView from './View/LoginView';
 import Observer from '../controller/observer';
 import RegView from './View/RegView';
 
-import UserProfileView from './View/UserProfileView';
+import ProfileView from './View/ProfileView';
 
 import SettingsView from './View/SettingsView';
 
@@ -83,7 +83,7 @@ Router.add(/news/, () => {
       console.log(Router.getFragment());
       console.log('profile');
 
-      let userProfile = new UserProfileView(mainBlock);
+      let userProfile = new ProfileView(mainBlock);
       userProfile.render();
 
     })
