@@ -14,5 +14,5 @@ mixin baseForm(data)
                                 span(class="text text_size_M error__tooltip_pink form__error__tooltip", id="tooltip-"+item.name, data-tooltip=item.errorMsg) !
             input(type="submit", value=data.buttonName, class="button button_dark form__button")
 
-    if data.secondButtonName
-        button(type="reset", form=data.id, class='button button_dark form__button') #{data.secondButtonName}
+            if data.secondButtonName
+                button(type="reset", form=data.id, class='button button_dark form__button') #{data.secondButtonName}
