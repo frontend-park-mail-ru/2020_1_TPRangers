@@ -73,6 +73,8 @@ let settingsRenderCallback = () => {
       Observer.emit('settings:submit', event);
     }
   });
+
+
 };
 
 //TODO загрузка фото на сервер с фотографиями

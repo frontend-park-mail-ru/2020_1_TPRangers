@@ -87,10 +87,6 @@ Router.add(/news/, () => {
       userProfile.render();
 
     })
-    .add(/main/, () => {
-      console.log('main');
-      mainBlock.innerHTML = testTmpl({ data: 'Главная страница' });
-    })
     .add(/login/, () => {
       let login = new LoginView(mainBlock);
       login.render();

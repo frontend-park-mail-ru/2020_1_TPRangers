@@ -42,6 +42,11 @@ let loginRenderCallback = () => {
       Observer.emit('login:submit', event);
     }
   });
+
+  loginForm.addEventListener('reset', event => {
+    event.preventDefault();
+    Router.navigate('reg')
+  })
 };
 
 let loginSubmitCallback = () => {
@@ -67,9 +72,10 @@ let loginSubmitCallback = () => {
 
 let loginAjaxCallback = response => {
   console.log(`[DEBUG] login:ajax callback`);
-  console.log(response.status);
-  Observer.emit('draw-basic');
-  Router.navigate('news');
+  if (response.status === 200) {
+    Observer.emit('draw-basic');
+    Router.navigate('news');
+  }
 };
 
 

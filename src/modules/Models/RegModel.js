@@ -70,6 +70,11 @@ let regRenderCallback = () => {
       Observer.emit('reg:submit', event);
     }
   });
+
+  regForm.addEventListener('reset', event => {
+    event.preventDefault();
+    Router.navigate('login');
+  })
 };
 
 let regSubmitCallback = event => {
