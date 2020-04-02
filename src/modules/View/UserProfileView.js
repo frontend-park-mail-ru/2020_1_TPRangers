@@ -1,11 +1,12 @@
 import IView from './IView';
 import Observer from '../../controller/observer';
 
+
 const userProfileTmpl = require('../../pug/pages/userProfile.pug');
 
 const dataForUserBlocks = {
         page: true,
-        fakeUserData: { name: 'Вика', 
+        fakeUserData: { name: 'Вика',
         surname: 'Губанова', online: true, avatar: './assets/img/main-block/fakeUser/avatar.jpg', background: './assets/img/main-block/fakeUser/background.jpg', phone: '+7(995)117-78-08', email: "blablabla@yandex.ru", dateOfB: '10.02.2000',
         posts: [
           {
@@ -31,7 +32,7 @@ const dataForUserBlocks = {
           {
             src: 'https://picsum.photos/100'
           }
-        ],  
+        ],
       },
 };
 export default class UserProfileView extends IView{
