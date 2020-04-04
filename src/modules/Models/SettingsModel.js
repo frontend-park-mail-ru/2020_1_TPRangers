@@ -83,6 +83,21 @@ let settingsSubmitCallback = () => {
 
   const settingsForm = document.getElementById('js-settings-form');
 
+  if (settingsForm.elements.avatar.files[0]) {
+
+    let body = new FormData();
+    body.append('fileData', settingsForm.elements.avatar.files[0]);
+
+    fetchPOST({
+      url: 'https://social-hub.ru/upload',
+      body: body,
+      callback: response => {
+        console.log(response);
+      },
+      mode: 'no-cors',
+      credentials: 'omit'
+    })
+  }
 
   const email = settingsForm.elements.email.value;
   const password = settingsForm.elements.pass.value;
@@ -103,7 +118,7 @@ let settingsSubmitCallback = () => {
     }),
     callback: response => {
       Observer.emit('settings:ajax', response);
-    }
+    },
   })
 };
 
@@ -112,7 +127,6 @@ let settingsSetInputCallback = response => {
   if (response.status === 200) {
     response.json().then(data => {
       for (const elem in data.body.user) {
-        console.log(data.body.user);
         const settingsElem = document.getElementById(elem);
         if (settingsElem) {
           settingsElem.placeholder = data.body.user[elem];

@@ -13,13 +13,15 @@ function fetchApi({
   body = null,
   callback = () => void 0,
   headers,
+  mode = 'cors',
+  credentials = 'include',
 } = {}) {
   fetch(url, {
     method,
     headers,
     body,
-    mode: 'cors',
-    credentials: 'include',
+    mode,
+    credentials,
   })
     .then(callback)
     .catch(err => {
@@ -57,6 +59,8 @@ export function fetchPOST({
   body = null,
   headers = { 'Content-Type': 'application/json' },
   callback = () => void 0,
+  mode = 'cors',
+  credentials = 'include',
 } = {}) {
   return fetchApi({
     method: 'POST',
@@ -64,6 +68,8 @@ export function fetchPOST({
     body,
     headers,
     callback,
+    mode,
+    credentials,
   });
 }
 
@@ -76,7 +82,7 @@ export function fetchPOST({
 export function fetchPUT({
   url = '/',
   body = null,
-  // headers = { 'Content-Type': 'multipart/form-data' },
+  headers = { 'Content-Type': 'application/json' },
   callback = () => void 0,
 } = {}) {
   return fetchApi({
