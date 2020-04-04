@@ -39,6 +39,7 @@ let settingsRenderCallback =  () => {
 
   const settingsForm = document.getElementById('js-settings-form');
 
+
   fetchGET({
     url: BACKEND_IP + '/api/v1/settings',
     callback: response => {
@@ -89,7 +90,7 @@ let settingsSubmitCallback = async () => {
     body.append('fileData', settingsForm.elements.avatar.files[0]);
 
     fetchMultipartPOST({
-      url:  'http://localhost:5000/upload',
+      url:  'https://social-hub.ru/upload',
       body,
       callback: response => {
         response.json().then( data => {
@@ -111,7 +112,7 @@ let afterPhotoCallback = (response) => {
   let photo = undefined;
   if (response) {
     console.log(response);
-    photo = '../photo_server/uploads/img/' + response.filename;
+    photo = 'https://social-hub.ru' + response.filename;
   }
   const email = settingsForm.elements.email.value;
   const password = settingsForm.elements.pass.value;
