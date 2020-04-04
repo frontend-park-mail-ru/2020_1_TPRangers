@@ -4,7 +4,13 @@ const app = express();
 const port = 5000;
 const router = require('./router');
 
-app.use(cors());
+let corsOptions = {
+  origin: 'http://localhost:3000',
+  credentials: true,
+  method: ['GET', 'POST'],
+};
+
+app.use(cors(corsOptions));
 app.use('/', router);
 
 app.listen(port, (err) => {

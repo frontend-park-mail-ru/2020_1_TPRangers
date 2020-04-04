@@ -3,6 +3,7 @@ const mainRouter = express.Router();
 const multer  = require('multer');
 
 const imgPath = '/sites/social-hub/uploads/img/';
+const localImagePath = __dirname + '/uploads/img';
 
 mainRouter.use((request, response, next) => {
   response.set('Content-Type', 'application/json');
@@ -12,7 +13,7 @@ mainRouter.use((request, response, next) => {
 
 const imgStorageConfig = multer.diskStorage({
   destination: (req, file, cb) =>{
-    cb(null, imgPath);
+    cb(null, localImagePath);
   },
   filename: (req, file, cb) =>{
     cb(null, Date.now() + '-' + file.originalname);
@@ -22,7 +23,7 @@ const imgStorageConfig = multer.diskStorage({
 
 mainRouter.post('/upload', multer({storage:imgStorageConfig}).single('fileData'),function (HttpRequest, HttpResponse) {
   if(!HttpRequest.file) {
-    HttpResponse.status(401)
+    HttpResponse.status(502)
       .json({
         message: 'Ошибка при загрузке файла'
       });
@@ -34,6 +35,10 @@ mainRouter.post('/upload', multer({storage:imgStorageConfig}).single('fileData')
         filename: HttpRequest.file.filename,
       });
   }
+});
+
+mainRouter.post('/', function (HttpRequest, HttpResponse) {
+  HttpResponse.json({answer: 'test'});
 });
 
 module.exports = mainRouter;
