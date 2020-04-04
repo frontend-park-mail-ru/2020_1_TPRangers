@@ -2,7 +2,7 @@ const express = require('express');
 const mainRouter = express.Router();
 const multer  = require('multer');
 
-const imgPath = __dirname+'/uploads/img/';
+const imgPath = '/sites/social-hub/uploads/img/';
 
 mainRouter.use((request, response, next) => {
   response.set('Content-Type', 'application/json');
