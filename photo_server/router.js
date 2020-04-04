@@ -13,7 +13,7 @@ mainRouter.use((request, response, next) => {
 
 const imgStorageConfig = multer.diskStorage({
   destination: (req, file, cb) =>{
-    cb(null, localImagePath);
+    cb(null, imgPath);
   },
   filename: (req, file, cb) =>{
     cb(null, Date.now() + '-' + file.originalname);
@@ -32,13 +32,10 @@ mainRouter.post('/upload', multer({storage:imgStorageConfig}).single('fileData')
     HttpResponse.status(200)
       .json({
         message: 'Файл загружен',
-        filename: HttpRequest.file.filename,
+        filename: '/uploads/img/' + HttpRequest.file.filename,
       });
   }
 });
 
-mainRouter.post('/', function (HttpRequest, HttpResponse) {
-  HttpResponse.json({answer: 'test'});
-});
 
 module.exports = mainRouter;
