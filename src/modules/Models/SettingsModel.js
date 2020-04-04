@@ -4,7 +4,7 @@ import {
   addRegExpValidationAll, checkPasswordValidity,
   checkRegExpValidity
 } from '../formValidation';
-import { fetchGET, fetchPOST, fetchPUT } from '../../ajax/ajax';
+import { fetchGET, fetchMultipartPOST, fetchPOST, fetchPUT } from '../../ajax/ajax';
 import { Router } from '../../Routes/routes';
 
 let formItems =  {
@@ -34,7 +34,7 @@ let formItems =  {
   },
 };
 
-let settingsRenderCallback = () => {
+let settingsRenderCallback =  () => {
   console.log(`[DEBUG] settings:render callback`);
 
   const settingsForm = document.getElementById('js-settings-form');
@@ -78,7 +78,7 @@ let settingsRenderCallback = () => {
 };
 
 //TODO загрузка фото на сервер с фотографиями
-let settingsSubmitCallback = () => {
+let settingsSubmitCallback = async () => {
   console.log(`[DEBUG] settings:submit callback`);
 
   const settingsForm = document.getElementById('js-settings-form');
@@ -88,24 +88,36 @@ let settingsSubmitCallback = () => {
     let body = new FormData();
     body.append('fileData', settingsForm.elements.avatar.files[0]);
 
-    fetchPOST({
-      url: 'https://social-hub.ru/upload',
-      body: body,
+    fetchMultipartPOST({
+      url:  'http://localhost:5000/upload',
+      body,
       callback: response => {
-        console.log(response);
-      },
-      mode: 'no-cors',
-      credentials: 'omit'
+        response.json().then( data => {
+            Observer.emit('settings:afterPhoto', data);
+          }
+        )
+      }
     })
+  } else {
+    Observer.emit('settings:afterPhoto');
   }
 
+
+};
+
+let afterPhotoCallback = (response) => {
+  console.log(`[DEBUG] settings:afterPhoto callback`);
+  const settingsForm = document.getElementById('js-settings-form');
+  let photo = undefined;
+  if (response) {
+    console.log(response);
+    photo = '../photo_server/uploads/img/' + response.filename;
+  }
   const email = settingsForm.elements.email.value;
   const password = settingsForm.elements.pass.value;
   const name = settingsForm.elements.name.value;
   const telephone = settingsForm.elements.telephone.value;
   const date = settingsForm.elements.date.value;
-
-  console.log(email, password, name, telephone, date);
 
   fetchPUT({
     url: BACKEND_IP + '/api/v1/settings',
@@ -114,7 +126,8 @@ let settingsSubmitCallback = () => {
       password,
       name,
       telephone,
-      date
+      date,
+      photo
     }),
     callback: response => {
       Observer.emit('settings:ajax', response);
@@ -147,3 +160,4 @@ Observer.on('settings:render', settingsRenderCallback);
 Observer.on('settings:submit', settingsSubmitCallback);
 Observer.on('settings:set-input', settingsSetInputCallback);
 Observer.on('settings:ajax', settingAjaxCallback);
+Observer.on('settings:afterPhoto', afterPhotoCallback);
