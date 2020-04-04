@@ -7,7 +7,8 @@
     "server": "webpack-dev-server --open --config ./build/webpack.dev.conf.js",
     "server-build": "webpack --config ./build/webpack.build.conf.js",
     "lint": "eslint --debug src/ --fix",
-    "prettier": "prettier --write src/**/*.js"
+    "prettier": "prettier --write src/**/*.js",
+    "photo-server": "nodemon photo_server/index.js"
   },
   "browserslist": [
     "> 1%",
@@ -36,6 +37,7 @@
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.8.0",
     "node-sass": "^4.13.1",
+    "nodemon": "^2.0.2",
     "postcss-loader": "^3.0.0",
     "pug": "^2.0.4",
     "pug-loader": "^2.4.0",
@@ -48,8 +50,8 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
-    "dotenv": "^8.2.0",
     "babel-eslint": "^10.0.3",
+    "dotenv": "^8.2.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-jest-enzyme": "^7.1.2",
@@ -61,6 +63,7 @@
     "eslint-plugin-react": "^7.18.3",
     "express": "^4.17.1",
     "jsdoc": "^3.6.3",
+    "multer": "^1.4.2",
     "prettier": "^1.19.1"
   }
 }
