@@ -45,6 +45,19 @@ const mainBlock = document.getElementById("main-block");
 
 const rightBlock = document.getElementById('right-block');
 
+//Service Worker init
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('../sw.js')
+      .then(() => {
+        console.log('[DEBUG] ServiceWorker registered');
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  });
+}
 
 
 
@@ -98,6 +111,16 @@ Router.add(/news/, () => {
     .listen();
 
 
-Router.callCurrent();
-//Initial check to understand if user authorized and to check '/' route
-Observer.emit('start');
+
+
+if (navigator.onLine) {
+  Router.callCurrent();
+  //Initial check to understand if user authorized and to check '/' route
+  Observer.emit('start');
+} else {
+  Observer.emit('render:error', {
+    status: 'Вы оффлайн',
+    text: 'Надеемся, что вы скоро снова присоденитесь к нам ',
+    backButton: false,
+  });
+}

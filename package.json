@@ -8,7 +8,8 @@
     "server-build": "webpack --config ./build/webpack.build.conf.js",
     "lint": "eslint --debug src/ --fix",
     "prettier": "prettier --write src/**/*.js",
-    "photo-server": "nodemon photo_server/index.js"
+    "photo-server": "nodemon photo_server/index.js",
+    "sw": "http-server dist"
   },
   "browserslist": [
     "> 1%",
@@ -35,6 +36,7 @@
     "cssnano": "^4.1.10",
     "file-loader": "^4.2.0",
     "html-webpack-plugin": "^3.2.0",
+    "http-server": "^0.12.1",
     "mini-css-extract-plugin": "^0.8.0",
     "node-sass": "^4.13.1",
     "nodemon": "^2.0.2",
@@ -47,7 +49,8 @@
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.9",
     "webpack-dev-server": "^3.9.0",
-    "webpack-merge": "^4.2.2"
+    "webpack-merge": "^4.2.2",
+    "workbox-webpack-plugin": "^5.1.2"
   },
   "dependencies": {
     "babel-eslint": "^10.0.3",
@@ -66,6 +69,7 @@
     "forever": "^2.0.0",
     "jsdoc": "^3.6.3",
     "multer": "^1.4.2",
-    "prettier": "^1.19.1"
+    "prettier": "^1.19.1",
+    "serviceworker-webpack-plugin": "^1.0.1"
   }
 }

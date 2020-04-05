@@ -3,7 +3,10 @@ const fs = require('fs');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin');
 
+const serverDist = '/sites/social-hub/dist';
+const localDist = path.join(__dirname, '../dist');
 const webpack = require('webpack');
 require('dotenv').config();
 
@@ -11,7 +14,7 @@ require('dotenv').config();
 // see more: https://github.com/vedees/webpack-template/blob/master/README.md#main-const
 const PATHS = {
   src: path.join(__dirname, '../src'),
-  dist: '/sites/social-hub/dist',
+  dist: localDist,
   assets: 'assets/'
 };
 
@@ -93,6 +96,9 @@ module.exports = {
     }]
   },
   plugins: [
+    new ServiceWorkerWebpackPlugin({
+      entry: path.join(__dirname, '../src/sw.js'),
+    }),
     new MiniCssExtractPlugin({
       filename: `${PATHS.assets}css/[name].[hash].css`,
     }),

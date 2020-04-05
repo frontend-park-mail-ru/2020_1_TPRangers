@@ -27,7 +27,7 @@ function fetchApi({
         status: 500,
         text: 'Упс.. Скоро мы все починим :)',
         backButton: false,
-      })
+      });
     });
 }
 
