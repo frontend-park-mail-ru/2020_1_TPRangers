@@ -10,6 +10,8 @@ import SettingsView from './View/SettingsView';
 import FriendsView from './View/FriendsView';
 import NewsView from './View/NewsView';
 import MediaView from './View/MediaAlbumsView';
+import UserView from './View/UserView';
+import MediaPhotosView from './View/MediaPhotosView';
 
 
 // const leftBlockTmpl = require("../pug/includes/modules/left-block.pug");
@@ -22,23 +24,25 @@ if (!app) console.log('app not found');
 
 app.addEventListener('click', evt => {
   if (evt.target instanceof Element) {
-    if (evt.target.tagName === "IMG") {
+    if (evt.target.tagName === "I" || evt.target.tagName === "IMG") {
+
+      console.log('[DEBUG]: PREV DEF: ' + evt.target.tagName);
+
       evt.preventDefault();
+      const aNode = evt.target.parentNode;  
+      console.log('[DEBUG]: PREV DEF: ' + aNode.tagName);
 
-      const aNode = evt.target.parentNode;
-
-      if (aNode.getAttribute("section") === "profile") {
-        // TODO: Тут надо будет добавить обработку id  пользователя, чья страница
-        Router.navigate(`${aNode.getAttribute("section")}`);
-      } else {
+      if (aNode.tagName === "A")
         Router.navigate(aNode.getAttribute("section"));
-      }
+
     } else if (evt.target.tagName === "A") {
       evt.preventDefault();
       Router.navigate(evt.target.getAttribute("section"));
     }
   }
 });
+
+
 
 
 const leftBlock = document.getElementById("left-block");
@@ -56,7 +60,6 @@ Router.config({ mode: "history" });
 
 Router.add(/news/, () => {
   console.log("news");
-  NewsView 
   let news = new NewsView(mainBlock);
   news.render();
 })
@@ -74,24 +77,31 @@ Router.add(/news/, () => {
       media.render();
       console.log('media');
     })
+    .add(/album\/(.*)/, () => {
+      console.log(Router.getFragment());
+
+      let photos = new MediaPhotosView(mainBlock);
+      photos.render();
+    })
     .add(/settings/, () => {
-      console.log('settings');
+      console.log('settings' + window.location.href);
       let settings = new SettingsView(mainBlock);
       settings.render();
     })
-    .add(/profile\/(.*)/, () => {
-      console.log(Router.getFragment());
-      console.log('profile');
+    .add(/user\/(.*)/, () => {
+      // console.log(Router.getFragment());
+      console.log('login:', Router.getFragment().split('/')[1]); // так можно вытащить login user
 
-      mainBlock.innerHTML = testTmpl({ data: 'Профиль пользователя не мой' });
+      let user = new  UserView(mainBlock);
+      user.render();
+      Router.navigate();
     })
     .add(/profile/, () => {
-      console.log(Router.getFragment());
+      // console.log(Router.getFragment());
       console.log('profile');
 
       let userProfile = new ProfileView(mainBlock);
       userProfile.render();
-
     })
     .add(/login/, () => {
       let login = new LoginView(mainBlock);
@@ -101,6 +111,11 @@ Router.add(/news/, () => {
       let reg = new RegView(mainBlock);
       reg.render();
     } )
+    .add(/(?!news$)(?!friends$)(?!messages$)(?!media$)(?!album\/(.*)$)(?!settings$)(?!user\/(.*)$)(?!profile$)(?!login$)(?!reg$)(?!logout$)/, () => {
+      let news = new NewsView(mainBlock);
+      news.render();
+      Router.navigate();
+    })
     .listen();
 
 

@@ -3,6 +3,7 @@
 @import "./news/main-block__news.css";
 @import "./friends/main-block__friends.css";
 @import "./media/main-block__media.css";
+@import "./media/main-block__photos.css";
 
 .main-block {
     flex-grow: 6;
@@ -56,6 +57,7 @@
         align-items: flex-start;
         justify-content: flex-start;
         flex-direction: column;
+        margin-bottom: 160px;
     }
     .main-block__user-body {
         flex-direction: column;

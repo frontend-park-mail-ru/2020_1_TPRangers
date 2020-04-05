@@ -1,6 +1,6 @@
 @import "./leftBlock__linksBlock.css";
 @import "./leftBlock__button.css";
-@import "./leftBlock__img.css";
+@import "./leftBlock__icon.css";
 
 .left-block {
   flex-direction: column;

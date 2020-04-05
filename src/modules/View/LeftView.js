@@ -6,5 +6,8 @@ export default class LeftView extends IView {
   render() {
     super.render();
     this.parent.innerHTML += leftTmpl();
+
+    
+
   }
 }

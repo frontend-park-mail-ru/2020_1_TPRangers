@@ -1,24 +1,31 @@
 - let dataForLinks = [
 -   { name: 'Новости',
 -     link: 'news',
+-     class: 'far fa-newspaper'
 -   },
 -   { name: 'Друзья',
 -     link: 'friends',
+-     class: 'fas fa-users'
 -   },
 -   { name: 'Сообщения',
 -     link: 'messages',
+-     class: 'fas fa-comments'
 -   },
 -   { name: 'Медиатека',
 -     link: 'media',
+-     class: 'fas fa-images'
 -   },
 -   { name: 'Настройки',
 -     link: 'settings',
+-     class: 'fas fa-cogs'
 -   },
 -   { name: 'Профиль',
 -     link: 'profile',
+-     class: 'fas fa-user'
 -   },
 -   { name: 'Выход',
 -     link: 'logout',
+-     class: 'fas fa-sign-out-alt'
 -   }
 - ];
 
@@ -27,6 +34,6 @@
         img(src="../../../assets/img/left-block/logo.png" class="left-block__logo img img_size_S display_flex")
 .leftBlock__linksBlock.display_flex
     each link in dataForLinks
-        a(href=link.link, section=link.link class="button button_size_s leftBlock__button button_light text_size_L display_flex")
-            img(src="../../../assets/img/left-block/" + link.link + ".png" class="img img_size_XXS display_flex")
+        a(href=link.link, section=link.link class="display_flex leftBlock__button")
+            i(class="text text_size_L icon icon__color__main leftBlock__icon " + link.class) 
 
