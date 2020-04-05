@@ -6,7 +6,7 @@ mixin baseForm(data)
                 each item in data.formItems
                     div(class="display_flex_row")
                         div(class="display_flex_column")
-                            div(class="text text_size_M " + item.class)
+                            div(class="text text_form " + item.class)
                                 span(class="form__field-title") #{item.title}
                             div(class="form__input-and-icon display_flex_row")
                                 div(class="input__icon-container display_flex")
@@ -19,4 +19,4 @@ mixin baseForm(data)
                     input(type="submit", value=data.buttonName, class="button button_light-blue form__button display_flex")
 
                     if data.secondButtonName
-                        button(type="reset", form=data.id, class='form__button button_orange display_flex') #{data.secondButtonName}
+                        button(type="reset", form=data.id, class='button form__button button_orange display_flex') #{data.secondButtonName}

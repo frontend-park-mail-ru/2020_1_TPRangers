@@ -7,15 +7,3 @@
     justify-self: flex-start;
     justify-content: flex-start;
 }
-
-.main-block__button {
-    justify-content: center;
-    align-items: center;
-    z-index: 50;
-    width: 60px;
-    height: 60px;
-    border-radius: 3px;
-    justify-content: center;
-    align-items: center;
-    margin-left: 10%;
-}

@@ -6,6 +6,10 @@
     font-size: 1em;
 }
 
+.text_form {
+    font-size: 1em;
+}
+
 .text_size_XM {
     font-size: 1em;
 }
@@ -28,10 +32,14 @@
 
 @media screen and (max-device-width:480px){
     .text_size_L {
-        font-size: 2.8em;
+        font-size: 4em;
     }
     .text_size_M {
-        font-size: 2em;
+        font-size: 2.8em;
+    }
+
+    .text_form {
+        font-size: 1.6em;
     }
 
     .text_size_XM {
@@ -39,11 +47,11 @@
     }
     
     .text_size_SL {
-        font-size: 2.4em;
+        font-size: 3.6em;
     }
     
     .text_size_S {
-        font-size: 1em;
+        font-size: 2em;
     }
     
     .text_size_XL {

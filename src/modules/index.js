@@ -9,6 +9,7 @@ import ProfileView from './View/ProfileView';
 import SettingsView from './View/SettingsView';
 import FriendsView from './View/FriendsView';
 import NewsView from './View/NewsView';
+import MediaView from './View/MediaAlbumsView';
 
 
 // const leftBlockTmpl = require("../pug/includes/modules/left-block.pug");
@@ -69,8 +70,9 @@ Router.add(/news/, () => {
       mainBlock.innerHTML = testTmpl({ data: 'Сообщения' });
     })
     .add(/media/, () => {
+      let media = new MediaView(mainBlock);
+      media.render();
       console.log('media');
-      mainBlock.innerHTML = testTmpl({ data: 'Медиатека' });
     })
     .add(/settings/, () => {
       console.log('settings');

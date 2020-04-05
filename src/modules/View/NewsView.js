@@ -120,7 +120,6 @@ export default class ProfileView extends IView{
 
             console.log(response.body);
             this.parent.innerHTML += newsTmpl(dataForTest); // response.body
-            Observer.emit('profile:render', response);
           })
         }
       });

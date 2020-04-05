@@ -1,12 +1,13 @@
 .main-block__friends {
     width: 100%;
     align-items: center;
+    justify-content: center;
 }
 
 .friends-body {
     align-content: space-between;
     justify-content: space-between;
-    max-width: 89vw;
+    max-width: 100%;
     flex-wrap: wrap;
     margin-top: 20px;
 }
@@ -18,7 +19,7 @@
 }
 
 .main-block__friend-card {
-    width: 44%;
+    width: 43%;
     margin-bottom: 20px;
 }
 
@@ -28,28 +29,43 @@
 
 .friend-card__body__username {
     margin-bottom: 5px;
+    color: black;
 }
 
-@media screen and (max-width:960px){
+@media screen and (max-width:1024px){
     .friends-body {
+        min-width: 100%;
         flex-wrap: nowrap;
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
     .main-block__friend-card {
-        min-width: 92%;
+        max-width: 90%;
+        min-width: 90%;
         margin-bottom: 20px;
     }
-    
 }
 
 @media screen and (max-device-width:480px){
     .friends-body {
+        max-width: 90%;
+        min-width: 90%;
         flex-wrap: nowrap;
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
+    .main-block__friends {
+        min-width: 100%;
+
+    }
+    
     .main-block__friend-card {
+        max-width: 100%;
         min-width: 100%;
         margin-bottom: 20px;
+        align-items: flex-start;
     }
     
 }

@@ -11,6 +11,6 @@
     background-color: var(--mobile-main-color,  rgb(243, 243, 243));
   }
   .layout_light_secondary {
-    background-color:  var(--mobile-secondary-color, rgb(252, 252, 252))
+    background-color:  var(--mobile-secondary-color, rgb(252, 252, 252));
   }
 }

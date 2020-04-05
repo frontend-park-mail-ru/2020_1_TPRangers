@@ -4,6 +4,9 @@
 .form {
     justify-content: center;
     align-items: center;
+    width: 60vw;
+    max-height: 80vh;
+    margin-top: 10vh;
 }
 
 .form__buttons-group {
@@ -15,7 +18,9 @@
 .form__body {
     align-items: center;
     box-shadow: 0 0 6px rgba(0,0,0,0.5);
-    padding: 20px 40px;
+    padding: 4vh 4vw;
+    max-width: max-content;
+    min-width: 300px;
 }
 
 .form__name {
@@ -38,7 +43,7 @@
     margin-top: 20px;
     min-height: 50px;
     outline: none;
-    min-width: 250px;
+    width: 50%;
     
     margin-left: 5px;
     margin-right: 5px;
@@ -55,6 +60,7 @@
         min-height: 80px;
     }
     .form {
+        margin-top: 0;
         width: 100%;
     }
     .form__body {
