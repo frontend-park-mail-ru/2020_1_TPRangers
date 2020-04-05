@@ -1,18 +1,22 @@
 mixin baseForm(data)
-    form(action="#", class="display_flex " + data.classes, id=data.id)
-        div(class="form__body display_flex_column")
-            span(class="form__name text text_size_L") #{data.buttonName}
-            each item in data.formItems
-                div(class="display_flex_row")
-                    div(class="display_flex_column")
-                        div(class="text text_size_M " + item.class)
-                            span #{item.title}
-                        div(class="form__input-and-icon display_flex_row")
-                            i(class="input__icon display_flex " + item.fa_item)
-                            input(type=item.type, name=item.name, id=item.name,placeholder=item.placeholder class="input display_flex")
-                            div(id="error-"+item.name class="form__error form-error__anim display_flex").hidden
-                                span(class="text text_size_M error__tooltip_pink form__error__tooltip", id="tooltip-"+item.name, data-tooltip=item.errorMsg) !
-            input(type="submit", value=data.buttonName, class="button button_dark form__button")
+    div(class="main-block__form display_flex")
+        form(action="#", class="display_flex " + data.classes, id=data.id)
+            div(class="form__body form_light display_flex_column")
+                span(class="form__name text text_size_L") #{data.buttonName}
+                each item in data.formItems
+                    div(class="display_flex_row")
+                        div(class="display_flex_column")
+                            div(class="text text_size_M " + item.class)
+                                span(class="form__field-title") #{item.title}
+                            div(class="form__input-and-icon display_flex_row")
+                                div(class="input__icon-container display_flex")
+                                    i(class="input__icon display_flex form__input__icon " + item.fa_item)
+                                input(type=item.type, name=item.name, id=item.name,placeholder=item.placeholder class="input form__input display_flex")
+                                div(id="error-"+item.name class="form__error form-error__anim display_flex").hidden
+                                    span(class="text text_size_M error__tooltip_pink form__error__tooltip", id="tooltip-"+item.name, data-tooltip=item.errorMsg) !
 
-            if data.secondButtonName
-                button(type="reset", form=data.id, class='button button_dark form__button') #{data.secondButtonName}
+                div(class="form__buttons-group display_flex")
+                    input(type="submit", value=data.buttonName, class="button button_light-blue form__button display_flex")
+
+                    if data.secondButtonName
+                        button(type="reset", form=data.id, class='form__button button_orange display_flex') #{data.secondButtonName}

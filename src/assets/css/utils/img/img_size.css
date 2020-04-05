@@ -27,3 +27,14 @@
     height: 250px;
     width: 250px;
 }
+
+@media screen and (max-device-width:480px){
+    .img_size_S {
+        height: 100px;
+        width: 100px;
+    }
+    .img_size_XXS {
+        height: 80px;
+        width: 80px;
+    }
+}

@@ -2,3 +2,11 @@
   width: 47px;
   height: 47px;
 }
+
+
+@media screen and (max-device-width:480px){
+  .button_size_s {
+    width: 100px;
+    height: 100px;
+  }
+}

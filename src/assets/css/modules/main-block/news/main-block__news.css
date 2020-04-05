@@ -1,0 +1,34 @@
+.main-block__news {
+    width: 100%;
+    align-items: center;
+}
+
+.news-body {
+    align-items: flex-start;
+    justify-content: space-around;
+    max-width: 89vw;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.news-body__post {
+    min-width: 30%;
+    margin-bottom: 20px;
+    max-height: max-content;
+}
+
+.post__header {
+    
+}
+
+@media screen and (max-device-width:500px){
+    .news-body__post {
+        min-width: 100%;
+    }
+    .news-body {
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+

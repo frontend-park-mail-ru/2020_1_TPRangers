@@ -11,9 +11,6 @@
 .main-block__button {
     justify-content: center;
     align-items: center;
-} 
-
-.main-block__button {
     z-index: 50;
     width: 60px;
     height: 60px;

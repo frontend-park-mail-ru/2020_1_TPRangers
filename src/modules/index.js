@@ -6,8 +6,9 @@ import Observer from '../controller/observer';
 import RegView from './View/RegView';
 
 import ProfileView from './View/ProfileView';
-
 import SettingsView from './View/SettingsView';
+import FriendsView from './View/FriendsView';
+import NewsView from './View/NewsView';
 
 
 // const leftBlockTmpl = require("../pug/includes/modules/left-block.pug");
@@ -54,11 +55,14 @@ Router.config({ mode: "history" });
 
 Router.add(/news/, () => {
   console.log("news");
-  mainBlock.innerHTML = testTmpl({ data: "Новости" });
+  NewsView 
+  let news = new NewsView(mainBlock);
+  news.render();
 })
     .add(/friends/, () => {
       console.log("friends");
-      mainBlock.innerHTML = testTmpl({ data: "Друзья" });
+      let friends = new FriendsView(mainBlock);
+      friends.render();
     })
     .add(/messages/, () => {
       console.log('messages');

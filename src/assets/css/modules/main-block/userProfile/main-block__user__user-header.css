@@ -55,9 +55,9 @@
     flex-shrink: 1;
     justify-content: flex-start;
     align-items: flex-start;
-    margin-top: 20px;
-    margin-left: 20px;
-    max-width: 33%;
+    padding-top: 20px;
+    padding-left: 20px;
+    width: 30%;
  } 
 
  .main-block__user__user-header__main-info__name-and-online {
@@ -65,8 +65,8 @@
     flex-shrink: 1;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
-    margin-right: 5%;
+    padding-top: 20px;
+    min-width: 30%;
  }
 
  .main-block__user__user-header__main-info__buttons {
@@ -74,9 +74,9 @@
     flex-shrink: 0;
     justify-content: flex-end;
     align-items: flex-start;
-    margin-top: 20px;
-    margin-right: 20px;
-    max-width: 33%;
+    padding-top: 20px;
+    padding-right: 20px;
+    width: 30%;
  }
 
  .main-block__user__user-header__main-info__text-info__span {

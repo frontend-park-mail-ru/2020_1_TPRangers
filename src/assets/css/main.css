@@ -16,9 +16,12 @@
 @import "./modules/right-block/right-block.css";
 
 
+
 :root {
   --main-color: rgb(212, 224, 227);
   --secondary-color: rgb(243, 243, 243);
+  --mobile-main-color:  rgb(243, 243, 243);
+  --mobile-secondary-color: rgb(252, 252, 252);
   --like-color: rgb(250, 103, 103);
   --commit-color: rgb(133, 190, 212);
   --reply-color: rgb(105, 212, 180);
@@ -37,11 +40,20 @@ a {
 
 html, body {
   overflow: auto;
-  
+  min-height: 100%;
 }
 
 
 .app {
-  min-height: 100vh;
+  min-height: max-content;
   align-items: stretch;
+}
+
+@media screen and (max-device-width:480px){
+  .app {
+    margin:  0 auto;
+    justify-content: space-between;
+    min-height: 100%;
+    flex-direction: column-reverse;
+  }
 }
