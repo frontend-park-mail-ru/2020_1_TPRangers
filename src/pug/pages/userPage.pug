@@ -9,7 +9,7 @@ div(class="main-block__user")
         + userHeader(user, false)
         div(class="main-block__user-body display_flex")
             div(class="main-block__left-block display_grow_L display_flex_column")
-                each post in posts
+                each post in feed
                     + postMixin(post)
             div(class="display_grow_S display_flex_column")
                 div(class="main-block__block display_flex_row")

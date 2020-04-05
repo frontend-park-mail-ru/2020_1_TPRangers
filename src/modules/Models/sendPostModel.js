@@ -4,13 +4,10 @@ import { addRegExpValidationAll, checkRegExpValidity } from '../formValidation';
 import { fetchMultipartPOST, fetchPOST } from '../../ajax/ajax';
 
 const formItems = {
-  post: {
-    name: 'post',
-    regExp: /.*/i,
-  },
+
   text: {
     name: 'text',
-    regExp: /.*/i,
+    regExp: /.+/i,
   },
 };
 
@@ -75,14 +72,14 @@ let afterPhotoPostCallback = response => {
 
   const postForm = document.getElementById('js-post-form');
 
-  const post = postForm.elements.post.value;
   const text = postForm.elements.text.value;
   fetchPOST({
-    url: BACKEND_IP + '/api/v1/cretePost',
+    url: BACKEND_IP + '/api/v1/post',
     body: JSON.stringify({
-      post,
       text,
-      photo,
+      photo: {
+        url: photo,
+      }
     }),
     callback: response => {
       if (response.status === 200) {

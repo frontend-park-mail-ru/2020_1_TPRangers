@@ -8,7 +8,7 @@ const friendsTmpl = require('../../pug/pages/friends.pug');
 export default class ProfileView extends IView{
 
     render() {
-      super.render();
+      super.clear();
 
       fetchGET({
         url: BACKEND_IP + '/api/v1/friends',
@@ -16,7 +16,7 @@ export default class ProfileView extends IView{
         callback: response => {
           response.json().then(response => {
 
-            const dataForTest = { 
+            const dataForTest = {
               main: true,
               body: [
                     {
@@ -103,8 +103,8 @@ export default class ProfileView extends IView{
                     isOnline: false,
                     avatar: 'https://picsum.photos/200'
                   }
-                ] 
-            } 
+                ]
+            }
 
             console.log(response.body);
             this.parent.innerHTML += friendsTmpl(dataForTest); // response.body

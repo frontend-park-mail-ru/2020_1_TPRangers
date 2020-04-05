@@ -5,7 +5,7 @@ const formTmpl = require('../../pug/pages/settings.pug');
 
 export default class SettingsView extends IView{
   render() {
-    super.render();
+    super.clear();
     this.parent.innerHTML += formTmpl();
     Observer.emit('settings:render');
   }

@@ -82,6 +82,10 @@ Router.add(/news/, () => {
       let friends = new FriendsView(mainBlock);
       friends.render();
     })
+    .add(/logout/, () => {
+      console.log('logout');
+      Observer.emit('logout');
+    })
     .add(/messages/, () => {
       console.log('messages');
       mainBlock.innerHTML = testTmpl({ data: 'Сообщения' });
@@ -104,11 +108,10 @@ Router.add(/news/, () => {
     })
     .add(/user\/(.*)/, () => {
       // console.log(Router.getFragment());
-      console.log('login:', Router.getFragment().split('/')[1]); // так можно вытащить login user
+      // console.log('login:', Router.getFragment().split('/')[1]); // так можно вытащить login user
 
       let user = new  UserView(mainBlock);
-      user.render();
-      Router.navigate();
+      user.render(Router.getFragment().split('/')[1]);
     })
     .add(/profile/, () => {
       // console.log(Router.getFragment());

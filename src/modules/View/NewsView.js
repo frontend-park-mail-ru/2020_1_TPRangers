@@ -8,15 +8,15 @@ const newsTmpl = require('../../pug/pages/news.pug');
 export default class ProfileView extends IView{
 
     render() {
-      super.render();
+      super.clear();
 
       fetchGET({
-        url: BACKEND_IP + '/api/v1/friends',
+        url: BACKEND_IP + '/api/v1/news',
 
         callback: response => {
           response.json().then(response => {
 
-            const dataForTest = { 
+            const dataForTest = {
               main: true,
               body: [
                     {
@@ -24,7 +24,7 @@ export default class ProfileView extends IView{
                         name: 'nternational',
                         surname: 'nternational',
                         avatar: './assets/img/main-block/fakeUser/avatar.jpg',
-          
+
                       },
                       dateOfPost: '10.01.01',
                       text: 'Placeat dolore pariatur et qui autem.',
@@ -36,7 +36,7 @@ export default class ProfileView extends IView{
                         name: 'nternational',
                         surname: 'nternational',
                         avatar: './assets/img/main-block/fakeUser/avatar.jpg',
-          
+
                       },
                       dateOfPost: '10.01.01',
                       text: 'Placeat dolore pariatur et qui autem.',
@@ -48,7 +48,7 @@ export default class ProfileView extends IView{
                         name: 'nternational',
                         surname: 'nternational',
                         avatar: './assets/img/main-block/fakeUser/avatar.jpg',
-          
+
                       },
                       dateOfPost: '10.01.01',
                       text: 'Placeat dolore pariatur et qui autem.',
@@ -60,7 +60,7 @@ export default class ProfileView extends IView{
                         name: 'nternational',
                         surname: 'nternational',
                         avatar: './assets/img/main-block/fakeUser/avatar.jpg',
-          
+
                       },
                       dateOfPost: '10.01.01',
                       text: 'Placeat dolore pariatur et qui autem.',
@@ -72,7 +72,7 @@ export default class ProfileView extends IView{
                         name: 'nternational',
                         surname: 'nternational',
                         avatar: './assets/img/main-block/fakeUser/avatar.jpg',
-          
+
                       },
                       dateOfPost: '10.01.01',
                       text: 'Placeat dolore pariatur et qui autem.',
@@ -84,7 +84,7 @@ export default class ProfileView extends IView{
                         name: 'nternational',
                         surname: 'nternational',
                         avatar: './assets/img/main-block/fakeUser/avatar.jpg',
-          
+
                       },
                       dateOfPost: '10.01.01',
                       text: 'Placeat dolore pariatur et qui autem.',
@@ -96,7 +96,7 @@ export default class ProfileView extends IView{
                         name: 'nternational',
                         surname: 'nternational',
                         avatar: './assets/img/main-block/fakeUser/avatar.jpg',
-          
+
                       },
                       dateOfPost: '10.01.01',
                       text: 'Placeat dolore pariatur et qui autem.',
@@ -108,18 +108,27 @@ export default class ProfileView extends IView{
                         name: 'nternational',
                         surname: 'nternational',
                         avatar: './assets/img/main-block/fakeUser/avatar.jpg',
-          
+
                       },
                       dateOfPost: '10.01.01',
                       text: 'Placeat dolore pariatur et qui autem.',
                       img: 'https://picsum.photos/200/300?grayscale',
                       likes: 10,
                     },
-                ] 
-            } 
+                ]
+            }
 
             console.log(response.body);
-            this.parent.innerHTML += newsTmpl(dataForTest); // response.body
+            response.body.main = true;
+            response.body.feed.forEach(elem => {
+              elem.author = {
+                name: 'Вика',
+                surname: 'Губанова',
+                avatar: './assets/img/main-block/fakeUser/avatar.jpg',
+
+              };
+            });
+            this.parent.innerHTML += newsTmpl(response.body); // response.body
           })
         }
       });

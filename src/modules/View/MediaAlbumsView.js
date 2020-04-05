@@ -8,7 +8,7 @@ const mediaAlbumsTmpl = require('../../pug/pages/mediaAlbums.pug');
 export default class MediaAlbumsView extends IView{
 
     render() {
-      super.render();
+      super.clear();
 
       fetchGET({
         url: BACKEND_IP + '/api/v1/media',
@@ -16,7 +16,7 @@ export default class MediaAlbumsView extends IView{
         callback: response => {
           response.json().then(response => {
 
-            const dataForTest = { 
+            const dataForTest = {
               main: true,
               body: [
                     {
@@ -39,8 +39,8 @@ export default class MediaAlbumsView extends IView{
                         img: 'https://picsum.photos/200/300/?blur=2',
                         id: 4,
                     },
-                ] 
-            } 
+                ]
+            }
 
             console.log(response.body);
             this.parent.innerHTML += mediaAlbumsTmpl(dataForTest); // response.body

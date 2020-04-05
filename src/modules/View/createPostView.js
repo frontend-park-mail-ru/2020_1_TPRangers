@@ -5,7 +5,7 @@ const formTmpl = require('../../pug/pages/sendPost.pug');
 
 export default class sendPost extends IView{
   render() {
-    super.render();
+    super.clear();
     this.parent.innerHTML += formTmpl();
     Observer.emit('post:render');
   }

@@ -8,7 +8,7 @@ const photosTmpl = require('../../pug/pages/mediaPhotos.pug');
 export default class MediaPhotosView extends IView{
 
     render() {
-      super.render();
+      super.clear();
 
       fetchGET({
         url: BACKEND_IP + '/api/v1/friends',
@@ -16,10 +16,10 @@ export default class MediaPhotosView extends IView{
         callback: response => {
           response.json().then(response => {
 
-            const dataForTest = { 
+            const dataForTest = {
                 main: true,
                 title: 'Hello',
-                body: [ 
+                body: [
                     'https://picsum.photos/seed/picsum/400/400',
                     'https://picsum.photos/id/237/200/300',
                     'https://picsum.photos/200/300/?blur=2',
@@ -28,8 +28,8 @@ export default class MediaPhotosView extends IView{
                     'https://picsum.photos/200/300/?blur=2',
                     'https://picsum.photos/seed/picsum/400/400',
                     'https://picsum.photos/id/237/200/300'
-                  ] 
-              }  
+                  ]
+              }
 
             console.log(response.body);
             this.parent.innerHTML += photosTmpl(dataForTest); // response.body

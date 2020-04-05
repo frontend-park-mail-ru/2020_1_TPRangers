@@ -5,7 +5,7 @@ const formTmpl = require('../../pug/pages/registration.pug');
 
 export default class RegView extends IView{
   render() {
-    super.render();
+    super.clear();
     this.parent.innerHTML += formTmpl();
     Observer.emit('reg:render');
   }

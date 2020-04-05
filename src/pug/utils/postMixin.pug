@@ -8,8 +8,8 @@ mixin postMixin(data)
         div(class="post__body__data display_flex_column")
             div(class="post__body__text display_flex")
                 p(class="text post__body__text__p text_color_black") #{data.text}
-            if data.img != null
-                img(class="post__body__img display_flex" src=data.img)
+            if data.photo != null
+                img(class="post__body__img display_flex" src=data.photo.url)
         div(class="hr-line")
         div(class="post__footer display_flex_row")
             div(class="display_flex")
@@ -17,10 +17,10 @@ mixin postMixin(data)
                     <i class="text text_size_L post__footer__component__like display_flex fas fa-heart"></i>
                     span(class="text text_size_M post__footer__component__text text_color_black text_weight_light display_flex") #{data.likes}
             - // div(class="post__footer__pre-component display_flex_row")
-            - //     div(class="post__footer__component display_flex")  
+            - //     div(class="post__footer__component display_flex")
             - //        <i class="text text_size_L post__footer__component__comment display_flex fas fa-comment"></i>
             - //        span(class="text text_size_M post__footer__component__text text_color_black text_weight_light display_flex") #{data.likes}
             - //    div(class="space")
-            - //    div(class="post__footer__component display_flex") 
+            - //    div(class="post__footer__component display_flex")
             - //        <i class="text text_size_L post__footer__component__reply display_flex fas fa-reply"></i>
-            - //        span(class="text text_size_M post__footer__component__text text_color_black text_weight_light display_flex") #{data.likes} 
+            - //        span(class="text text_size_M post__footer__component__text text_color_black text_weight_light display_flex") #{data.likes}
