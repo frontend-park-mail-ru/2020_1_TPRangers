@@ -1,6 +1,27 @@
 .input__icon {
-    padding-top: 12px;
-    padding-left: 15px;
-    min-width: 30px;
+
+}
+
+.input__icon-container {
+    justify-content: center;
+    align-items: center;
     border-right: #c7c7c7 solid 1px;
+    width: 40px;
+    min-width: 40px;
+}
+
+@media screen and (max-device-width:480px){
+    .input__icon{
+        font-size: 2em;
+        transform: translate(25%, 0);
+        -webkit-transform: translate(25%, 0);
+        -moz-transform: translate(25%, 0);
+        -ms-transform: translate(25%, 0);
+        -o-transform: translate(25%, 0);
+}
+    .input__icon-container {
+        justify-content: center;
+        align-items: center;
+        width: 80px;
+    }
 }

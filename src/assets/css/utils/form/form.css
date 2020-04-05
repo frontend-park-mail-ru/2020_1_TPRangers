@@ -4,12 +4,23 @@
 .form {
     justify-content: center;
     align-items: center;
+    width: 60vw;
+    max-height: 80vh;
+    margin-top: 10vh;
+}
+
+.form__buttons-group {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
 }
 
 .form__body {
     align-items: center;
     box-shadow: 0 0 6px rgba(0,0,0,0.5);
-    padding: 20px 40px;
+    padding: 4vh 4vw;
+    max-width: max-content;
+    min-width: 300px;
 }
 
 .form__name {
@@ -29,19 +40,51 @@
 
 .form__button {
     height: 50px;
-    width: 50%;
     margin-top: 20px;
     min-height: 50px;
     outline: none;
+    width: 50%;
     
-    border-radius: 100px;
-    -webkit-border-radius: 100px;
-    -moz-border-radius: 100px;
-    -ms-border-radius: 100px;
-    -o-border-radius: 100px;
+    margin-left: 5px;
+    margin-right: 5px;
+    justify-content: center;
+    align-items: center;
+
 }
 
-.form__button:active {
-    background: #77a1c7;
+
+@media screen and (max-device-width:480px){
+    .form__button {
+        min-width: 45%;
+        font-size: 2em;
+        min-height: 80px;
+    }
+    .form {
+        margin-top: 0;
+        width: 100%;
+        max-height: 100%;
+    }
+    .form__body {
+        width: 100%;
+        box-shadow: none;
+    }
+    .form__buttons-group {
+        justify-content: space-around;
+    }
+    .form__input-and-icon {
+        width: 80vw;
+        min-height: 80px;
+        background-color: white;
+    }
+    .form__input {
+        min-height: 80px;
+        font-size: 2em;
+    }
+    .form__field-title {
+        font-size: 2em;
+    }
+    .form__input__icon {
+        min-width: 60px;
+    }
 }
 

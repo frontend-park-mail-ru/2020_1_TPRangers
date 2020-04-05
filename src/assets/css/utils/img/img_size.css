@@ -1,6 +1,8 @@
 .img_size_XXS {
-    height: 34px;
-    width: 34px;
+    min-height: 34px;
+    min-width: 34px;
+    max-height: 34px;
+    max-width: 34px;
 }
 
 .img_size_XS {
@@ -26,4 +28,21 @@
 .img_size_L {
     height: 250px;
     width: 250px;
+}
+
+@media screen and (max-device-width:960px){
+    .img_size_S {
+        height: 100px;
+        width: 100px;
+    }
+    .img_size_XXS {
+        min-height: 80px;
+        min-width: 80px;
+        max-height: 80px;
+        max-width: 80px;
+    }
+    .img_size_100 {
+        height: 180px;
+        width: 180px;
+    }
 }

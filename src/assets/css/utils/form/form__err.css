@@ -90,3 +90,30 @@
     -o-transform: translate(5px, 10px);
 }
 
+@media screen and (max-device-width:480px){
+  .form__error {
+    min-width: 100px;
+    justify-content: center;
+    align-items: center;
+  }
+  .form__error__tooltip {
+    display: flex;
+    width: 40px;
+    height: 50px;
+    font-size: 2em;
+    justify-content: center;
+    align-items: center;
+  }
+  .js-correct>.form__error__tooltip:after, .js-error>.form__error__tooltip:after  {
+    min-width: 300px;
+    height: auto;
+    font-size: 0.8em;
+    transform: translateY(-100%);
+    top: -100px;
+    left: -180px;
+    -webkit-transform: translateY(-100%);
+    -moz-transform: translateY(-100%);
+    -ms-transform: translateY(-100%);
+    -o-transform: translateY(-100%);
+}
+}

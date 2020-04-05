@@ -6,8 +6,12 @@ import Observer from '../controller/observer';
 import RegView from './View/RegView';
 
 import ProfileView from './View/ProfileView';
-
 import SettingsView from './View/SettingsView';
+import FriendsView from './View/FriendsView';
+import NewsView from './View/NewsView';
+import MediaView from './View/MediaAlbumsView';
+import UserView from './View/UserView';
+import MediaPhotosView from './View/MediaPhotosView';
 import sendPost from './View/createPostView';
 
 
@@ -21,23 +25,25 @@ if (!app) console.log('app not found');
 
 app.addEventListener('click', evt => {
   if (evt.target instanceof Element) {
-    if (evt.target.tagName === "IMG") {
+    if (evt.target.tagName === "I" || evt.target.tagName === "IMG") {
+
+      console.log('[DEBUG]: PREV DEF: ' + evt.target.tagName);
+
       evt.preventDefault();
-
       const aNode = evt.target.parentNode;
+      console.log('[DEBUG]: PREV DEF: ' + aNode.tagName);
 
-      if (aNode.getAttribute("section") === "profile") {
-        // TODO: Тут надо будет добавить обработку id  пользователя, чья страница
-        Router.navigate(`${aNode.getAttribute("section")}`);
-      } else {
+      if (aNode.tagName === "A")
         Router.navigate(aNode.getAttribute("section"));
-      }
+
     } else if (evt.target.tagName === "A") {
       evt.preventDefault();
       Router.navigate(evt.target.getAttribute("section"));
     }
   }
 });
+
+
 
 
 const leftBlock = document.getElementById("left-block");
@@ -68,38 +74,48 @@ Router.config({ mode: "history" });
 
 Router.add(/news/, () => {
   console.log("news");
-  mainBlock.innerHTML = testTmpl({ data: "Новости" });
+  let news = new NewsView(mainBlock);
+  news.render();
 })
     .add(/friends/, () => {
       console.log("friends");
-      mainBlock.innerHTML = testTmpl({ data: "Друзья" });
+      let friends = new FriendsView(mainBlock);
+      friends.render();
     })
     .add(/messages/, () => {
       console.log('messages');
       mainBlock.innerHTML = testTmpl({ data: 'Сообщения' });
     })
     .add(/media/, () => {
+      let media = new MediaView(mainBlock);
+      media.render();
       console.log('media');
-      mainBlock.innerHTML = testTmpl({ data: 'Медиатека' });
+    })
+    .add(/album\/(.*)/, () => {
+      console.log(Router.getFragment());
+
+      let photos = new MediaPhotosView(mainBlock);
+      photos.render();
     })
     .add(/settings/, () => {
-      console.log('settings');
+      console.log('settings' + window.location.href);
       let settings = new SettingsView(mainBlock);
       settings.render();
     })
-    .add(/profile\/(.*)/, () => {
-      console.log(Router.getFragment());
-      console.log('profile');
+    .add(/user\/(.*)/, () => {
+      // console.log(Router.getFragment());
+      console.log('login:', Router.getFragment().split('/')[1]); // так можно вытащить login user
 
-      mainBlock.innerHTML = testTmpl({ data: 'Профиль пользователя не мой' });
+      let user = new  UserView(mainBlock);
+      user.render();
+      Router.navigate();
     })
     .add(/profile/, () => {
-      console.log(Router.getFragment());
+      // console.log(Router.getFragment());
       console.log('profile');
 
       let userProfile = new ProfileView(mainBlock);
       userProfile.render();
-
     })
     .add(/login/, () => {
       let login = new LoginView(mainBlock);
@@ -112,6 +128,11 @@ Router.add(/news/, () => {
     .add (/createPost/, () => {
       let createPost = new sendPost(mainBlock);
       createPost.render();
+    })
+    .add(/(?!news$)(?!friends$)(?!messages$)(?!media$)(?!album\/(.*)$)(?!settings$)(?!user\/(.*)$)(?!profile$)(?!login$)(?!reg$)(?!logout$)/, () => {
+      let news = new NewsView(mainBlock);
+      news.render();
+      Router.navigate();
     })
     .listen();
 

@@ -3,7 +3,7 @@ import Observer from '../../controller/observer';
 import { fetchGET } from '../../ajax/ajax';
 
 
-const userProfileTmpl = require('../../pug/pages/userProfile.pug');
+const userProfileTmpl = require('../../pug/pages/userPage.pug');
 
 const dataForUserBlocks = {
         page: true,
@@ -14,7 +14,7 @@ const dataForUserBlocks = {
         photo: './assets/img/main-block/fakeUser/avatar.jpg', 
         telephone: '+7(995)117-78-08', email: "blablabla@yandex.ru", 
         dateOfB: '10.02.2000',
-        myProfile: true,
+        id: 1,
         posts: [
           {
             author: {
@@ -42,21 +42,19 @@ const dataForUserBlocks = {
         ],
       },
 };
-export default class ProfileView extends IView{
+export default class UserView extends IView{
 
     render() {
       super.render();
 
       fetchGET({
-        url: BACKEND_IP + '/api/v1/profile',
+        url: BACKEND_IP + '/api/v1/user/',
         callback: response => {
           response.json().then(response => {
             response.body.posts = [];
             response.body.page = true;
             response.body.user.background = './assets/img/main-block/fakeUser/background.jpg'
-            console.log(response.body);
             this.parent.innerHTML += userProfileTmpl(response.body);
-            Observer.emit('profile:render', response);
           })
         }
       });

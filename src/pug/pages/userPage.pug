@@ -3,9 +3,10 @@ include ../utils/userSmallMediaMixin
 include ../utils/postMixin
 include ../utils/userAddPostMixin
 
+
 div(class="main-block__user")
     if page
-        + userHeader(user, true)
+        + userHeader(user, false)
         div(class="main-block__user-body display_flex")
             div(class="main-block__left-block display_grow_L display_flex_column")
                 each post in posts

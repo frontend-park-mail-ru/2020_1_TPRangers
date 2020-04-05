@@ -1,0 +1,8 @@
+include ../utils/albumMixin
+if (main)
+    div(class="main-block__media display_flex_column")
+        span(class="text text_size_L media-header") Медиатека
+        div(class="hr-line")
+        div(class="media-body display_flex")
+            each album in body
+                + albumMixin(album)
