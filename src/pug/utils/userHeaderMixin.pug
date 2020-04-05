@@ -9,9 +9,9 @@ mixin userHeader(data, isMe)
                 span(class="text text_size_M main-block__user__user-header__main-info__text-info__span") Телефон: #{data.telephone}
                 span(class="text text_size_M main-block__user__user-header__main-info__text-info__span") Email: #{data.email}
                 span(class="text text_size_M main-block__user__user-header__main-info__text-info__span") Дата рождения: #{data.date}
-            div(class="display_flex user-header__main-info-and-control")    
+            div(class="display_flex user-header__main-info-and-control")
                 div(class="main-block__user__user-header__main-info__name-and-online display_flex_column")
-                    span(class="text text_size_SL text_color_black text_weight_bold main-block__user__user-header__main-info__text-info__username-span") Вика Губанова#{data.name} #{data.surname}
+                    span(class="text text_size_SL text_color_black text_weight_bold main-block__user__user-header__main-info__text-info__username-span") #{data.name} #{data.surname}
                     if data.online
                         span(class="text text_color_grey text_uppercase text_size_S main-block__user__user-header__main-info__text-info__online-status-span") В сети
                     else
