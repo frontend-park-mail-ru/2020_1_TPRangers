@@ -8,6 +8,7 @@ import RegView from './View/RegView';
 import ProfileView from './View/ProfileView';
 
 import SettingsView from './View/SettingsView';
+import sendPost from './View/createPostView';
 
 
 // const leftBlockTmpl = require("../pug/includes/modules/left-block.pug");
@@ -108,6 +109,10 @@ Router.add(/news/, () => {
       let reg = new RegView(mainBlock);
       reg.render();
     } )
+    .add (/createPost/, () => {
+      let createPost = new sendPost(mainBlock);
+      createPost.render();
+    })
     .listen();
 
 

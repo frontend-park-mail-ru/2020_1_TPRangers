@@ -78,7 +78,7 @@ let settingsRenderCallback =  () => {
 
 };
 
-//TODO загрузка фото на сервер с фотографиями
+
 let settingsSubmitCallback = async () => {
   console.log(`[DEBUG] settings:submit callback`);
 
@@ -111,7 +111,6 @@ let afterPhotoCallback = (response) => {
   const settingsForm = document.getElementById('js-settings-form');
   let photo = undefined;
   if (response) {
-    console.log(response);
     photo = 'https://social-hub.ru' + response.filename;
   }
   const email = settingsForm.elements.email.value;
@@ -152,7 +151,6 @@ let settingsSetInputCallback = response => {
 
 let settingAjaxCallback = response => {
   console.log(`[DEBUG] settings:ajax callback`);
-  console.log(response.status);
   if (response.status === 200)
     Router.navigate('profile');
 };

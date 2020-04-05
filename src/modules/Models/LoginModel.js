@@ -63,8 +63,6 @@ let loginSubmitCallback = () => {
           password,
     }),
     callback: response => {
-      console.log(`[DEBUG] Response is`);
-      console.log(response);
       Observer.emit('login:ajax', response);
     }
   })
