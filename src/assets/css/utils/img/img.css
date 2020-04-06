@@ -1,0 +1,5 @@
+@import "./img_size.css";
+
+.img {
+    min-width: 20px;
+}

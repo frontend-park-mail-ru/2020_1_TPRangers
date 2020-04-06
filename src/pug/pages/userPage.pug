@@ -1,0 +1,18 @@
+include ../utils/userHeaderMixin
+include ../utils/userSmallMediaMixin
+include ../utils/postMixin
+include ../utils/userAddPostMixin
+
+
+div(class="main-block__user")
+    if page
+        + userHeader(user, false)
+        div(class="main-block__user-body display_flex")
+            div(class="main-block__left-block display_grow_L display_flex_column")
+                each post in feed
+                    + postMixin(post)
+            div(class="display_grow_S display_flex_column")
+                div(class="main-block__block display_flex_row")
+                    + userAddPostMixin()
+                div(class="main-block__block display_flex_row")
+                    //+ userSmallMediaMixin(friends)

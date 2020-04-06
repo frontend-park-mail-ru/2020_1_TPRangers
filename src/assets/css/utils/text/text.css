@@ -1,0 +1,12 @@
+@import "./text_size.css";
+@import "./text_weight.css";
+@import "./text_margin.css";
+@import "./text_color.css";
+
+.text {
+    font-family: Montserrat, serif;
+}
+
+.text_uppercase {
+    text-transform: uppercase;
+}

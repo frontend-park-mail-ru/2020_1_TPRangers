@@ -12,4 +12,4 @@
 
 #Ссылка на деплой
 
-https://social-hub.netlify.com/
+https://social-hub.ru

@@ -1,0 +1,9 @@
+include ../utils/postMixin
+if (main)
+    div(class="main-block__news display_flex_column")
+        span(class="text text_size_L news-header") Новости
+        div(class="hr-line")
+        div(class="news-body display_flex")
+            each post in body
+                div(class="news-body__post display_flex")
+                    + postMixin(post)
