@@ -91,7 +91,7 @@
 }
 
 
-@media screen and (max-device-width: var(--small-screen-w, 960px)){
+@media screen and (max-device-width: 960px){
   .form__error {
     min-width: 100px;
     justify-content: center;

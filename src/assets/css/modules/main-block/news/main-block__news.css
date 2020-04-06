@@ -19,13 +19,13 @@
 
 
 
-@media screen and (max-width: var(--medium-screen-w, 1024px)){
+@media screen and (max-width: 1024px){
     .news-body__post {
         min-width: 40%;
     }
 }
 
-@media screen and (max-device-width: var(--small-screen-w, 960px)){
+@media screen and (max-device-width: 960px){
     .news-body__post {
         min-width: 100%;
     }

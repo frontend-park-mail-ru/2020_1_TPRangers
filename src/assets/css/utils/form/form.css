@@ -54,7 +54,7 @@
 
 
 
-@media screen and (max-device-width: var(--small-screen-w, 960px)){
+@media screen and (max-device-width: 960px){
     .form__button {
         min-width: 45%;
         font-size: 2em;

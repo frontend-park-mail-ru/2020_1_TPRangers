@@ -31,7 +31,7 @@
 }
 
 
-@media screen and (max-device-width: var(--small-screen-w, 960px)){
+@media screen and (max-device-width: 960px){
     .img_size_S {
         height: 100px;
         width: 100px;

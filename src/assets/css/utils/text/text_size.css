@@ -32,7 +32,7 @@
 
 
 
-@media screen and (max-device-width: var(--small-screen-w, 960px)){
+@media screen and (max-device-width: 960px){
     .text_size_L {
         font-size: 4em;
     }
