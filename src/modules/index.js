@@ -56,7 +56,7 @@ const rightBlock = document.getElementById('right-block');
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('../sw.js')
+    navigator.serviceWorker.register('./serviceWorkers/sw.js')
       .then(() => {
         console.log('[DEBUG] ServiceWorker registered');
       })

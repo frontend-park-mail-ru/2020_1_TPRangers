@@ -1,4 +1,4 @@
-import Observer from './controller/observer';
+import Observer from '../../controller/observer';
 
 const CACHE_NAME = 'v1';
 
