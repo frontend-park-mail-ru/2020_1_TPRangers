@@ -1,26 +1,32 @@
+
+const historyStr = 'history';
+
 export const Router = {
   routes: [],
   mode: null,
-  root: "/",
+  root: '/',
 
   config(options) {
-    this.mode = options && options.mode;
-    options.mode = "history" && !!history.pushState ? "history" : "hash";
-    this.root =      options && options.root ? `/${this.clearSlashes(options.root)}/` : '/';
+    // Режим ‘history’ будет включен только если передать необходимый параметр
+    // и если браузер поддерживает pushState.
+
+    this.mode = options && options.mode && options.mode == historyStr 
+                    && !!(history.pushState) ? historyStr : 'hash';
+    this.root = options && options.root ? '/' + this.clearSlashes(options.root) + '/' : '/';
     return this;
   },
 
   getFragment() {
-    let fragment = "";
-    if (this.mode === "history") {
+    let fragment = '';
+    if (this.mode === historyStr) {
       fragment = this.clearSlashes(
         decodeURI(location.pathname + location.search)
       );
-      fragment = fragment.replace(/\?(.*)$/, "");
-      fragment = this.root !== "/" ? fragment.replace(this.root, "") : fragment;
+      fragment = fragment.replace(/\?(.*)$/, '');
+      fragment = this.root !== '/' ? fragment.replace(this.root, '') : fragment;
     } else {
       const match = window.location.href.match(/#(.*)$/);
-      fragment = match ? match[1] : "";
+      fragment = match ? match[1] : '';
     }
     return this.clearSlashes(fragment);
   },
@@ -28,14 +34,14 @@ export const Router = {
   clearSlashes(path) {
     return path
       .toString()
-      .replace(/\/$/, "")
-      .replace(/^\//, "");
+      .replace(/\/$/, '')
+      .replace(/^\//, '');
   },
 
   add(re, handler) {
-    if (typeof re === "function") {
+    if (typeof re === 'function') {
       handler = re;
-      re = "/";
+      re = '/';
     }
     this.routes.push({ re, handler });
     return this;
@@ -54,7 +60,7 @@ export const Router = {
   flush() {
     this.routes = [];
     this.mode = null;
-    this.root = "/";
+    this.root = '/';
     return this;
   },
 
@@ -86,13 +92,13 @@ export const Router = {
   },
 
   navigate(path) {
-    path = path || "";
-    if (this.mode === "history") {
+    path = path || '';
+    if (this.mode === historyStr) {
       history.pushState(null, null, this.root + this.clearSlashes(path));
     } else {
       window.location.href = `${window.location.href.replace(
         /#(.*)$/,
-        ""
+        ''
       )}#${path}`;
     }
     return this;
