@@ -28,6 +28,8 @@
   --icon-color: rgb(104, 104, 104);
   --icon-in-button-color:  rgb(226, 226, 226);
   --icon-color-hover:  rgb(133, 190, 212);
+  --medium-screen-w:  1024px;
+  --small-screen-w:  960px;
 }
 
 * {
@@ -50,7 +52,8 @@ html, body {
   align-items: stretch;
 }
 
-@media screen and (max-device-width:480px){
+
+@media screen and (max-device-width: var(--small-screen-w, 960px)){
   .app {
     margin:  0 auto;
     justify-content: space-between;
