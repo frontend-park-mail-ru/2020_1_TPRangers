@@ -28,7 +28,7 @@
 }
 
 .main-block__form {
-    height: 100vh;
+    height: max-content;
     justify-content: center;
     align-items: flex-start;
 }
