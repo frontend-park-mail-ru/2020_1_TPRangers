@@ -68,7 +68,7 @@
 
 
 
-@media screen and (max-device-width: var(--small-screen-w, 960px)){
+@media screen and (max-device-width: 960px){
     .post {
         width: 100%;
     }

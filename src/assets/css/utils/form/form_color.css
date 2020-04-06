@@ -3,7 +3,7 @@
 }
 
 
-@media screen and (max-device-width: var(--small-screen-w, 960px)){
+@media screen and (max-device-width: 960px){
   .form_light {
     background-color: transparent;
   }
