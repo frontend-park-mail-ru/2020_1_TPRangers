@@ -97,7 +97,7 @@ module.exports = {
   },
   plugins: [
     new ServiceWorkerWebpackPlugin({
-      entry: path.join(__dirname, '../src/sw.js'),
+      entry: path.join(__dirname, '../src/modules/serviceWorkers/sw.js'),
     }),
     new MiniCssExtractPlugin({
       filename: `${PATHS.assets}css/[name].[hash].css`,

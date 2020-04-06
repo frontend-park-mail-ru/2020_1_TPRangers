@@ -11,7 +11,7 @@ const formItems = {
   },
 };
 
-let sendPostRenderCallback = () => {
+const sendPostRenderCallback = () => {
   console.log(`[DEBUG] post:render callback`);
 
   const postForm = document.getElementById('js-post-form');
@@ -35,7 +35,7 @@ let sendPostRenderCallback = () => {
 
 };
 
-let submitPostCallback = () => {
+const submitPostCallback = () => {
   console.log(`[DEBUG] post:submit callback`);
 
   const postForm = document.getElementById('js-post-form');
@@ -61,7 +61,7 @@ let submitPostCallback = () => {
 
 };
 
-let afterPhotoPostCallback = response => {
+const afterPhotoPostCallback = response => {
   console.log(`[DEBUG] post:afterPhoto callback`);
 
   let photo = undefined;

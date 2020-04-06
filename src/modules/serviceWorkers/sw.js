@@ -20,9 +20,7 @@ self.addEventListener('fetch', function(event) {
         })
     );
 
-    event.waitUntil(update(event.request))
-
-
+    event.waitUntil(update(event.request));
   } else {
     if (!navigator.onLine) {
       event.respondWith(
@@ -33,7 +31,7 @@ self.addEventListener('fetch', function(event) {
 });
 
 
-function update(request) {
+const update = (request) => {
   return caches.open(CACHE_NAME)
     .then((cache) =>
       fetch(request)
@@ -41,4 +39,4 @@ function update(request) {
           cache.put(request, response)
         )
     );
-}
+};

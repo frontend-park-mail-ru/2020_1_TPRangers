@@ -5,7 +5,7 @@ import Observer from '../../controller/observer';
 const leftBlock = document.getElementById("left-block");
 const rightBlock = document.getElementById('right-block');
 
-let drawBasicCallback = () => {
+const drawBasicCallback = () => {
   console.log(`[DEBUG] draw-basic callback`);
   new LeftView(leftBlock).render();
   new RightView(rightBlock).render();

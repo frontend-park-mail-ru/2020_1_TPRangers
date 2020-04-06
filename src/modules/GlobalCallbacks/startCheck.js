@@ -2,7 +2,7 @@ import { Router } from '../../Routes/routes';
 import { fetchGET } from '../../ajax/ajax';
 import Observer from '../../controller/observer';
 
-let startCheckCallback = () => {
+const startCheckCallback = () => {
   if (Router.getFragment() === '') {
     fetchGET({
       url: BACKEND_IP + '/api/v1/profile',

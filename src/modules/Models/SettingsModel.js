@@ -7,7 +7,7 @@ import {
 import { fetchGET, fetchMultipartPOST, fetchPOST, fetchPUT } from '../../ajax/ajax';
 import { Router } from '../../Routes/routes';
 
-let formItems =  {
+const formItems =  {
   name: {
     name: 'name',
     regExp: /^[a-zA-Zа-яА-Я]{0,20}$/i,
@@ -34,7 +34,7 @@ let formItems =  {
   },
 };
 
-let settingsRenderCallback =  () => {
+const settingsRenderCallback =  () => {
   console.log(`[DEBUG] settings:render callback`);
 
   const settingsForm = document.getElementById('js-settings-form');
@@ -79,7 +79,7 @@ let settingsRenderCallback =  () => {
 };
 
 
-let settingsSubmitCallback = async () => {
+const settingsSubmitCallback = async () => {
   console.log(`[DEBUG] settings:submit callback`);
 
   const settingsForm = document.getElementById('js-settings-form');
@@ -106,7 +106,7 @@ let settingsSubmitCallback = async () => {
 
 };
 
-let afterPhotoCallback = (response) => {
+const afterPhotoCallback = (response) => {
   console.log(`[DEBUG] settings:afterPhoto callback`);
   const settingsForm = document.getElementById('js-settings-form');
   let photo = undefined;
@@ -135,7 +135,7 @@ let afterPhotoCallback = (response) => {
   })
 };
 
-let settingsSetInputCallback = response => {
+const settingsSetInputCallback = response => {
   console.log(`[DEBUG] settings:set-input callback`);
   if (response.status === 200) {
     response.json().then(data => {
@@ -149,7 +149,7 @@ let settingsSetInputCallback = response => {
   }
 };
 
-let settingAjaxCallback = response => {
+const settingAjaxCallback = response => {
   console.log(`[DEBUG] settings:ajax callback`);
   if (response.status === 200)
     Router.navigate('profile');

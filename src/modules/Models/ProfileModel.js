@@ -1,7 +1,7 @@
 import Observer from '../../controller/observer';
 import {fetchGET} from '../../ajax/ajax';
 
-let profileRenderCallback = () => {
+const profileRenderCallback = () => {
   console.log(`[DEBUG] profile:render callback`);
 };
 

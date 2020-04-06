@@ -3,7 +3,7 @@ import {addPasswordValidation, addRegExpValidationAll, checkRegExpValidity, chec
 import { fetchGET, fetchPOST } from '../../ajax/ajax';
 import { Router } from '../../Routes/routes';
 
-let formItems =  {
+const formItems =  {
     username: {
       name: 'username',
       regExp: /^[a-zA-Zа-яА-Я]{0,20}$/i,
@@ -31,7 +31,7 @@ let formItems =  {
     },
   };
 
-let regRenderCallback = () => {
+const regRenderCallback = () => {
   console.log(`[DEBUG] reg:render callback`);
 
   fetchGET({
@@ -77,7 +77,7 @@ let regRenderCallback = () => {
   })
 };
 
-let regSubmitCallback = event => {
+const regSubmitCallback = event => {
   console.log(`[DEBUG] reg:submit callback`);
 
   const regForm = document.getElementById('js-reg-form');
@@ -107,7 +107,7 @@ let regSubmitCallback = event => {
   })
 };
 
-let regAjaxCallback = response => {
+const regAjaxCallback = response => {
   console.log(`[DEBUG] reg:ajax callback`);
   console.log(response.status);
   Observer.emit('draw-basic');

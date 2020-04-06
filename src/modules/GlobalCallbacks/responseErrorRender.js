@@ -1,6 +1,6 @@
 import Observer from '../../controller/observer';
 
-let responseErrorRenderCallback = response => {
+const responseErrorRenderCallback = response => {
   response.json().then( data => {
     Observer.emit('error', {
       status: response.status,

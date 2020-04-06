@@ -28,7 +28,7 @@ export default class ProfileView extends IView{
                       },
                       dateOfPost: '10.01.01',
                       text: 'Placeat dolore pariatur et qui autem.',
-                      img: 'https://picsum.photos/seed/picsum/400/400',
+                      photo: {url:'https://picsum.photos/seed/picsum/400/400'},
                       likes: 10,
                     },
                     {
@@ -40,7 +40,7 @@ export default class ProfileView extends IView{
                       },
                       dateOfPost: '10.01.01',
                       text: 'Placeat dolore pariatur et qui autem.',
-                      img: 'https://picsum.photos/id/237/200/300',
+                      photo: { url: 'https://picsum.photos/id/237/200/300'},
                       likes: 10,
                     },
                     {
@@ -52,7 +52,7 @@ export default class ProfileView extends IView{
                       },
                       dateOfPost: '10.01.01',
                       text: 'Placeat dolore pariatur et qui autem.',
-                      img: null,
+                      photo: null,
                       likes: 10,
                     },
                     {
@@ -64,7 +64,7 @@ export default class ProfileView extends IView{
                       },
                       dateOfPost: '10.01.01',
                       text: 'Placeat dolore pariatur et qui autem.',
-                      img: 'https://picsum.photos/200/300/?blur=2',
+                      photo: {url: 'https://picsum.photos/200/300/?blur=2'},
                       likes: 10,
                     },
                     {
@@ -76,7 +76,7 @@ export default class ProfileView extends IView{
                       },
                       dateOfPost: '10.01.01',
                       text: 'Placeat dolore pariatur et qui autem.',
-                      img: 'https://picsum.photos/seed/picsum/400/400',
+                      photo: {url: 'https://picsum.photos/seed/picsum/400/400'},
                       likes: 10,
                     },
                     {
@@ -88,7 +88,7 @@ export default class ProfileView extends IView{
                       },
                       dateOfPost: '10.01.01',
                       text: 'Placeat dolore pariatur et qui autem.',
-                      img: 'https://picsum.photos/200/300?grayscale',
+                      photo: {urL: 'https://picsum.photos/200/300?grayscale'},
                       likes: 10,
                     },
                     {
@@ -100,7 +100,7 @@ export default class ProfileView extends IView{
                       },
                       dateOfPost: '10.01.01',
                       text: 'Placeat dolore pariatur et qui autem.',
-                      img: null,
+                      photo: null,
                       likes: 10,
                     },
                     {
@@ -112,7 +112,7 @@ export default class ProfileView extends IView{
                       },
                       dateOfPost: '10.01.01',
                       text: 'Placeat dolore pariatur et qui autem.',
-                      img: 'https://picsum.photos/200/300?grayscale',
+                      photo: {url:  'https://picsum.photos/200/300?grayscale'},
                       likes: 10,
                     },
                 ]
@@ -128,7 +128,7 @@ export default class ProfileView extends IView{
 
               };
             });
-            this.parent.innerHTML += newsTmpl(response.body); // response.body
+            this.parent.innerHTML += newsTmpl(dataForTest); // response.body
           })
         }
       });
