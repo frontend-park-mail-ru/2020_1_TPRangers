@@ -90,7 +90,8 @@
     -o-transform: translate(5px, 10px);
 }
 
-@media screen and (max-device-width:480px){
+
+@media screen and (max-device-width: var(--small-screen-w, 960px)){
   .form__error {
     min-width: 100px;
     justify-content: center;

@@ -4,7 +4,8 @@
 }
 
 
-@media screen and (max-device-width:480px){
+
+@media screen and (max-device-width: var(--small-screen-w, 960px)){
   .button_size_s {
     width: 100px;
     height: 100px;

@@ -118,7 +118,7 @@
 }
 
 
-@media screen and (max-device-width:500px){
+@media screen and (max-device-width: var(--small-screen-w, 960px)){
     .main-block__user__user-header {
         flex-direction: row;
         background-color:  var(--mobile-secondary-color, rgb(252, 252, 252));

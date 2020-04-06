@@ -44,7 +44,10 @@
 .album-card__text {
     font-size: 1.6em;
 }
-@media screen and (max-width:1024px) {
+
+
+
+@media screen and (max-width: var(--medium-screen-w, 1024px)) {
     .main-block__album-card {
         width: 40vw;
         height: 40vw;
@@ -64,7 +67,7 @@
     }
 }
 
-@media screen and (max-device-width:1024px) {
+@media screen and (max-device-width: var(--medium-screen-w, 1024px)) {
     .main-block__album-card {
         width: 40vw;
         height: 40vw;
@@ -84,7 +87,7 @@
     }
 }
 
-@media screen and (max-device-width:960px) {
+@media screen and (max-device-width: var(--small-screen-w, 960px)) {
     .main-block__album-card {
         width: 90vw;
         height: 90vw;

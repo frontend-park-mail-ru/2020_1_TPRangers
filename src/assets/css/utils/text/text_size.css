@@ -30,7 +30,9 @@
     font-size: 120px;
 }
 
-@media screen and (max-device-width:480px){
+
+
+@media screen and (max-device-width: var(--small-screen-w, 960px)){
     .text_size_L {
         font-size: 4em;
     }
