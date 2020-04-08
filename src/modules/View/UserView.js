@@ -7,6 +7,7 @@ const userProfileTmpl = require('../../pug/pages/userPage.pug');
 
 const dataForUserBlocks = {
         page: true,
+        isFriends: true,
         fakeUserData: {
         name: 'Вика',
         surname: 'Губанова',

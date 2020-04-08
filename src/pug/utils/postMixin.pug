@@ -14,7 +14,10 @@ mixin postMixin(data)
         div(class="post__footer display_flex_row")
             div(class="display_flex")
                 div(class="post__footer__component display_flex_row")
-                    <i class="text text_size_L post__footer__component__like display_flex fas fa-heart"></i>
+                    if data.isLikes
+                        i(class="js-like-no text text_size_L post__footer__component__like display_flex fas fa-heart")
+                    else
+                        i(class="js-like-yes text text_size_L post__footer__component__like display_flex fas fa-heart")
                     span(class="text text_size_M post__footer__component__text text_color_black text_weight_light display_flex") #{data.likes}
             - // div(class="post__footer__pre-component display_flex_row")
             - //     div(class="post__footer__component display_flex")
