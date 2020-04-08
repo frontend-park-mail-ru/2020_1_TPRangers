@@ -1,4 +1,4 @@
-mixin userHeader(data, isMe)
+mixin userHeader(data, isMe, isFriends)
     div(class="main-block__block boxshadow-block main-block__user__user-header display_flex_column")
         div(class="display_flex layout_light_secondary main-block__user__user-header__background")
             img(src=data.background class="img main-block__user__user-header__img display_flex")
@@ -16,6 +16,7 @@ mixin userHeader(data, isMe)
                         span(class="text text_color_grey text_uppercase text_size_S main-block__user__user-header__main-info__text-info__online-status-span") В сети
                     else
                         span(class="text text_color_grey text_uppercase text_size_S main-block__user__user-header__main-info__text-info__online-status-span") не в сети
+
                 div(class="main-block__user__user-header__main-info__buttons display_flex_row")
                     if (isMe)
                         a(href="settings", section="settings" class="button button_orange main-block__button display_flex")
@@ -23,7 +24,9 @@ mixin userHeader(data, isMe)
                         a(href="logout", section="logout" class="main-block__button button_blue display_flex")
                             i(class="text text_size_L icon main-block__user__user-header__icon   fas fa-sign-out-alt")
                     else
-                        a(href="profile", section="profile" class="button button_orange main-block__button display_flex")
-                            i(class="text text_size_L icon main-block__user__user-header__icon   fas fa-user-plus")
+                        if isFriends
+                            i(class="js-remove-friend button button_orange main-block__button display_flex text text_size_L icon main-block__user__user-header__icon  fas fa-user-minus")
+                        else
+                            i(class="js-add-friend button button_orange main-block__button display_flex text text_size_L icon main-block__user__user-header__icon  fas x")
                         a(href="messages", section="messages" class="main-block__button button_blue display_flex")
                             i(class="text text_size_L icon main-block__user__user-header__icon   fas fa-envelope")

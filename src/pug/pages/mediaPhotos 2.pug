@@ -1,0 +1,8 @@
+include ../utils/photoMixin
+if (main)
+    div(class="main-block__album display_flex_column")
+        span(class="text text_size_L album-header") Альбом #{title}
+        div(class="hr-line")
+        div(class="album-body display_flex")
+            each photo in body
+                + photoMixin(photo)

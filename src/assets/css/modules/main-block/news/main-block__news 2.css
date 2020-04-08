@@ -1,0 +1,37 @@
+.main-block__news {
+    width: 100%;
+    align-items: center;
+}
+
+.news-body {
+    align-items: flex-start;
+    justify-content: space-around;
+    max-width: 100%;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.news-body__post {
+    min-width: 22%;
+    margin-bottom: 20px;
+    max-height: max-content;
+}
+
+@media screen and (max-width:1024px){
+    .news-body__post {
+        min-width: 40%;
+    }
+}
+
+@media screen and (max-device-width:960px){
+    .news-body__post {
+        min-width: 100%;
+    }
+    .news-body {
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 10vh;
+    }
+}
+
+
