@@ -161,6 +161,7 @@
         width: 200px;
         height: 200px;
         z-index: 90;
+        overflow: hidden;
     }
     .user-header__main-info-and-control {
         min-width: 100%;
