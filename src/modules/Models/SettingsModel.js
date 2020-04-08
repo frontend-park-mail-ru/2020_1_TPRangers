@@ -47,10 +47,7 @@ const settingsRenderCallback =  () => {
     }
   });
 
-  addRegExpValidationAll({
-    form: settingsForm,
-    formItems: formItems,
-  });
+
 
   addPasswordValidation(
     settingsForm,
@@ -61,10 +58,6 @@ const settingsRenderCallback =  () => {
   settingsForm.addEventListener('submit', event => {
     event.preventDefault();
     if (
-      checkRegExpValidity({
-        form: settingsForm,
-        formItems: formItems,
-      }) &&
       checkPasswordValidity({
         form: settingsForm,
         passwordField: formItems.password.name,

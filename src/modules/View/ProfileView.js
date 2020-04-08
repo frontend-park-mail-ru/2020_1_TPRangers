@@ -52,14 +52,6 @@ export default class ProfileView extends IView{
           response.json().then(response => {
             response.body.page = true;
             response.body.user.background = '../assets/img/main-block/fakeUser/background.jpg';
-            response.body.feed.forEach(elem => {
-              elem.author = {
-                name: 'Алексей',
-                surname: 'Ершков',
-                avatar: '../assets/img/main-block/fakeUser/avatar.jpg',
-
-              };
-            });
             console.log(response.body);
             this.parent.innerHTML += userProfileTmpl(response.body);
           })

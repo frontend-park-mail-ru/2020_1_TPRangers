@@ -135,7 +135,7 @@ Router.add(/news/, () => {
     .add(/(?!news$)(?!friends$)(?!messages$)(?!media$)(?!album\/(.*)$)(?!settings$)(?!user\/(.*)$)(?!profile$)(?!login$)(?!reg$)(?!logout$)/, () => {
       let news = new NewsView(mainBlock);
       news.render();
-      Router.navigate();
+      //Router.navigate();
     })
     .listen();
 

@@ -43,10 +43,7 @@ const regRenderCallback = () => {
 
   const regForm = document.getElementById('js-reg-form');
 
-  addRegExpValidationAll({
-    form: regForm,
-    formItems: formItems,
-  });
+
 
   addPasswordValidation(
     regForm,
@@ -57,10 +54,6 @@ const regRenderCallback = () => {
   regForm.addEventListener('submit', event => {
     event.preventDefault();
     if (
-      checkRegExpValidity({
-        form: regForm,
-        formItems: formItems,
-      }) &&
       checkPasswordValidity({
         form: regForm,
         passwordField: formItems.password.name,

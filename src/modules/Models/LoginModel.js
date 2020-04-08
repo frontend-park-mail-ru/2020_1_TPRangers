@@ -26,21 +26,10 @@ const loginRenderCallback = () => {
 
   const loginForm = document.getElementById('js-login-form');
 
-  addRegExpValidationAll({
-    form: loginForm,
-    formItems: formItems,
-  });
 
   loginForm.addEventListener('submit', event => {
     event.preventDefault();
-    if (
-      checkRegExpValidity({
-        form: loginForm,
-        formItems: formItems,
-      }))
-    {
-      Observer.emit('login:submit', event);
-    }
+    Observer.emit('login:submit', event);
   });
 
   loginForm.addEventListener('reset', event => {
