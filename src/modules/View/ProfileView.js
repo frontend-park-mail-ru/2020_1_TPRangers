@@ -7,10 +7,11 @@ const userProfileTmpl = require('../../pug/pages/userProfile.pug');
 
 const dataForUserBlocks = {
         page: true,
-        fakeUserData: {
+        user: {
         name: 'Вика',
         surname: 'Губанова',
         online: true,
+          background:  '../assets/img/main-block/fakeUser/background.jpg',
         photo: './assets/img/main-block/fakeUser/avatar.jpg',
         telephone: '+7(995)117-78-08', email: "blablabla@yandex.ru",
         dateOfB: '10.02.2000',
@@ -20,6 +21,7 @@ const dataForUserBlocks = {
             author: {
               name: 'nternational',
               surname: 'nternational',
+
               avatar: './assets/img/main-block/fakeUser/avatar.jpg',
 
             },

@@ -25,8 +25,10 @@ mixin userHeader(data, isMe, isFriends)
                             i(class="text text_size_L icon main-block__user__user-header__icon   fas fa-sign-out-alt")
                     else
                         if isFriends
-                            i(class="js-remove-friend button button_orange main-block__button display_flex text text_size_L icon main-block__user__user-header__icon  fas fa-user-minus")
+                            span(class='button button_orange main-block__button display_flex')
+                                i(class="js-remove-friend  text text_size_L icon main-block__user__user-header__icon  fas fa-user-minus")
                         else
-                            i(class="js-add-friend button button_orange main-block__button display_flex text text_size_L icon main-block__user__user-header__icon  fas x")
+                            span(class='user-page__header__control-buttons button button_orange main-block__button display_flex')
+                                i(class="js-add-friend  text text_size_L icon main-block__user__user-header__icon  fas fa-user-plus")
                         a(href="messages", section="messages" class="main-block__button button_blue display_flex")
                             i(class="text text_size_L icon main-block__user__user-header__icon   fas fa-envelope")

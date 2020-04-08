@@ -1,10 +1,10 @@
 mixin postMixin(data)
     div(class="post boxshadow-block main-block__layout layout_light_secondary display_flex_column")
         div(class="post__header display_flex_row")
-            img(class="img img_size_XS post__header__avatar display_flex_column" src=data.author.avatar)
+            img(class="img img_size_XS post__header__avatar display_flex_column" src=data.authorPhoto)
             div(class="post__header__data display_flex_column")
-                span(class="text text_size_M text_color_black") #{data.author.name} #{data.author.surname}
-                span(class="text text_size_S text_color_black text_weight_light") #{data.dateOfPost}
+                span(class="text text_size_M text_color_black") #{data.authorName}
+                span(class="text text_size_S text_color_black text_weight_light") #{data.date}
         div(class="post__body__data display_flex_column")
             div(class="post__body__text display_flex")
                 p(class="text post__body__text__p text_color_black") #{data.text}
@@ -14,7 +14,7 @@ mixin postMixin(data)
         div(class="post__footer display_flex_row")
             div(class="display_flex")
                 div(class="post__footer__component display_flex_row")
-                    if data.isLikes
+                    if !data.wasLike
                         i(class="js-like-no text text_size_L post__footer__component__like display_flex fas fa-heart")
                     else
                         i(class="js-like-yes text text_size_L post__footer__component__like display_flex fas fa-heart")
