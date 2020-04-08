@@ -45,6 +45,11 @@
     font-size: 1.6em;
 }
 
+.main-block__media__header {
+    width: 98%;
+    justify-content: space-between;
+}
+
 
 
 @media screen and (max-width: 1024px) {
@@ -64,6 +69,9 @@
     }
     .media-body {
         padding-bottom: 10vh;
+    }
+    .main-block__media__header {
+        width: 94%;
     }
 }
 
@@ -85,6 +93,9 @@
     .media-body {
         padding-bottom: 10vh;
     }
+    .main-block__media__header {
+        width: 94%;
+    }
 }
 
 @media screen and (max-device-width: 960px) {
@@ -104,5 +115,8 @@
     }
     .media-body {
         padding-bottom: 10vh;
+    }
+    .main-block__media__header {
+        width: 90%;
     }
 }

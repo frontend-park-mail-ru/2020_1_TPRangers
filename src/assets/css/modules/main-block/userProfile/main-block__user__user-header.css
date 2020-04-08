@@ -144,7 +144,7 @@
         transform: translate(-50%, -50%);
         animation-name: round;
         animation-duration: 1s;
-        
+        width: 100%;
     }
 
     .main-block__user__user-header__avatar {
@@ -156,6 +156,7 @@
         width: 200px;
         height: 200px;
         z-index: 90;
+        overflow: hidden;
     }
     .user-header__main-info-and-control {
         min-width: 100%;

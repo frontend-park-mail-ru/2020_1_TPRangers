@@ -42,11 +42,15 @@
     color: var(--like-color, rgb(250, 103, 103));
 }
 
-js-like-no:hover {
+.js-like-no:hover {
     color: var(--like-color, rgb(250, 103, 103));
 }
 
-js-like-yes:hover {
+.js-like-yes {
+    color: var(--like-color, rgb(250, 103, 103));
+}
+
+.js-like-yes:hover {
     color: var(--icon-color, rgb(104, 104, 104));
 }
   

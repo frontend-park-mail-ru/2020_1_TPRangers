@@ -144,8 +144,19 @@ const settingsSetInputCallback = response => {
 
 const settingAjaxCallback = response => {
   console.log(`[DEBUG] settings:ajax callback`);
-  if (response.status === 200)
+  if (response.status === 200) {
     Router.navigate('profile');
+  } else {
+    const err = document.getElementById(`error-email`);
+    const infoText = document.getElementById(`tooltip-email`);
+    err.classList.add('visible');
+    err.classList.remove('hidden');
+    if (err.classList.contains('js-correct')) {
+      err.classList.remove('js-correct');
+    }
+    err.classList.add('js-error');
+    infoText.innerText = '!';
+  }
 };
 
 Observer.on('settings:render', settingsRenderCallback);
