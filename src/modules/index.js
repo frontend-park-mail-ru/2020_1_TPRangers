@@ -14,6 +14,7 @@ import UserView from './View/UserView';
 import MediaPhotosView from './View/MediaPhotosView';
 import SendPost from './View/createPostView';
 import CreateAlbum from './View/createAlbum';
+import AddPhotos from './View/addPhotos';
 
 
 // const leftBlockTmpl = require("../pug/includes/modules/left-block.pug");
@@ -132,6 +133,10 @@ Router.add(/news/, () => {
     .add (/createAlbum/, () => {
       let createAlbum = new CreateAlbum(mainBlock);
       createAlbum.render();
+    })
+    .add (/addPhotos\/(.*)/, () => {
+      let addPhotos = new AddPhotos(mainBlock);
+      addPhotos.render();
     })
     .add(/(?!news$)(?!friends$)(?!messages$)(?!media$)(?!album\/(.*)$)(?!settings$)(?!user\/(.*)$)(?!profile$)(?!login$)(?!reg$)(?!logout$)/, () => {
       let news = new NewsView(mainBlock);

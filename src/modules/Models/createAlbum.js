@@ -1,5 +1,5 @@
 import { Router } from '../../Routes/routes';
-import Observer from '../../controller/observer'
+import Observer from '../../controller/observer';
 import { fetchPOST } from '../../ajax/ajax';
 
 const createAlbumRenderCallback = () => {

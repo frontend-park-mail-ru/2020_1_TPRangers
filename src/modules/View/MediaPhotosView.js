@@ -33,6 +33,7 @@ export default class MediaPhotosView extends IView{
 
             const album = {
               main: true,
+              id: albumUrl,
               title: response.body.album_name,
               body: response.body.url ? response.body.url : []
             }
