@@ -15,10 +15,11 @@ mixin postMixin(data)
             div(class="display_flex")
                 div(class="post__footer__component display_flex_row")
                     if !data.wasLike
-                        i(class="js-like-no text text_size_L post__footer__component__like display_flex fas fa-heart")
+                        i(class="js-like-post js-like-no text text_size_L post__footer__component__like display_flex fas fa-heart" Id = data.id)
                     else
-                        i(class="js-like-yes text text_size_L post__footer__component__like display_flex fas fa-heart")
+                        i(class="js-like-post js-like-yes text text_size_L post__footer__component__like display_flex fas fa-heart" Id = data.id)
                     span(class="text text_size_M post__footer__component__text text_color_black text_weight_light display_flex") #{data.likes}
+            //        span выше обязательно должен быть после i
             - // div(class="post__footer__pre-component display_flex_row")
             - //     div(class="post__footer__component display_flex")
             - //        <i class="text text_size_L post__footer__component__comment display_flex fas fa-comment"></i>

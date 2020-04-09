@@ -12,7 +12,8 @@ import NewsView from './View/NewsView';
 import MediaView from './View/MediaAlbumsView';
 import UserView from './View/UserView';
 import MediaPhotosView from './View/MediaPhotosView';
-import sendPost from './View/createPostView';
+import SendPost from './View/createPostView';
+import CreateAlbum from './View/createAlbum';
 
 
 // const leftBlockTmpl = require("../pug/includes/modules/left-block.pug");
@@ -26,12 +27,8 @@ if (!app) console.log('app not found');
 app.addEventListener('click', evt => {
   if (evt.target instanceof Element) {
     if (evt.target.tagName === "I" || evt.target.tagName === "IMG") {
-
-      console.log('[DEBUG]: PREV DEF: ' + evt.target.tagName);
-
       evt.preventDefault();
       const aNode = evt.target.parentNode;
-      console.log('[DEBUG]: PREV DEF: ' + aNode.tagName);
 
       if (aNode.tagName === "A")
         Router.navigate(aNode.getAttribute("section"));
@@ -129,8 +126,12 @@ Router.add(/news/, () => {
       reg.render();
     } )
     .add (/createPost/, () => {
-      let createPost = new sendPost(mainBlock);
+      let createPost = new SendPost(mainBlock);
       createPost.render();
+    })
+    .add (/createAlbum/, () => {
+      let createAlbum = new CreateAlbum(mainBlock);
+      createAlbum.render();
     })
     .add(/(?!news$)(?!friends$)(?!messages$)(?!media$)(?!album\/(.*)$)(?!settings$)(?!user\/(.*)$)(?!profile$)(?!login$)(?!reg$)(?!logout$)/, () => {
       let news = new NewsView(mainBlock);

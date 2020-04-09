@@ -1,15 +1,31 @@
 # 2020_1_TPRangers
-Проект VK команды TPRangers
+Аналог VK или нечто лучшее...
 
-# Участники команды
-Никита Черных github.com/znjuko
+:space_invader: [Деплой проекта](https://social-hub.ru)
 
-Виктория Губанова github.com/GuVictory
+:boom: [Бекенд проекта](https://github.com/go-park-mail-ru/2020_1_TPRangers)
 
-Александр Долгавин github.com/sanya554455
+## Технологии
+    * Webpack
+    * ES6
+    * node js
+    * service worker
+    * pug (jade)
+    
+## Инструкция по запуску
+1. clone or download [repository](https://github.com/frontend-park-mail-ru/2020_1_TPRangers)
+2. open terminal and copy
+```bash
+$ cd /home/.../2020_1_TPRangers
+$ npm install
+$ npm run start
+```
 
-Ершков Алексей github.com/alexey-ershkov
+## Участники команды
+[Никита Черных](github.com/znjuko)
 
-#Ссылка на деплой
+[Виктория Губанова](github.com/GuVictory)
 
-https://social-hub.ru
+[Александр Долгавин](github.com/sanya554455)
+
+[Ершков Алексей](github.com/alexey-ershkov)

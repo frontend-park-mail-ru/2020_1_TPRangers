@@ -48,23 +48,16 @@ export default class UserView extends IView{
 
     render(id) {
       super.clear();
-      console.log(id);
       fetchGET({
-        url: BACKEND_IP + '/api/v1/profile',
+        url: BACKEND_IP + '/api/v1/user/' + id,
         callback: response => {
           response.json().then(response => {
             response.body.page = true;
             response.body.user.background = '../assets/img/main-block/fakeUser/background.jpg';
-            response.body.feed.forEach(elem => {
-              elem.author = {
-                name: 'Алексей',
-                surname: 'Ершков',
-                avatar: '../assets/img/main-block/fakeUser/avatar.jpg',
-
-              };
-            });
             console.log(response.body);
             this.parent.innerHTML += userProfileTmpl(response.body);
+            Observer.emit('user:render');
+            Observer.emit('listenPostsLikes');
           })
         }
       });

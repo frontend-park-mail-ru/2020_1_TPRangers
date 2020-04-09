@@ -1,36 +1,16 @@
 import { Router } from '../../Routes/routes';
 import Observer from '../../controller/observer'
-import { addRegExpValidationAll, checkRegExpValidity } from '../formValidation';
 import { fetchMultipartPOST, fetchPOST } from '../../ajax/ajax';
 
-const formItems = {
-
-  text: {
-    name: 'text',
-    regExp: /.+/i,
-  },
-};
 
 const sendPostRenderCallback = () => {
   console.log(`[DEBUG] post:render callback`);
 
   const postForm = document.getElementById('js-post-form');
 
-  addRegExpValidationAll({
-    form: postForm,
-    formItems: formItems,
-  });
-
   postForm.addEventListener('submit', event => {
     event.preventDefault();
-    if (
-      checkRegExpValidity({
-        form: postForm,
-        formItems: formItems,
-      }))
-    {
-      Observer.emit('post:submit');
-    }
+    Observer.emit('post:submit');
   });
 
 };

@@ -56,6 +56,7 @@ export default class ProfileView extends IView{
             response.body.user.background = '../assets/img/main-block/fakeUser/background.jpg';
             console.log(response.body);
             this.parent.innerHTML += userProfileTmpl(response.body);
+            Observer.emit('listenPostsLikes');
           })
         }
       });
