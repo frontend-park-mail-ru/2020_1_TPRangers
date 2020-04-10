@@ -15,7 +15,7 @@
 @import "./modules/main-block/main-block.css";
 @import "./modules/right-block/right-block.css";
 
-
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap');
 
 :root {
   --main-color: rgb(212, 224, 227);
@@ -32,9 +32,11 @@
   --small-screen-w:  960px;
 }
 
+
 * {
   margin: 0;
   padding: 0;
+
 }
 
 a {
