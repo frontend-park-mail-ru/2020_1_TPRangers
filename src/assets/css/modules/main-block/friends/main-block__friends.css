@@ -8,6 +8,7 @@
     align-content: space-between;
     justify-content: space-between;
     max-width: 100%;
+    width: 100%;
     flex-wrap: wrap;
     margin-top: 20px;
 }
@@ -60,12 +61,12 @@
         min-width: 100%;
 
     }
-    
+
     .main-block__friend-card {
         max-width: 100%;
         min-width: 100%;
         margin-bottom: 20px;
         align-items: flex-start;
     }
-    
+
 }
