@@ -106,9 +106,9 @@ export default class ProfileView extends IView{
                 ]
             }
 
-            console.log(response.body);
-            response.body.main = true;
-            this.parent.innerHTML += friendsTmpl(response.body); // response.body
+            console.log(response);
+            response.main = true;
+            this.parent.innerHTML += friendsTmpl(response); // response.body
             Observer.emit('profile:render', response);
           })
         }

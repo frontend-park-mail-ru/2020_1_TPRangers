@@ -132,10 +132,11 @@ const settingsSetInputCallback = response => {
   console.log(`[DEBUG] settings:set-input callback`);
   if (response.status === 200) {
     response.json().then(data => {
-      for (const elem in data.body.user) {
+      console.log(data);
+      for (const elem in data) {
         const settingsElem = document.getElementById(elem);
         if (settingsElem) {
-          settingsElem.placeholder = data.body.user[elem];
+          settingsElem.placeholder = data[elem];
         }
       }
     })

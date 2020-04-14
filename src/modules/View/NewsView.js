@@ -116,10 +116,10 @@ export default class ProfileView extends IView{
 
         callback: response => {
           response.json().then(response => {
-            console.log(response.body);
+            console.log(response);
             let posts = {
               main: true,
-              body: response.body,
+              feed: response,
             }
             this.parent.innerHTML += newsTmpl(posts); // response.body
             Observer.emit('listenPostsLikes')

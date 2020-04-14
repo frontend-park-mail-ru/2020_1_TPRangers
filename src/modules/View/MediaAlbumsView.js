@@ -40,10 +40,10 @@ export default class MediaAlbumsView extends IView{
 
         callback: response => {
           response.json().then(response => {
-            console.log(response.body);
+            console.log(response);
             const albums = {
               main: true,
-              albums: response.body
+              albums: response
             }
             this.parent.innerHTML += mediaAlbumsTmpl(albums); // response.body
           })

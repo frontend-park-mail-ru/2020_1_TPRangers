@@ -52,10 +52,11 @@ export default class ProfileView extends IView{
         url: BACKEND_IP + '/api/v1/profile',
         callback: response => {
           response.json().then(response => {
-            response.body.page = true;
-            response.body.user.background = '../assets/img/main-block/fakeUser/background.jpg';
-            console.log(response.body);
-            this.parent.innerHTML += userProfileTmpl(response.body);
+            response.page = true;
+            if (!response.feed)
+              response.feed = [];
+            response.user.background = '../assets/img/main-block/fakeUser/background.jpg';
+            this.parent.innerHTML += userProfileTmpl(response);
             Observer.emit('listenPostsLikes');
           })
         }

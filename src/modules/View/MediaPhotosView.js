@@ -30,12 +30,12 @@ export default class MediaPhotosView extends IView{
 
         callback: response => {
           response.json().then(response => {
-
+            console.log(response);
             const album = {
               main: true,
               id: albumUrl,
-              title: response.body.album_name,
-              body: response.body.url ? response.body.url : []
+              title: response.album_name,
+              body: response.url ? response.url : []
             }
 
             console.log(album);
