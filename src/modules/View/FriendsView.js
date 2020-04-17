@@ -106,8 +106,11 @@ export default class ProfileView extends IView{
                 ]
             }
 
-            console.log(response);
-            response.main = true;
+            const data = {
+              main: true,
+              friends: response
+            }
+            console.log(data);
             this.parent.innerHTML += friendsTmpl(response); // response.body
             Observer.emit('profile:render', response);
           })
