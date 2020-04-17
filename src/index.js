@@ -14,5 +14,5 @@ import './assets/css/main.css';
 import './assets/css/normalize.css';
 
 if ('serviceWorker' in navigator) {
-  const registration = runtime.register();
+  const registration = runtime.register({ scope: './' });
 }
