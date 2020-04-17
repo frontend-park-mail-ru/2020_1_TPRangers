@@ -7,6 +7,8 @@ import {
 import { fetchGET, fetchMultipartPOST, fetchPOST, fetchPUT } from '../../ajax/ajax';
 import { Router } from '../../Routes/routes';
 
+let token;
+
 const formItems =  {
   name: {
     name: 'name',
@@ -39,14 +41,16 @@ const settingsRenderCallback =  () => {
 
   const settingsForm = document.getElementById('js-settings-form');
 
-
   fetchGET({
-    url: BACKEND_IP + '/api/v1/settings',
+    url: BACKEND_IP + '/api/v1/csrf',
     callback: response => {
-      Observer.emit('settings:set-input', response);
+      response.json().then( response => {
+          token = response.body.token;
+          Observer.emit('settings:getInfo')
+        }
+      )
     }
-  });
-
+  })
 
 
   addPasswordValidation(
@@ -125,6 +129,10 @@ const afterPhotoCallback = (response) => {
     callback: response => {
       Observer.emit('settings:ajax', response);
     },
+    headers: {
+      'X-Csrf-Token': token.toString(),
+      'Content-Type': 'application/json',
+    }
   })
 };
 
@@ -160,8 +168,23 @@ const settingAjaxCallback = response => {
   }
 };
 
+const getInfoCallback = () => {
+  console.log(`[DEBUG] settings:getInfo callback`);
+
+  fetchGET({
+    url: BACKEND_IP + '/api/v1/settings',
+    callback: response => {
+      Observer.emit('settings:set-input', response);
+    },
+    headers: {
+      'X-Csrf-Token': token.toString(),
+    }
+  });
+}
+
 Observer.on('settings:render', settingsRenderCallback);
 Observer.on('settings:submit', settingsSubmitCallback);
 Observer.on('settings:set-input', settingsSetInputCallback);
 Observer.on('settings:ajax', settingAjaxCallback);
 Observer.on('settings:afterPhoto', afterPhotoCallback);
+Observer.on('settings:getInfo', getInfoCallback);

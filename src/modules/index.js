@@ -126,7 +126,7 @@ Router.add(/news/, () => {
       let reg = new RegView(mainBlock);
       reg.render();
     } )
-    .add (/createPost/, () => {
+    .add (/createPost\/(.*)/, () => {
       let createPost = new SendPost(mainBlock);
       createPost.render();
     })

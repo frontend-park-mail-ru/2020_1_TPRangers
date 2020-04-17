@@ -54,7 +54,7 @@ const afterPhotoPostCallback = response => {
 
   const text = postForm.elements.text.value;
   fetchPOST({
-    url: BACKEND_IP + '/api/v1/post',
+    url: BACKEND_IP + `/api/v1/${Router.getFragment().split('/')[1]}/post'`,
     body: JSON.stringify({
       text,
       photo: {
