@@ -2,9 +2,10 @@ doctype html
 html(lang='en')
     head
         meta(charset='utf-8')
-        title 'TP_Rangers'
+        title 'new_design'
         meta(name="description", content=description)
-        block head
+        script(src="https://kit.fontawesome.com/b5b4e24d65.js" crossorigin="anonymous")
     body
-        #application(class="app display_flex")
-            include ../layout/main
+        #app(class="grid-container")
+            include ../layout/layout
+        div(class='blur-background-js hidden')

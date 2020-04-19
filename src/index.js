@@ -10,8 +10,7 @@ import runtime from 'serviceworker-webpack-plugin/lib/runtime';
 
 
 // CSS
-import './assets/css/main.css';
-import './assets/css/normalize.css';
+import './assets/sass/index.scss';
 
 if ('serviceWorker' in navigator) {
   const registration = runtime.register();

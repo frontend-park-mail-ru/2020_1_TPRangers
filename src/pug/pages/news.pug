@@ -1,9 +1,45 @@
-include ../utils/postMixin
-if (main)
-    div(class="main-block__news display_flex_column")
-        span(class="text text_size_L news-header") Новости
-        div(class="hr-line")
-        div(class="news-body display_flex")
-            each post in body
-                div(class="news-body__post display_flex")
-                    + postMixin(post)
+- let data = {
+-   posts: [
+-       {
+-           photo: 'https://picsum.photos/200/800',
+-           title: 'Hello',
+-           text: 'Voluptate adipisicing ad ullamco enim sit incididunt veniam nostrud reprehenderit dolore duis ex. Qui minim sint amet id veniam sunt dolore exercitation magna laboris aliquip sit reprehenderit irure. Est pariatur sint aliquip non labore. Deserunt in ea ea pariatur ut velit esse sunt incididunt consequat minim quis excepteur reprehenderit. Non incididunt exercitation labore sunt velit amet do in labore anim eiusmod.',
+-           like: 10,
+-           comment: 12
+-       },
+-       {
+-           photo: 'https://picsum.photos/800/200',
+-           title: null,
+-           text: 'Voluptate adipisicing ad ullamco enim sit incididunt veniam nostrud reprehenderit dolore duis ex. Qui minim sint amet id veniam sunt dolore exercitation magna laboris aliquip sit reprehenderit irure. Est pariatur sint aliquip non labore. Deserunt in ea ea pariatur ut velit esse sunt incididunt consequat minim quis excepteur reprehenderit. Non incididunt exercitation labore sunt velit amet do in labore anim eiusmod.',
+-           like: 10,
+-           comment: 12
+-       },
+-       {
+-           photo: 'https://picsum.photos/200/200',
+-           title: null,
+-           text: null,
+-           like: 10,
+-           comment: 12
+-       },
+-       {
+-           photo: null,
+-           title: 'Hello',
+-           text: 'Voluptate adipisicing ad ullamco enim sit incididunt veniam nostrud reprehenderit dolore duis ex. Qui minim sint amet id veniam sunt dolore exercitation magna laboris aliquip sit reprehenderit irure. Est pariatur sint aliquip non labore. Deserunt in ea ea pariatur ut velit esse sunt incididunt consequat minim quis excepteur reprehenderit. Non incididunt exercitation labore sunt velit amet do in labore anim eiusmod.',
+-           like: 10,
+-           comment: 12
+-       },
+-       {
+-           photo: 'https://picsum.photos/400/400',
+-           title: 'Hello',
+-           text: null,
+-           like: 10,
+-           comment: 12
+-       },
+-   ],
+-}
+
+include ../mixins/postMixin
+
+div(class='news page')
+    each post in data.posts
+        + post(post)

@@ -1,0 +1,8 @@
+mixin header(isAuth)
+    header(class='header box-shadow')
+        div(class='header__body')
+            if isAuth
+                a(class='link link__button' href='login' section='login')
+                    span(class='link text text_color_normal text_size_1-2rem') Вход
+                a(class='link' href='register' section='register')
+                    span(class='text text_color_for-buttons text_size_1-2rem button button_primary') Регистрация

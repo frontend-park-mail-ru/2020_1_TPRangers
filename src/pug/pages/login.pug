@@ -1,33 +1,12 @@
--const loginFormData = {
--    classes: ['form login-form'],
--    id: 'js-login-form',
--    formItems: {
--       email: {
--           title: 'Логин',
--           name: 'email',
--           placeholder: 'ivan.ivanov@mail.ru',
--           type: 'email',
--           errorMsg: 'Некоррекнтый email',
--           class: 'form__label',
--           fa_item: 'fas fa-at',
--       },
--       password: {
--           title: 'Пароль',
--           name: 'password',
--           placeholder: '',
--           type: 'password',
--           errorMsg: 'Неправильный логин и/или пароль',
--           class: 'form__label',
--           fa_item: 'fas fa-key',
--       },
--    },
--    buttonName: 'Войти',
--    secondButtonName: ' Регистрация',
--};
-
-
-
-include ../utils/formMixin
-+baseForm(loginFormData)
-
-
+div(class='login form')
+    div(class='login__body box-shadow layout_color_main')
+        span(class='text text_color_primary text_size_Title login__body__title') Вход
+        form(class='form__input-holder')
+            input(class='input login__input text text_color_normal text_size_1-2rem' type='email' name='email' true, id='email' placeholder='Логин')
+            input(class='input login__input text text_color_normal text_size_1-2rem' type='password' name='password' true, id='password' placeholder='Пароль')
+            span(class='text error hidden' id='login-error') Текст ошибки будет тут
+            input(type="submit", value='Войти', class="input__button login__input__button button button_primary text text_color_for-buttons text_size_1-2rem")
+        div(class='login__body__fotter')
+            span(class='login__body__fotter__text text text_color_normal') Нет аккаунта?
+            a(class='link' href='register' section='register')
+                span(class='link text text_color_normal text_weight_bold') Регистрация

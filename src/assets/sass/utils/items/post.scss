@@ -1,0 +1,65 @@
+.post {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+
+    &_full {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        border-radius: 5px;
+        margin-bottom: 1rem;
+    }
+
+    &__photo {
+        max-height: 50vh;
+        min-height: 20vh;
+        width: 40%;
+        max-width: 30vw;
+        min-width: 250px;
+
+        overflow: hidden;
+        border-radius: 5px 0 0 5px;
+        &__img {
+            min-width: 100%;
+            min-height: 100%;
+        }
+
+        &_full {
+            width: 100%;
+            min-width: 100%;
+            height: max-content;
+            max-height: 40vh;
+
+            overflow: hidden;
+            border-radius: 5px 5px 0 0;
+            &__img {
+                min-width: 100%;
+                min-height: 100%;
+            }
+        }
+    }
+
+    &__body {
+        width: calc(100% - 2rem);
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        min-height: max-content;
+
+        &__likes-and-comments {
+            display: flex;
+            justify-content: space-between;
+
+            &__element {
+                margin-right: 0.5rem;
+            }
+        }
+
+        &__footer {
+            margin-top: auto;
+        }
+    }
+}

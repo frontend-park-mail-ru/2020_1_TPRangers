@@ -1,0 +1,9 @@
+include ../mixins/photoMixin
+div(class='photos page')
+    include ../mixins/addPhotoMixin
+    div(class='photos__add-photo profile_box layout_color_main')
+        span(class='text text_color_normal text_uppercase text_size_1-2rem') Создать новый альбом
+        i(class='link add-photo-js text text_color_normal text_size_2rem fas fa-plus-circle')
+    div(class='albums')
+        each album in data.albums
+            + albumMixin(album)
