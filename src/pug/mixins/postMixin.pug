@@ -1,122 +1,121 @@
-mixin post(data)
-
-    if data.photo != null
-        if data.text != null
-            if data.title != null
-                div(class='post layout_color_main box-shadow')
-                    div(class='img post__photo')
-                        img(class='post__photo__img' src=data.photo)
-                    div(class='post__body')
-                        span(class='text text_size_2rem post__title') #{data.title}
-                        p(class='text text_colot_normal') #{data.text}   
-                        div(class='post__body__footer')
-                            div(class='hr-line')
-                            div(class='post__body__likes-and-comments')
-                                div(class='')
-                                    i(class='link-like post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-heart')
-                                    span(class='text text_color_normal') #{data.like}
-                                div(class='')
-                                    i(class='link post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-comment-alt')
-                                    span(class='text text_color_normal') #{data.comment} 
-            else
-                div(class='post layout_color_main box-shadow')
-                    div(class='img post__photo')
-                        img(class='post__photo__img' src=data.photo)
-                    div(class='post__body')
-                        p(class='text text_colot_normal') #{data.text}
-                        div(class='post__body__footer')
-                            div(class='hr-line')
-                            div(class='post__body__likes-and-comments')
-                                div(class='')
-                                    i(class='link-like post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-heart')
-                                    span(class='text text_color_normal') #{data.like}
-                                div(class='')
-                                    i(class='link post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-comment-alt')
-                                    span(class='text text_color_normal') #{data.comment} 
-        else
-            div(class='post_full layout_color_main box-shadow')
-                div(class='img post__photo_full')
-                    img(class='post__photo_full__img' src=data.photo)
+mixin post(data, flag)
+    if flag
+        if data.photo.likes != null
+            if data.text != null
                 if data.title != null
-                    div(class='post__body')
-                        span(class='text text_size_2rem post__title') #{data.title}
-                        div(class='post__body__footer')
-                            div(class='hr-line')
-                            div(class='post__body__likes-and-comments')
-                                div(class='link')
-                                    i(class='link-like post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-heart')
-                                    span(class='text text_color_normal') #{data.like}
-                                div(class='link')
-                                    i(class='link post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-comment-alt')
-                                    span(class='text text_color_normal') #{data.comment} 
-                else
-                    div(class='post__body')
-                        div(class='post__body__footer')
+                    div(class='post layout_color_main box-shadow')
+                        div(class='img post__photo')
+                            img(class='post__photo__img' src=data.photo)
+                        div(class='post__body')
+                            span(class='text text_size_2rem post__title') #{data.title}
+                            p(class='text text_colot_normal') #{data.text}
+                            div(class='post__body__footer')
                                 div(class='hr-line')
                                 div(class='post__body__likes-and-comments')
                                     div(class='')
                                         i(class='link-like post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-heart')
-                                        span(class='text text_color_normal') #{data.like}
+                                        span(class='text text_color_normal') #{data.likes}
                                     div(class='')
                                         i(class='link post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-comment-alt')
-                                        span(class='text text_color_normal') #{data.comment} 
-    else
-        if data.text != null
-            if data.title != null
-                div(class='post_full layout_color_main box-shadow')
-                    div(class='post__body')
-                        span(class='text text_size_2rem post__title') #{data.title}
-                        p(class='text text_colot_normal') #{data.text}
-                        div(class='post__body__footer')
-                            div(class='hr-line')
-                            div(class='post__body__likes-and-comments')
-                                div(class='')
-                                    i(class='link-like post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-heart')
-                                    span(class='text text_color_normal') #{data.like}
-                                div(class='')
-                                    i(class='link post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-comment-alt')
-                                    span(class='text text_color_normal') #{data.comment} 
+                                        span(class='text text_color_normal') #{data.comment}
+                else
+                    div(class='post layout_color_main box-shadow')
+                        div(class='img post__photo')
+                            img(class='post__photo__img' src=data.photo)
+                        div(class='post__body')
+                            p(class='text text_colot_normal') #{data.text}
+                            div(class='post__body__footer')
+                                div(class='hr-line')
+                                div(class='post__body__likess-and-comments')
+                                    div(class='')
+                                        i(class='link-like post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-heart')
+                                        span(class='text text_color_normal') #{data.likes}
+                                    div(class='')
+                                        i(class='link post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-comment-alt')
+                                        span(class='text text_color_normal') #{data.comment}
             else
                 div(class='post_full layout_color_main box-shadow')
-                    div(class='post__body')
-                        p(class='text text_colot_normal') #{data.text}
-                        div(class='post__body__footer')
-                            div(class='hr-line')
-                            div(class='post__body__likes-and-comments')
-                                div(class='')
-                                    i(class='link-like post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-heart')
-                                    span(class='text text_color_normal') #{data.like}
-                                div(class='')
-                                    i(class='link post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-comment-alt')
-                                    span(class='text text_color_normal') #{data.comment} 
+                    div(class='img post__photo_full')
+                        img(class='post__photo_full__img' src=data.photo)
+                    if data.title != null
+                        div(class='post__body')
+                            span(class='text text_size_2rem post__title') #{data.title}
+                            div(class='post__body__footer')
+                                div(class='hr-line')
+                                div(class='post__body__likes-and-comments')
+                                    div(class='link')
+                                        i(class='link-like post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-heart')
+                                        span(class='text text_color_normal') #{data.likes}
+                                    div(class='link')
+                                        i(class='link post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-comment-alt')
+                                        span(class='text text_color_normal') #{data.comment}
+                    else
+                        div(class='post__body')
+                            div(class='post__body__footer')
+                                    div(class='hr-line')
+                                    div(class='post__body__likes-and-comments')
+                                        div(class='')
+                                            i(class='link-like post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-heart')
+                                            span(class='text text_color_normal') #{data.likes}
+                                        div(class='')
+                                            i(class='link post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-comment-alt')
+                                            span(class='text text_color_normal') #{data.comment}
         else
-            if data.title != null
-                div(class='post_full layout_color_main box-shadow')
-                    div(class='post__body')
-                        span(class='text text_size_2rem post__title') #{data.title}
-                        div(class='post__body__footer')
-                            div(class='hr-line')
-                            div(class='post__body__likes-and-comments')
-                                div(class='')
-                                    i(class='link-like post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-heart')
-                                    span(class='text text_color_normal') #{data.like}
-                                div(class='')
-                                    i(class='link post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-comment-alt')
-                                    span(class='text text_color_normal') #{data.comment} 
+            if data.text != null
+                if data.title != null
+                    div(class='post_full layout_color_main box-shadow')
+                        div(class='post__body')
+                            span(class='text text_size_2rem post__title') #{data.title}
+                            p(class='text text_colot_normal') #{data.text}
+                            div(class='post__body__footer')
+                                div(class='hr-line')
+                                div(class='post__body__likes-and-comments')
+                                    div(class='')
+                                        i(class='link-like post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-heart')
+                                        span(class='text text_color_normal') #{data.likes}
+                                    div(class='')
+                                        i(class='link post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-comment-alt')
+                                        span(class='text text_color_normal') #{data.comment}
+                else
+                    div(class='post_full layout_color_main box-shadow')
+                        div(class='post__body')
+                            p(class='text text_colot_normal') #{data.text}
+                            div(class='post__body__footer')
+                                div(class='hr-line')
+                                div(class='post__body__likes-and-comments')
+                                    div(class='')
+                                        i(class='link-like post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-heart')
+                                        span(class='text text_color_normal') #{data.likes}
+                                    div(class='')
+                                        i(class='link post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-comment-alt')
+                                        span(class='text text_color_normal') #{data.comment}
             else
-                div(class='post_full layout_color_main box-shadow')
-                    div(class='post__body')
-                        div(class='post__body__footer')
-                            div(class='hr-line')
-                            div(class='post__body__likes-and-comments')
-                                div(class='')
-                                    i(class='link-like post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-heart')
-                                    span(class='text text_color_normal') #{data.like}
-                                div(class='link')
-                                    i(class='link post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-comment-alt')
-                                    span(class='text text_color_normal') #{data.comment} 
+                if data.title != null
+                    div(class='post_full layout_color_main box-shadow')
+                        div(class='post__body')
+                            span(class='text text_size_2rem post__title') #{data.title}
+                            div(class='post__body__footer')
+                                div(class='hr-line')
+                                div(class='post__body__likes-and-comments')
+                                    div(class='')
+                                        i(class='link-like post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-heart')
+                                        span(class='text text_color_normal') #{data.likes}
+                                    div(class='')
+                                        i(class='link post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-comment-alt')
+                                        span(class='text text_color_normal') #{data.comment}
+                else
+                    div(class='post_full layout_color_main box-shadow')
+                        div(class='post__body')
+                            div(class='post__body__footer')
+                                div(class='hr-line')
+                                div(class='post__body__likes-and-comments')
+                                    div(class='')
+                                        i(class='link-like post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-heart')
+                                        span(class='text text_color_normal') #{data.likes}
+                                    div(class='link')
+                                        i(class='link post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-comment-alt')
+                                        span(class='text text_color_normal') #{data.comment}
 
 
 
 
-                

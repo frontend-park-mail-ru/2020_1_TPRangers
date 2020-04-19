@@ -7,7 +7,7 @@ const rightBlock = document.getElementById('right-block');
 
 const drawBasicCallback = () => {
   console.log(`[DEBUG] draw-basic callback`);
-  new LeftView(leftBlock).render();
-  new RightView(rightBlock).render();
+  // new LeftView(leftBlock).render();
+  // new RightView(rightBlock).render();
 };
 Observer.on('draw-basic', drawBasicCallback);

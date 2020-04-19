@@ -12,8 +12,9 @@
     }
 
     &__body {
+        min-height: 100vh;
         display: grid;
-        grid-template-areas: 
+        grid-template-areas:
             'profile-left-block profile-info'
             'profile-left-block profile-media'
             'profile-left-block profile-add-post'
@@ -26,7 +27,7 @@
 
         &__avatar-place-for-mobile {
             display: grid;
-            grid-template-areas: 
+            grid-template-areas:
                 'profile-mob-avatar profile-info';
             grid-template-columns: max-content 1fr;
             grid-template-rows: max-content;
@@ -76,7 +77,7 @@
     &__info {
         min-width: 400px;
         grid-area: profile-info;
-        
+
         display: flex;
         flex-direction: column;
         width: calc(100% - 2rem);
@@ -106,7 +107,7 @@
     &__media {
         grid-area: profile-media;
         min-width: 400px;
-        
+
         display: flex;
         flex-direction: column;
         width: calc(100% - 2rem);
@@ -182,7 +183,7 @@
     &__posts {
         grid-area: profile-posts;
         min-width: 400px;
-        
+
         display: flex;
         flex-direction: column;
         width: calc(100%);
@@ -209,12 +210,12 @@
     &__friends-music {
         display: none;
     }
-    
+
 }
 
 @media only screen and  (max-device-width: 600px) {
     .profile-mobile {
-        
+
         &__avatar-and-buttons {
             height: 100%;
             grid-area: 'profile-mob-avatar';
@@ -251,7 +252,7 @@
                 display: flex;
                 flex-direction: row;
                 justify-content: space-between;
-                
+
                 &__button {
                     display: flex;
                     justify-content: center;
@@ -262,12 +263,12 @@
         }
 
         &__friends-music {
-    
+
             display: flex;
             margin-top: 1rem;
             justify-content: flex-end;
             align-items: center;
-    
+
             &__link {
                 text-decoration: none;
                 width: max-content;
@@ -276,11 +277,11 @@
                     flex-direction: row;
                     align-items: center;
                     margin-left: 1.5rem;
-    
-    
+
+
                 }
             }
-    
+
             &__button {
                 margin-right: 0.5rem;
             }
@@ -293,15 +294,15 @@
     }
 
     .profile {
-    
+
         &__body {
             display: grid;
-            grid-template-areas: 
+            grid-template-areas:
                 'profile-info'
                 'profile-media'
                 'profile-add-post'
                 'profile-posts';
-    
+
             grid-template-rows: max-content max-content 1fr;
             grid-template-columns: 100%;
             height: max-content;
@@ -322,7 +323,7 @@
         &__friends {
             display: none;
         }
-    
+
     }
 
     .profile__info__data-block-element {

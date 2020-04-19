@@ -2,6 +2,7 @@ include ./header.pug
 include ./sidenav.pug
 
 + header(true)
-+ sidenav()
-main(class='main layout_color_secondary') 
-    include ../pages/albums.pug
+#left-block
+    + sidenav()
+main(class='main layout_color_secondary' id='main-block')
+#right-block

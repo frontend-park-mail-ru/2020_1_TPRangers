@@ -40,6 +40,7 @@
 
 include ../mixins/postMixin
 
-div(class='news page')
-    each post in data.posts
-        + post(post)
+if main
+    div(class='news page')
+        each post in feed
+            + post(post, true)

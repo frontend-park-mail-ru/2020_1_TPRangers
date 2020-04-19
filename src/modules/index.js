@@ -21,13 +21,13 @@ import AddPhotos from './View/addPhotos';
 const testTmpl = require('../pug/pages/news.pug');
 
 
-const app = document.getElementById('application');
+const app = document.getElementById('app');
 
 if (!app) console.log('app not found');
 
 app.addEventListener('click', evt => {
   if (evt.target instanceof Element) {
-    if (evt.target.tagName === "I" || evt.target.tagName === "IMG") {
+    if (evt.target.tagName === "I" || evt.target.tagName === 'LI'|| evt.target.tagName === "IMG") {
       evt.preventDefault();
       const aNode = evt.target.parentNode;
 
@@ -44,25 +44,23 @@ app.addEventListener('click', evt => {
 
 
 
-const leftBlock = document.getElementById("left-block");
 
 const mainBlock = document.getElementById("main-block");
 
-const rightBlock = document.getElementById('right-block');
 
 //Service Worker init
-
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('../sw.js')
-      .then(() => {
-        console.log('[DEBUG] ServiceWorker registered');
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  });
-}
+//
+// if ('serviceWorker' in navigator) {
+//   window.addEventListener('load', () => {
+//     navigator.serviceWorker.register('../sw.js')
+//       .then(() => {
+//         console.log('[DEBUG] ServiceWorker registered');
+//       })
+//       .catch((err) => {
+//         console.error(err);
+//       });
+//   });
+// }
 
 
 
@@ -141,7 +139,6 @@ Router.add(/news/, () => {
     .add(/(?!news$)(?!friends$)(?!messages$)(?!media$)(?!album\/(.*)$)(?!settings$)(?!user\/(.*)$)(?!profile$)(?!login$)(?!reg$)(?!logout$)/, () => {
       let news = new NewsView(mainBlock);
       news.render();
-      //Router.navigate();
     })
     .listen();
 

@@ -121,7 +121,7 @@ export default class ProfileView extends IView{
               main: true,
               feed: response,
             }
-            this.parent.innerHTML += newsTmpl(posts); // response.body
+            this.parent.innerHTML += newsTmpl(posts); // posts
             Observer.emit('listenPostsLikes')
           })
         }

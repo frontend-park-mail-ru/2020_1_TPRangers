@@ -15,109 +15,17 @@ export default class ProfileView extends IView{
 
         callback: response => {
           response.json().then(response => {
-
-            const dataForTest = {
-              main: true,
-              body: [
-                    {
-                        name: 'Бонд',
-                        surname: 'Джеймс',
-                        id: 'blabla',
-                        isOnline: false,
-                        avatar: 'https://picsum.photos/200'
-                    },
-                    {
-                      name: 'Бонд',
-                      surname: 'Джеймс',
-                      id: 'blabla',
-                      isOnline: false,
-                      avatar: 'https://picsum.photos/200'
-                    },
-                    {
-                      name: 'Бонд',
-                      surname: 'Джеймс',
-                      id: 'blabla',
-                      isOnline: false,
-                      avatar: 'https://picsum.photos/200'
-                    },
-                    {
-                      name: 'Бонд',
-                      surname: 'Джеймс',
-                      id: 'blabla',
-                      isOnline: false,
-                      avatar: 'https://picsum.photos/200'
-                    },
-                    {
-                      name: 'Бонд',
-                      surname: 'Джеймс',
-                      id: 'blabla',
-                      isOnline: false,
-                      avatar: 'https://picsum.photos/200'
-                    },
-                    {
-                      name: 'Бонд',
-                      surname: 'Джеймс',
-                      id: 'blabla',
-                      isOnline: false,
-                      avatar: 'https://picsum.photos/200'
-                    },
-                    {
-                      name: 'Бонд',
-                      surname: 'Джеймс',
-                      id: 'blabla',
-                      isOnline: false,
-                      avatar: 'https://picsum.photos/200'
-                  },
-                  {
-                    name: 'Бонд',
-                    surname: 'Джеймс',
-                    id: 'blabla',
-                    isOnline: false,
-                    avatar: 'https://picsum.photos/200'
-                  },
-                  {
-                    name: 'Бонд',
-                    surname: 'Джеймс',
-                    id: 'blabla',
-                    isOnline: false,
-                    avatar: 'https://picsum.photos/200'
-                  },
-                  {
-                    name: 'Бонд',
-                    surname: 'Джеймс',
-                    id: 'blabla',
-                    isOnline: false,
-                    avatar: 'https://picsum.photos/200'
-                  },
-                  {
-                    name: 'Бонд',
-                    surname: 'Джеймс',
-                    id: 'blabla',
-                    isOnline: false,
-                    avatar: 'https://picsum.photos/200'
-                  },
-                  {
-                    name: 'Бонд',
-                    surname: 'Джеймс',
-                    id: 'blabla',
-                    isOnline: false,
-                    avatar: 'https://picsum.photos/200'
-                  }
-                ]
-            }
-
             const data = {
               main: true,
               friends: response
             }
             console.log(data);
-            this.parent.innerHTML += friendsTmpl(response); // response.body
+            this.parent.innerHTML += friendsTmpl(); // data
             Observer.emit('profile:render', response);
           })
         }
       });
     }
-
 }
 
 

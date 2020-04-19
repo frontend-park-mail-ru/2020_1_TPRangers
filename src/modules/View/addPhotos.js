@@ -1,7 +1,7 @@
 import IView from './IView';
 import Observer from '../../controller/observer';
 
-const formTmpl = require('../../pug/pages/addAlbumPhotos.pug');
+const formTmpl = require('../../pug/pages/albums.pug');
 
 export default class AddPhotos extends IView{
   render() {

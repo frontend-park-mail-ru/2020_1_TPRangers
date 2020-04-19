@@ -18,7 +18,6 @@ const dataForTest = {
   ]
 }
 
-const photosTmpl = require('../../pug/pages/mediaPhotos.pug');
 
 export default class MediaPhotosView extends IView{
 
@@ -39,7 +38,7 @@ export default class MediaPhotosView extends IView{
             }
 
             console.log(album);
-            this.parent.innerHTML += photosTmpl(album); // response.body
+            // this.parent.innerHTML += photosTmpl(album); // response.body
           })
         }
       });
