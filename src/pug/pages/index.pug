@@ -2,10 +2,9 @@ doctype html
 html(lang='en')
     head
         meta(charset='utf-8')
-        title 'TP_Rangers'
+        title 'new_design'
         meta(name="description", content=description)
-        link(rel="shortcut icon" href="../../assets/img/favicon.ico" type="image/x-icon")
-        block head
     body
-        #application(class="app display_flex")
-            include ../layout/main
+        #app(class="grid-container")
+            include ../layout/layout
+        div(class='blur-background-js hidden')

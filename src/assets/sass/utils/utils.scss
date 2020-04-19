@@ -1,0 +1,21 @@
+@import './mixins/lineralGradient.scss';
+@import './items/layout.scss';
+@import './items/card.scss';
+@import './mixins/backgroundImg.scss';
+@import './mixins/transistion.scss';
+@import './mixins/transform.scss';
+@import './items/text.scss';
+@import './items/button.scss';
+@import './items/link.scss';
+@import './items/boxShadow.scss';
+@import './items/form.scss';
+@import './items/input.scss';
+@import './items/error.scss';
+@import './items/page.scss';
+@import './items/img.scss';
+@import './items/hrLine.scss';
+@import './items/post.scss';
+
+.hidden {
+    visibility: hidden;
+}

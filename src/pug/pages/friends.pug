@@ -1,9 +1,46 @@
-include ../utils/friendCardMixin
-if (main)
-    div(class="main-block__friends display_flex_column")
-        span(class="text text_size_L friends-header") Друзья
-        div(class="hr-line")
-        div(class="friends-body display_flex")
-            each friend in friends
-                + friendCardMixin(friend)
+- let data = {
+-   friends: [
+-       {
+-           name: 'Lorem',
+-           surname: 'Ipsum',
+-           avatar: 'https://picsum.photos/300/350',
+-           online: true
+-       },
+-       {
+-           name: 'Lorem',
+-           surname: 'Ipsum',
+-           avatar: 'https://picsum.photos/200/300',
+-           online: true
+-       },
+-       {
+-           name: 'Lorem',
+-           surname: 'Ipsum',
+-           avatar: 'https://picsum.photos/100/400',
+-           online: true
+-       },
+-       {
+-           name: 'Lorem',
+-           surname: 'Ipsum',
+-           avatar: 'https://picsum.photos/200/150',
+-           online: false
+-       },
+-       {
+-           name: 'Lorem',
+-           surname: 'Ipsum',
+-           avatar: 'https://picsum.photos/300/350',
+-           online: true
+-       },
+-       {
+-           name: 'Lorem',
+-           surname: 'Ipsum',
+-           avatar: 'https://picsum.photos/100/100',
+-           online: false
+-       },
+-   ],
+- }
 
+include ../mixins/friendMixin
+
+div(class='friends page')
+    each friend in data.friends
+        + friendMixin(friend)
