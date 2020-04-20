@@ -15,6 +15,7 @@ import MediaPhotosView from './View/MediaPhotosView';
 import SendPost from './View/createPostView';
 import CreateAlbum from './View/createAlbum';
 import AddPhotos from './View/addPhotos';
+import { fetchGET } from '../ajax/ajax';
 
 
 // const leftBlockTmpl = require("../pug/includes/modules/left-block.pug");
@@ -66,29 +67,39 @@ if ('serviceWorker' in navigator) {
 
 // ws register
 
-let socket = new WebSocket(`ws://localhost:3001`);
+fetchGET({
+  url: BACKEND_IP + '/api/v1/ws',
+  callback: response => {
+    response.json().then( response => {
+      console.log(response);
+      let socket = new WebSocket(`ws://localhost:3001/api/v1/ws/${response.token}`);
 
-socket.onopen = function(e) {
-  console.log("[open] Соединение установлено");
-};
+      socket.onopen = function(e) {
+        console.log("[open] Соединение установлено");
+      };
 
-socket.onmessage = function(event) {
-  console.log(`[message] Данные получены с сервера: ${event.data}`);
-};
+      socket.onmessage = function(event) {
+        console.log(`[message] Данные получены с сервера: ${event.data}`);
+      };
 
-socket.onclose = function(event) {
-  if (event.wasClean) {
-    console.log(`[close] Соединение закрыто чисто, код=${event.code} причина=${event.reason}`);
-  } else {
-    // например, сервер убил процесс или сеть недоступна
-    // обычно в этом случае event.code 1006
-    console.log('[close] Соединение прервано');
+      socket.onclose = function(event) {
+        if (event.wasClean) {
+          console.log(`[close] Соединение закрыто чисто, код=${event.code} причина=${event.reason}`);
+        } else {
+          // например, сервер убил процесс или сеть недоступна
+          // обычно в этом случае event.code 1006
+          console.log('[close] Соединение прервано');
+        }
+      };
+
+      socket.onerror = function(error) {
+        console.log(`[error] ${error.message}`);
+      };
+    })
   }
-};
+})
 
-socket.onerror = function(error) {
-  console.log(`[error] ${error.message}`);
-};
+
 
 
 
