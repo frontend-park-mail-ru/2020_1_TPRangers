@@ -76,6 +76,8 @@ fetchGET({
 
       socket.onopen = function(e) {
         console.log("[open] Соединение установлено");
+        socket.send(JSON.stringify({chatId: 1, text: 'testing'}));
+        console.log('[message] SEND');
       };
 
       socket.onmessage = function(event) {
@@ -95,6 +97,7 @@ fetchGET({
       socket.onerror = function(error) {
         console.log(`[error] ${error.message}`);
       };
+      window.ourSocket = socket;
     })
   }
 })
