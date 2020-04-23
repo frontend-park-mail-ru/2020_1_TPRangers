@@ -115,14 +115,10 @@ Router.add(/news/, () => {
       settings.render();
     })
     .add(/user\/(.*)/, () => {
-      // console.log(Router.getFragment());
-      // console.log('login:', Router.getFragment().split('/')[1]); // так можно вытащить login user
-
       let user = new  UserView(mainBlock);
       user.render(Router.getFragment().split('/')[1]);
     })
     .add(/profile/, () => {
-      // console.log(Router.getFragment());
       console.log('profile');
 
       let userProfile = new ProfileView(mainBlock);
