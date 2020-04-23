@@ -1,54 +1,55 @@
-.main-block__friends {
+.main-block__dialogs {
     width: 100%;
     align-items: center;
     justify-content: center;
 }
 
-.friends-body {
+.dialogs-body {
     align-content: space-between;
     justify-content: space-between;
     max-width: 100%;
+    width: 100%;
     flex-wrap: wrap;
     margin-top: 20px;
 }
 
-.friend-card__body {
+.dialog-card__body {
     width: 100%;
     align-items: flex-start;
     justify-content: space-between;
 }
 
-.main-block__friend-card {
-    width: 43%;
+.main-block__dialog-card {
+    width: 100%;
     margin-bottom: 20px;
 }
 
-.friend-card__img {
+.dialog-card__img {
     margin-right: 20px;
 }
 
-.friend-card__body__username {
+.dialog-card__body__username {
     margin-bottom: 5px;
     color: black;
 }
 
-@media screen and (max-width:1024px){
-    .friends-body {
+@media screen and (max-width: 1024px){
+    .dialogs-body {
         min-width: 100%;
         flex-wrap: nowrap;
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
-    .main-block__friend-card {
+    .main-block__dialog-card {
         max-width: 90%;
         min-width: 90%;
         margin-bottom: 20px;
     }
 }
 
-@media screen and (max-device-width:480px){
-    .friends-body {
+@media screen and (max-device-width: 960px){
+    .dialogs-body {
         max-width: 90%;
         min-width: 90%;
         flex-wrap: nowrap;
@@ -56,16 +57,16 @@
         justify-content: center;
         align-items: center;
     }
-    .main-block__friends {
+    .main-block__dialogs {
         min-width: 100%;
 
     }
-    
-    .main-block__friend-card {
+
+    .main-block__dialog-card {
         max-width: 100%;
         min-width: 100%;
         margin-bottom: 20px;
         align-items: flex-start;
     }
-    
+
 }

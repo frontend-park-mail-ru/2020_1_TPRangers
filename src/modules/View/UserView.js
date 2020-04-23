@@ -52,11 +52,10 @@ export default class UserView extends IView{
         url: BACKEND_IP + '/api/v1/user/' + id,
         callback: response => {
           response.json().then(response => {
-            response.page = true;
-            response.user.background = '../assets/img/main-block/fakeUser/background.jpg';
             if (!response.feed)
               response.feed = [];
-            console.log(response);
+            response.page = true;
+            response.user.background = '../assets/img/main-block/fakeUser/background.jpg';
             this.parent.innerHTML += userProfileTmpl(response);
             Observer.emit('user:render');
             Observer.emit('listenPostsLikes');

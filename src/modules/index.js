@@ -15,6 +15,9 @@ import MediaPhotosView from './View/MediaPhotosView';
 import SendPost from './View/createPostView';
 import CreateAlbum from './View/createAlbum';
 import AddPhotos from './View/addPhotos';
+import MessagesView from './View/MessagesView';
+import DialogView from './View/DialogView';
+
 
 
 // const leftBlockTmpl = require("../pug/includes/modules/left-block.pug");
@@ -28,7 +31,8 @@ if (!app) console.log('app not found');
 app.addEventListener('click', evt => {
   if (evt.target instanceof Element) {
     if (evt.target.tagName === "I" || evt.target.tagName === "IMG") {
-      evt.preventDefault();
+      if (!evt.target.classList.contains(`js-don't-prevent`))
+        evt.preventDefault();
       const aNode = evt.target.parentNode;
 
       if (aNode.tagName === "A")
@@ -86,7 +90,13 @@ Router.add(/news/, () => {
     })
     .add(/messages/, () => {
       console.log('messages');
-      mainBlock.innerHTML = testTmpl({ data: 'Сообщения' });
+      let messages = new MessagesView(mainBlock);
+      messages.render();
+    })
+    .add(/chat\/(.*)/, () => {
+      console.log('chat');
+      let chat = new DialogView(mainBlock);
+      chat.render();
     })
     .add(/media/, () => {
       let media = new MediaView(mainBlock);

@@ -1,0 +1,9 @@
+mixin dialogCardMixin(data)
+    div(class="main-block__dialog-card boxshadow-block main-block__layout layout_light_secondary display_flex")
+        img(class="img img_size_S dialog-card__img display_flex" src=data.chatPhoto)
+        div(class="dialog-card__body display_flex_row")
+            a(class="text text_size_XM dialog-card__body__username" href='chat/' + data.chatId section='chat/' + data.chatId) #{data.chatName}
+            if (data.onlineStatus)
+                span(class="text text_size_S text_weight_light text_uppercase") В сети
+            else
+                span(class="text text_size_S text_weight_light text_uppercase") не в сети

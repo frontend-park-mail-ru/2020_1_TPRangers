@@ -10,6 +10,7 @@
 @import "./utils/hr/hr-line.css";
 @import "./utils/post/post.css";
 @import "./utils/icon/icon.css";
+@import "./utils/input/search.css";
 
 @import "./modules/left-block/left-block.css";
 @import "./modules/main-block/main-block.css";
@@ -18,12 +19,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap');
 
 :root {
-  --main-color: rgb(212, 224, 227);
-  --secondary-color: rgb(243, 243, 243);
+  --main-color: rgb(243, 243, 243);
+  --secondary-color: rgb(252, 252, 252);
   --mobile-main-color:  rgb(243, 243, 243);
   --mobile-secondary-color: rgb(252, 252, 252);
   --like-color: rgb(250, 103, 103);
-  --commit-color: rgb(133, 190, 212);
+  --commit-color: rgb(243, 243, 243);
   --reply-color: rgb(105, 212, 180);
   --icon-color: rgb(104, 104, 104);
   --icon-in-button-color:  rgb(226, 226, 226);

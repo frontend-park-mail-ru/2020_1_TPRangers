@@ -4,6 +4,7 @@
 @import "./friends/main-block__friends.css";
 @import "./media/main-block__media.css";
 @import "./media/main-block__photos.css";
+@import "./messages/main-block__dialogs.css";
 
 .main-block {
     flex-grow: 6;
