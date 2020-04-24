@@ -10,7 +10,7 @@ const friendsRenderCallback = () => {
     console.log(search.value);
     if (search.value) {
       fetchGET({
-        url: BACKEND_IP + '/api/v1/users/search/' + search.value,
+        url: BACKEND_IP + '/api/v1/friends/search/' + search.value,
         callback: response => {
           response.json()
             .then(data => {

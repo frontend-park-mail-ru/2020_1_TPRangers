@@ -31,3 +31,7 @@
 .boxshadow-block {
   box-shadow: 0px 2px 6.44px 0.56px rgba(0, 0, 0, 0.14);
 }
+
+.width-100per {
+  width: 100%;
+}

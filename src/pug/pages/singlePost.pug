@@ -1,0 +1,8 @@
+include ../utils/singlePostMixin
+include ../utils/commentInputMixin
+div(class="main-block__news display_flex_column")
+    span(class="text text_size_L news-header") Пост автора #{data.authorName}
+    div(class="hr-line")
+    div(class="news-body width-100per display_flex")
+        + singlePostMixin(data)
+        + commentInputMixin()

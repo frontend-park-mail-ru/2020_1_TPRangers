@@ -39,14 +39,14 @@
     max-width: 20vw;
     width: max-content;
     height: max-content;
-}    
+}
 
 .album-card__text {
     font-size: 1.6em;
 }
 
 .main-block__media__header {
-    width: 98%;
+    width: 91%;
     justify-content: space-between;
 }
 
@@ -60,7 +60,7 @@
     .album-card__body {
         outline: 4vh solid var(--secondary-color, rgb(252, 252, 252));
         border: 1px solid var(--icon-color, rgb(104, 104, 104));
-    } 
+    }
     .main-block__album-card {
         background-color: var(--secondary-color, rgb(252, 252, 252));
     }
@@ -83,7 +83,7 @@
     .album-card__body {
         outline: 4vh solid var(--secondary-color, rgb(252, 252, 252));
         border: 1px solid var(--icon-color, rgb(104, 104, 104));
-    } 
+    }
     .main-block__album-card {
         background-color: var(--secondary-color, rgb(252, 252, 252));
     }
@@ -106,7 +106,7 @@
     .album-card__body {
         outline: 5vh solid var(--mobile-secondary-color, rgb(252, 252, 252));
         border: 1px solid var(--icon-color, rgb(104, 104, 104));
-    } 
+    }
     .main-block__album-card {
         background-color: var(--mobile-secondary-color, rgb(252, 252, 252));
     }

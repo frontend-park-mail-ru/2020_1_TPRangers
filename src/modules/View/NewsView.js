@@ -2,8 +2,6 @@ import IView from './IView';
 import Observer from '../../controller/observer';
 import { fetchGET } from '../../ajax/ajax';
 
-
-
 const newsTmpl = require('../../pug/pages/news.pug');
 
  export default class NewsView extends IView{
@@ -19,6 +17,7 @@ const newsTmpl = require('../../pug/pages/news.pug');
               main: true,
               feed: response,
             }
+            console.log(posts)
             super.clear();
             this.parent.innerHTML += newsTmpl(posts); // response.body
             Observer.emit('listenPostsLikes')
@@ -26,6 +25,5 @@ const newsTmpl = require('../../pug/pages/news.pug');
         }
       });
     }
-
-}
+ }
 

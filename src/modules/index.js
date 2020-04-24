@@ -17,6 +17,7 @@ import CreateAlbum from './View/createAlbum';
 import AddPhotos from './View/addPhotos';
 import MessagesView from './View/MessagesView';
 import DialogView from './View/DialogView';
+import PostView from './View/PostView';
 
 
 
@@ -30,7 +31,7 @@ if (!app) console.log('app not found');
 
 app.addEventListener('click', evt => {
   if (evt.target instanceof Element) {
-    if (evt.target.tagName === "I" || evt.target.tagName === "IMG") {
+    if (evt.target.tagName === "I" || evt.target.tagName === "IMG" || evt.target.tagName === "SPAN") {
       if (!evt.target.classList.contains(`js-don't-prevent`))
         evt.preventDefault();
       const aNode = evt.target.parentNode;
@@ -123,6 +124,10 @@ Router.add(/news/, () => {
 
       let userProfile = new ProfileView(mainBlock);
       userProfile.render();
+    })
+    .add(/post\/(.+)/, () => {
+      let post = new PostView(mainBlock);
+      post.render();
     })
     .add(/login/, () => {
       let login = new LoginView(mainBlock);
