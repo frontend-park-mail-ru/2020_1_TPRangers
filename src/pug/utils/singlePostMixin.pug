@@ -8,8 +8,7 @@ mixin singlePostMixin(data)
                 span(class="text text_size_S text_color_black text_weight_light") #{data.date}
         div(class="post__body__data display_flex_column")
             div(class="post__body__text display_flex")
-                a(href = 'post/' + data.id section = 'post/' + data.id)
-                    span(class="text post__body__text__p text_color_black") #{data.text}
+                span(class="text post__body__text__p text_color_black") #{data.text}
             if data.photo
                 img(class="post__body__img display_flex" src=data.photo.url)
         div(class="hr-line")
