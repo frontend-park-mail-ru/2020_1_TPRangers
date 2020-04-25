@@ -1,0 +1,19 @@
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: var(--main-color, rgb(243, 243, 243));
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background-color: var(--icon-color, rgb(243, 243, 243));
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: var(--icon-color-hover, rgb(243, 243, 243));
+}

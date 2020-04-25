@@ -5,12 +5,20 @@
 }
 
 .dialogs-body {
-    align-content: space-between;
-    justify-content: space-between;
+    height: 64vh;
+    margin-top: 130px;
+    flex-direction: column-reverse;
+    align-content: flex-start;
+    justify-content: flex-start;
     max-width: 100%;
-    width: 100%;
-    flex-wrap: wrap;
-    margin-top: 20px;
+    width: 87%;
+    flex-wrap: nowrap;
+    overflow-y: scroll;
+}
+
+.message {
+    margin: 10px;
+    max-height: max-content;
 }
 
 .dialog-card__body {
@@ -35,11 +43,12 @@
 
 @media screen and (max-width: 1024px){
     .dialogs-body {
+        height: 74vh;
         min-width: 100%;
         flex-wrap: nowrap;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        flex-direction: column-reverse;
+        align-content: flex-start;
+        justify-content: flex-start;
     }
     .main-block__dialog-card {
         max-width: 90%;
@@ -50,12 +59,13 @@
 
 @media screen and (max-device-width: 960px){
     .dialogs-body {
+        height: 53vh;
         max-width: 90%;
         min-width: 90%;
         flex-wrap: nowrap;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        flex-direction: column-reverse;
+        align-content: flex-start;
+        justify-content: flex-start;
     }
     .main-block__dialogs {
         min-width: 100%;
@@ -70,3 +80,31 @@
     }
 
 }
+
+@media screen and (max-device-width: 500px){
+    .dialogs-body {
+        height: 65vh;
+        max-width: 90%;
+        min-width: 90%;
+        flex-wrap: nowrap;
+        flex-direction: column-reverse;
+        align-content: flex-start;
+        justify-content: flex-start;
+    }
+    .main-block__dialogs {
+        min-width: 100%;
+
+    }
+
+    .main-block__dialog-card {
+        max-width: 100%;
+        min-width: 100%;
+        margin-bottom: 20px;
+        align-items: flex-start;
+    }
+
+}
+
+
+
+

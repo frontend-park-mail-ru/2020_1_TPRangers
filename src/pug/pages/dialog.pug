@@ -1,0 +1,17 @@
+include ../utils/messageInputMixin
+include ../utils/messageMixin
+if main
+    div(class="main-block__media display_flex_column")
+        div(class="main-block__media__header_fixed top-fixed display_flex boxshadow-block main-block__layout layout_light_secondary")
+            span(class="text text_size_L media-header display_flex align_center") #{chatInfo.chatName}
+            if !chatInfo.isGroupChat
+                if chatInfo.onlineStatus
+                    span(class="text text_color_grey text_uppercase text_size_M display_flex align_center") В сети
+                else
+                    span(class="text text_color_grey text_uppercase text_size_M display_flex align_center") Не в сети
+            img(src=chatInfo.chatPhoto class="img img-radius img_size_M display_flex")
+
+        div(class="dialogs-body display_flex")
+            each message in  chatMessages
+                +messageMixin(message)
+        +messageInputMixin()

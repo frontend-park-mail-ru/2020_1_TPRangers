@@ -11,6 +11,7 @@
 @import "./utils/post/post.css";
 @import "./utils/icon/icon.css";
 @import "./utils/input/search.css";
+@import "./utils/scrollbar/scrollbar.css";
 
 @import "./modules/left-block/left-block.css";
 @import "./modules/main-block/main-block.css";

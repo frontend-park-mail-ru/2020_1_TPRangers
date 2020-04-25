@@ -50,6 +50,10 @@
     justify-content: space-between;
 }
 
+.main-block__media__header_fixed {
+    width: 79vw;
+    justify-content: space-between;
+}
 
 
 @media screen and (max-width: 1024px) {
@@ -102,6 +106,10 @@
     .main-block__album-card {
         width: 90vw;
         height: 90vw;
+    }
+    .main-block__media__header_fixed {
+        justify-content: space-between;
+        width: 87vw;
     }
     .album-card__body {
         outline: 5vh solid var(--mobile-secondary-color, rgb(252, 252, 252));

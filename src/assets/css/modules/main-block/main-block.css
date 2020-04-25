@@ -12,7 +12,7 @@
     margin-left: calc(68px + 2vw);
     align-items: center;
     height: max-content;
-    min-height: 100vh;
+    min-height: 95vh;
 }
 
 .main-block__layout {
@@ -60,7 +60,6 @@
         align-items: flex-start;
         justify-content: flex-start;
         flex-direction: column;
-        margin-bottom: 160px;
     }
     .main-block__user-body {
         flex-direction: column;
