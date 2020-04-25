@@ -13,11 +13,12 @@ import MediaView from './View/MediaAlbumsView';
 import UserView from './View/UserView';
 import MediaPhotosView from './View/MediaPhotosView';
 import SendPost from './View/createPostView';
-import CreateAlbum from './View/createAlbum';
+import CreateAlbumView from './View/createAlbumView';
 import AddPhotos from './View/addPhotos';
 import MessagesView from './View/MessagesView';
 import DialogView from './View/DialogView';
 import PostView from './View/PostView';
+import CreateDialogView from './View/createDialogView';
 
 
 
@@ -94,6 +95,11 @@ Router.add(/news/, () => {
       let messages = new MessagesView(mainBlock);
       messages.render();
     })
+    .add(/createDialog/, () => {
+      console.log('createDialog');
+      const createDialog = new CreateDialogView(mainBlock);
+      createDialog.render();
+    })
     .add(/chat\/(.*)/, () => {
       console.log('chat');
       let chat = new DialogView(mainBlock);
@@ -142,7 +148,7 @@ Router.add(/news/, () => {
       createPost.render();
     })
     .add (/createAlbum/, () => {
-      let createAlbum = new CreateAlbum(mainBlock);
+      let createAlbum = new CreateAlbumView(mainBlock);
       createAlbum.render();
     })
     .add (/addPhotos\/(.*)/, () => {
