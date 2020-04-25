@@ -17,6 +17,7 @@ export default class PostView extends IView {
             response.comments = [];
           const data = {
             data: response,
+            main: true
           }
           console.log(data);
           super.clear();

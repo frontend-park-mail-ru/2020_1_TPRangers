@@ -10,13 +10,15 @@ const friendsRenderCallback = () => {
     console.log(search.value);
     if (search.value) {
       fetchGET({
-        url: BACKEND_IP + '/api/v1/friends/search/' + search.value,
+        url: BACKEND_IP + '/api/v1/users/search/' + search.value,
         callback: response => {
           response.json()
-            .then(data => {
-              console.log(data);
+            .then(response => {
+              const data = {
+                friends: response
+              }
               const list = document.getElementById('js-friends-list');
-              list.innerHTML = '<h1>Replace</h1>'
+              list.innerHTML = friendList(data)
             })
         }
       })
