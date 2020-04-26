@@ -7,7 +7,6 @@ const friendsRenderCallback = () => {
   console.log('friends:render');
   const search = document.getElementById('js-search');
   search.addEventListener('input', () => {
-    console.log(search.value);
     if (search.value) {
       fetchGET({
         url: BACKEND_IP + '/api/v1/users/search/' + search.value,

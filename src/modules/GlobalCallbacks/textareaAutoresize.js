@@ -5,7 +5,6 @@ const autoresizeCallback = elemId => {
   textarea.style.cssText = 'height:auto;';
   textarea.addEventListener('keydown', evt => {
     setTimeout(function () {
-      console.log(evt.target.scrollHeight);
       if (evt.target.scrollHeight < 220 || evt.target.scrollHeight === 222) {
         evt.target.style.cssText = 'height:auto;';
         evt.target.style.cssText = 'height:' + evt.target.scrollHeight + 'px';

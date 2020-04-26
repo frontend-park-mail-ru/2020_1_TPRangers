@@ -38,7 +38,7 @@ export default class MessagesView extends IView{
           console.log(response);
           const data = {
             main: true,
-            dialogs: fakeData,
+            dialogs: response,
           }
           this.parent.innerHTML += messagesTmpl(data)
         })
