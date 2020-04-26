@@ -12,7 +12,6 @@ const createDialogRenderCallback = () => {
 
   postForm.addEventListener('submit', event => {
     event.preventDefault();
-    console.log(event.target);
   });
 };
 

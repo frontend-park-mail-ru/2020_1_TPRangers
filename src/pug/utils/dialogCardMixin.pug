@@ -3,7 +3,10 @@ mixin dialogCardMixin(data)
         img(class="img img-radius img_size_S dialog-card__img display_flex" src=data.chatPhoto)
         div(class="dialog-card__body display_flex_row")
             div(class="display_flex_column dialog-card__message-text")
-                a(class="text text_size_XM text_weight_bold dialog-card__body__username" href='chat/' + data.chatId section='chat/' + data.chatId) #{data.chatName}
+                if data.isGroupChat
+                    a(class="text text_size_XM text_weight_bold dialog-card__body__username" href='chat/' + data.chatId section='chat/' + data.chatId) #{data.chatName}
+                else
+                    a(class="text text_size_XM text_weight_bold dialog-card__body__username" href='chat/' + data.chatId section='chat/' + data.chatId) #{data.privateName} #{data.privateSurname}
                 if !data.isGroupChat
                     span(class="text text_size_M text_weight_light text_uppercase") #{data.lastMessageTxt}
                 else
@@ -16,6 +19,6 @@ mixin dialogCardMixin(data)
                         span(class="text text_size_M text_weight_light text_uppercase") В сети
                     else
                         span(class="text text_size_M text_weight_light text_uppercase") не в сети
-                if (data.chatCounter !== 0)
+                if (data.chatCounter)
                     span(class="text text_size_M text_weight_light text_uppercase") Сообщений:
                         span(class="text_weight_bold") #{data.chatCounter}
