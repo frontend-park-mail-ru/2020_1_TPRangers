@@ -31,6 +31,7 @@ const app = document.getElementById('application');
 if (!app) console.log('app not found');
 
 app.addEventListener('click', evt => {
+
   if (evt.target instanceof Element) {
     if (evt.target.tagName === "I" || evt.target.tagName === "IMG" || evt.target.tagName === "SPAN") {
       if (!evt.target.classList.contains(`js-don't-prevent`)) {

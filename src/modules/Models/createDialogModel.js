@@ -5,19 +5,8 @@ import {fetchGET} from '../../ajax/ajax';
 
 const friendList = require('../../pug/includes/modules/createDialogFriendList.pug')
 
-const createDialogRenderCallback = () => {
-  console.log(`[DEBUG] createDialog:render callback`);
-
-  const postForm = document.getElementById('js-createDialog-form');
-
-  postForm.addEventListener('submit', event => {
-    event.preventDefault();
-  });
-};
-
 const addListenerCallback = () => {
   let friends = document.getElementsByClassName('js-add-login');
-  console.log(friends);
   [].forEach.call(friends,elem => {
     elem.addEventListener('click', event => {
       Observer.emit('createDialog:login', event)
@@ -81,8 +70,79 @@ const addLoginCallback = evt => {
   postForm.elements.logins.value += `${login},`
 }
 
+const submitDialogCallback = () => {
+  console.log(`[DEBUG] dialog:submit callback`);
+
+  const dialogForm = document.getElementById('js-createDialog-form');
+
+  if (dialogForm.elements.photo.files[0]) {
+
+    let body = new FormData();
+    body.append('fileData', dialogForm.elements.photo.files[0]);
+
+    fetchMultipartPOST({
+      url:  'https://social-hub.ru/upload',
+      body,
+      callback: response => {
+        response.json().then( data => {
+            Observer.emit('dialog:afterPhoto', data);
+          }
+        )
+      }
+    })
+  } else {
+    Observer.emit('dialog:afterPhoto');
+  }
+
+};
+
+const createDialogRenderCallback = () => {
+  console.log(`[DEBUG] createDialog:render callback`);
+
+  const dialogForm = document.getElementById('js-createDialog-form');
+  dialogForm.addEventListener('submit', event => {
+    event.preventDefault();
+    console.log(dialogForm);
+    Observer.emit('dialog:submit');
+  });
+};
+
+const afterPhotoDialogCallback = response => {
+  console.log(`[DEBUG] dialog:afterPhoto callback`);
+
+  let chatPhoto = undefined;
+  if (response) {
+    console.log(response);
+    chatPhoto = 'https://social-hub.ru' + response.filename;
+  }
+
+  const dialogForm = document.getElementById('js-createDialog-form');
+
+  const chatName = dialogForm.elements.text.value;
+  const usersLogin = dialogForm.elements.logins.value.split(',').filter(elem => elem !== "");
+  console.log(text, logins);
+  fetchPOST({
+    url: BACKEND_IP + `/api/v1/chats`,
+    body: JSON.stringify({
+      chatPhoto,
+      chatName,
+      usersLogin,
+    }),
+    callback: response => {
+      if (response.status === 200) {
+        Router.navigate('news');
+      }
+    }
+  })
+
+};
+
+
+
 
 Observer.on('createDialog:addListener', addListenerCallback);
 Observer.on('createDialog:login', addLoginCallback);
-Observer.on('createDialogFriends:render', friendsRenderCallback)
+Observer.on('createDialogFriends:render', friendsRenderCallback);
 Observer.on('createDialog:render', createDialogRenderCallback);
+Observer.on('dialog:afterPhoto', afterPhotoDialogCallback);
+Observer.on('dialog:submit', submitDialogCallback);

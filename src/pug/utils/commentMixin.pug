@@ -11,14 +11,14 @@ mixin commentMixin(data)
                 span(class="text post__body__text__p text_color_black") #{data.text}
             if data.photo.url
                 img(class="post__body__img display_flex" src=data.photo.url)
-        //div(class="hr-line")
-        //div(class="post__footer display_flex_row")
-        //    div(class="display_flex")
-        //        div(class="post__footer__component display_flex_row")
-        //            if !data.wasLike
-        //                i(class="js-like-post js-like-no text text_size_L post__footer__component__like display_flex fas fa-heart" Id = data.id)
-        //            else
-        //                i(class="js-like-post js-like-yes text text_size_L post__footer__component__like display_flex fas fa-heart" Id = data.id)
-        //            span(class="text text_size_M post__footer__component__text text_color_black text_weight_light display_flex") #{data.likes}
-        //            //span выше обязательно должен быть после i
+        div(class="hr-line")
+        div(class="post__footer display_flex_row")
+            div(class="display_flex")
+                div(class="post__footer__component display_flex_row")
+                    if !data.wasLike
+                        i(class="js-like-comment js-like-no text text_size_L post__footer__component__like display_flex fas fa-heart" Id = data.comment_id)
+                    else
+                        i(class="js-like-comment js-like-yes text text_size_L post__footer__component__like display_flex fas fa-heart" Id = data.comment_id)
+                    span(class="text text_size_M post__footer__component__text text_color_black text_weight_light display_flex") #{data.likes}
+                    //span выше обязательно должен быть после i
 

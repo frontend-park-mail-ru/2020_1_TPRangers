@@ -21,10 +21,10 @@ export default class CreateDialogView extends IView{
           this.parent.innerHTML += friendsTmpl(data); // response.body
           this.parent.innerHTML += friendsList(data);
           Observer.emit('createDialogFriends:render');
-          Observer.emit('createDialog:addListener')
+          Observer.emit('createDialog:addListener');
+          Observer.emit("createDialog:render");
         })
       }
     });
-    Observer.emit("createDialog:render");
   }
 }

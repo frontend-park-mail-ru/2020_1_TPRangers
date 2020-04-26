@@ -35,6 +35,12 @@ export default class MessagesView extends IView{
       url: BACKEND_IP+'/api/v1/chats',
       callback: response => {
         response.json().then(response => {
+          response.forEach(elem => {
+            if (elem.lastMessageTime){
+              const date = new Date(Date.parse(elem.lastMessageTime))
+              elem.lastMessageTime = date.toLocaleTimeString();
+            }
+          })
           console.log(response);
           const data = {
             main: true,

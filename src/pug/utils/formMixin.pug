@@ -21,10 +21,12 @@ mixin baseForm(data)
                                     div(id="error-"+item.name class="form__error form-error__anim display_flex").hidden
                                         span(class="text text_size_M error__tooltip_pink form__error__tooltip", id="tooltip-"+item.name, data-tooltip=item.errorMsg) !
                     else
-                        if item.required
-                            input(type=item.type, name=item.name, required, id=item.name,placeholder=item.placeholder class="input form__input display_flex")
-                        else
-                            input(type=item.type, name=item.name, id=item.name,placeholder=item.placeholder class="input form__input display_flex")
+                        div(class="display_flex_row")
+                            div(class="display_flex_column")
+                            if item.required
+                                input(type=item.type, name=item.name, required, id=item.name,placeholder=item.placeholder class="input form__input display_flex")
+                            else
+                                input(type=item.type, name=item.name, id=item.name,placeholder=item.placeholder class="input form__input display_flex")
                 div(class="form__buttons-group display_flex")
                     if data.secondButtonName
                         button(type="reset", form=data.id, class='button form__button button_orange display_flex') #{data.secondButtonName}

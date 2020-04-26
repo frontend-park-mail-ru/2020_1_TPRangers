@@ -7,12 +7,16 @@ mixin dialogCardMixin(data)
                     a(class="text text_size_XM text_weight_bold dialog-card__body__username" href='chat/' + data.chatId section='chat/' + data.chatId) #{data.chatName}
                 else
                     a(class="text text_size_XM text_weight_bold dialog-card__body__username" href='chat/' + data.chatId section='chat/' + data.chatId) #{data.privateName} #{data.privateSurname}
-                if !data.isGroupChat
-                    span(class="text text_size_M text_weight_light text_uppercase") #{data.lastMessageTxt}
-                else
-                    span(class="text text_size_M text_weight_light text_uppercase")
-                        b #{data.lastMessageAuthorName} #{data.lastMessageAuthorSurname}
-                        span   - #{data.lastMessageTxt}
+                span(class="text text_size_M text_weight_light display_flex")
+                    if data.lastMessageTxt
+                        img(class="img img-radius img_size_XXS dialog-card__img" src=data.lastMessageAuthorPhoto)
+                        div(class="display_flex_column")
+                            div
+                                b Сообщение -
+                                span #{data.lastMessageTxt}
+                            div
+                                b #{data.lastMessageAuthorName} #{data.lastMessageAuthorSurname}
+                                span в #{data.lastMessageTime}
             div(class="display_flex_column dialog-card__info")
                 if !data.isGroupChat
                     if (data.onlineStatus)
