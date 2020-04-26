@@ -1,22 +1,33 @@
 import Observer from '../../controller/observer';
 import {Router} from '../../Routes/routes';
+import { fetchGET } from '../../ajax/ajax';
+
+const msgTmpl = require('../../pug/includes/modules/messages.pug')
 
 const newMessageCallback = response => {
   console.log('[DEBUG] New message callback');
-  response.json().then(message => {
-    if (Router.getFragment() !== 'messages') {
-      sendNotification('Social-hub', {
-        body: message,
-        icon: 'favicon.ico',
+  const data = JSON.parse(response.data);
+    if (Router.getFragment().split('/')[0] === 'chat' && Router.getFragment().split('/')[1] === data.message.chatId) {
+      fetchGET({
+        url: BACKEND_IP + '/api/v1/chats/' + data.message.chatId,
+        callback: response => {
+          response.json().then(data => {
+            data.main = true;
+            const div = document.getElementById('js-dialogs-body');
+            div.outerHTML = msgTmpl(data);
+          })
+        }
+      })
+    } else {
+      sendNotification(data.message.chatName, {
+        body: data.message.text,
+        icon: data.message.chatPhoto,
         dir: 'auto'
       });
-    } else {
-      console.log(message);
     }
-  })
 }
 
-Observer.emit('ws:newMessage', newMessageCallback);
+Observer.on('ws:newMessage', newMessageCallback);
 
 function sendNotification(title, options) {
   if (!("Notification" in window)) {
@@ -30,7 +41,7 @@ function sendNotification(title, options) {
   }
 
   else if (Notification.permission !== 'denied') {
-    Notification.requestPermission.then(permission =>  {
+    Notification.requestPermission(permission =>  {
       if (permission === "granted") {
         new Notification(title, options);
       }

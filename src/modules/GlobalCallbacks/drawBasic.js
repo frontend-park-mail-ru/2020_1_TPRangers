@@ -29,7 +29,7 @@ const createWebsocket = () => {
         };
 
         window.socket.onmessage = function(event) {
-          console.log(`[WS] Данные получены с сервера: ${event.data}`);
+          Observer.emit("ws:newMessage", event);
         };
 
         window.socket.onclose = function(event) {

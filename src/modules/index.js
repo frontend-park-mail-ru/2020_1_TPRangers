@@ -164,7 +164,13 @@ Router.add(/news/, () => {
     .listen();
 
 
+window.addEventListener("unload", () => {
+  window.socket.close();
+});
 
+window.onbeforeunload = function() {
+  window.socket.close();
+};
 
 if (navigator.onLine) {
   Router.callCurrent();
