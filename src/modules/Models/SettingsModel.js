@@ -7,6 +7,8 @@ import {
 import { fetchGET, fetchMultipartPOST, fetchPOST, fetchPUT } from '../../ajax/ajax';
 import { Router } from '../../Routes/routes';
 
+let token;
+
 const formItems =  {
   name: {
     name: 'name',
@@ -39,18 +41,17 @@ const settingsRenderCallback =  () => {
 
   const settingsForm = document.getElementById('js-settings-form');
 
-
   fetchGET({
-    url: BACKEND_IP + '/api/v1/settings',
+    url: BACKEND_IP + '/api/v1/csrf',
     callback: response => {
-      Observer.emit('settings:set-input', response);
+      response.json().then( response => {
+          token = response.body.token;
+          Observer.emit('settings:getInfo')
+        }
+      )
     }
-  });
+  })
 
-  addRegExpValidationAll({
-    form: settingsForm,
-    formItems: formItems,
-  });
 
   addPasswordValidation(
     settingsForm,
@@ -61,10 +62,6 @@ const settingsRenderCallback =  () => {
   settingsForm.addEventListener('submit', event => {
     event.preventDefault();
     if (
-      checkRegExpValidity({
-        form: settingsForm,
-        formItems: formItems,
-      }) &&
       checkPasswordValidity({
         form: settingsForm,
         passwordField: formItems.password.name,
@@ -132,6 +129,10 @@ const afterPhotoCallback = (response) => {
     callback: response => {
       Observer.emit('settings:ajax', response);
     },
+    headers: {
+      'X-Csrf-Token': token.toString(),
+      'Content-Type': 'application/json',
+    }
   })
 };
 
@@ -139,10 +140,11 @@ const settingsSetInputCallback = response => {
   console.log(`[DEBUG] settings:set-input callback`);
   if (response.status === 200) {
     response.json().then(data => {
-      for (const elem in data.body.user) {
+      console.log(data);
+      for (const elem in data) {
         const settingsElem = document.getElementById(elem);
         if (settingsElem) {
-          settingsElem.placeholder = data.body.user[elem];
+          settingsElem.placeholder = data[elem];
         }
       }
     })
@@ -151,12 +153,38 @@ const settingsSetInputCallback = response => {
 
 const settingAjaxCallback = response => {
   console.log(`[DEBUG] settings:ajax callback`);
-  if (response.status === 200)
+  if (response.status === 200) {
     Router.navigate('profile');
+  } else {
+    const err = document.getElementById(`error-email`);
+    const infoText = document.getElementById(`tooltip-email`);
+    err.classList.add('visible');
+    err.classList.remove('hidden');
+    if (err.classList.contains('js-correct')) {
+      err.classList.remove('js-correct');
+    }
+    err.classList.add('js-error');
+    infoText.innerText = '!';
+  }
 };
+
+const getInfoCallback = () => {
+  console.log(`[DEBUG] settings:getInfo callback`);
+
+  fetchGET({
+    url: BACKEND_IP + '/api/v1/settings',
+    callback: response => {
+      Observer.emit('settings:set-input', response);
+    },
+    headers: {
+      'X-Csrf-Token': token.toString(),
+    }
+  });
+}
 
 Observer.on('settings:render', settingsRenderCallback);
 Observer.on('settings:submit', settingsSubmitCallback);
 Observer.on('settings:set-input', settingsSetInputCallback);
 Observer.on('settings:ajax', settingAjaxCallback);
 Observer.on('settings:afterPhoto', afterPhotoCallback);
+Observer.on('settings:getInfo', getInfoCallback);

@@ -10,15 +10,17 @@
 -           errorMsg: 'Некорректное имя пользователя',
 -           class: 'form__label',
 -           fa_item: 'fas fa-user',
+-           required: true
 -       },
 -       email: {
 -           title: 'Email',
 -           name: 'email',
 -           placeholder: 'ivan.ivanov@mail.ru',
 -           type: 'email',
--           errorMsg: 'Некорректный адрес почты',
+-           errorMsg: 'Пользователь с таким email уже существует',
 -           class: 'form__label',
 -           fa_item: 'fas fa-at',
+-           required: true
 -       },
 -       phone: {
 -           title: 'Телефон',
@@ -28,6 +30,7 @@
 -           errorMsg: 'Некорректный телефон',
 -           class: 'form__label',
 -           fa_item: 'fas fa-phone',
+-           required: true
 -       },
 -       date: {
 -           title: 'Дата рождения',
@@ -36,6 +39,7 @@
 -           errorMsg: 'Некорректная дата',
 -           class: 'form__label',
 -           fa_item: 'fas fa-birthday-cake',
+-           required: true
 -       },
 -       password: {
 -           title: 'Пароль',
@@ -46,6 +50,7 @@
 -           'Пароль должен содержать одну заглавную, одну строчную букву, цифру и не менее 8 симвлолов',
 -           class: 'form__label',
 -           fa_item: 'fas fa-key',
+-           required: true
 -       },
 -       passwordRepeat: {
 -           title: 'Повторите пароль',
@@ -55,6 +60,7 @@
 -           errorMsg: 'Пароли не совпадают',
 -           class: 'form__label',
 -           fa_item: 'fas fa-key',
+-           required: true
 -       },
 -    },
 -    buttonName: 'Регистрация',

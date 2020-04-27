@@ -43,10 +43,7 @@ const regRenderCallback = () => {
 
   const regForm = document.getElementById('js-reg-form');
 
-  addRegExpValidationAll({
-    form: regForm,
-    formItems: formItems,
-  });
+
 
   addPasswordValidation(
     regForm,
@@ -57,10 +54,6 @@ const regRenderCallback = () => {
   regForm.addEventListener('submit', event => {
     event.preventDefault();
     if (
-      checkRegExpValidity({
-        form: regForm,
-        formItems: formItems,
-      }) &&
       checkPasswordValidity({
         form: regForm,
         passwordField: formItems.password.name,
@@ -110,8 +103,20 @@ const regSubmitCallback = event => {
 const regAjaxCallback = response => {
   console.log(`[DEBUG] reg:ajax callback`);
   console.log(response.status);
-  Observer.emit('draw-basic');
-  Router.navigate('news');
+  if (response.status === 200) {
+    Observer.emit('draw-basic');
+    Router.navigate('news');
+  } else {
+    const err = document.getElementById(`error-email`);
+    const infoText = document.getElementById(`tooltip-email`);
+    err.classList.add('visible');
+    err.classList.remove('hidden');
+    if (err.classList.contains('js-correct')) {
+      err.classList.remove('js-correct');
+    }
+    err.classList.add('js-error');
+    infoText.innerText = '!';
+  }
 };
 
 Observer.on('reg:render', regRenderCallback);

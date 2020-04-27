@@ -1,0 +1,11 @@
+include ../utils/dialogCardMixin
+if (main)
+    div(class="main-block__media display_flex_column")
+        div(class="main-block__media__header display_flex boxshadow-block main-block__layout layout_light_secondary")
+            span(class="text text_size_L media-header") Диалоги
+            a(href="createDialog", section="createDialog" class="display_flex")
+                <i class="text text_size_L icon icon__color__main fas fa-plus-circle"></i>
+
+        div(class="media-body display_flex")
+            each dialog in dialogs
+                +dialogCardMixin(dialog)

@@ -44,7 +44,7 @@
     min-height: 50px;
     outline: none;
     width: 50%;
-    
+
     margin-left: 5px;
     margin-right: 5px;
     justify-content: center;
@@ -77,6 +77,14 @@
         min-height: 80px;
         background-color: white;
     }
+
+    .form__comment-and-icon {
+        width: 100%;
+        height: auto;
+        background-color: white;
+        border: #c7c7c7 solid 1px;
+    }
+
     .form__input {
         min-height: 80px;
         font-size: 2em;
@@ -89,3 +97,13 @@
     }
 }
 
+.form__textarea {
+    resize: none;
+}
+
+.form__comment-and-icon {
+    width: 100%;
+    height: auto;
+    background-color: white;
+    border: #c7c7c7 solid 1px;
+}

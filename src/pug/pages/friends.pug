@@ -1,9 +1,6 @@
-include ../utils/friendCardMixin
-if (main)
-    div(class="main-block__friends display_flex_column")
-        span(class="text text_size_L friends-header") Друзья
-        div(class="hr-line")
-        div(class="friends-body display_flex")
-            each friend in body
-                + friendCardMixin(friend)
+include ../utils/searchMixin
+div(class="main-block__friends display_flex_column")
+    span(class="text text_size_L friends-header") Друзья
+    div(class="hr-line")
+    +searchMixin()
 

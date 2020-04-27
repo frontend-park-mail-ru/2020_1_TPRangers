@@ -4,6 +4,7 @@
 @import "./friends/main-block__friends.css";
 @import "./media/main-block__media.css";
 @import "./media/main-block__photos.css";
+@import "./messages/main-block__dialogs.css";
 
 .main-block {
     flex-grow: 6;
@@ -11,7 +12,7 @@
     margin-left: calc(68px + 2vw);
     align-items: center;
     height: max-content;
-    min-height: 100vh;
+    min-height: 95vh;
 }
 
 .main-block__layout {
@@ -23,8 +24,8 @@
 }
 
 .main-block__left-block {
-    margin-bottom: 20px;
-    margin-right: 20px;
+    width: 100%;
+    margin-left: 20px;
 }
 
 .main-block__form {
@@ -59,11 +60,19 @@
         align-items: flex-start;
         justify-content: flex-start;
         flex-direction: column;
-        margin-bottom: 160px;
+
+        margin-bottom: 10rem;
     }
     .main-block__user-body {
         flex-direction: column;
+
     }
+
+    .main-block__left-block {
+        max-width: 100%;
+        margin-left: 0;
+    }
+
     .main-block__form {
         margin-top: 0;
         width: 100%;

@@ -1,36 +1,16 @@
 import { Router } from '../../Routes/routes';
 import Observer from '../../controller/observer'
-import { addRegExpValidationAll, checkRegExpValidity } from '../formValidation';
 import { fetchMultipartPOST, fetchPOST } from '../../ajax/ajax';
 
-const formItems = {
-
-  text: {
-    name: 'text',
-    regExp: /.+/i,
-  },
-};
 
 const sendPostRenderCallback = () => {
   console.log(`[DEBUG] post:render callback`);
 
   const postForm = document.getElementById('js-post-form');
 
-  addRegExpValidationAll({
-    form: postForm,
-    formItems: formItems,
-  });
-
   postForm.addEventListener('submit', event => {
     event.preventDefault();
-    if (
-      checkRegExpValidity({
-        form: postForm,
-        formItems: formItems,
-      }))
-    {
-      Observer.emit('post:submit');
-    }
+    Observer.emit('post:submit');
   });
 
 };
@@ -74,7 +54,7 @@ const afterPhotoPostCallback = response => {
 
   const text = postForm.elements.text.value;
   fetchPOST({
-    url: BACKEND_IP + '/api/v1/post',
+    url: BACKEND_IP + `/api/v1/${Router.getFragment().split('/')[1]}/post`,
     body: JSON.stringify({
       text,
       photo: {

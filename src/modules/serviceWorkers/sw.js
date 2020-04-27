@@ -2,6 +2,13 @@ import Observer from '../../controller/observer';
 
 const CACHE_NAME = 'v1';
 
+self.addEventListener('install', function (event) {
+  event.waitUntil(
+    caches.open(CACHE_NAME).then((cache) => cache.addAll([
+        '/dist'
+      ])
+    ));
+})
 
 self.addEventListener('fetch', function(event) {
 

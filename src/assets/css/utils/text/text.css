@@ -4,9 +4,10 @@
 @import "./text_color.css";
 
 .text {
-    font-family: Montserrat, serif;
+    font-family: 'Open Sans', serif;
 }
 
 .text_uppercase {
     text-transform: uppercase;
 }
+

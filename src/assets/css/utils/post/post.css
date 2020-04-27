@@ -1,10 +1,12 @@
 .post {
-    margin-bottom: 20px;
     max-height: max-content;
+    margin-bottom: 20px;
 }
 
+.post__header__avatar_cont {
+    height: 60px;
+    width: 60px;
 
-.post__header__avatar {
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.32),inset 0px 1px 0px 0px rgba(255, 255, 255, 0.21);
     border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -12,6 +14,7 @@
     -ms-border-radius: 5px;
     -o-border-radius: 5px;
 }
+
 
 .post__header__data  {
     margin-left: 2%;
@@ -41,7 +44,19 @@
 .post__footer__component__like:hover {
     color: var(--like-color, rgb(250, 103, 103));
 }
-  
+
+.js-like-no:hover {
+    color: var(--like-color, rgb(250, 103, 103));
+}
+
+.js-like-yes {
+    color: var(--like-color, rgb(250, 103, 103));
+}
+
+.js-like-yes:hover {
+    color: var(--icon-color, rgb(104, 104, 104));
+}
+
 .post__footer__component__text {
     margin-left: 5px;
 }
@@ -66,11 +81,19 @@
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.32),inset 0px 1px 0px 0px rgba(255, 255, 255, 0.21);
 }
 
+.post__photo_cont {
+    max-height: 500px;
+}
 
 
 @media screen and (max-device-width: 960px){
+    .post__header__avatar_cont {
+        height: 100px;
+        width: 100px;
+    }
     .post {
-        width: 100%;
+        max-width: 100%;
+        min-width: calc(100% - 50px);
     }
     .post__body__text__p {
         font-size: 2em;

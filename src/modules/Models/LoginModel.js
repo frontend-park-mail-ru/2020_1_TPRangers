@@ -26,21 +26,10 @@ const loginRenderCallback = () => {
 
   const loginForm = document.getElementById('js-login-form');
 
-  addRegExpValidationAll({
-    form: loginForm,
-    formItems: formItems,
-  });
 
   loginForm.addEventListener('submit', event => {
     event.preventDefault();
-    if (
-      checkRegExpValidity({
-        form: loginForm,
-        formItems: formItems,
-      }))
-    {
-      Observer.emit('login:submit', event);
-    }
+    Observer.emit('login:submit', event);
   });
 
   loginForm.addEventListener('reset', event => {
@@ -73,6 +62,16 @@ const loginAjaxCallback = response => {
   if (response.status === 200) {
     Observer.emit('draw-basic');
     Router.navigate('news');
+  } else {
+    const err = document.getElementById(`error-password`);
+    const infoText = document.getElementById(`tooltip-password`);
+    err.classList.add('visible');
+    err.classList.remove('hidden');
+    if (err.classList.contains('js-correct')) {
+      err.classList.remove('js-correct');
+    }
+    err.classList.add('js-error');
+    infoText.innerText = '!';
   }
 };
 

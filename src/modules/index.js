@@ -12,7 +12,14 @@ import NewsView from './View/NewsView';
 import MediaView from './View/MediaAlbumsView';
 import UserView from './View/UserView';
 import MediaPhotosView from './View/MediaPhotosView';
-import sendPost from './View/createPostView';
+import SendPost from './View/createPostView';
+import CreateAlbumView from './View/createAlbumView';
+import AddPhotos from './View/addPhotos';
+import MessagesView from './View/MessagesView';
+import DialogView from './View/DialogView';
+import PostView from './View/PostView';
+import CreateDialogView from './View/createDialogView';
+
 
 
 // const leftBlockTmpl = require("../pug/includes/modules/left-block.pug");
@@ -24,14 +31,13 @@ const app = document.getElementById('application');
 if (!app) console.log('app not found');
 
 app.addEventListener('click', evt => {
+
   if (evt.target instanceof Element) {
-    if (evt.target.tagName === "I" || evt.target.tagName === "IMG") {
-
-      console.log('[DEBUG]: PREV DEF: ' + evt.target.tagName);
-
-      evt.preventDefault();
+    if (evt.target.tagName === "I" || evt.target.tagName === "IMG" || evt.target.tagName === "SPAN") {
+      if (!evt.target.classList.contains(`js-don't-prevent`)) {
+        evt.preventDefault();
+      }
       const aNode = evt.target.parentNode;
-      console.log('[DEBUG]: PREV DEF: ' + aNode.tagName);
 
       if (aNode.tagName === "A")
         Router.navigate(aNode.getAttribute("section"));
@@ -88,7 +94,18 @@ Router.add(/news/, () => {
     })
     .add(/messages/, () => {
       console.log('messages');
-      mainBlock.innerHTML = testTmpl({ data: 'Сообщения' });
+      let messages = new MessagesView(mainBlock);
+      messages.render();
+    })
+    .add(/createDialog/, () => {
+      console.log('createDialog');
+      const createDialog = new CreateDialogView(mainBlock);
+      createDialog.render();
+    })
+    .add(/chat\/(.*)/, () => {
+      console.log('chat');
+      let chat = new DialogView(mainBlock);
+      chat.render();
     })
     .add(/media/, () => {
       let media = new MediaView(mainBlock);
@@ -107,18 +124,18 @@ Router.add(/news/, () => {
       settings.render();
     })
     .add(/user\/(.*)/, () => {
-      // console.log(Router.getFragment());
-      // console.log('login:', Router.getFragment().split('/')[1]); // так можно вытащить login user
-
       let user = new  UserView(mainBlock);
       user.render(Router.getFragment().split('/')[1]);
     })
     .add(/profile/, () => {
-      // console.log(Router.getFragment());
       console.log('profile');
 
       let userProfile = new ProfileView(mainBlock);
       userProfile.render();
+    })
+    .add(/post\/(.+)/, () => {
+      let post = new PostView(mainBlock);
+      post.render();
     })
     .add(/login/, () => {
       let login = new LoginView(mainBlock);
@@ -128,19 +145,33 @@ Router.add(/news/, () => {
       let reg = new RegView(mainBlock);
       reg.render();
     } )
-    .add (/createPost/, () => {
-      let createPost = new sendPost(mainBlock);
+    .add (/createPost\/(.*)/, () => {
+      let createPost = new SendPost(mainBlock);
       createPost.render();
+    })
+    .add (/createAlbum/, () => {
+      let createAlbum = new CreateAlbumView(mainBlock);
+      createAlbum.render();
+    })
+    .add (/addPhotos\/(.*)/, () => {
+      let addPhotos = new AddPhotos(mainBlock);
+      addPhotos.render();
     })
     .add(/(?!news$)(?!friends$)(?!messages$)(?!media$)(?!album\/(.*)$)(?!settings$)(?!user\/(.*)$)(?!profile$)(?!login$)(?!reg$)(?!logout$)/, () => {
       let news = new NewsView(mainBlock);
       news.render();
-      Router.navigate();
+      //Router.navigate();
     })
     .listen();
 
 
+window.addEventListener("unload", () => {
+  window.socket.close();
+});
 
+window.onbeforeunload = function() {
+  window.socket.close();
+};
 
 if (navigator.onLine) {
   Router.callCurrent();
