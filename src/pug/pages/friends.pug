@@ -40,8 +40,10 @@
 - }
 
 include ../mixins/friendMixin
+include ../mixins/searchMixin
 
 div(class='friends page')
+    + searchMixin()
     div(id='js-friends-list')
         each friend in data.friends
             + friendMixin(friend)
