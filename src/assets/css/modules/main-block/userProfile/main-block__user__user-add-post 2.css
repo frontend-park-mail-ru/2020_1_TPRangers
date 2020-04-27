@@ -1,0 +1,5 @@
+.main-block__user__user-add-post {
+    flex-grow: 1;
+    align-items: center;
+    justify-content: space-between;
+}

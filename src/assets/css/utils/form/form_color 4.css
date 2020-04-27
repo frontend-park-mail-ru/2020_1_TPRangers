@@ -1,0 +1,10 @@
+.form_light {
+  background-color: rgba(255, 255, 255, 1);
+}
+
+
+@media screen and (max-device-width: 960px){
+  .form_light {
+    background-color: transparent;
+  }
+}

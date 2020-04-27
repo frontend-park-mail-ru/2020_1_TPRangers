@@ -39,8 +39,10 @@
 -}
 
 include ../mixins/postMixin
+include ../mixins/searchMixin
 
 if main
     div(class='news page')
+        + searchMixin()
         each post in feed
             + postCard(post, true)

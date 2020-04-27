@@ -20,14 +20,14 @@ mixin postPhoto(data)
         if data.width - data.height > 300 || data.text == null
             if data.text != null
                 div(class='img post__photo_full')
-                    img(class='post__photo_full__img' src=data.photo.url)
+                    img(class='post__photo_full__img img__img' src=data.photo.url)
 
             else
                 div(class='img post__photo__with-no-text')
-                    img(class='post__photo__with-no-text__img' src=data.photo.url)
+                    img(class='post__photo__with-no-text__img img__img' src=data.photo.url)
         else
             div(class='img post__photo')
-                img(class='post__photo__img' src=data.photo.url)
+                img(class='post__photo__img img__img' src=data.photo.url)
     div(class='post__body')
         + postTitle(data)
         + postText(data)

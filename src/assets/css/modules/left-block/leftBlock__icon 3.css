@@ -1,0 +1,7 @@
+.leftBlock__icon {
+  flex-grow: 2;
+}
+
+.leftBlock__icon_active {
+  color: black;
+}

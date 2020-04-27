@@ -1,0 +1,16 @@
+.layout_light_secondary {
+  background-color: var(--secondary-color, rgb(243, 243, 243));
+}
+
+.layout_light_main {
+  background-color: var(--main-color, rgb(212, 224, 227));
+}
+
+@media screen and (max-device-width: 960px){
+  .layout_light_main {
+    background-color: var(--mobile-main-color,  rgb(243, 243, 243));
+  }
+  .layout_light_secondary {
+    background-color:  var(--mobile-secondary-color, rgb(252, 252, 252));
+  }
+}

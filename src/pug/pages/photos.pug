@@ -1,0 +1,9 @@
+include ../mixins/photoMixin
+
+- console.log(main)
+div(class='photos page')
+    if main
+        div(class='photos__title box-shadow layout_color_main')
+            span(class='text text_color_normal text_uppercase text_size_1-2rem') #{title}
+        each photo in body
+            + photoMixin(photo)

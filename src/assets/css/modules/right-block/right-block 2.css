@@ -1,0 +1,6 @@
+.right-block {
+    flex-grow: 2;
+    min-width: 280px;
+    max-width: 300px;
+    display: none;
+}

@@ -1,8 +1,9 @@
 .register {
     align-items: flex-start;
     margin-top: 2rem;
-    min-height: 100vh;
-    
+    height: max-content;
+    min-height: calc(100vh - 130px);
+
     &__body {
         border-radius: 5px;
         min-width: 320px;

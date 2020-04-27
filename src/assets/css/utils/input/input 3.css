@@ -1,0 +1,12 @@
+@import "./input__icon.css";
+
+.input {
+    height: 20px;
+    padding: 10px;
+    border: none;
+    outline:none;
+    justify-content: start;
+
+    flex-grow: 14;
+}
+

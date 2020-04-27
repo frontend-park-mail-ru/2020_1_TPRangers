@@ -2,4 +2,15 @@
     border-radius: 5px;
     box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.05);
 }
-  
+
+.img__img {
+    width: auto;
+    min-width: 100%;
+    min-height: 100%;
+    height: auto;
+
+    position: relative;
+    top: 50%;
+    left: 50%;
+    @include translate(-50%, -50%);
+}

@@ -1,0 +1,7 @@
+.leftBlock__button {
+  padding: 10px;
+  border-radius: 4px;
+  flex-grow: 0;
+  justify-content: center;
+  align-items: center;
+}
