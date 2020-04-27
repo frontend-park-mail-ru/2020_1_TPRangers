@@ -1,6 +1,6 @@
-import IView from './IView';
+import IView from "./IView";
 
-const leftTmpl = require('../../pug/layout/sidenav.pug');
+const leftTmpl = require("../../pug/layout/sidenav.pug");
 
 export default class LeftView extends IView {
   render() {

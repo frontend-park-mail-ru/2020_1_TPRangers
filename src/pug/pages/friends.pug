@@ -42,5 +42,6 @@
 include ../mixins/friendMixin
 
 div(class='friends page')
-    each friend in data.friends
-        + friendMixin(friend)
+    div(id='js-friends-list')
+        each friend in data.friends
+            + friendMixin(friend)

@@ -106,77 +106,77 @@ include ../mixins/postMixin
 
 if page
     div(class='profile page')
-    include ../mixins/addPostMixin
-    div(class='profile__body')
-        div(class='profile__left-block')
-            div(class='profile__avatar-and-buttons profile_box layout_color_main')
-                div(class='img profile__avatar-and-buttons__avatar')
-                    img(class='profile__avatar-and-buttons__avatar__img' src=user.photo)
-                div(class='profile__avatar-and-buttons__buttons')
-                    a(section='settings' href='settings' class='profile__avatar-and-buttons__buttons__button text text_color_for-buttons button button_primary') Настройки
-                    a(section='logout' href='logout' class='profile__avatar-and-buttons__buttons__button text text_color_for-buttons button button_primary') Выйти
-            div(class='profile__friends profile_box layout_color_main')
-                div(class='profile__info__name-and-online')
-                    span(class='text text_color_normal text_uppercase text_size_1-2rem') Друзья
-                    a(href='friends' section='friends' class='link text text_color_normal text_size_0-8rem') Смотреть всех
-                div(class='hr-line')
-                div(class='profile__friends__body')
-                    each friend in friends
-                        div(class='profile__friends__body__element')
-                            div(class='img profile__friends__body__element__avatar')
-                                img(class='profile__friends__body__element__avatar__img' src=friend.photo)
-                            span(class='text text_color_normal text_size_0-8rem profile__friends__body__element__name-surname') #{friend.name} #{friend.surname}
+        include ../mixins/addPostMixin
+        div(class='profile__body')
+            div(class='profile__left-block')
+                div(class='profile__avatar-and-buttons profile_box layout_color_main')
+                    div(class='img profile__avatar-and-buttons__avatar')
+                        img(class='profile__avatar-and-buttons__avatar__img' src=user.photo)
+                    div(class='profile__avatar-and-buttons__buttons')
+                        a(section='settings' href='settings' class='profile__avatar-and-buttons__buttons__button text text_color_for-buttons button button_primary') Настройки
+                        a(section='logout' href='logout' class='profile__avatar-and-buttons__buttons__button text text_color_for-buttons button button_primary') Выйти
+                div(class='profile__friends profile_box layout_color_main')
+                    div(class='profile__info__name-and-online')
+                        span(class='text text_color_normal text_uppercase text_size_1-2rem') Друзья
+                        a(href='friends' section='friends' class='link text text_color_normal text_size_0-8rem') Смотреть всех
+                    div(class='hr-line')
+                    div(class='profile__friends__body')
+                        each friend in friends
+                            div(class='profile__friends__body__element')
+                                div(class='img profile__friends__body__element__avatar')
+                                    img(class='profile__friends__body__element__avatar__img' src=friend.photo)
+                                span(class='text text_color_normal text_size_0-8rem profile__friends__body__element__name-surname') #{friend.name} #{friend.surname}
 
-        div(class='profile__body__avatar-place-for-mobile')
-            div(class='profile-mobile__avatar-and-buttons profile_box layout_color_main')
-                div(class='img profile-mobile__avatar-and-buttons__avatar')
-                    img(class='profile-mobile__avatar-and-buttons__avatar__img' src=user.photo)
-                div(class='profile-mobile__avatar-and-buttons__buttons')
-                    a(href='settings' sections='settings' class='profile-mobile__avatar-and-buttons__buttons__button text text_color_for-buttons button button_primary fas fa-cogs')
-                    a(href='logout' section='logout' class='profile-mobile__avatar-and-buttons__buttons__button text text_color_for-buttons button button_primary fas fa-sign-out-alt')
+            div(class='profile__body__avatar-place-for-mobile')
+                div(class='profile-mobile__avatar-and-buttons profile_box layout_color_main')
+                    div(class='img profile-mobile__avatar-and-buttons__avatar')
+                        img(class='profile-mobile__avatar-and-buttons__avatar__img' src=user.photo)
+                    div(class='profile-mobile__avatar-and-buttons__buttons')
+                        a(href='settings' sections='settings' class='profile-mobile__avatar-and-buttons__buttons__button text text_color_for-buttons button button_primary fas fa-cogs')
+                        a(href='logout' section='logout' class='profile-mobile__avatar-and-buttons__buttons__button text text_color_for-buttons button button_primary fas fa-sign-out-alt')
 
-            div(class='profile__info profile_box layout_color_main')
-                div(class='profile__info__name-and-online')
-                    span(class='text text_color_primary text_size_1-2rem') #{user.name} #{user.surname}
-                    span(class='text text_color_normal text_size_0-8rem text_uppercase') В сети
-                div(class='hr-line')
-                div(class='profile__info__data-block')
-                    div(class='profile__info__data-block-element')
-                        span(class='text text_color_normal') Дата рождения:
-                        span(class='profile__info__data-block-element__data text text_color_normal') #{user.date}
-                    div(class='profile__info__data-block-element')
-                        span(class='text text_color_normal') Email:
-                        span(class='profile__info__data-block-element__data text text_color_normal') #{user.email}
-                    div(class='profile__info__data-block-element')
-                        span(class='text text_color_normal') Номер телефона:
-                        span(class='profile__info__data-block-element__data text text_color_normal') #{user.telephone}
-                div(class='hr-line')
-                div(class='profile-mobile__friends-music')
-                    a(class='link profile-mobile__friends-music__link' href='#')
-                        div(class='link profile-mobile__friends-music__link__body')
-                            i(class='link profile-mobile__friends-music__button text text_color_normal text_size_2rem fas fas fa-music')
-                            span(class='link-text text text_color_normal') #{data.musicCounter}
-                    a(class='link profile-mobile__friends-music__link' href='#')
-                        div(class='link profile-mobile__friends-music__link__body')
-                            i(class='link profile-mobile__friends-music__button text text_color_normal text_size_2rem fas fa-user-friends')
-                            span(class='link-text text text_color_normal') #{data.friendsCounter}
+                div(class='profile__info profile_box layout_color_main')
+                    div(class='profile__info__name-and-online')
+                        span(class='text text_color_primary text_size_1-2rem') #{user.name} #{user.surname}
+                        span(class='text text_color_normal text_size_0-8rem text_uppercase') В сети
+                    div(class='hr-line')
+                    div(class='profile__info__data-block')
+                        div(class='profile__info__data-block-element')
+                            span(class='text text_color_normal') Дата рождения:
+                            span(class='profile__info__data-block-element__data text text_color_normal') #{user.date}
+                        div(class='profile__info__data-block-element')
+                            span(class='text text_color_normal') Email:
+                            span(class='profile__info__data-block-element__data text text_color_normal') #{user.email}
+                        div(class='profile__info__data-block-element')
+                            span(class='text text_color_normal') Номер телефона:
+                            span(class='profile__info__data-block-element__data text text_color_normal') #{user.telephone}
+                    div(class='hr-line')
+                    div(class='profile-mobile__friends-music')
+                        a(class='link profile-mobile__friends-music__link' href='#')
+                            div(class='link profile-mobile__friends-music__link__body')
+                                i(class='link profile-mobile__friends-music__button text text_color_normal text_size_2rem fas fas fa-music')
+                                span(class='link-text text text_color_normal') #{data.musicCounter}
+                        a(class='link profile-mobile__friends-music__link' href='#')
+                            div(class='link profile-mobile__friends-music__link__body')
+                                i(class='link profile-mobile__friends-music__button text text_color_normal text_size_2rem fas fa-user-friends')
+                                span(class='link-text text text_color_normal') #{data.friendsCounter}
 
 
-        //div(class='profile__media profile_box layout_color_main')
-        //    span(class='profile__media__titile text text_color_normal text_uppercase text_size_1-2rem') Альбомы
-        //    div(class='hr-line')
-        //    div(class='profile__media__body')
-        //        each album in data.media
-        //            div(class='profile__media__body__album-card')
-        //                div(class='img profile__media__body__album-card-img')
-        //                    img(class='img profile__media__body__album-card-img__img' src=album.photo)
-        //                span(class='profile__media__body__album-card__title text text_color_normal') #{album.title}
+            //div(class='profile__media profile_box layout_color_main')
+            //    span(class='profile__media__titile text text_color_normal text_uppercase text_size_1-2rem') Альбомы
+            //    div(class='hr-line')
+            //    div(class='profile__media__body')
+            //        each album in data.media
+            //            div(class='profile__media__body__album-card')
+            //                div(class='img profile__media__body__album-card-img')
+            //                    img(class='img profile__media__body__album-card-img__img' src=album.photo)
+            //                span(class='profile__media__body__album-card__title text text_color_normal') #{album.title}
 
-        div(class='profile__add-post profile_box layout_color_main')
-            span(class='text text_color_normal text_uppercase text_size_1-2rem') Новая запись
-            i(class='link add-post-js text text_color_normal text_size_2rem fas fa-plus-circle')
+            div(class='profile__add-post profile_box layout_color_main')
+                span(class='text text_color_normal text_uppercase text_size_1-2rem') Новая запись
+                i(class='link add-post-js text text_color_normal text_size_2rem fas fa-plus-circle')
 
-        div(class='profile__posts')
-            each post in feed
-                + post(post, true)
+            div(class='profile__posts')
+                each post in feed
+                    + post(post, true)
 
