@@ -1,7 +1,8 @@
 mixin postMixin(data)
     div(class="post boxshadow-block main-block__layout layout_light_secondary display_flex_column")
         div(class="post__header display_flex_row")
-            img(class="img img_size_XS post__header__avatar display_flex_column" src=data.authorPhoto)
+            div(class='img_container post__header__avatar_cont')
+                img(class="img img_size_XS post__header__avatar display_flex_column" src=data.authorPhoto)
             div(class="post__header__data display_flex_column")
                 a(href = 'user/' + data.authorUrl section = 'user/' + data.authorUrl )
                     span(class="text text_size_M text_color_black") #{data.authorName}
@@ -11,7 +12,8 @@ mixin postMixin(data)
                 a(href = 'post/' + data.id section = 'post/' + data.id)
                     span(class="text post__body__text__p text_color_black") #{data.text}
             if data.photo
-                img(class="post__body__img display_flex" src=data.photo.url)
+                div(class='img_container post__photo_cont')
+                    img(class="post__body__img display_flex" src=data.photo.url)
         div(class="hr-line")
         div(class="post__footer display_flex_row")
             div(class="display_flex")

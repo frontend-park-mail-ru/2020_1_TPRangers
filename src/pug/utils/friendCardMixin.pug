@@ -1,6 +1,7 @@
 mixin friendCardMixin(data, canAdd)
     div(class="main-block__friend-card boxshadow-block main-block__layout layout_light_secondary display_flex")
-        img(class="img img_size_S friend-card__img display_flex" src=data.avatar)
+        div(class='img_container')
+            img(class="img img_size_S friend-card__img display_flex" src=data.avatar)
         div(class="friend-card__body display_flex_row")
             a(class="text text_size_XM friend-card__body__username" href='user/' + data.url section='user/' + data.url) #{data.name}
             if canAdd
