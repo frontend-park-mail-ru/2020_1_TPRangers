@@ -15,6 +15,16 @@ const dialogRenderCallback = () => {
     window.socket.send(JSON.stringify({chatId, text}));
     console.log('[WS] send');
     messageForm.elements.message.value = '';
+    setTimeout( fetchGET, 250, {
+      url: BACKEND_IP + '/api/v1/chats/' + chatId,
+      callback: response => {
+        response.json().then(data => {
+          data.main = true;
+          const div = document.getElementById('js-dialogs-body');
+          div.outerHTML = msgTmpl(data);
+        })
+      }
+    })
   });
 }
 
