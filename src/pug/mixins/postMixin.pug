@@ -1,121 +1,54 @@
-mixin post(data, flag)
-    if flag
-        if data.photo.likes != null
-            if data.text != null
-                if data.title != null
-                    div(class='post layout_color_main box-shadow')
-                        div(class='img post__photo')
-                            img(class='post__photo__img' src=data.photo)
-                        div(class='post__body')
-                            span(class='text text_size_2rem post__title') #{data.title}
-                            p(class='text text_colot_normal') #{data.text}
-                            div(class='post__body__footer')
-                                div(class='hr-line')
-                                div(class='post__body__likes-and-comments')
-                                    div(class='')
-                                        i(class='link-like post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-heart')
-                                        span(class='text text_color_normal') #{data.likes}
-                                    div(class='')
-                                        i(class='link post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-comment-alt')
-                                        span(class='text text_color_normal') #{data.comment}
-                else
-                    div(class='post layout_color_main box-shadow')
-                        div(class='img post__photo')
-                            img(class='post__photo__img' src=data.photo)
-                        div(class='post__body')
-                            p(class='text text_colot_normal') #{data.text}
-                            div(class='post__body__footer')
-                                div(class='hr-line')
-                                div(class='post__body__likess-and-comments')
-                                    div(class='')
-                                        i(class='link-like post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-heart')
-                                        span(class='text text_color_normal') #{data.likes}
-                                    div(class='')
-                                        i(class='link post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-comment-alt')
-                                        span(class='text text_color_normal') #{data.comment}
-            else
-                div(class='post_full layout_color_main box-shadow')
-                    div(class='img post__photo_full')
-                        img(class='post__photo_full__img' src=data.photo)
-                    if data.title != null
-                        div(class='post__body')
-                            span(class='text text_size_2rem post__title') #{data.title}
-                            div(class='post__body__footer')
-                                div(class='hr-line')
-                                div(class='post__body__likes-and-comments')
-                                    div(class='link')
-                                        i(class='link-like post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-heart')
-                                        span(class='text text_color_normal') #{data.likes}
-                                    div(class='link')
-                                        i(class='link post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-comment-alt')
-                                        span(class='text text_color_normal') #{data.comment}
-                    else
-                        div(class='post__body')
-                            div(class='post__body__footer')
-                                    div(class='hr-line')
-                                    div(class='post__body__likes-and-comments')
-                                        div(class='')
-                                            i(class='link-like post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-heart')
-                                            span(class='text text_color_normal') #{data.likes}
-                                        div(class='')
-                                            i(class='link post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-comment-alt')
-                                            span(class='text text_color_normal') #{data.comment}
+mixin postCard(data)
+    + postLayout(data)
+
+
+mixin postLayout(data)
+    if data.photo != null
+        if data.width - data.height > 200 || data.text == null
+            div(class='post_full layout_color_main box-shadow')
+                + postPhoto(data)
         else
+            div(class='post layout_color_main box-shadow')
+                + postPhoto(data)
+    else
+        div(class='post layout_color_main box-shadow')
+            + postPhoto(data)
+
+
+mixin postPhoto(data)
+    if data.photo != null
+        if data.width - data.height > 300 || data.text == null
             if data.text != null
-                if data.title != null
-                    div(class='post_full layout_color_main box-shadow')
-                        div(class='post__body')
-                            span(class='text text_size_2rem post__title') #{data.title}
-                            p(class='text text_colot_normal') #{data.text}
-                            div(class='post__body__footer')
-                                div(class='hr-line')
-                                div(class='post__body__likes-and-comments')
-                                    div(class='')
-                                        i(class='link-like post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-heart')
-                                        span(class='text text_color_normal') #{data.likes}
-                                    div(class='')
-                                        i(class='link post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-comment-alt')
-                                        span(class='text text_color_normal') #{data.comment}
-                else
-                    div(class='post_full layout_color_main box-shadow')
-                        div(class='post__body')
-                            p(class='text text_colot_normal') #{data.text}
-                            div(class='post__body__footer')
-                                div(class='hr-line')
-                                div(class='post__body__likes-and-comments')
-                                    div(class='')
-                                        i(class='link-like post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-heart')
-                                        span(class='text text_color_normal') #{data.likes}
-                                    div(class='')
-                                        i(class='link post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-comment-alt')
-                                        span(class='text text_color_normal') #{data.comment}
+                div(class='img post__photo_full')
+                    img(class='post__photo_full__img' src=data.photo.url)
+
             else
-                if data.title != null
-                    div(class='post_full layout_color_main box-shadow')
-                        div(class='post__body')
-                            span(class='text text_size_2rem post__title') #{data.title}
-                            div(class='post__body__footer')
-                                div(class='hr-line')
-                                div(class='post__body__likes-and-comments')
-                                    div(class='')
-                                        i(class='link-like post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-heart')
-                                        span(class='text text_color_normal') #{data.likes}
-                                    div(class='')
-                                        i(class='link post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-comment-alt')
-                                        span(class='text text_color_normal') #{data.comment}
-                else
-                    div(class='post_full layout_color_main box-shadow')
-                        div(class='post__body')
-                            div(class='post__body__footer')
-                                div(class='hr-line')
-                                div(class='post__body__likes-and-comments')
-                                    div(class='')
-                                        i(class='link-like post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-heart')
-                                        span(class='text text_color_normal') #{data.likes}
-                                    div(class='link')
-                                        i(class='link post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-comment-alt')
-                                        span(class='text text_color_normal') #{data.comment}
+                div(class='img post__photo__with-no-text')
+                    img(class='post__photo__with-no-text__img' src=data.photo.url)
+        else
+            div(class='img post__photo')
+                img(class='post__photo__img' src=data.photo.url)
+    div(class='post__body')
+        + postTitle(data)
+        + postText(data)
+        + postFotter(data)
+
+mixin postTitle(data)
+    if data.title != null
+        span(class='text text_size_2rem post__title') #{data.title}
+
+mixin postText(data)
+    if data.text != null
+        p(class='text text_colot_normal') #{data.text}
 
 
-
-
+mixin postFotter(data)
+    div(class='post__body__footer')
+        div(class='hr-line')
+        div(class='post__body__likes-and-comments')
+            div(class='')
+                i(class='link-like post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-heart')
+                span(class='text text_color_normal') #{data.likes}
+            div(class='')
+                i(class='link post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-comment-alt')
+                span(class='text text_color_normal') #{data.comment}
