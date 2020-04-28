@@ -15,6 +15,7 @@ import MediaPhotosView from "./View/MediaPhotosView";
 import SendPost from "./View/createPostView";
 import CreateAlbum from "./View/createAlbum";
 import AddPhotos from "./View/addPhotos";
+import MessagesView from "./View/MessagesView";
 
 // const leftBlockTmpl = require("../pug/includes/modules/left-block.pug");
 const testTmpl = require("../pug/pages/news.pug");
@@ -73,6 +74,11 @@ Router.add(/news/, () => {
   .add(/logout/, () => {
     console.log("logout");
     Observer.emit("logout");
+  })
+  .add(/messages/, () => {
+    console.log("messages");
+    let messages = new MessagesView(mainBlock);
+    messages.render();
   })
   .add(/media/, () => {
     let media = new MediaView(mainBlock);

@@ -1,5 +1,15 @@
 .page {
-    width: calc(100% - 3rem);
-    height: calc(100% - 3rem);
-    padding: 1.5rem;
+    width: 100%;
+    min-height: calc(100vh - 130px);
+    max-height: calc(100vh - 130px);
+    overflow-y: scroll;
+}
+
+
+@media only screen and  (max-device-width: 600px) {
+    .page {
+        min-height: calc(100vh - 16rem);
+        max-height: calc(100vh - 16rem);
+    }
+
 }

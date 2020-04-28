@@ -1,9 +1,9 @@
 .settings {
     align-items: flex-start;
-    margin-top: 2rem;
     height: max-content;
     min-height: calc(100vh - 130px);
 
+    margin-bottom: 1.5rem;
     &__body {
         border-radius: 5px;
         min-width: 320px;

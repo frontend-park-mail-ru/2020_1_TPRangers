@@ -5,6 +5,8 @@
     justify-content: flex-end;
     padding: 0 4vw;
 
+    background-color: $main-color;
+
     &__body {
         height: 100%;
         display: flex;
@@ -14,5 +16,16 @@
 
     &_authorize-js {
         display: none;
+    }
+}
+
+@media only screen and  (max-device-width: 600px) {
+    .header {
+        height: $width-mobile-header;
+        width: 92vw;
+        position: fixed;
+        z-index: 10;
+        top: 0;
+        left: 0;
     }
 }
