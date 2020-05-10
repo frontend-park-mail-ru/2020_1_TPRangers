@@ -92,7 +92,7 @@ export default class DialogView extends IView {
     super.clear();
     const chatId = Router.getFragment().split("/")[1];
     fetchGET({
-      url: BACKEND_IP + "/api/v1/chats/" + chatId,
+      url:"http://localhost:3081/api/v1/chats/" + chatId,
       callback: response => {
         response.json().then(data => {
           data.main = true;

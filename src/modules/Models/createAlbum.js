@@ -11,7 +11,7 @@ const createAlbumRenderCallback = () => {
 }
 
 const sendAlbumNameCallback = form => {
-  const name = form.elements.text.value;
+  const name = form.elements.title.value;
   fetchPOST({
     url: BACKEND_IP + '/api/v1/album',
     body: JSON.stringify({
@@ -19,7 +19,8 @@ const sendAlbumNameCallback = form => {
     }),
     callback: response => {
       if (response.status === 200) {
-        Router.navigate('media');
+        Observer.emit('close-createAlbum-form');
+        Router.callCurrent();
       }
     }
   })

@@ -21,6 +21,7 @@ export default class ProfileView extends IView{
             console.log(response)
             this.parent.innerHTML += userProfileTmpl(response); //response
             Observer.emit('listenPostsLikes');
+            Observer.emit('profile:render', response.user.login);
           })
         }
       });

@@ -46,6 +46,7 @@ export default class MediaAlbumsView extends IView{
               albums: response
             }
             this.parent.innerHTML += mediaAlbumsTmpl(albums); // albums
+            Observer.emit("listen-plus-button");
           })
         }
       });

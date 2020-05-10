@@ -81,7 +81,9 @@
 }
 
 .add-album {
-    position: fixed;
+    position: absolute;
+    top: 30vh;
+    left: 20vw;
     z-index: 3;
     height: max-content;
     width: 45vw;

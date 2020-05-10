@@ -35,8 +35,7 @@ app.addEventListener("click", evt => {
     if (
       evt.target.tagName === "I" ||
       evt.target.tagName === "LI" ||
-      evt.target.tagName === "IMG" ||
-      evt.target.tagName === "DIV"
+      evt.target.tagName === "IMG"
     ) {
       evt.preventDefault();
       const aNode = evt.target.parentNode;

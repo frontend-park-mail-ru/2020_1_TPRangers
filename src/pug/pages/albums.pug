@@ -34,7 +34,7 @@ if main
         include ../mixins/addAlbumMixin
         div(class='album__add-album profile_box layout_color_main')
             span(class='text text_color_normal text_uppercase text_size_1-2rem') Создать новый альбом
-            i(class='link add-album-js text text_color_normal text_size_2rem fas fa-plus-circle')
+            i(class='link add-album-button-js text text_color_normal text_size_2rem fas fa-plus-circle')
         div(class='albums')
             each album in albums
                 + albumMixin(album)

@@ -10,7 +10,7 @@ export const Router = {
     // Режим ‘history’ будет включен только если передать необходимый параметр
     // и если браузер поддерживает pushState.
 
-    this.mode = options && options.mode && options.mode == historyStr 
+    this.mode = options && options.mode && options.mode == historyStr
                     && !!(history.pushState) ? historyStr : 'hash';
     this.root = options && options.root ? '/' + this.clearSlashes(options.root) + '/' : '/';
     return this;
@@ -92,6 +92,10 @@ export const Router = {
   },
 
   navigate(path) {
+    const bg = document.getElementById('blur-background-js');
+    if (!bg.classList.contains("hidden")) {
+      bg.classList.add('hidden');
+    }
     path = path || '';
     if (this.mode === historyStr) {
       history.pushState(null, null, this.root + this.clearSlashes(path));
