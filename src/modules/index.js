@@ -16,6 +16,7 @@ import SendPost from "./View/createPostView";
 import CreateAlbum from "./View/createAlbum";
 import AddPhotos from "./View/addPhotos";
 import MessagesView from "./View/MessagesView";
+import DialogView from "./View/DialogView";
 
 // const leftBlockTmpl = require("../pug/includes/modules/left-block.pug");
 const testTmpl = require("../pug/pages/news.pug");
@@ -25,11 +26,17 @@ const app = document.getElementById("app");
 if (!app) console.log("app not found");
 
 app.addEventListener("click", evt => {
+  console.log("-----------target: " + evt.target + "----------------");
+
   if (evt.target instanceof Element) {
+    console.log(
+      "-----------target: " + evt.target.tagName + "----------------"
+    );
     if (
       evt.target.tagName === "I" ||
       evt.target.tagName === "LI" ||
-      evt.target.tagName === "IMG"
+      evt.target.tagName === "IMG" ||
+      evt.target.tagName === "DIV"
     ) {
       evt.preventDefault();
       const aNode = evt.target.parentNode;
@@ -37,6 +44,8 @@ app.addEventListener("click", evt => {
       if (aNode.tagName === "A") Router.navigate(aNode.getAttribute("section"));
     } else if (evt.target.tagName === "A") {
       evt.preventDefault();
+      Router.navigate(evt.target.getAttribute("section"));
+    } else if (evt.target.tagName === "DIV") {
       Router.navigate(evt.target.getAttribute("section"));
     }
   }
@@ -79,6 +88,11 @@ Router.add(/news/, () => {
     console.log("messages");
     let messages = new MessagesView(mainBlock);
     messages.render();
+  })
+  .add(/chat\/(.*)/, () => {
+    console.log("chat");
+    let chat = new DialogView(mainBlock);
+    chat.render();
   })
   .add(/media/, () => {
     let media = new MediaView(mainBlock);

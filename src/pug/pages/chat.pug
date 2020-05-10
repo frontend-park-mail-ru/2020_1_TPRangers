@@ -1,0 +1,24 @@
+include ../mixins/messageMixin
+
+div(class='chat page')
+    if main
+        div(class='chat__header box-shadow layout_color_main')
+            a(class='link text text_size_2rem text_color_normal fas fa-arrow-circle-left' href='messages' section='messages')
+            div(class='chat__header__title-and-img')
+                span(class='text text_size_1-2rem text_color_normal') #{chatInfo.chatName}
+                div(class='img box-shadow chat__header__title-and-img__img')
+                    img(class='img__img' src=chatInfo.chatPhoto)
+        div(class='chat__body')
+            each msg in chatMessages
+                + messageMixin(msg)
+        div(class='chat__footer box-shadow layout_color_main')
+            div(class='chat__footer__atth')
+                span(class='link fas fa-paperclip text text_color_normal text_size_2rem')
+                span(class='chat__footer__atth__link link far fa-smile-wink text text_color_normal text_size_2rem')
+            div(class='chat__footer__msg')
+                form(action="#", class='chat__footer__msg__form' id="js-message-form")
+                    textarea(class='chat__footer__msg__form__textarea input text text_color_normal text_size_1-2rem' type='text' name='text' true, id='text' placeholder='Введите свой текст' rows='2')
+                    button(type="submit" id='add-post-submit' class="chat__input__button login__input__button button button_primary text text_color_for-buttons text_size_1-2rem")
+                        span(class='text text_size_2rem text_color_button fas fa-paper-plane')
+
+

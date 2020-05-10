@@ -5,8 +5,7 @@ div(class='messages page')
         div(class='messages__header box-shadow layout_color_main')
             span(class='text text_uppercase text_size_1-2rem text_color_normal') Сообщения
         div(class='messages__body')
-            div(class='messages-chats layout_color_main')
+            div(class='messages-chats')
                 each chat in dialogs
                     + chatMixin(chat)
-            div(class='messages-dialog display-none')
 

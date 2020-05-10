@@ -1,6 +1,7 @@
 .link {
     text-decoration: none;
     @include transition($transition-speed);
+
     &__button {
         padding: 0 1.5rem;
     }
@@ -40,7 +41,7 @@
     &-has-like-js:hover {
         color: $like-active;
     }
-    
+
     &-has-like-js:active {
         color: $text-color;
     }
