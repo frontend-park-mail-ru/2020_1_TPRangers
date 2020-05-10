@@ -7,6 +7,7 @@ const msgTmpl = require('../../pug/includes/modules/messages.pug')
 const newMessageCallback = response => {
   console.log('[DEBUG] New message callback');
   const data = JSON.parse(response.data);
+  console.log(data);
     if (Router.getFragment().split('/')[0] === 'chat' && Router.getFragment().split('/')[1] === data.message.chatId) {
       fetchGET({
         url: BACKEND_IP + '/api/v1/chats/' + data.message.chatId,

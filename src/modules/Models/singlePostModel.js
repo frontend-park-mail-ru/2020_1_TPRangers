@@ -41,6 +41,7 @@ const singlePostSubmitCallback = () => {
               postForm.elements.comment.value = '';
               console.log(data);
               commentList.innerHTML = commentsTmpl(data);
+              Observer.emit('listenCommentLikes');
             })
           }
         })

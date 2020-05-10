@@ -26,7 +26,7 @@ export default class PostView extends IView {
           Observer.emit('listenPostsLikes');
           Observer.emit('textarea:render', 'js-comment');
           Observer.emit('singlePost:render');
-          Observer.emit('listenCommentLikes')
+          Observer.emit('listenCommentLikes');
         })
       }
     })

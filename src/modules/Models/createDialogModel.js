@@ -130,7 +130,7 @@ const afterPhotoDialogCallback = response => {
     }),
     callback: response => {
       if (response.status === 200) {
-        Router.navigate('news');
+        Router.navigate('messages');
       }
     }
   })

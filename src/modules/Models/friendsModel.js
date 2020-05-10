@@ -6,6 +6,10 @@ const friendList = require('../../pug/includes/modules/friendList.pug')
 const friendsRenderCallback = () => {
   console.log('friends:render');
   const search = document.getElementById('js-search');
+  const searchForm = document.getElementById('js-search-form');
+  searchForm.addEventListener('submit', evt => {
+    evt.preventDefault();
+  })
   search.addEventListener('input', () => {
     if (search.value) {
       fetchGET({
