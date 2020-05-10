@@ -3,21 +3,23 @@ mixin postCard(data)
 
 
 mixin postLayout(data)
-    if data.photo != null
-        if data.width - data.height > 200 || data.text == null
-            div(class='post_full layout_color_main box-shadow')
-                + postPhoto(data)
+    if data.post
+        -console.log(data.photo.width);
+        if data.photo.url != null
+            if data.photo.width - data.photo.height > 300 || data.text == null
+                div(class='post_full layout_color_main box-shadow')
+                    + postPhoto(data)
+            else
+                div(class='post layout_color_main box-shadow')
+                    + postPhoto(data)
         else
             div(class='post layout_color_main box-shadow')
                 + postPhoto(data)
-    else
-        div(class='post layout_color_main box-shadow')
-            + postPhoto(data)
 
 
 mixin postPhoto(data)
-    if data.photo != null
-        if data.width - data.height > 300 || data.text == null
+    if data.photo.url != null
+        if data.photo.width - data.photo.height > 300 || data.text == null
             if data.text != null
                 div(class='img post__photo_full')
                     img(class='post__photo_full__img img__img' src=data.photo.url)
@@ -47,7 +49,10 @@ mixin postFotter(data)
         div(class='hr-line')
         div(class='post__body__likes-and-comments')
             div(class='')
-                i(class='link-like post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-heart')
+                if data.wasLike
+                    i(class='link-like link-has-like-js  post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-heart' id = data.id)
+                else
+                    i(class='link-like post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-heart' id = data.id)
                 span(class='text text_color_normal') #{data.likes}
             div(class='')
                 i(class='link post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-comment-alt')

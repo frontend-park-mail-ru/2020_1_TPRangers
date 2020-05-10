@@ -15,6 +15,19 @@ export default class ProfileView extends IView{
           response.json().then(response => {
             if (!response.feed)
               response.feed = [];
+            else {
+              response.feed.forEach(val => {
+                val.post = true
+                if (val.photo.url) {
+                  let img = new Image();
+                  img.src = val.photo.url;
+                  img.onload = function() {
+                    val.photo.width = this.width;
+                    val.photo.height = this.height;
+                  }
+                }
+              })
+            }
             if (!response.friends)
               response.friends = [];
             response.page = true

@@ -117,6 +117,17 @@ export default class ProfileView extends IView{
         callback: response => {
           response.json().then(response => {
             console.log(response);
+            response.forEach(val => {
+              val.post = true
+              if (val.photo.url) {
+                let img = new Image();
+                img.src = val.photo.url;
+                img.onload = function() {
+                  val.photo.width = this.width;
+                  val.photo.height = this.height;
+                }
+              }
+            })
             let posts = {
               main: true,
               feed: response,
