@@ -98,8 +98,8 @@ export default class DialogView extends IView {
           data.main = true;
           console.log(data);
 
-          this.parent.innerHTML += chatTmpl(fakeData); // data
-          // Observer.emit("dialog:render");
+          this.parent.innerHTML += chatTmpl(data); // data
+          Observer.emit("dialog:render");
           // Observer.emit("textarea:render", "js-message");
         });
       }

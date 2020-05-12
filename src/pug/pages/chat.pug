@@ -8,9 +8,7 @@ div(class='chat page')
                 span(class='text text_size_1-2rem text_color_normal') #{chatInfo.chatName}
                 div(class='img box-shadow chat__header__title-and-img__img')
                     img(class='img__img' src=chatInfo.chatPhoto)
-        div(class='chat__body')
-            each msg in chatMessages
-                + messageMixin(msg)
+        include ../mixins/messages
         div(class='chat__footer box-shadow layout_color_main')
             div(class='chat__footer__atth')
                 span(class='link fas fa-paperclip text text_color_normal text_size_2rem')

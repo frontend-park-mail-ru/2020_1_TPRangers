@@ -125,7 +125,7 @@ export default class MessagesView extends IView {
             dialogs: response
           };
 
-          this.parent.innerHTML += messagesTmpl(fakeData); // data
+          this.parent.innerHTML += messagesTmpl(data); // data
         });
       }
     });

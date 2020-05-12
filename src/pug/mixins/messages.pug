@@ -1,0 +1,4 @@
+include messageMixin
+div(class='chat__body' id='js-dialogs-body')
+    each msg in chatMessages
+        + messageMixin(msg)
