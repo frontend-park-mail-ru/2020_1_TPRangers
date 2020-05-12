@@ -1,0 +1,4 @@
+include ../../utils/messageMixin
+div(class="dialogs-body display_flex" id="js-dialogs-body")
+    each message in  chatMessages
+        +messageMixin(message)

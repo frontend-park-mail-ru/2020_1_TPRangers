@@ -1,6 +1,6 @@
 import Observer from '../../controller/observer';
 import { Router } from '../../Routes/routes';
-import { fetchDELETE, fetchPUT } from '../../ajax/ajax';
+import { fetchDELETE, fetchPOST } from '../../ajax/ajax';
 
 const userRenderCallback = () => {
   let friendButton = document.getElementsByClassName('js-friend-button')[0];
@@ -25,7 +25,7 @@ const userRenderCallback = () => {
 
 const addFriendCallback = () => {
   const login = Router.getFragment();
-  fetchPUT({
+  fetchPOST({
     url: BACKEND_IP + '/api/v1/' + login,
   })
 

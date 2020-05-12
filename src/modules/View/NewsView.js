@@ -106,11 +106,9 @@ const dataForTest = {
 
 const newsTmpl = require('../../pug/pages/news.pug');
 
-export default class ProfileView extends IView{
+ export default class NewsView extends IView{
 
     render() {
-      super.clear();
-
       fetchGET({
         url: BACKEND_IP + '/api/v1/news',
 
@@ -132,11 +130,12 @@ export default class ProfileView extends IView{
               main: true,
               feed: response,
             }
-            this.parent.innerHTML += newsTmpl(posts); // posts
+            console.log(posts)
+            super.clear();
+            this.parent.innerHTML += newsTmpl(posts); // response.body
             Observer.emit('listenPostsLikes')
           })
         }
       });
     }
-
-}
+ }

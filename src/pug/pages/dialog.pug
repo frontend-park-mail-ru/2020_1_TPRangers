@@ -1,0 +1,15 @@
+include ../utils/messageInputMixin
+if main
+    div(class="main-block__media display_flex_column")
+        div(class="main-block__media__header_fixed top-fixed display_flex boxshadow-block main-block__layout layout_light_secondary")
+            if chatInfo.isGroupChat
+                span(class="text text_size_L media-header display_flex align_center") #{chatInfo.chatName}
+            else
+                a(class="text text_size_L media-header display_flex align_center friend-card__body__username" href='user/' + chatInfo.privateUrl section='user/' + chatInfo.privateUrl) #{chatInfo.privateName} #{chatInfo.privateSurname}
+            if !chatInfo.isGroupChat
+                if chatInfo.onlineStatus
+                    span(class="text text_color_grey text_uppercase text_size_M display_flex align_center") В сети
+                else
+                    span(class="text text_color_grey text_uppercase text_size_M display_flex align_center") Не в сети
+            img(src=chatInfo.chatPhoto class="img img-radius img_size_M display_flex")
+        +messageInputMixin()

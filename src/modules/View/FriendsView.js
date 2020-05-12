@@ -8,8 +8,8 @@ export default class ProfileView extends IView {
   render() {
     super.clear();
 
-    fetchGET({
-      url: BACKEND_IP + "/api/v1/friends",
+      fetchGET({
+        url: BACKEND_IP + '/api/v1/friends',
 
       callback: response => {
         response.json().then(response => {
@@ -26,3 +26,5 @@ export default class ProfileView extends IView {
     });
   }
 }
+
+

@@ -9,3 +9,7 @@ import './createAlbum';
 import './addPhotosModel';
 import './MediaAlbumsModel'
 import './MediaPhotosModel'
+import './friendsModel'
+import './singlePostModel'
+import './createDialogModel'
+import './dialogModel'
