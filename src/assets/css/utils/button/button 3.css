@@ -1,7 +1,0 @@
-@import "./button_color.css";
-@import "./button_size.css";
-
-.button {
-  text-decoration: none;
-  font-family: Gotham Pro, sans-serif;
-}

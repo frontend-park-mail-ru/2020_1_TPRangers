@@ -2,7 +2,7 @@ import { Router } from '../../Routes/routes';
 import Observer from '../../controller/observer'
 import { fetchGET, fetchMultipartPOST, fetchPOST } from '../../ajax/ajax';
 
-const commentsTmpl = require('../../pug/includes/modules/commentsList.pug')
+// const commentsTmpl = require('../../pug/includes/modules/commentsList.pug')
 
 const singlePostRenderCallback = () => {
   console.log(`[DEBUG] singlePost:render callback`);
@@ -40,7 +40,7 @@ const singlePostSubmitCallback = () => {
               }
               postForm.elements.comment.value = '';
               console.log(data);
-              commentList.innerHTML = commentsTmpl(data);
+              // commentList.innerHTML = commentsTmpl(data);
               Observer.emit('listenCommentLikes');
             })
           }

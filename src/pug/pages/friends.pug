@@ -39,22 +39,13 @@
 -   ],
 - }
 
-include ../mixins/friendMixin
+
 include ../mixins/searchMixin
 
 div(class='friends page')
     + searchMixin()
     span(class='box-shadow layout_color_main layout__ultimate-padding text text_uppercase text_size_1-2rem text_color_normal') Друзья
     if main
-        div(id='js-friends-list')
-            if friends.length > 0
-                each friend in friends
-                    + friendMixin(friend)
-            else
-                span(class='friends__notfound text text_size_2rem text_color_normal') Друзей не найдено
+        include ../mixins/friendsList
+        include ../mixins/otherUsersList
 
-        if otherUsers.length > 0
-            div(id='js-otherusers-list')
-                span(class='box-shadow layout_color_main layout__ultimate-padding text text_uppercase text_size_1-2rem text_color_normal') Все пользователи
-                each friend in otherUsers
-                    + friendMixin(friend)

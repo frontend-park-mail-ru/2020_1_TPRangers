@@ -13,7 +13,6 @@ import MediaView from './View/MediaAlbumsView';
 import UserView from './View/UserView';
 import MediaPhotosView from './View/MediaPhotosView';
 import SendPost from './View/createPostView';
-import CreateAlbum from './View/createAlbum';
 import AddPhotos from './View/addPhotos';
 import MessagesView from './View/MessagesView';
 import DialogView from './View/DialogView';
@@ -48,8 +47,6 @@ app.addEventListener('click', (evt) => {
 				Router.navigate(aNode.getAttribute('section'));
 		} else if (evt.target.tagName === 'A') {
 			evt.preventDefault();
-			Router.navigate(evt.target.getAttribute('section'));
-		} else if (evt.target.tagName === 'DIV') {
 			Router.navigate(evt.target.getAttribute('section'));
 		}
 	}

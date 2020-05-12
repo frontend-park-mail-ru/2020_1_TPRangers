@@ -1,9 +1,0 @@
-@import "./main-block__user__user-header.css";
-@import "./main-block__user__user-media.css";
-@import "./main-block__user__user-add-post.css";
-
-.main-block__user {
-    width: 100%;
-    justify-self: flex-start;
-    justify-content: flex-start;
-}

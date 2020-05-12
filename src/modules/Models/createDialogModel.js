@@ -3,7 +3,7 @@ import Observer from '../../controller/observer'
 import { fetchMultipartPOST, fetchPOST } from '../../ajax/ajax';
 import {fetchGET} from '../../ajax/ajax';
 
-const friendList = require('../../pug/includes/modules/createDialogFriendList.pug')
+// const friendList = require('../../pug/includes/modules/createDialogFriendList.pug')
 
 const addListenerCallback = () => {
   let friends = document.getElementsByClassName('js-add-login');
@@ -29,7 +29,7 @@ const friendsRenderCallback = () => {
               }
               console.log(data);
               const list = document.getElementById('js-createDialog-list');
-              list.innerHTML = friendList(data)
+              // list.innerHTML = friendList(data)
               Observer.emit('createDialog:addListener')
             })
         }
