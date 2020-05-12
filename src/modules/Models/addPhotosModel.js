@@ -3,7 +3,7 @@ import Observer from "../../controller/observer";
 import { fetchMultipartPOST, fetchPOST } from "../../ajax/ajax";
 
 const addPhotosRenderCallback = () => {
-  const photoForm = document.getElementById("js-addPhotos-form");
+  const photoForm = document.getElementById("add-photo-form-js");
   // const photoInput = document.getElementById('photos');
   // photoInput.setAttribute('multiple','');
   photoForm.addEventListener("submit", event => {
@@ -14,8 +14,7 @@ const addPhotosRenderCallback = () => {
 
 const sendPhotosCallback = form => {
   let body = new FormData();
-  body.append("fileData", form.elements.photos.files[0]);
-
+  body.append("fileData", form.elements.photo.files[0]);
   fetchMultipartPOST({
     url: "https://social-hub.ru/upload",
     body,
@@ -38,7 +37,8 @@ const addPhotosAfter = data => {
     }),
     callback: response => {
       if (response.status === 200) {
-        Router.navigate("album/" + album_id);
+        Observer.emit('photos:close-createPhoto-form');
+        Router.callCurrent();
       }
     }
   });

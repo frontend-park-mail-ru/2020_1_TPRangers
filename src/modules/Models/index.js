@@ -7,4 +7,5 @@ import './LogoutModel';
 import './UserModel';
 import './createAlbum';
 import './addPhotosModel';
-// import './MediaAlbumsModel'
+import './MediaAlbumsModel'
+import './MediaPhotosModel'

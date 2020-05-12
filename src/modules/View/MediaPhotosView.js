@@ -39,6 +39,7 @@ export default class MediaPhotosView extends IView {
 
           console.log(album);
           this.parent.innerHTML += mediaPhotosTmpl(dataForTest); // response.body
+          Observer.emit("photos:listen-plus-button");
         });
       }
     });
