@@ -31,9 +31,7 @@ export default class UserView extends IView{
             if (!response.friends)
               response.friends = [];
             console.log(response);
-            this.parent.innerHTML += userProfileTmpl(response); //response
             response.page = true;
-            response.user.background = '../assets/img/main-block/fakeUser/background.jpg';
             this.parent.innerHTML += userProfileTmpl(response);
             Observer.emit('user:render');
             Observer.emit('listenPostsLikes');
