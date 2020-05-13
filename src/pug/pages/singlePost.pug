@@ -1,0 +1,46 @@
+if main
+    div(class='news page')
+        div(class='single-post__header box-shadow layout_color_main')
+            i(class='link add-chat-button-js text text_color_normal text_size_2rem fas fa-arrow-circle-left')
+        div(class='news_posts')
+            div(class='post_full post_full_small layout_color_main box-shadow')
+                div(class='post__header')
+                    div(class='post__header__user-and-img')
+                        div(class='img post__header__img box-shadow')
+                            a(href='user/' + data.authorUrl section='user/' + data.authorUrl)
+                                img(class='img__img' src=data.authorPhoto)
+                        div(class='post__header__user-and-data')
+                            a(class='link text text_size_1-2rem' href='user/' + data.authorUrl section='user/' + data.authorUrl) #{data.authorName}
+                            span(class='text text_size_0-8rem ') #{data.date}
+                div(class='post__body__text')
+                    if data.title != null
+                        span(class='text text_size_2rem post__title') #{data.title}  
+                    if data.text != null
+                        p(class='text text_colot_normal') #{data.text}    
+
+                if data.photo.url != null
+                    div(class='img post__photo_full')
+                        img(class='post__photo_full__img img__img' src=data.photo.url)
+
+                div(class='post__body')        
+                    div(class='post__body__footer')
+                        div(class='hr-line')
+                        div(class='post__body__likes-and-comments')
+                            div(class='')
+                                if data.wasLike
+                                    i(class='link-like link-has-like-js  post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-heart' id = data.id)
+                                else
+                                    i(class='link-like post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-heart' id = data.id)
+                                span(class='text text_color_normal') #{data.likes}
+
+            //include ../mixins/commentsList
+            div(class='chat__footer box-shadow layout_color_main')
+                div(class='chat__footer__atth')
+                    span(class='link fas fa-paperclip text text_color_normal text_size_2rem')
+                    span(class='chat__footer__atth__link link far fa-smile-wink text text_color_normal text_size_2rem')
+                div(class='chat__footer__msg')
+                    form(action="#", class='chat__footer__msg__form' id="js-single-post-form")
+                        textarea(class='chat__footer__msg__form__textarea input text text_color_normal text_size_1-2rem' type='text' name='text' true, id='text' placeholder='Введите свой текст' rows='2')
+                        button(type="submit" id='add-post-submit' class="chat__input__button login__input__button button button_primary text text_color_for-buttons text_size_1-2rem")
+                            span(class='text text_size_2rem text_color_button fas fa-paper-plane')     
+                            

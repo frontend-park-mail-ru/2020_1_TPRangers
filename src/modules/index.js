@@ -19,8 +19,6 @@ import DialogView from './View/DialogView';
 import PostView from './View/PostView';
 import CreateDialogView from './View/createDialogView';
 
-
-
 // const leftBlockTmpl = require("../pug/includes/modules/left-block.pug");
 const testTmpl = require('../pug/pages/news.pug');
 
@@ -57,19 +55,17 @@ const mainBlock = document.getElementById('main-block');
 //Service Worker init
 
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('../sw.js')
-      .then(() => {
-        console.log('[DEBUG] ServiceWorker registered');
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  });
+	window.addEventListener('load', () => {
+		navigator.serviceWorker
+			.register('../sw.js')
+			.then(() => {
+				console.log('[DEBUG] ServiceWorker registered');
+			})
+			.catch((err) => {
+				console.error(err);
+			});
+	});
 }
-
-
-
 
 // TODO: Тут надо добавить обработчики всех страниц
 Router.config({ mode: 'history' });
@@ -125,47 +121,54 @@ Router.add(/news/, () => {
 		// console.log(Router.getFragment());
 		console.log('profile');
 
-      let userProfile = new ProfileView(mainBlock);
-      userProfile.render();
-    })
-    .add(/post\/(.+)/, () => {
-      let post = new PostView(mainBlock);
-      post.render();
-    })
-    .add(/login/, () => {
-      let login = new LoginView(mainBlock);
-      login.render();
-    })
-    .add(/reg/, () => {
-      let reg = new RegView(mainBlock);
-      reg.render();
-    } )
-    .add (/createPost\/(.*)/, () => {
-      let createPost = new SendPost(mainBlock);
-      createPost.render();
-    })
-    .add (/createAlbum/, () => {
-      let createAlbum = new CreateAlbumView(mainBlock);
-      createAlbum.render();
-    })
-    .add (/addPhotos\/(.*)/, () => {
-      let addPhotos = new AddPhotos(mainBlock);
-      addPhotos.render();
-    })
-    .add(/(?!news$)(?!friends$)(?!messages$)(?!media$)(?!album\/(.*)$)(?!settings$)(?!user\/(.*)$)(?!profile$)(?!login$)(?!reg$)(?!logout$)/, () => {
-      let news = new NewsView(mainBlock);
-      news.render();
-      //Router.navigate();
-    })
-    .listen();
+		let userProfile = new ProfileView(mainBlock);
+		userProfile.render();
+	})
+	.add(/post\/(.+)/, () => {
+		let post = new PostView(mainBlock);
+		post.render();
+	})
+	.add(/login/, () => {
+		let login = new LoginView(mainBlock);
+		login.render();
+	})
+	.add(/reg/, () => {
+		let reg = new RegView(mainBlock);
+		reg.render();
+	})
+	.add(/createPost\/(.*)/, () => {
+		let createPost = new SendPost(mainBlock);
+		createPost.render();
+	})
+	.add(/createAlbum/, () => {
+		let createAlbum = new CreateAlbumView(mainBlock);
+		createAlbum.render();
+	})
+	.add(/addPhotos\/(.*)/, () => {
+		let addPhotos = new AddPhotos(mainBlock);
+		addPhotos.render();
+	})
+	.add(/post\/(.*)/, () => {
+		// let user = new UserView(mainBlock);
+		// user.render(Router.getFragment().split('/')[1]);
+	})
+	.add(
+		/(?!news$)(?!friends$)(?!messages$)(?!media$)(?!album\/(.*)$)(?!settings$)(?!user\/(.*)$)(?!profile$)(?!login$)(?!reg$)(?!logout$)/,
+		() => {
+			let news = new NewsView(mainBlock);
+			news.render();
+			//Router.navigate();
+		},
+	)
 
+	.listen();
 
-window.addEventListener("unload", () => {
-  window.socket.close();
+window.addEventListener('unload', () => {
+	window.socket.close();
 });
 
 window.onbeforeunload = function() {
-  window.socket.close();
+	window.socket.close();
 };
 
 if (navigator.onLine) {
