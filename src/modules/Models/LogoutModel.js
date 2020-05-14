@@ -7,11 +7,11 @@ const logoutCallback = () => {
       url: BACKEND_IP + '/api/v1/login',
       callback: response => {
           if (response.status === 200) {
-            const leftBlock = document.getElementById("left-block");
-            const rightBlock = document.getElementById('right-block');
-            //Очистка правого и левого блока
-            leftBlock.innerHTML = '';
-            rightBlock.innerHTML = '';
+            const grid = document.getElementById('app')
+            const header = document.getElementsByClassName('header')[0]
+            grid.classList.add('grid-container')
+            grid.classList.remove('grid-authorize')
+            header.classList.remove('header_authorize-js')
             Router.navigate('login');
           }
       }

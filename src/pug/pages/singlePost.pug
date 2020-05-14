@@ -14,15 +14,15 @@ if main
                             span(class='text text_size_0-8rem ') #{data.date}
                 div(class='post__body__text')
                     if data.title != null
-                        span(class='text text_size_2rem post__title') #{data.title}  
+                        span(class='text text_size_2rem post__title') #{data.title}
                     if data.text != null
-                        p(class='text text_colot_normal') #{data.text}    
+                        p(class='text text_colot_normal') #{data.text}
 
                 if data.photo.url != null
                     div(class='img post__photo_full')
                         img(class='post__photo_full__img img__img' src=data.photo.url)
 
-                div(class='post__body')        
+                div(class='post__body')
                     div(class='post__body__footer')
                         div(class='hr-line')
                         div(class='post__body__likes-and-comments')
@@ -33,7 +33,6 @@ if main
                                     i(class='link-like post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-heart' id = data.id)
                                 span(class='text text_color_normal') #{data.likes}
 
-            //include ../mixins/commentsList
             div(class='chat__footer box-shadow layout_color_main')
                 div(class='chat__footer__atth')
                     span(class='link fas fa-paperclip text text_color_normal text_size_2rem')
@@ -42,5 +41,7 @@ if main
                     form(action="#", class='chat__footer__msg__form' id="js-single-post-form")
                         textarea(class='chat__footer__msg__form__textarea input text text_color_normal text_size_1-2rem' type='text' name='text' true, id='text' placeholder='Введите свой текст' rows='2')
                         button(type="submit" id='add-post-submit' class="chat__input__button login__input__button button button_primary text text_color_for-buttons text_size_1-2rem")
-                            span(class='text text_size_2rem text_color_button fas fa-paper-plane')     
-                            
+                            span(class='text text_size_2rem text_color_button fas fa-paper-plane')
+
+            include ../mixins/commentsList
+

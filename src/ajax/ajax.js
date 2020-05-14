@@ -23,6 +23,7 @@ function fetchApi({
   })
     .then(callback)
     .catch(err => {
+      console.log(err)
       Observer.emit('render:error', {
         status: 500,
         text: 'Упс.. Скоро мы все починим :)',

@@ -122,7 +122,7 @@ const afterPhotoDialogCallback = response => {
   const usersLogin = dialogForm.elements.logins.value.split(',').filter(elem => elem !== "");
   console.log(text, logins);
   fetchPOST({
-    url: BACKEND_IP + `/api/v1/chats`,
+    url: `http://localhost:3081/api/v1/chats`,
     body: JSON.stringify({
       chatPhoto,
       chatName,

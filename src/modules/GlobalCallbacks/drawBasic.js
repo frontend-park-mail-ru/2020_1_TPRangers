@@ -2,6 +2,7 @@ import LeftView from '../View/LeftView';
 import RightView from '../View/RightView';
 import Observer from '../../controller/observer';
 import {fetchGET} from '../../ajax/ajax';
+import { Router } from '../../Routes/routes';
 
 const leftBlock = document.getElementById("left-block");
 const rightBlock = document.getElementById("right-block");
@@ -9,8 +10,12 @@ const rightBlock = document.getElementById("right-block");
 const drawBasicCallback = () => {
   console.log(`[DEBUG] draw-basic callback`);
   Observer.emit('ws');
-  // new LeftView(leftBlock).render();
-  // new RightView(rightBlock).render();
+  const grid = document.getElementById('app')
+  const header = document.getElementsByClassName('header')[0]
+  grid.classList.add('grid-authorize')
+  grid.classList.remove('grid-container')
+  header.classList.add('header_authorize-js')
+  Router.callCurrent();
 };
 
 

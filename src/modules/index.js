@@ -36,7 +36,8 @@ app.addEventListener('click', (evt) => {
 		if (
 			evt.target.tagName === 'I' ||
 			evt.target.tagName === 'LI' ||
-			evt.target.tagName === 'IMG'
+			evt.target.tagName === 'IMG' ||
+			evt.target.tagName === 'DIV'
 		) {
 			evt.preventDefault();
 			const aNode = evt.target.parentNode;
@@ -51,6 +52,16 @@ app.addEventListener('click', (evt) => {
 });
 
 const mainBlock = document.getElementById('main-block');
+
+const setActive = linkName => {
+	const active = document.getElementsByClassName('nav-link__active-js')
+	if (active.length !== 0) {
+		active[0].classList.remove('nav-link__active-js')
+	}
+	const new_active = document.getElementById(linkName)
+	console.log(new_active)
+	new_active.classList.add('nav-link__active-js')
+}
 
 //Service Worker init
 
@@ -73,11 +84,13 @@ Router.config({ mode: 'history' });
 Router.add(/news/, () => {
 	console.log('news');
 	let news = new NewsView(mainBlock);
+	setActive('link-news')
 	news.render();
 })
 	.add(/friends/, () => {
 		console.log('friends');
 		let friends = new FriendsView(mainBlock);
+		setActive('link-friends')
 		friends.render();
 	})
 	.add(/logout/, () => {
@@ -87,27 +100,31 @@ Router.add(/news/, () => {
 	.add(/messages/, () => {
 		console.log('messages');
 		let messages = new MessagesView(mainBlock);
+		setActive('link-messages')
 		messages.render();
 	})
 	.add(/chat\/(.*)/, () => {
 		console.log('chat');
 		let chat = new DialogView(mainBlock);
+		setActive('link-messages')
 		chat.render();
 	})
 	.add(/media/, () => {
 		let media = new MediaView(mainBlock);
+		setActive('link-media')
 		media.render();
 		console.log('media');
 	})
 	.add(/album\/(.*)/, () => {
 		console.log(Router.getFragment());
-
+		setActive('link-media')
 		let photos = new MediaPhotosView(mainBlock);
 		photos.render();
 	})
 	.add(/settings/, () => {
 		console.log('settings' + window.location.href);
 		let settings = new SettingsView(mainBlock);
+		setActive('link-settings')
 		settings.render();
 	})
 	.add(/user\/(.*)/, () => {
@@ -120,7 +137,7 @@ Router.add(/news/, () => {
 	.add(/profile/, () => {
 		// console.log(Router.getFragment());
 		console.log('profile');
-
+		setActive('link-profile')
 		let userProfile = new ProfileView(mainBlock);
 		userProfile.render();
 	})
@@ -142,20 +159,19 @@ Router.add(/news/, () => {
 	})
 	.add(/createAlbum/, () => {
 		let createAlbum = new CreateAlbumView(mainBlock);
+		setActive('link-media')
 		createAlbum.render();
 	})
 	.add(/addPhotos\/(.*)/, () => {
 		let addPhotos = new AddPhotos(mainBlock);
+		setActive('link-media')
 		addPhotos.render();
-	})
-	.add(/post\/(.*)/, () => {
-		// let user = new UserView(mainBlock);
-		// user.render(Router.getFragment().split('/')[1]);
 	})
 	.add(
 		/(?!news$)(?!friends$)(?!messages$)(?!media$)(?!album\/(.*)$)(?!settings$)(?!user\/(.*)$)(?!profile$)(?!login$)(?!reg$)(?!logout$)/,
 		() => {
 			let news = new NewsView(mainBlock);
+			setActive('link-news')
 			news.render();
 			//Router.navigate();
 		},

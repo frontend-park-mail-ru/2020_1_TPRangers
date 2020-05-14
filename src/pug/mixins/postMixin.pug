@@ -17,10 +17,9 @@ mixin postPhoto(data)
             div(class='post__header__user-and-data')
                 a(class='link text text_size_1-2rem' href='user/' + data.authorUrl section='user/' + data.authorUrl) #{data.authorName}
                 span(class='text text_size_0-8rem ') #{data.date}
-    a(class='post__link' href='post/' + data.id section='post/' + data.id)
-        div(class='post__body__text')
-            + postTitle(data)
-            + postText(data)
+    div(class='post__body__text')
+        + postTitle(data)
+        + postText(data)
 
         if data.photo.url != null
             div(class='img post__photo_full')
@@ -34,7 +33,7 @@ mixin postTitle(data)
 
 mixin postText(data)
     if data.text != null
-        p(class='text text_colot_normal') #{data.text}
+        a(class='post__link text text_colot_normal' href='post/' + data.id section='post/' + data.id) #{data.text}
 
 
 mixin postFotter(data)

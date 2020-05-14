@@ -4,7 +4,6 @@ import { fetchGET } from '../../ajax/ajax';
 import { Router } from '../../Routes/routes';
 
 const postTmpl = require('../../pug/pages/singlePost.pug');
-const commentsTmpl = require('../../pug/mixins/commentsList.pug');
 
 export default class PostView extends IView {
 	render() {
@@ -21,9 +20,7 @@ export default class PostView extends IView {
 					console.log(data);
 					super.clear();
 					this.parent.innerHTML += postTmpl(data);
-					this.parent.innerHTML += commentsTmpl(data);
 					Observer.emit('listenPostsLikes');
-					Observer.emit('textarea:render', 'js-comment');
 					Observer.emit('singlePost:render');
 					Observer.emit('listenCommentLikes');
 				});
