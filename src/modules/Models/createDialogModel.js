@@ -101,6 +101,14 @@ const submitDialogCallback = () => {
 const createDialogRenderCallback = () => {
   console.log(`[DEBUG] createDialog:render callback`);
 
+  const backButton = document.getElementById('back-button-js');
+
+  backButton.onclick = evt => {
+    evt.preventDefault();
+    Router.goPrev()
+  }
+
+
   const dialogForm = document.getElementById('js-createDialog-form');
   dialogForm.addEventListener('submit', event => {
     event.preventDefault();

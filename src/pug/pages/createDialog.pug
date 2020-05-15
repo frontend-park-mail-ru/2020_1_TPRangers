@@ -1,9 +1,9 @@
 include ../mixins/searchMixin
 div(class='page')
-    div(class='single-post__header box-shadow layout_color_main')
+    div(class='top-fixed box-shadow layout_color_main')
         i(class='link text text_color_normal text_size_2rem fas fa-arrow-circle-left' id = "back-button-js")
         span(class='text text_color_normal text_size_1-2rem') Создание группового чата
-    div(class='box-shadow layout_color_main' id='add-post-js')
+    div(class='mt box-shadow layout_color_main' id='add-post-js')
         div(class='add-post__body')
             form(class='form__input-holder' id='js-createDialog-form')
                 input(class='add-post__body__input input text text_color_normal text_size_1-2rem' required type='text' name='text' , id='text' placeholder='Придумайте название' )
