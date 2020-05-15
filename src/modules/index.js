@@ -56,10 +56,17 @@ const mainBlock = document.getElementById('main-block');
 const setActive = linkName => {
 	const active = document.getElementsByClassName('nav-link__active-js')
 	if (active.length !== 0) {
+		active[0].childNodes.forEach(node => {
+			node.classList.add('text_color_normal')
+			node.classList.remove('text_color_primary')
+		})
 		active[0].classList.remove('nav-link__active-js')
 	}
 	const new_active = document.getElementById(linkName)
-	console.log(new_active)
+	new_active.childNodes.forEach(node => {
+		node.classList.remove('text_color_normal')
+		node.classList.add('text_color_primary')
+	})
 	new_active.classList.add('nav-link__active-js')
 }
 
