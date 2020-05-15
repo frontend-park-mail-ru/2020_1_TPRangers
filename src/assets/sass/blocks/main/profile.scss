@@ -179,7 +179,7 @@
                     height: calc((280px - 2rem)/4);
                     margin: 1rem;
                     overflow: hidden;
-                    border-radius: 100px;
+                    border-radius: 10px;
 
                     &__img {
                         position: relative;
@@ -261,7 +261,7 @@
                 &__img {
                     position: relative;
                     top: 50%;
-                    left: 95%;
+                    left: 50%;
                     @include translate(-50%, -50%);
                     min-width: 100%;
                     min-height: 100%;
@@ -319,6 +319,7 @@
     .profile {
 
         &__body {
+            min-height: 80vh;
             display: grid;
             grid-template-areas:
                 'profile-inf-mobile'

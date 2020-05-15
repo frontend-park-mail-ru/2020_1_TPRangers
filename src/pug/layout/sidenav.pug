@@ -14,11 +14,11 @@
 -     class: 'fas fa-user',
 -     mobile: 'true',
 -   },
--   { name: 'Сообщества',
--     link: 'groups',
--     class: 'fas fa-users',
--     mobile: 'true',
--   },
+-   //{ name: 'Сообщества',
+-     //link: 'groups',
+-     //class: 'fas fa-users',
+-     //mobile: 'true',
+-   //},
 -   { name: 'Сообщения',
 -     link: 'messages',
 -     class: 'fas fa-comments',
@@ -42,7 +42,7 @@
 - ];
 
 mixin sidenav()
-    aside(class="sidenav box-shadow layout_color_main")
+    aside(class="sidenav box-shadow layout_color_main" id = "sidenav-js")
         ul(class='sidenav-nav')
             li(class='nav-logo')
                 a(class='link nav-logo__nav-link' href='news' section='news')

@@ -8,6 +8,12 @@ const singlePostRenderCallback = () => {
   console.log(`[DEBUG] singlePost:render callback`);
 
   const postForm = document.getElementById('js-single-post-form');
+  const backButton = document.getElementById('back-button-js');
+
+  backButton.onclick = evt => {
+    evt.preventDefault();
+    Router.goPrev()
+  }
 
   postForm.addEventListener('submit', event => {
     event.preventDefault();

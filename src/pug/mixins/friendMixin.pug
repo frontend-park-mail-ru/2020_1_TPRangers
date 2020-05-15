@@ -2,12 +2,11 @@ mixin friendMixin(data)
     div(class='friend-card box-shadow layout_color_main')
         div(class='img friend-card__avatar')
             a(href='user/' + data.url section='user/' + data.url)
-                img(class='img__img' src=data.avatar)   
+                img(class='img__img' src=data.avatar)
         div(class='friend-card__body')
             div(class='friend-card__body__name-and-online')
-                a(class='text text_size_1-2rem text_color_normal' href='user/' + data.url section='user/' + data.url) #{data.name} #{data.surname}
+                a(class='text text_size_2rem text_color_normal' href='user/' + data.url section='user/' + data.url) #{data.name} #{data.surname}
                 if data.online
                     span(class='text text_uppercase text_color_normal') В сети
                 else
                     span(class='text text_uppercase text_color_normal') Не в сети
-            a(class='friend-card__body__send-message text_size_0-8rem link text text_color_normal') Написать сообщение

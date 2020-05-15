@@ -20,22 +20,18 @@
       align-items: center;
       &__img {
         margin-left: 1rem;
-        width: 3rem;
-        height: 3rem;
+        width: 5rem;
+        height: 5rem;
         overflow: hidden;
-        border-radius: 100px;
+        border-radius: 10px;
       }
     }
   }
 
   &__body {
     overflow-y: scroll;
-    display: grid;
-    grid-template-areas:
-            'messages-chats';
-
-    grid-template-rows: 1fr;
-    grid-template-columns: 1fr max-content;
+    display: flex;
+    flex-direction: column-reverse;
   }
 
   &__footer {
@@ -85,10 +81,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 100px;
-    width: 3rem;
-    height: 3rem;
-    padding: 2rem;
+    border-radius: 10px;
+    padding: 1.5rem;
+    width: 8rem;
     margin-top: 0;
     margin-left: 1rem;
   }
@@ -105,13 +100,14 @@
     width: 3rem;
     height: 3rem;
     overflow: hidden;
-    border-radius: 100px;
+    border-radius: 10px;
   }
 
   &-data {
     display: flex;
     flex-direction: column;
     margin-bottom: 1rem;
+    margin-right: 2rem;
     &-my {
       justify-content: flex-end;
       align-items: flex-end;
@@ -150,9 +146,9 @@
   }
 
   .chat__input__button {
-    width: 5rem;
-    height: 5rem;
-    padding: 3rem;
+    padding: 1.5rem;
+    margin-left: 1rem;
+    height: 10rem;
   }
 
   .chat__footer__msg {

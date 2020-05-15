@@ -10,7 +10,7 @@ const newMessageCallback = response => {
   console.log(data);
     if (Router.getFragment().split('/')[0] === 'chat' && Router.getFragment().split('/')[1] === data.message.chatId) {
       fetchGET({
-        url:'http://localhost:8081/api/v1/chats/' + data.message.chatId,
+        url:'http://localhost:3081/api/v1/chats/' + data.message.chatId,
         callback: response => {
           response.json().then(data => {
             data.main = true;

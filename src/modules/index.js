@@ -188,7 +188,6 @@ window.onbeforeunload = function() {
 };
 
 if (navigator.onLine) {
-	Router.callCurrent();
 	//Initial check to understand if user authorized and to check '/' route
 	Observer.emit('start');
 } else {

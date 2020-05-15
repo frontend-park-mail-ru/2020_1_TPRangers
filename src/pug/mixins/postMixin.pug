@@ -15,7 +15,7 @@ mixin postPhoto(data)
                 a(href='user/' + data.authorUrl section='user/' + data.authorUrl)
                     img(class='img__img' src=data.authorPhoto)
             div(class='post__header__user-and-data')
-                a(class='link text text_size_1-2rem' href='user/' + data.authorUrl section='user/' + data.authorUrl) #{data.authorName}
+                a(class='link text text_color_normal text_size_1-2rem' href='user/' + data.authorUrl section='user/' + data.authorUrl) #{data.authorName}
                 span(class='text text_size_0-8rem ') #{data.date}
     div(class='post__body__text')
         + postTitle(data)
@@ -47,5 +47,5 @@ mixin postFotter(data)
                     i(class='link-like post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-heart' id = data.id)
                 span(class='text text_color_normal') #{data.likes}
             div(class='')
-                i(class='link post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-comment-alt')
+                a(class='link post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-comment-alt' href='post/' + data.id section='post/' + data.id)
                 span(class='text text_color_normal') #{data.comment}

@@ -33,12 +33,12 @@ export default class MediaPhotosView extends IView {
           const album = {
             main: true,
             id: albumUrl,
-            title: response.album_name,
+            title: response.album_name ? response.album_name : 'Ваши фото',
             body: response.url ? response.url : []
           };
 
           console.log(album);
-          this.parent.innerHTML += mediaPhotosTmpl(dataForTest); // response.body
+          this.parent.innerHTML += mediaPhotosTmpl(album); // response.body
           Observer.emit("photos:listen-plus-button");
         });
       }

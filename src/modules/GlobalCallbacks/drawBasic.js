@@ -10,11 +10,13 @@ const rightBlock = document.getElementById("right-block");
 const drawBasicCallback = () => {
   console.log(`[DEBUG] draw-basic callback`);
   Observer.emit('ws');
-  const grid = document.getElementById('app')
-  const header = document.getElementsByClassName('header')[0]
-  grid.classList.add('grid-authorize')
-  grid.classList.remove('grid-container')
-  header.classList.add('header_authorize-js')
+  const grid = document.getElementById('app');
+  const header = document.getElementsByClassName('header')[0];
+  const side = document.getElementById('sidenav-js');
+  side.style.display = 'flex';
+  grid.classList.add('grid-authorize');
+  grid.classList.remove('grid-container');
+  header.classList.add('header_authorize-js');
   Router.callCurrent();
 };
 

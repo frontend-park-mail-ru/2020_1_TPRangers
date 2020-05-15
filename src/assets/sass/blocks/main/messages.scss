@@ -35,6 +35,10 @@
 		padding: 1.5rem 1rem;
 		min-width: 400px;
 	}
+
+	&-input {
+		padding-bottom: 1rem;
+	}
 }
 
 .chat-card {
@@ -47,14 +51,14 @@
 	border-radius: 5px;
 
 	&:hover {
-		background-color: $secondary-color;
+		background-color: $my-message-color;
 	}
 
 	&__img {
 		width: 6rem;
 		height: 100%;
 		overflow: hidden;
-		border-radius: 100px;
+		border-radius: 10px;
 	}
 
 	&__info {
@@ -79,7 +83,7 @@
 				width: 3rem;
 				height: 3rem;
 				overflow: hidden;
-				border-radius: 100px;
+				border-radius: 10px;
 			}
 
 			&__data {

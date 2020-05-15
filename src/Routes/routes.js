@@ -64,6 +64,11 @@ export const Router = {
     return this;
   },
 
+  goPrev() {
+    history.back()
+    return this
+  },
+
   check(f) {
     const fragment = f || this.getFragment();
     for (let i = 0; i < this.routes.length; i++) {
