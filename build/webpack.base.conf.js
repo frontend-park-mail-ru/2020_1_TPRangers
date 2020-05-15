@@ -120,7 +120,8 @@ module.exports = {
     new webpack.DefinePlugin({  // plugin to define global constants
       API_KEY: JSON.stringify(process.env.API_KEY),
       BACKEND_IP: JSON.stringify(process.env.BACKEND_IP),
-      WS_IP: JSON.stringify(process.env.WS_IP)
+      WS_IP: JSON.stringify(process.env.WS_IP),
+      CHAT_IP: JSON.stringify(process.env.CHAT_IP)
     }),
 
     ...PAGES.map(page => new HtmlWebpackPlugin({

@@ -174,6 +174,10 @@ Router.add(/news/, () => {
 		setActive('link-media')
 		addPhotos.render();
 	})
+	.add(/createDialog/, () => {
+		const createDialog = new CreateDialogView(mainBlock)
+		createDialog.render()
+	})
 	.add(
 		/(?!news$)(?!friends$)(?!messages$)(?!media$)(?!album\/(.*)$)(?!settings$)(?!user\/(.*)$)(?!profile$)(?!login$)(?!reg$)(?!logout$)/,
 		() => {
@@ -183,7 +187,6 @@ Router.add(/news/, () => {
 			//Router.navigate();
 		},
 	)
-
 	.listen();
 
 window.addEventListener('unload', () => {

@@ -1,4 +1,4 @@
-mixin friendMixin(data)
+mixin friendMixin(data, canAdd)
     div(class='friend-card box-shadow layout_color_main')
         div(class='img friend-card__avatar')
             a(href='user/' + data.url section='user/' + data.url)
@@ -6,7 +6,11 @@ mixin friendMixin(data)
         div(class='friend-card__body')
             div(class='friend-card__body__name-and-online')
                 a(class='text text_size_2rem text_color_normal' href='user/' + data.url section='user/' + data.url) #{data.name} #{data.surname}
+
                 if data.online
                     span(class='text text_uppercase text_color_normal') В сети
                 else
                     span(class='text text_uppercase text_color_normal') Не в сети
+            if canAdd
+                div(class="friend-card__add")
+                    i(class="text link js-add-login js-don't-prevent text_color_normal text_size_2rem fas fa-plus-circle" login=data.url)

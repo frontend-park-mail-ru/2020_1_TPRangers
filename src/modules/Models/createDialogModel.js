@@ -3,7 +3,7 @@ import Observer from '../../controller/observer'
 import { fetchMultipartPOST, fetchPOST } from '../../ajax/ajax';
 import {fetchGET} from '../../ajax/ajax';
 
-// const friendList = require('../../pug/includes/modules/createDialogFriendList.pug')
+const friendList = require('../../pug/mixins/friendsList.pug')
 
 const addListenerCallback = () => {
   let friends = document.getElementsByClassName('js-add-login');
@@ -25,11 +25,12 @@ const friendsRenderCallback = () => {
           response.json()
             .then(response => {
               const data = {
-                friends: response
+                friends: response,
+                canAdd: true,
+                main: true
               }
-              console.log(data);
-              const list = document.getElementById('js-createDialog-list');
-              // list.innerHTML = friendList(data)
+              const list = document.getElementById('js-friends-list');
+              list.innerHTML = friendList(data)
               Observer.emit('createDialog:addListener')
             })
         }
@@ -42,9 +43,10 @@ const friendsRenderCallback = () => {
             .then(response => {
               const data = {
                 friends: response,
+                canAdd: true,
+                main: true
               }
-              console.log(data);
-              const list = document.getElementById('js-createDialog-list');
+              const list = document.getElementById('js-friends-list');
               list.innerHTML = friendList(data);
               Observer.emit('createDialog:addListener');
             })
@@ -57,7 +59,6 @@ const friendsRenderCallback = () => {
 const addLoginCallback = evt => {
   evt.preventDefault();
   const postForm = document.getElementById('js-createDialog-form');
-  console.log(postForm.elements.logins.value)
   const current = evt.toElement;
   if (current.classList.contains("fa-check-circle"))
     return;
@@ -65,6 +66,7 @@ const addLoginCallback = evt => {
   const login = current.getAttribute("login");
   current.classList.remove("fa-plus-circle")
   current.classList.remove("js-don't-prevent")
+  current.classList.remove('link')
   current.classList.add("fa-check-circle")
 
   postForm.elements.logins.value += `${login},`
@@ -120,9 +122,9 @@ const afterPhotoDialogCallback = response => {
 
   const chatName = dialogForm.elements.text.value;
   const usersLogin = dialogForm.elements.logins.value.split(',').filter(elem => elem !== "");
-  console.log(text, logins);
+  console.log(chatName, usersLogin);
   fetchPOST({
-    url: `http://localhost:3081/api/v1/chats`,
+    url: CHAT_IP + `/api/v1/chats`,
     body: JSON.stringify({
       chatPhoto,
       chatName,

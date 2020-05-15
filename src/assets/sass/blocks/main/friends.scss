@@ -27,6 +27,15 @@
 	border-radius: 5px;
 	min-width: 600px;
 
+	&__add {
+		height: 100%;
+		justify-content: space-around;
+		align-items: flex-end;
+		display: flex;
+		flex-direction: column;
+		flex-shrink: initial;
+	}
+
 	&__avatar {
 		min-width: 100px;
 		max-width: 100px;

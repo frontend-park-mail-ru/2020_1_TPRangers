@@ -110,7 +110,7 @@ export default class MessagesView extends IView {
   render() {
     super.clear();
     fetchGET({
-      url:"http://localhost:3081/api/v1/chats",
+      url:CHAT_IP + "/api/v1/chats",
       callback: response => {
         response.json().then(response => {
           response.forEach(elem => {

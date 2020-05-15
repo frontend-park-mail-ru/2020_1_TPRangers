@@ -17,7 +17,7 @@ const dialogRenderCallback = () => {
     console.log('[WS] send');
     messageForm.elements.text.value = '';
     setTimeout( fetchGET, 250, {
-      url: 'http://localhost:3081/api/v1/chats/' + chatId,
+      url: CHAT_IP + '/api/v1/chats/' + chatId,
       callback: response => {
         response.json().then(data => {
           data.main = true;

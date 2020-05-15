@@ -25,7 +25,7 @@ const createWebsocket = () => {
   // ws register
   console.log('[DEBUG] ws connection...')
   fetchGET({
-    url: 'http://localhost:3081/api/v1/ws',
+    url: CHAT_IP + '/api/v1/ws',
     callback: response => {
       response.json().then( response => {
         console.log(response);
