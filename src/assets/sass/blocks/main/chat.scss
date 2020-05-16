@@ -47,6 +47,7 @@
       min-width: 400px;
       flex-wrap: wrap;
 
+
       &__form {
         width: 100%;
         display: flex;
@@ -157,5 +158,9 @@
 
   .chat__footer__atth {
     width: 3rem;
+  }
+
+  .chat__body {
+    height: 70vh;
   }
 }
