@@ -114,11 +114,10 @@ if page
                             span(class='js-add-friend profile__avatar-and-buttons__buttons__button text text_color_for-buttons button button_primary js-friend-button') Добавить в друзья
                         else
                             span(class='js-remove-friend profile__avatar-and-buttons__buttons__button text text_color_for-buttons button button_primary js-friend-button') Удалить из друзей
-                        span(class='profile__avatar-and-buttons__buttons__button text text_color_for-buttons button button_primary') Написать сообщение
+                        a(section='messages' href='messages' class='profile__avatar-and-buttons__buttons__button text text_color_for-buttons button button_primary') Написать сообщение
                 div(class='profile__friends profile_box layout_color_main')
                     div(class='profile__info__name-and-online')
                         span(class='text text_color_normal text_uppercase text_size_1-2rem') Друзья
-                        a(class='link text text_color_normal text_size_0-8rem') Смотреть всех
                     div(class='hr-line')
                     include ../mixins/friendsBlock
 
@@ -150,10 +149,6 @@ if page
                             span(class='profile__info__data-block-element__data text text_color_normal') #{user.telephone}
                     div(class='hr-line')
                     div(class='profile-mobile__friends-music')
-                        a(class='link profile-mobile__friends-music__link' href='#')
-                            div(class='link profile-mobile__friends-music__link__body')
-                                i(class='link profile-mobile__friends-music__button text text_color_normal text_size_2rem fas fas fa-music')
-                                span(class='link-text text text_color_normal') #{data.musicCounter}
                         a(class='link profile-mobile__friends-music__link' href='#')
                             div(class='link profile-mobile__friends-music__link__body')
                                 i(class='link profile-mobile__friends-music__button text text_color_normal text_size_2rem fas fa-user-friends')
