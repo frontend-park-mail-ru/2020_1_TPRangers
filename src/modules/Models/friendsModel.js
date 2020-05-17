@@ -18,7 +18,7 @@ const inputCallback = () => {
       query += `?year=${year}`
     }
     fetchGET({
-      url: BACKEND_IP + '/api/v1/friends/search/' + search.value + query,
+      url: BACKEND_IP + '/api/v1/friends/search/' + search.value,
       callback: response => {
         response.json()
           .then(response => {

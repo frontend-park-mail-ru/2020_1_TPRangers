@@ -47,7 +47,7 @@ const listenEmojiCallback = () => {
 
 const addEmodjiToText = symbol => {
   const messageForm = document.getElementById('js-message-form');
-  messageForm.elements.text.value += `&#${symbol}`;
+  messageForm.elements.text.value += symbol;
 }
 
 const listenEmojiPress = () => {
