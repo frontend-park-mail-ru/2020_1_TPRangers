@@ -1,0 +1,9 @@
+include ../mixins/searchMixin
+div(class='friends page')
+    + searchMixin()
+    include ../mixins/createGroupMixin
+    div(class='messages__header box-shadow layout_color_main')
+        span(class='text text_uppercase text_size_1-2rem text_color_normal') Сообщества
+        i(class='link text text_color_normal text_size_2rem add-group-button-js fas fa-plus-circle')
+    if main
+        include ../mixins/groupList

@@ -1,0 +1,11 @@
+mixin groupMixin(data)
+    div(class='friend-card box-shadow layout_color_main')
+        div(class='img friend-card__avatar')
+            a(href='group/' + data.id section='group/' + data.id)
+                img(class='img__img' src=data.photoUrl)
+        div(class='friend-card__body')
+            div(class='friend-card__body__name-and-online')
+                a(class='text text_color_normal text_size_2rem' href='group/' + data.id section='group/' + data.id) #{data.name}
+            a(class='text text_color_normal text_size_1-2rem' href='group/' + data.id section='group/' + data.id) #{data.about}
+
+

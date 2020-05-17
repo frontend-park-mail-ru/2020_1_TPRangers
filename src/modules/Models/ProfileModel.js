@@ -32,7 +32,6 @@ const profileRenderCallback = userLogin => {
   console.log(`[DEBUG] profile:render callback`);
   Observer.emit('profile:plus-button-listen');
   userLoginInner = userLogin;
-
 };
 
 Observer.on('profile:plus-button-listen', listenPlusButton);

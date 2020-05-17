@@ -24,6 +24,7 @@
         grid-template-columns: max-content 1fr;
         height: max-content;
         grid-gap: 1rem;
+        overflow-x: hidden;
 
         &__avatar-place-for-mobile {
             display: grid;
@@ -321,6 +322,7 @@
         &__body {
             min-height: 80vh;
             display: grid;
+            margin-left: 0;
             grid-template-areas:
                 'profile-inf-mobile'
                 // 'profile-media'
