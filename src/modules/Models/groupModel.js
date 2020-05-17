@@ -109,7 +109,6 @@ const searchCallback = () => {
                 groups: response,
                 main: true,
               }
-              console.log(response)
               const list = document.getElementById('js-group-list');
               list.innerHTML = groupList(data)
             })
@@ -125,7 +124,6 @@ const searchCallback = () => {
                 groups: response,
                 main: true,
               }
-              console.log(data);
               const list = document.getElementById('js-group-list');
               list.innerHTML = groupList(data)
             })

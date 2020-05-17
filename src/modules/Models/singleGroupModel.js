@@ -32,36 +32,36 @@ const listenCloseButton = () => {
 };
 
 const listenSubCallback = () => {
-  let friendButton = document.getElementsByClassName('js-sub-button')[0];
-  let friendButtonMobile = document.getElementsByClassName('js-sub-button-mobile')[0];
+  let subButton = document.getElementsByClassName('js-sub-button')[0];
+  let subButtonMobile = document.getElementsByClassName('js-sub-button-mobile')[0];
 
   const clickFunc =  evt => {
     evt.preventDefault();
-    if (friendButtonMobile.classList.contains('js-add-sub') || friendButton.classList.contains('js-add-sub')) {
-      friendButtonMobile.classList.add('js-remove-sub');
-      friendButton.classList.add('js-remove-sub');
-      friendButtonMobile.classList.add('fa-user-minus');
-      friendButtonMobile.classList.remove('js-add-sub');
-      friendButton.classList.remove('js-add-sub');
-      friendButtonMobile.classList.remove('fa-user-plus');
-      friendButton.innerText = "Отписаться"
+    if (subButtonMobile.classList.contains('js-add-sub') || subButton.classList.contains('js-add-sub')) {
+      subButtonMobile.classList.add('js-remove-sub');
+      subButton.classList.add('js-remove-sub');
+      subButtonMobile.classList.add('fa-minus');
+      subButtonMobile.classList.remove('js-add-sub');
+      subButton.classList.remove('js-add-sub');
+      subButtonMobile.classList.remove('fa-plus');
+      subButton.innerText = "Отписаться"
       Observer.emit('singleGroup:add');
-    } else if (friendButtonMobile.classList.contains('js-remove-sub') || friendButton.classList.contains('js-remove-sub')) {
-      friendButtonMobile.classList.add('js-add-sub');
-      friendButton.classList.add('js-add-sub');
-      friendButtonMobile.classList.add('fa-user-plus');
-      friendButtonMobile.classList.remove('js-remove-sub');
-      friendButton.classList.remove('js-remove-sub');
-      friendButtonMobile.classList.remove('fa-user-minus');
-      friendButton.innerText = "Подписаться"
+    } else if (subButtonMobile.classList.contains('js-remove-sub') || subButton.classList.contains('js-remove-sub')) {
+      subButtonMobile.classList.add('js-add-sub');
+      subButton.classList.add('js-add-sub');
+      subButtonMobile.classList.add('fa-plus');
+      subButtonMobile.classList.remove('js-remove-sub');
+      subButton.classList.remove('js-remove-sub');
+      subButtonMobile.classList.remove('fa-minus');
+      subButton.innerText = "Подписаться"
       Observer.emit('singleGroup:remove');
     }
   }
-  friendButton.onclick = evt => {
+  subButton.onclick = evt => {
     clickFunc(evt)
   }
 
-  friendButtonMobile.onclick = evt => {
+  subButtonMobile.onclick = evt => {
     clickFunc(evt)
   }
 }

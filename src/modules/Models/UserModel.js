@@ -12,16 +12,20 @@ const userRenderCallback = () => {
     evt.preventDefault();
     if (friendButtonMobile.classList.contains('js-add-friend') || friendButton.classList.contains('js-add-friend')) {
       friendButtonMobile.classList.remove('js-add-friend');
+      friendButton.classList.remove('js-add-friend');
       friendButtonMobile.classList.remove('fa-user-plus');
       friendButton.innerText = "Удалить из друзей"
       friendButtonMobile.classList.add('js-remove-friend');
+      friendButton.classList.add('js-remove-friend');
       friendButtonMobile.classList.add('fa-user-minus')
       Observer.emit('user:add');
     } else if (friendButtonMobile.classList.contains('js-remove-friend') || friendButton.classList.contains('js-remove-friend')) {
       friendButtonMobile.classList.remove('js-remove-friend');
+      friendButton.classList.remove('js-remove-friend');
       friendButtonMobile.classList.remove('fa-user-minus');
       friendButton.innerText = "Добавить в друзья"
       friendButtonMobile.classList.add('js-add-friend');
+      friendButton.classList.add('js-add-friend');
       friendButtonMobile.classList.add('fa-user-plus');
       Observer.emit('user:remove');
     }
