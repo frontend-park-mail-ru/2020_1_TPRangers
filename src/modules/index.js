@@ -19,6 +19,7 @@ import DialogView from './View/DialogView';
 import PostView from './View/PostView';
 import CreateDialogView from './View/createDialogView';
 import GroupView from './View/GroupView';
+import singleGroupView from './View/singleGroupView';
 
 // const leftBlockTmpl = require("../pug/includes/modules/left-block.pug");
 const testTmpl = require('../pug/pages/news.pug');
@@ -182,6 +183,10 @@ Router.add(/news/, () => {
 	.add(/groups/, () => {
 		const GroupList = new GroupView(mainBlock);
 		GroupList.render();
+	})
+	.add(/group\/(.+)/, () => {
+		const singleGroup = new singleGroupView(mainBlock);
+		singleGroup.render();
 	})
 	.add(
 		/(?!news$)(?!friends$)(?!messages$)(?!media$)(?!album\/(.*)$)(?!settings$)(?!user\/(.*)$)(?!profile$)(?!login$)(?!reg$)(?!logout$)/,

@@ -1,29 +1,29 @@
 include ../mixins/postMixin
 if page
     div(class='profile page')
+        include ../mixins/addPostMixin
         div(class='profile__body')
             div(class='profile__left-block')
                 div(class='profile__avatar-and-buttons profile_box layout_color_main')
                     div(class='img profile__avatar-and-buttons__avatar')
-                        img(class='profile__avatar-and-buttons__avatar__img' src=user.photo)
+                        img(class='profile__avatar-and-buttons__avatar__img' src=profile.groupInfo.photoUrl)
                     div(class='profile__avatar-and-buttons__buttons')
-                        if !isFriends
-                            span(class='js-add-friend profile__avatar-and-buttons__buttons__button text text_color_for-buttons button button_primary js-friend-button') Добавить в друзья
+                        if !profile.isJoined
+                            span(class='js-add-friend profile__avatar-and-buttons__buttons__button text text_color_for-buttons button button_primary js-friend-button') Подписаться
                         else
-                            span(class='js-remove-friend profile__avatar-and-buttons__buttons__button text text_color_for-buttons button button_primary js-friend-button') Удалить из друзей
-                        a(section='messages' href='messages' class='profile__avatar-and-buttons__buttons__button text text_color_for-buttons button button_primary') Написать сообщение
+                            span(class='js-remove-friend profile__avatar-and-buttons__buttons__button text text_color_for-buttons button button_primary js-friend-button') Отписаться
                 div(class='profile__friends profile_box layout_color_main')
                     div(class='profile__info__name-and-online')
-                        span(class='text text_color_normal text_uppercase text_size_1-2rem') Друзья
+                        span(class='text text_color_normal text_uppercase text_size_1-2rem') Подписчики
                     div(class='hr-line')
-                    include ../mixins/friendsBlock
+                    include ../mixins/subBlock
 
             div(class='profile__body__avatar-place-for-mobile')
                 div(class='profile-mobile__avatar-and-buttons profile_box layout_color_main')
                     div(class='img profile-mobile__avatar-and-buttons__avatar')
-                        img(class='profile-mobile__avatar-and-buttons__avatar__img' src=user.photo)
+                        img(class='profile-mobile__avatar-and-buttons__avatar__img' src=profile.groupInfo.photoUrl)
                     div(class='profile-mobile__avatar-and-buttons__buttons')
-                        if !isFriends
+                        if !profile.isJoined
                             i(class='js-add-friend profile-mobile__avatar-and-buttons__buttons__button text text_color_for-buttons button button_primary js-friend-button-mobile fas fa-user-plus')
                         else
                             i(class='js-remove-friend profile-mobile__avatar-and-buttons__buttons__button text text_color_for-buttons button button_primary js-friend-button-mobile fas fa-user-minus')
@@ -31,24 +31,18 @@ if page
 
                 div(class='profile__info profile_box layout_color_main')
                     div(class='profile__info__name-and-online')
-                        span(class='text text_color_primary text_size_1-2rem') #{user.name} #{user.surname}
-                        span(class='text text_color_normal text_size_0-8rem text_uppercase') В сети
+                        span(class='text text_color_primary text_size_1-2rem') #{profile.groupInfo.name}
                     div(class='hr-line')
                     div(class='profile__info__data-block')
                         div(class='profile__info__data-block-element')
-                            span(class='text text_color_normal') Дата рождения:
-                            span(class='profile__info__data-block-element__data text text_color_normal') #{user.date}
+                            span(class='text text_color_normal') Информация:
+                            span(class='profile__info__data-block-element__data text text_color_normal') #{profile.groupInfo.about}
                         div(class='profile__info__data-block-element')
-                            span(class='text text_color_normal') Email:
-                            span(class='profile__info__data-block-element__data text text_color_normal') #{user.email}
-                        div(class='profile__info__data-block-element')
-                            span(class='text text_color_normal') Номер телефона:
-                            span(class='profile__info__data-block-element__data text text_color_normal') #{user.telephone}
+                            span(class='text text_color_normal') Владелец:
+                            a(class='profile__info__data-block-element__data link text text_color_normal' href='user/' + profile.owner.url, section = 'user/' + profile.owner.url) #{profile.owner.name} #{profile.owner.surname}
+
                     div(class='hr-line')
-                    div(class='profile-mobile__friends-music')
-                        a(class='link profile-mobile__friends-music__link' href='#')
-                            div(class='link profile-mobile__friends-music__link__body')
-                                i(class='link profile-mobile__friends-music__button text text_color_normal text_size_2rem fas fa-user-friends')
+
 
 
 
@@ -61,6 +55,10 @@ if page
             //                div(class='img profile__media__body__album-card-img')
             //                    img(class='img profile__media__body__album-card-img__img' src=album.photo)
             //                span(class='profile__media__body__album-card__title text text_color_normal') #{album.title}
+
+            div(class='profile__add-post profile_box layout_color_main')
+                span(class='text text_color_normal text_uppercase text_size_1-2rem') Новая запись
+                i(class='link text text_color_normal text_size_2rem add-post-button-js fas fa-plus-circle')
 
             include ../mixins/postList
 

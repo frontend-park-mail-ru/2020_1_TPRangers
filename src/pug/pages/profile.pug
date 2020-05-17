@@ -1,109 +1,3 @@
-- let data = {
--   avatar: 'https://picsum.photos/200/600',
--   name: 'Вика',
--   surname: 'Губанова',
--   online: true,
--   birthday: '10.02.2000',
--   email: 'a@a.tu',
--   phone: '+7(000) 123-12-21',
--   friendsCounter: 100,
--   musicCounter: 12,
--   media: [
--       {
--           photo: 'https://picsum.photos/200/800',
--           title: 'Hello',
--       },
--       {
--           photo: 'https://picsum.photos/200/200',
--           title: 'Hello',
--       },
--       {
--           photo: 'https://picsum.photos/200/200',
--           title: 'Hello',
--       },
--       {
--           photo: 'https://picsum.photos/200/200',
--           title: 'Hello',
--       },
--       {
--           photo: 'https://picsum.photos/200/200',
--           title: 'Hello',
--       },
--   ],
--   friends: [
--       {
--           name: 'Lorem',
--           surname: 'Ipsum',
--           avatar: 'https://picsum.photos/300/350'
--       },
--       {
--           name: 'Lorem',
--           surname: 'Ipsum',
--           avatar: 'https://picsum.photos/200/300'
--       },
--       {
--           name: 'Lorem',
--           surname: 'Ipsum',
--           avatar: 'https://picsum.photos/100/400'
--       },
--       {
--           name: 'Lorem',
--           surname: 'Ipsum',
--           avatar: 'https://picsum.photos/200/150'
--       },
--       {
--           name: 'Lorem',
--           surname: 'Ipsum',
--           avatar: 'https://picsum.photos/300/350'
--       },
--       {
--           name: 'Lorem',
--           surname: 'Ipsum',
--           avatar: 'https://picsum.photos/100/100'
--       },
--   ],
--   posts: [
--       {
--           photo: 'https://picsum.photos/200/800',
--           title: 'Hello',
--           text: 'Voluptate adipisicing ad ullamco enim sit incididunt veniam nostrud reprehenderit dolore duis ex. Qui minim sint amet id veniam sunt dolore exercitation magna laboris aliquip sit reprehenderit irure. Est pariatur sint aliquip non labore. Deserunt in ea ea pariatur ut velit esse sunt incididunt consequat minim quis excepteur reprehenderit. Non incididunt exercitation labore sunt velit amet do in labore anim eiusmod.',
--           like: 10,
--           comment: 12
--       },
--       {
--           photo: 'https://picsum.photos/800/200',
--           title: null,
--           text: 'Voluptate adipisicing ad ullamco enim sit incididunt veniam nostrud reprehenderit dolore duis ex. Qui minim sint amet id veniam sunt dolore exercitation magna laboris aliquip sit reprehenderit irure. Est pariatur sint aliquip non labore. Deserunt in ea ea pariatur ut velit esse sunt incididunt consequat minim quis excepteur reprehenderit. Non incididunt exercitation labore sunt velit amet do in labore anim eiusmod.',
--           like: 10,
--           comment: 12
--       },
--       {
--           photo: 'https://picsum.photos/200/200',
--           title: null,
--           text: null,
--           like: 10,
--           comment: 12
--       },
--       {
--           photo: null,
--           title: 'Hello',
--           text: 'Voluptate adipisicing ad ullamco enim sit incididunt veniam nostrud reprehenderit dolore duis ex. Qui minim sint amet id veniam sunt dolore exercitation magna laboris aliquip sit reprehenderit irure. Est pariatur sint aliquip non labore. Deserunt in ea ea pariatur ut velit esse sunt incididunt consequat minim quis excepteur reprehenderit. Non incididunt exercitation labore sunt velit amet do in labore anim eiusmod.',
--           like: 10,
--           comment: 12
--       },
--       {
--           photo: 'https://picsum.photos/400/400',
--           title: 'Hello',
--           text: null,
--           like: 10,
--           comment: 12
--       },
--   ],
-- }
-
-
-include ../mixins/postMixin
-
 if page
     div(class='profile page')
         include ../mixins/addPostMixin
@@ -151,15 +45,7 @@ if page
                             span(class='text text_color_normal') Номер телефона:
                             span(class='profile__info__data-block-element__data text text_color_normal') #{user.telephone}
                     div(class='hr-line')
-                    div(class='profile-mobile__friends-music')
-                        a(class='link profile-mobile__friends-music__link' href='#')
-                            div(class='link profile-mobile__friends-music__link__body')
-                                i(class='link profile-mobile__friends-music__button text text_color_normal text_size_2rem fas fas fa-music')
-                                span(class='link-text text text_color_normal') #{data.musicCounter}
-                        a(class='link profile-mobile__friends-music__link' href='#')
-                            div(class='link profile-mobile__friends-music__link__body')
-                                i(class='link profile-mobile__friends-music__button text text_color_normal text_size_2rem fas fa-user-friends')
-                                span(class='link-text text text_color_normal') #{data.friendsCounter}
+
 
 
             //div(class='profile__media profile_box layout_color_main')
@@ -176,7 +62,5 @@ if page
                 span(class='text text_color_normal text_uppercase text_size_1-2rem') Новая запись
                 i(class='link text text_color_normal text_size_2rem add-post-button-js fas fa-plus-circle')
 
-            div(class='profile__posts')
-                each post in feed
-                    + postCard(post, true)
+            include ../mixins/postList
 
