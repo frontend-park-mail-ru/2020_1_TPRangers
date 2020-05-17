@@ -1,8 +1,9 @@
 import Observer from '../../controller/observer';
-import { fetchGET, fetchMultipartPOST, fetchPOST } from '../../ajax/ajax';
+import { fetchDELETE, fetchGET, fetchMultipartPOST, fetchPOST } from '../../ajax/ajax';
 import {Router} from '../../Routes/routes';
 
 const postsTmpl = require('../../pug/mixins/postList.pug');
+const subBlockTmpl = require('../../pug/mixins/subBlock.pug');
 
 const listenPlusButton = () => {
   const button = document.getElementsByClassName('add-post-button-js')[0];
@@ -30,10 +31,83 @@ const listenCloseButton = () => {
   };
 };
 
+const listenSubCallback = () => {
+  let friendButton = document.getElementsByClassName('js-sub-button')[0];
+  let friendButtonMobile = document.getElementsByClassName('js-sub-button-mobile')[0];
+
+  const clickFunc =  evt => {
+    evt.preventDefault();
+    if (friendButtonMobile.classList.contains('js-add-sub') || friendButton.classList.contains('js-add-sub')) {
+      friendButtonMobile.classList.add('js-remove-sub');
+      friendButton.classList.add('js-remove-sub');
+      friendButtonMobile.classList.add('fa-user-minus');
+      friendButtonMobile.classList.remove('js-add-sub');
+      friendButton.classList.remove('js-add-sub');
+      friendButtonMobile.classList.remove('fa-user-plus');
+      friendButton.innerText = "Отписаться"
+      Observer.emit('singleGroup:add');
+    } else if (friendButtonMobile.classList.contains('js-remove-sub') || friendButton.classList.contains('js-remove-sub')) {
+      friendButtonMobile.classList.add('js-add-sub');
+      friendButton.classList.add('js-add-sub');
+      friendButtonMobile.classList.add('fa-user-plus');
+      friendButtonMobile.classList.remove('js-remove-sub');
+      friendButton.classList.remove('js-remove-sub');
+      friendButtonMobile.classList.remove('fa-user-minus');
+      friendButton.innerText = "Подписаться"
+      Observer.emit('singleGroup:remove');
+    }
+  }
+  friendButton.onclick = evt => {
+    clickFunc(evt)
+  }
+
+  friendButtonMobile.onclick = evt => {
+    clickFunc(evt)
+  }
+}
+
+const addSubCallback = () => {
+  const group = Router.getFragment();
+  fetchPOST({
+    url: BACKEND_IP + `/api/v1/${group}/join`,
+    callback: () => {
+      Observer.emit('singleGroup:updateSubBlock');
+    }
+  })
+}
+const removeSubCallback = () => {
+  const group = Router.getFragment();
+  fetchDELETE({
+    url: BACKEND_IP + `/api/v1/${group}/join`,
+    callback: () => {
+      Observer.emit('singleGroup:updateSubBlock');
+    }
+  })
+}
+
+const updateSubBlock = () => {
+  const groupId = Router.getFragment().split('/')[1]
+  fetchGET({
+    url: BACKEND_IP + `/api/v1/group/${groupId}/profile`,
+    callback: response => {
+      response.json().then(response => {
+        const subBlock = document.getElementsByClassName("js-sub-block")[0]
+        if (!response.members) {
+          response.members = []
+        }
+        const data = {
+          profile: response
+        }
+        subBlock.innerHTML = subBlockTmpl(data);
+      })
+    }
+  })
+}
 
 const renderCallback = () => {
   console.log(`[DEBUG] Single group render`);
   Observer.emit('singleGroup:plus-button-listen');
+  Observer.emit('singleGroup:sub-button-listen');
 };
 
 const formSubmitCallback = () => {
@@ -121,3 +195,7 @@ Observer.on('singleGroup:close-form', closeForm);
 Observer.on('singleGroup:listen-submit-form-button', formSubmitCallback);
 Observer.on('singleGroup:afterPhoto',afterPhotoCallback);
 Observer.on('singleGroup:updatePosts', reRenderPost);
+Observer.on('singleGroup:sub-button-listen',listenSubCallback);
+Observer.on('singleGroup:add', addSubCallback);
+Observer.on('singleGroup:remove', removeSubCallback);
+Observer.on('singleGroup:updateSubBlock', updateSubBlock);

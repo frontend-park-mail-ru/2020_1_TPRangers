@@ -19,6 +19,9 @@ export default class singleGroupView extends IView {
       callback: response => {
         response.json()
           .then(response => {
+            if (!response.members) {
+              response.members = []
+            }
             data.profile = response;
             fetchGET({
               url: BACKEND_IP + `/api/v1/group/${groupId}/feed`,
