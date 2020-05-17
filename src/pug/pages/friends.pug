@@ -43,7 +43,7 @@
 include ../mixins/searchMixin
 
 div(class='friends page')
-    + searchMixin()
+    + searchMixin(true)
     span(class='box-shadow layout_color_main layout__ultimate-padding text text_uppercase text_size_1-2rem text_color_normal') Друзья
     if main
         include ../mixins/friendsList

@@ -182,10 +182,12 @@ Router.add(/news/, () => {
 	})
 	.add(/groups/, () => {
 		const GroupList = new GroupView(mainBlock);
+		setActive('link-groups')
 		GroupList.render();
 	})
 	.add(/group\/(.+)/, () => {
 		const singleGroup = new singleGroupView(mainBlock);
+		setActive('link-groups')
 		singleGroup.render();
 	})
 	.add(
