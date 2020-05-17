@@ -1,6 +1,8 @@
 import Observer from '../../controller/observer';
-import { fetchMultipartPOST, fetchPOST } from '../../ajax/ajax';
+import { fetchGET, fetchMultipartPOST, fetchPOST } from '../../ajax/ajax';
 import { Router } from '../../Routes/routes';
+
+const groupList = require('../../pug/mixins/groupList.pug')
 
 const listenPlusButton = () => {
   const button = document.getElementsByClassName('add-group-button-js')[0];
@@ -31,6 +33,7 @@ const listenCloseButton = () => {
 const groupRenderCallback = () => {
   console.log(`[DEBUG] group:render callback`);
   Observer.emit('group:plus-button-listen');
+  Observer.emit('group:search');
 };
 
 const formSubmitCallback = () => {
@@ -88,6 +91,51 @@ const afterPhotoCallback = data => {
   })
 }
 
+const searchCallback = () => {
+  console.log('group:search');
+  const search = document.getElementById('js-search');
+  const searchForm = document.getElementById('js-search-form');
+  searchForm.addEventListener('submit', evt => {
+    evt.preventDefault();
+  })
+  search.addEventListener('input', () => {
+    if (search.value) {
+      fetchGET({
+        url: BACKEND_IP + '/api/v1/group/search/' + search.value,
+        callback: response => {
+          response.json()
+            .then(response => {
+              const data = {
+                groups: response,
+                main: true,
+              }
+              console.log(response)
+              const list = document.getElementById('js-group-list');
+              list.innerHTML = groupList(data)
+            })
+        }
+      })
+    } else {
+      fetchGET({
+        url: BACKEND_IP + '/api/v1/group/list',
+        callback: response => {
+          response.json()
+            .then(response => {
+              const data = {
+                groups: response,
+                main: true,
+              }
+              console.log(data);
+              const list = document.getElementById('js-group-list');
+              list.innerHTML = groupList(data)
+            })
+        }
+      })
+    }
+  })
+}
+
+Observer.on('group:search', searchCallback)
 Observer.on('group:plus-button-listen', listenPlusButton);
 Observer.on('group:render', groupRenderCallback);
 Observer.on('group:close-button-listen', listenCloseButton);

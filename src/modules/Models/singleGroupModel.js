@@ -27,7 +27,6 @@ const listenCloseButton = () => {
   const button = document.getElementsByClassName('close-add-post-js')[0];
   button.onclick = () => {
     Observer.emit('singleGroup:close-form');
-    // Observer.emit('singleGroup:updatePosts');
   };
 };
 
