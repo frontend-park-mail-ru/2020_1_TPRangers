@@ -10,9 +10,10 @@ div(class='chat page')
                     img(class='img__img' src=chatInfo.chatPhoto)
         include ../mixins/messages
         div(class='chat__footer box-shadow layout_color_main bottom-fixed')
-            //div(class='chat__footer__atth')
+            include ../mixins/emodjiMixin
+            div(class='chat__footer__atth')
                 //span(class='link fas fa-paperclip text text_color_normal text_size_2rem')
-                //span(class='chat__footer__atth__link link far fa-smile-wink text text_color_normal text_size_2rem')
+                i(class='chat__footer__atth__link link far fa-smile-wink text text_color_normal text_size_2rem' id='js-chat-emodji')
             div(class='chat__footer__msg')
                 form(action="#", class='chat__footer__msg__form' id="js-message-form")
                     textarea(class='chat__footer__msg__form__textarea input text text_color_normal text_size_1-2rem' type='text' name='text' true, id='text' placeholder='Введите свой текст' rows='2')

@@ -27,7 +27,8 @@ const PAGES = fs.readdirSync(PAGES_DIR).filter(fileName => fileName.endsWith('.p
 module.exports = {
   // BASE config
   externals: {
-    paths: PATHS
+    paths: PATHS,
+    "jquery": "jQuery"
   },
   entry: {
     app: PATHS.src,

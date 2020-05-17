@@ -17,8 +17,10 @@ html {
  */
 
 body {
+  cursor: default;
   margin: 0;
 }
+
 
 /* HTML5 display definitions
    ========================================================================== */
@@ -360,6 +362,8 @@ input[type="search"] {
   -webkit-box-sizing: content-box; /* 2 */
   box-sizing: content-box;
 }
+
+
 
 /**
  * Remove inner padding and search cancel button in Safari and Chrome on OS X.
