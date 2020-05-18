@@ -140,7 +140,6 @@ const settingsSetInputCallback = response => {
   console.log(`[DEBUG] settings:set-input callback`);
   if (response.status === 200) {
     response.json().then(data => {
-      console.log(data);
       for (const elem in data) {
         const settingsElem = document.getElementById(elem);
         if (settingsElem) {
@@ -154,18 +153,11 @@ const settingsSetInputCallback = response => {
 const settingAjaxCallback = response => {
   console.log(`[DEBUG] settings:ajax callback`);
   if (response.status === 200) {
-    console.log('test')
     Router.navigate('profile');
   } else {
-    const err = document.getElementById(`error-email`);
-    const infoText = document.getElementById(`tooltip-email`);
-    err.classList.add('visible');
+    const err = document.getElementById(`register-error`);
     err.classList.remove('hidden');
-    if (err.classList.contains('js-correct')) {
-      err.classList.remove('js-correct');
-    }
-    err.classList.add('js-error');
-    infoText.innerText = '!';
+    err.innerText = "Пользователь с такой почтой уже существует"
   }
 };
 

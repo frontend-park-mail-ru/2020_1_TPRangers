@@ -63,15 +63,9 @@ const loginAjaxCallback = response => {
     Observer.emit('draw-basic');
     Router.navigate('news');
   } else {
-    const err = document.getElementById(`error-password`);
-    const infoText = document.getElementById(`tooltip-password`);
-    err.classList.add('visible');
+    const err = document.getElementById(`login-error`);
     err.classList.remove('hidden');
-    if (err.classList.contains('js-correct')) {
-      err.classList.remove('js-correct');
-    }
-    err.classList.add('js-error');
-    infoText.innerText = '!';
+
   }
 };
 

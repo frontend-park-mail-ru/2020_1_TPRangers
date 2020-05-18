@@ -53,29 +53,21 @@ export function addRegExpValidationAll({ form = null, formItems = null } = {}) {
  */
 export function addPasswordValidation(form, passwordField, passwordRepeatField) {
   form.elements[`${passwordRepeatField}`].addEventListener('input', () => {
-    const err = document.getElementById(`error-${passwordRepeatField}`);
-    err.classList.add('visible');
+    const err = document.getElementById(`register-error`);
     err.classList.remove('hidden');
-    const infoText = document.getElementById('tooltip-password-repeat');
     if (
       form.elements[`${passwordField}`].value === form.elements[`${passwordRepeatField}`].value ||
       form.elements[`${passwordRepeatField}`].value === ''
-    ) {
-      if (form.elements['password-repeat'].value === '') {
+    )
+    {
+      if (!err.classList.contains('hidden')) {
         err.classList.add('hidden');
-        err.classList.remove('visible');
       }
-      if (err.classList.contains('js-error')) {
-        err.classList.remove('js-error');
-      }
-      err.classList.add('js-correct');
-      infoText.innerText = '✔';
     } else {
-      if (err.classList.contains('js-correct')) {
-        err.classList.remove('js-correct');
+      if (err.classList.contains('hidden')) {
+        err.classList.remove('hidden');
       }
-      err.classList.add('js-error');
-      infoText.innerText = '!';
+      err.innerText = 'Пароли не совпадают';
     }
   });
 }
