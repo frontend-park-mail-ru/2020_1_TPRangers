@@ -1,4 +1,6 @@
 div(class='profile__friends__body js-sub-block')
     each user in profile.members
         div(class='profile__friends__body__element')
+            div(class='img profile__friends__body__element__avatar')
+                img(class='profile__friends__body__element__avatar__img' src=user.avatar)
             a(class='text text_color_normal text_size_0-8rem profile__friends__body__element__name-surname' href='user/' + user.url section='user/' + user.url) #{user.name} #{user.surname}
