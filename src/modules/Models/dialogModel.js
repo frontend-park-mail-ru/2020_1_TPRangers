@@ -36,7 +36,11 @@ const listenEmojiCallback = () => {
   const button = document.getElementById('js-chat-emodji');
   button.onclick = evt => {
     evt.preventDefault();
-
+    if (stickers.classList.contains('display-none')) {
+      stickers.classList.remove('display-none')
+    } else {
+      stickers.classList.add('display-none')
+    }
   }
 }
 
