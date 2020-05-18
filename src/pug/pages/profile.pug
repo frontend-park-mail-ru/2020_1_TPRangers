@@ -17,10 +17,9 @@ if page
                     div(class='profile__friends__body')
                         each friend in friends
                             div(class='profile__friends__body__element')
-                                //div(class='img chat-card__info__last-message__img')
-                                //    -console.log(friend.photo)
-                                //    img(class='img__img' src=friend.photo)
-                                a(class='text text_color_normal text_size_0-8rem profile__friends__body__element__name-surname' href='user/' + friend.url section='user/' + friend.url) #{friend.name} #{friend.surname}
+                                div(class='img chat-card__info__last-message__img')
+                                    img(class='img__img' src=friend.avatar)
+                                a(class='mt-1 text text_color_normal text_size_0-8rem profile__friends__body__element__name-surname' href='user/' + friend.url section='user/' + friend.url) #{friend.name} #{friend.surname}
             div(class='profile__body__avatar-place-for-mobile')
                 div(class='profile-mobile__avatar-and-buttons profile_box layout_color_main')
                     div(class='img profile-mobile__avatar-and-buttons__avatar')

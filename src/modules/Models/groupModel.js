@@ -86,6 +86,20 @@ const afterPhotoCallback = data => {
       if (response.status === 200) {
         console.log(response);
         Observer.emit('group:close-form');
+        fetchGET({
+          url: BACKEND_IP + '/api/v1/group/list',
+          callback: response => {
+            response.json()
+              .then(response => {
+                const data = {
+                  groups: response,
+                  main: true,
+                }
+                const list = document.getElementById('js-group-list');
+                list.innerHTML = groupList(data)
+              })
+          }
+        })
       }
     }
   })
