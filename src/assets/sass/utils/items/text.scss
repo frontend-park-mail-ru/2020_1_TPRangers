@@ -1,0 +1,73 @@
+.text {
+    font-family: $font-stack;
+    line-height: 1.2;
+    text-decoration: none;
+    font-style: normal;
+
+    &_uppercase {
+        text-transform: uppercase;
+    }
+
+    &_size_0-8rem {
+        font-size: 0.8rem;
+    }
+
+    &_size_1-2rem {
+        font-size: 1.2rem;
+    }
+
+    &_size_2rem {
+        font-size: 2rem;
+    }
+
+    &_size_Title {
+        font-size: 2.5rem;
+    }
+
+
+    &_color_for-buttons {
+        color: $main-color;
+    }
+
+    &_color_normal {
+        color: $text-color;
+    }
+
+    &_color_primary {
+        color: $main-gradient-from;
+    }
+
+    &_weight_bold {
+        font-family: RobotoBold;
+    }
+}
+
+@media only screen and (max-device-width: 600px) {
+    .text {
+        font-family: $font-stack;
+        line-height: 2;
+        text-decoration: none;
+        font-size: 1.8rem;
+
+        &_uppercase {
+            text-transform: uppercase;
+        }
+
+        &_size_0-8rem {
+            font-size: 1.2rem;
+        }
+
+        &_size_1-2rem {
+            font-size: 2.2rem;
+        }
+
+        &_size_2rem {
+            font-size: 3rem;
+        }
+
+        &_size_Title {
+            font-size: 4rem;
+        }
+
+    }
+}

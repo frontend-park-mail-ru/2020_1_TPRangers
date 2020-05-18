@@ -1,0 +1,7 @@
+include ../mixins/postMixin
+div(class='profile__posts' id='js-postList')
+    if feed.length > 0
+        each post in feed
+            + postCard(post)
+    else
+        span(class='friends__notfound text text_size_2rem text_color_normal') Еще не создано ни одного поста

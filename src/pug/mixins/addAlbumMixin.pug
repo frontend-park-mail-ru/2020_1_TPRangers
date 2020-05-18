@@ -1,0 +1,9 @@
+div(class='add-album box-shadow layout_color_main add-album-js hidden')
+    div(class='add-post__header')
+        span(class='text text_color_for-buttons text_uppercase text_size_1-2rem') Создание нового альбома
+        i(class='link__no_speed close-add-album-js text text_color_for-buttons text_size_2rem fas fa-times-circle')
+    div(class='add-post__body')
+            form(class='form__input-holder' id = "js-createAlbum-form")
+                input(class='add-post__body__input input text text_color_normal text_size_1-2rem' type='text' name='title' true, id='title' placeholder='Придумайте заголовок' maxlength='20')
+                span(class='text error hidden' id='add-album-error') Текст ошибки будет тут
+                input(type="submit", value='Создать албом' id='add-album-submit' class="input__button login__input__button button button_primary text text_color_for-buttons text_size_1-2rem")

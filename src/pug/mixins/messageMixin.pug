@@ -1,0 +1,35 @@
+mixin messageMixin(data)
+    + isMeCheck(data)
+
+mixin isMeCheck(data)
+    if data.text
+        if data.isMe
+            div(class='message-data message-data-my')
+                div(class='message message-my box-shadow')
+                    span(class='text text_size_1-2rem text_color_normal') #{data.text}
+                + messageUser(data)
+            div(class='break')
+        else
+            div(class='message-data message-data-other')
+                div(class='message message-other box-shadow')
+                    span(class='text text_size_1-2rem text_color_normal') #{data.text}
+                + messageUser(data)
+            div(class='break')
+    if data.sticker
+        if data.isMe
+            div(class='message-data message-data-my')
+                div(class='message message-my box-shadow')
+                    img(src=data.sticker class='sticker-message')
+                + messageUser(data)
+                div(class='break')
+        else
+            div(class='message-data message-data-other')
+                div(class='message message-other box-shadow')
+                    img(src=data.sticker class='sticker-message')
+                + messageUser(data)
+            div(class='break')
+
+mixin messageUser(data)
+    div(class='img box-shadow message__img')
+        a(src='user/' + data.authorUrl section='user/' + data.authorUrl)
+            img(class='img__img' src=data.authorPhoto)

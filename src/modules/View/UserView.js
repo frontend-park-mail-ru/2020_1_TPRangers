@@ -2,60 +2,36 @@ import IView from './IView';
 import Observer from '../../controller/observer';
 import { fetchGET } from '../../ajax/ajax';
 
+const userProfileTmpl = require('../../pug/pages/user.pug');
 
-const userProfileTmpl = require('../../pug/pages/userPage.pug');
-
-const dataForUserBlocks = {
-        page: true,
-        isFriends: true,
-        fakeUserData: {
-        name: 'Вика',
-        surname: 'Губанова',
-        online: true,
-        photo: './assets/img/main-block/fakeUser/avatar.jpg',
-        telephone: '+7(995)117-78-08', email: "blablabla@yandex.ru",
-        dateOfB: '10.02.2000',
-          background: './assets/img/main-block/fakeUser/background.jpg',
-        id: 1,
-        posts: [
-          {
-            author: {
-              name: 'nternational',
-              surname: 'nternational',
-              avatar: './assets/img/main-block/fakeUser/avatar.jpg',
-
-            },
-            dateOfPost: '10.01.01',
-            text: 'Placeat dolore pariatur et qui autem.',
-            img: 'https://picsum.photos/seed/picsum/400/400',
-            likes: 10,
-          },
-        ],
-        media: [
-          {
-            src: 'https://picsum.photos/200'
-          },
-          {
-            src: 'https://picsum.photos/300'
-          },
-          {
-            src: 'https://picsum.photos/100'
-          }
-        ],
-      },
-};
 export default class UserView extends IView{
 
     render(id) {
-      super.clear();
       fetchGET({
         url: BACKEND_IP + '/api/v1/user/' + id,
         callback: response => {
           response.json().then(response => {
-            if (!response.feed)
-              response.feed = [];
             response.page = true;
-            response.user.background = '../assets/img/main-block/fakeUser/background.jpg';
+            if (!response.feed) {
+              response.feed = [];
+            } else {
+              response.feed.forEach(val => {
+                val.post = true
+                if (val.photo.url) {
+                  let img = new Image();
+                  img.src = val.photo.url;
+                  img.onload = function() {
+                    val.photo.width = this.width;
+                    val.photo.height = this.height;
+                  }
+                }
+              })
+            }
+            if (!response.friends)
+              response.friends = [];
+            console.log(response);
+            response.page = true;
+            super.clear();
             this.parent.innerHTML += userProfileTmpl(response);
             Observer.emit('user:render');
             Observer.emit('listenPostsLikes');

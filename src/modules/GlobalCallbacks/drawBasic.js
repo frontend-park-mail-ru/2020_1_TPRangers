@@ -2,15 +2,22 @@ import LeftView from '../View/LeftView';
 import RightView from '../View/RightView';
 import Observer from '../../controller/observer';
 import {fetchGET} from '../../ajax/ajax';
+import { Router } from '../../Routes/routes';
 
 const leftBlock = document.getElementById("left-block");
-const rightBlock = document.getElementById('right-block');
+const rightBlock = document.getElementById("right-block");
 
 const drawBasicCallback = () => {
   console.log(`[DEBUG] draw-basic callback`);
-  new LeftView(leftBlock).render();
-  new RightView(rightBlock).render();
   Observer.emit('ws');
+  const grid = document.getElementById('app');
+  const header = document.getElementsByClassName('header')[0];
+  const side = document.getElementById('sidenav-js');
+  side.style.display = 'flex';
+  grid.classList.add('grid-authorize');
+  grid.classList.remove('grid-container');
+  header.classList.add('header_authorize-js');
+  Router.callCurrent();
 };
 
 
@@ -18,7 +25,7 @@ const createWebsocket = () => {
   // ws register
   console.log('[DEBUG] ws connection...')
   fetchGET({
-    url: BACKEND_IP + '/api/v1/ws',
+    url: CHAT_IP + '/api/v1/ws',
     callback: response => {
       response.json().then( response => {
         console.log(response);

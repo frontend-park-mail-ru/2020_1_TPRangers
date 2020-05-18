@@ -30,7 +30,8 @@ const startCheckCallback = () => {
         if (response.status === 200) {
           Observer.emit('draw-basic');
         } else if (response.status === 401) {
-          Router.navigate('login');
+          if (!Router.getFragment() === 'register')
+            Router.navigate('login');
         } else {
           Observer.emit('render:response-error', response);
         }

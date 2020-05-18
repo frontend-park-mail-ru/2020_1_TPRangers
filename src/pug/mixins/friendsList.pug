@@ -1,0 +1,7 @@
+include ../mixins/friendMixin
+div(id='js-friends-list')
+    if friends.length > 0
+        each friend in friends
+            + friendMixin(friend, canAdd)
+    else
+        span(class='friends__notfound text text_size_2rem text_color_normal') Друзей не найдено

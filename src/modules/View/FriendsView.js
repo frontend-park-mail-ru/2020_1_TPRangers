@@ -1,34 +1,32 @@
-import IView from './IView';
-import Observer from '../../controller/observer';
-import { fetchGET } from '../../ajax/ajax';
+import IView from "./IView";
+import Observer from "../../controller/observer";
+import { fetchGET } from "../../ajax/ajax";
 
-const friendsTmpl = require('../../pug/pages/friends.pug');
-const friendsList = require('../../pug/includes/modules/friendList.pug')
+const friendsTmpl = require("../../pug/pages/friends.pug");
+const otherUserList = require('../../pug/mixins/otherUsersList.pug');
 
-export default class ProfileView extends IView{
-
-    render() {
-      super.clear();
+export default class ProfileView extends IView {
+  render() {
 
       fetchGET({
         url: BACKEND_IP + '/api/v1/friends',
 
-        callback: response => {
-          response.json().then(response => {
-            const data = {
-              friends: response
-            }
-            console.log(data);
-            this.parent.innerHTML += friendsTmpl(data); // response.body
-            this.parent.innerHTML += friendsList(data);
-            Observer.emit('friends:render');
-          })
-        }
-      });
-    }
-
-
+      callback: response => {
+        response.json().then(response => {
+          const data = {
+            main: true,
+            friends: response,
+            otherUsers: []
+          };
+          console.log(data);
+          super.clear();
+          this.parent.innerHTML += friendsTmpl(data);
+          this.parent.innerHTML += otherUserList(data);
+          Observer.emit("friends:render", response);
+        });
+      }
+    });
+  }
 }
-
 
 

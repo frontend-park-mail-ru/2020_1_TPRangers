@@ -1,0 +1,66 @@
+include ../mixins/postMixin
+if page
+    div(class='profile page')
+        div(class='profile__body')
+            div(class='profile__left-block')
+                div(class='profile__avatar-and-buttons profile_box layout_color_main')
+                    div(class='img profile__avatar-and-buttons__avatar')
+                        img(class='profile__avatar-and-buttons__avatar__img' src=user.photo)
+                    div(class='profile__avatar-and-buttons__buttons')
+                        if !isFriends
+                            span(class='js-add-friend profile__avatar-and-buttons__buttons__button text text_color_for-buttons button button_primary js-friend-button') Добавить в друзья
+                        else
+                            span(class='js-remove-friend profile__avatar-and-buttons__buttons__button text text_color_for-buttons button button_primary js-friend-button') Удалить из друзей
+                        a(section='messages' href='messages' class='profile__avatar-and-buttons__buttons__button text text_color_for-buttons button button_primary') Написать сообщение
+                div(class='profile__friends profile_box layout_color_main')
+                    div(class='profile__info__name-and-online')
+                        span(class='text text_color_normal text_uppercase text_size_1-2rem') Друзья
+                    div(class='hr-line')
+                    include ../mixins/friendsBlock
+
+            div(class='profile__body__avatar-place-for-mobile')
+                div(class='profile-mobile__avatar-and-buttons profile_box layout_color_main')
+                    div(class='img profile-mobile__avatar-and-buttons__avatar')
+                        img(class='profile-mobile__avatar-and-buttons__avatar__img' src=user.photo)
+                    div(class='profile-mobile__avatar-and-buttons__buttons')
+                        if !isFriends
+                            i(class='js-add-friend profile-mobile__avatar-and-buttons__buttons__button text text_color_for-buttons button button_primary js-friend-button-mobile fas fa-user-plus')
+                        else
+                            i(class='js-remove-friend profile-mobile__avatar-and-buttons__buttons__button text text_color_for-buttons button button_primary js-friend-button-mobile fas fa-user-minus')
+                        i(class='profile-mobile__avatar-and-buttons__buttons__button text text_color_for-buttons button button_primary far fa-envelope')
+
+                div(class='profile__info profile_box layout_color_main')
+                    div(class='profile__info__name-and-online')
+                        span(class='text text_color_primary text_size_1-2rem') #{user.name} #{user.surname}
+                        span(class='text text_color_normal text_size_0-8rem text_uppercase') В сети
+                    div(class='hr-line')
+                    div(class='profile__info__data-block')
+                        div(class='profile__info__data-block-element')
+                            span(class='text text_color_normal') Дата рождения:
+                            span(class='profile__info__data-block-element__data text text_color_normal') #{user.date}
+                        div(class='profile__info__data-block-element')
+                            span(class='text text_color_normal') Email:
+                            span(class='profile__info__data-block-element__data text text_color_normal') #{user.email}
+                        div(class='profile__info__data-block-element')
+                            span(class='text text_color_normal') Номер телефона:
+                            span(class='profile__info__data-block-element__data text text_color_normal') #{user.telephone}
+                    div(class='hr-line')
+                    div(class='profile-mobile__friends-music')
+                        a(class='link profile-mobile__friends-music__link' href='#')
+                            div(class='link profile-mobile__friends-music__link__body')
+                                i(class='link profile-mobile__friends-music__button text text_color_normal text_size_2rem fas fa-user-friends')
+
+
+
+            //div(class='profile__media profile_box layout_color_main')
+            //    span(class='profile__media__titile text text_color_normal text_uppercase text_size_1-2rem') Альбомы
+            //    div(class='hr-line')
+            //    div(class='profile__media__body')
+            //        each album in data.media
+            //            div(class='profile__media__body__album-card')
+            //                div(class='img profile__media__body__album-card-img')
+            //                    img(class='img profile__media__body__album-card-img__img' src=album.photo)
+            //                span(class='profile__media__body__album-card__title text text_color_normal') #{album.title}
+
+            include ../mixins/postList
+

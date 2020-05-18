@@ -1,0 +1,12 @@
+.hr-line {
+    width: 100%;
+    background-color: $text-color;
+    height: 1px;
+    margin: 0.5rem 0;
+
+    &_select {
+        width: 100%;
+        background-color: $text-color;
+        height: 1px;
+    }
+}

@@ -1,6 +1,6 @@
 import Observer from '../../controller/observer';
 
-const CACHE_NAME = 'v1';
+const CACHE_NAME = 'v2';
 
 self.addEventListener('install', function (event) {
   event.waitUntil(

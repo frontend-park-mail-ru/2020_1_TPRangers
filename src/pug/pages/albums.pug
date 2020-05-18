@@ -1,0 +1,40 @@
+- let data = {
+-   albums: [
+-       {
+-          id: '1',
+-          photo: 'https://picsum.photos/300/350',
+-          title: 'Hello! Africa asd qf'
+-       },
+-       {
+-          id: '2',
+-          photo: 'https://picsum.photos/100/200',
+-          title: 'Hello!'
+-       },
+-       {
+-          id: '3',
+-          photo: 'https://picsum.photos/400/200',
+-          title: 'Hello!'
+-       },
+-       {
+-          id: '4',
+-          photo: 'https://picsum.photos/350/350',
+-          title: 'Hello!'
+-       },
+-       {
+-          id: '5',
+-          photo: 'https://picsum.photos/100/500',
+-          title: 'Hello!'
+-       },
+-   ]
+- }
+
+include ../mixins/albumMixin
+if main
+    div(class='album page')
+        include ../mixins/addAlbumMixin
+        div(class='album__add-album profile_box layout_color_main')
+            span(class='text text_color_normal text_uppercase text_size_1-2rem') Создать новый альбом
+            i(class='link add-album-button-js text text_color_normal text_size_2rem fas fa-plus-circle')
+        div(class='albums')
+            each album in albums
+                + albumMixin(album)

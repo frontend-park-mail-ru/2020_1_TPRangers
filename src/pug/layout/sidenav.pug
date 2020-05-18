@@ -1,0 +1,56 @@
+- let dataForLinks = [
+-   { name: 'Профиль',
+-     link: 'profile',
+-     class: 'fas fa-house-user',
+-     mobile: 'true'
+-   },
+-   { name: 'Новости',
+-     link: 'news',
+-     class: 'far fa-newspaper',
+-     mobile: 'true'
+-   },
+-   { name: 'Друзья',
+-     link: 'friends',
+-     class: 'fas fa-user',
+-     mobile: 'true',
+-   },
+-   { name: 'Сообщения',
+-     link: 'messages',
+-     class: 'fas fa-comments',
+-     mobile: 'true'
+-   },
+-   { name: 'Сообщества',
+-     link: 'groups',
+-     class: 'fas fa-users',
+-     mobile: 'true',
+-   },
+-   { name: 'Медиатека',
+-     link: 'media',
+-     class: 'fas fa-images',
+-     mobile: 'true'
+-   },
+-   { name: 'Настройки',
+-     link: 'settings',
+-     class: 'fas fa-cogs',
+-     mobile: 'false'
+-   },
+-   { name: 'Выход',
+-     link: 'logout',
+-     class: 'fas fa-sign-out-alt',
+-     mobile: 'false'
+-   }
+- ];
+
+mixin sidenav()
+    aside(class="sidenav box-shadow layout_color_main" id = "sidenav-js")
+        ul(class='sidenav-nav')
+            li(class='nav-logo')
+                a(class='link nav-logo__nav-link' href='news' section='news')
+                    span(class='text text_size_1-2rem text_color_primary text_uppercase text_weight_bold nav-link__link-text nav-link__logo-text') Socialhub
+                    i(class='text text_size_1-2rem text_color_primary nav-logo__nav-link__i fas fa-space-shuttle')
+
+            each link in dataForLinks
+                li(class='nav-item' mobile=link.mobile)
+                    span(class='link nav-link' id =  'link-' + link.link)
+                        a(href=link.link section=link.link class='text text_color_normal text_size_1-2rem  nav-item__nav-link__i ' + link.class)
+                        a(href=link.link section=link.link class='text text_color_normal nav-link__link-text') #{link.name}

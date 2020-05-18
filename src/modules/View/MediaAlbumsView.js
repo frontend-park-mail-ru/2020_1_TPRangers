@@ -28,7 +28,7 @@ const dataForTest = {
   ]
 }
 
-const mediaAlbumsTmpl = require('../../pug/pages/mediaAlbums.pug');
+const mediaAlbumsTmpl = require('../../pug/pages/albums.pug');
 
 export default class MediaAlbumsView extends IView{
 
@@ -45,7 +45,8 @@ export default class MediaAlbumsView extends IView{
               main: true,
               albums: response
             }
-            this.parent.innerHTML += mediaAlbumsTmpl(albums); // response.body
+            this.parent.innerHTML += mediaAlbumsTmpl(albums); // albums
+            Observer.emit("listen-plus-button");
           })
         }
       });

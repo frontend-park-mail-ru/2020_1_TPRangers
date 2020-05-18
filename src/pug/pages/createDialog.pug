@@ -1,37 +1,19 @@
--const dialogFormData = {
--    classes: ['form login-form'],
--    id: 'js-createDialog-form',
--    formItems: {
--       text: {
--           title: 'Название',
--           name: 'text',
--           placeholder: '',
--           type: 'text',
--           errorMsg: 'Обязательное поле',
--           class: 'form__label',
--           fa_item: 'fas fa-align-justify',
--           required: true
--       },
--       photo: {
--           title: 'Обложка',
--           name: 'photo',
--           type: 'file',
--           class: 'form__label',
--           fa_item: 'fas fa-camera-retro',
--        },
--        logins: {
--           title: 'Логины участников',
--           name: 'logins',
--           placeholder: '',
--           type: 'hidden',
--           errorMsg: 'Обязательное поле',
--           class: 'form__label',
--           fa_item: 'fas fa-align-justify',
--           required: true
--       },
--    },
--    buttonName: 'Создать чат',
--};
+include ../mixins/searchMixin
+div(class='page')
+    div(class='top-fixed box-shadow layout_color_main')
+        i(class='link text text_color_normal text_size_2rem fas fa-arrow-circle-left' id = "back-button-js")
+        span(class='text text_color_normal text_size_1-2rem') Создание группового чата
+    div(class='mt box-shadow layout_color_main' id='add-post-js')
+        div(class='add-post__body')
+            form(class='form__input-holder' id='js-createDialog-form')
+                input(class='add-post__body__input input text text_color_normal text_size_1-2rem' required type='text' name='text' , id='text' placeholder='Придумайте название' )
+                input(class='add-post__body__input input text text_color_normal text_size_1-2rem' type='file' name='photo' , id='photo' placeholder='Загрузите фотографию...')
+                input(class='add-post__body__input input text text_color_normal text_size_1-2rem' type='hidden' name='logins' , id='logins')
+                span(class='text error hidden' id='add-post-error') Текст ошибки будет тут
+                input(type="submit", value='Создать беседу' id='add-post-submit' class="input__button login__input__button button button_primary text text_color_for-buttons text_size_1-2rem")
 
-include ../utils/formMixin
-+baseForm(dialogFormData)
+    div(class="friends")
+        + searchMixin()
+        span(class='box-shadow layout_color_main layout__ultimate-padding text text_uppercase text_size_1-2rem text_color_normal') Выберите, кого вы хотите добавить в беседу
+        if main
+            include ../mixins/friendsList

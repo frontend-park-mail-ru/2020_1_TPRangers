@@ -154,6 +154,7 @@ const settingsSetInputCallback = response => {
 const settingAjaxCallback = response => {
   console.log(`[DEBUG] settings:ajax callback`);
   if (response.status === 200) {
+    console.log('test')
     Router.navigate('profile');
   } else {
     const err = document.getElementById(`error-email`);

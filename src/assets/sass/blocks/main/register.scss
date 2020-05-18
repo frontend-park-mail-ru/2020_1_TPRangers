@@ -1,0 +1,47 @@
+.register {
+    align-items: flex-start;
+    margin-top: 2rem;
+    height: max-content;
+    min-height: calc(100vh - 130px);
+
+    margin-bottom: 1.5rem;
+    &__body {
+        border-radius: 5px;
+        min-width: 320px;
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+
+        &__title {
+            margin: 2rem 0;
+        }
+
+        &__fotter {
+            margin: 2rem 0;
+
+            &__text {
+                margin-right: 0.4rem;
+            }
+        }
+    }
+
+    &__input {
+        margin-bottom: 1.5rem;
+
+        &__button {
+            margin-top: 1.5rem;
+        }
+    }
+}
+
+@media only screen and  (max-device-width: 600px) {
+    .register {
+        margin-top: 10rem;
+        &__body {
+            min-width: 320px;
+            width: 90%;
+        }
+    }
+}

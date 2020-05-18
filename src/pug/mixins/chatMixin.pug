@@ -1,0 +1,12 @@
+mixin chatMixin(data)
+    div(class='chat-card box-shadow layout_color_main')
+        div(class='img box-shadow chat-card__img')
+            img(class='img__img' src=data.chatPhoto)
+        div(class='chat-card__info')
+            a(class='chat-card__info__chat-name text text_color_normal text_size_1-2rem' href='chat/' + data.chatId, section='chat/' + data.chatId) #{data.chatName} #{data.privateName}
+            div(class='chat-card__info__last-message')
+                if data.lastMessageTxt != ""
+                    div(class='img box-shadow chat-card__info__last-message__img')
+                        img(class='img__img' src=data.lastMessageAuthorPhoto)
+                    div(class='chat-card__info__last-message__data')
+                        span(class='text text_color_normal text_size_0-8rem') #{data.lastMessageTxt}

@@ -1,0 +1,15 @@
+div(class='register form')
+    div(class='register__body box-shadow layout_color_main')
+        span(class='text text_color_primary text_size_Title login__body__title') Регистрация
+        form(class='form__input-holder' id='js-reg-form')
+            input(class='input login__input text text_color_normal text_size_1-2rem' type='text' name='username' true, id='username' placeholder='ФИО')
+            input(class='input login__input text text_color_normal text_size_1-2rem' type='email' name='email' true, id='email' placeholder='Email')
+            input(class='input login__input text text_color_normal text_size_1-2rem' type='text' name='phone' true, id='phone' placeholder='Телефон')
+            input(class='input login__input text text_color_normal text_size_1-2rem' type='date' name='date' true, id='date' placeholder='Дата рождения')
+            input(class='input login__input text text_color_normal text_size_1-2rem' type='password' name='password' true, id='password' placeholder='Пароль')
+            input(class='input login__input text text_color_normal text_size_1-2rem' type='password' name='password-repeat' true, id='password-repeat' placeholder='Повтор пароля')
+            span(class='text error hidden' id='register-error') Текст ошибки будет тут
+            input(type="submit", value='Регистрация', class="input__button login__input__button button button_primary text text_color_for-buttons text_size_1-2rem")
+        div(class='login__body__fotter')
+            span(class='login__body__fotter__text text text_color_normal') Уже есть аккаунт?
+            a(class='link text text_color_normal text_weight_bold' href='login' section='login') Вход

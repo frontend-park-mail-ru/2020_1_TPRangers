@@ -1,0 +1,64 @@
+include ../mixins/postMixin
+if page
+    div(class='profile page')
+        include ../mixins/addPostMixin
+        div(class='profile__body')
+            div(class='profile__left-block')
+                div(class='profile__avatar-and-buttons profile_box layout_color_main')
+                    div(class='img profile__avatar-and-buttons__avatar')
+                        img(class='profile__avatar-and-buttons__avatar__img' src=profile.groupInfo.photoUrl)
+                    div(class='profile__avatar-and-buttons__buttons')
+                        if !profile.isJoined
+                            span(class='js-add-sub profile__avatar-and-buttons__buttons__button text text_color_for-buttons button button_primary js-sub-button') Подписаться
+                        else
+                            span(class='js-remove-sub profile__avatar-and-buttons__buttons__button text text_color_for-buttons button button_primary js-sub-button') Отписаться
+                div(class='profile__friends profile_box layout_color_main')
+                    div(class='profile__info__name-and-online')
+                        span(class='text text_color_normal text_uppercase text_size_1-2rem') Подписчики
+                    div(class='hr-line')
+                    include ../mixins/subBlock
+
+            div(class='profile__body__avatar-place-for-mobile')
+                div(class='profile-mobile__avatar-and-buttons profile_box layout_color_main')
+                    div(class='img profile-mobile__avatar-and-buttons__avatar')
+                        img(class='profile-mobile__avatar-and-buttons__avatar__img' src=profile.groupInfo.photoUrl)
+                    div(class='profile-mobile__avatar-and-buttons__buttons')
+                        if !profile.isJoined
+                            i(class='js-add-sub profile-mobile__avatar-and-buttons__buttons__button text text_color_for-buttons button button_primary js-sub-button-mobile fas fa-plus')
+                        else
+                            i(class='js-remove-sub profile-mobile__avatar-and-buttons__buttons__button text text_color_for-buttons button button_primary js-sub-button-mobile fas fa-minus')
+                        i(class='profile-mobile__avatar-and-buttons__buttons__button text text_color_for-buttons button button_primary far fa-envelope')
+
+                div(class='profile__info profile_box layout_color_main')
+                    div(class='profile__info__name-and-online')
+                        span(class='text text_color_primary text_size_1-2rem') #{profile.groupInfo.name}
+                    div(class='hr-line')
+                    div(class='profile__info__data-block')
+                        div(class='profile__info__data-block-element')
+                            span(class='text text_color_normal') Информация:
+                            span(class='profile__info__data-block-element__data text text_color_normal') #{profile.groupInfo.about}
+                        div(class='profile__info__data-block-element')
+                            span(class='text text_color_normal') Владелец:
+                            a(class='profile__info__data-block-element__data link text text_color_normal' href='user/' + profile.owner.url, section = 'user/' + profile.owner.url) #{profile.owner.name} #{profile.owner.surname}
+
+                    div(class='hr-line')
+
+
+
+
+            //div(class='profile__media profile_box layout_color_main')
+            //    span(class='profile__media__titile text text_color_normal text_uppercase text_size_1-2rem') Альбомы
+            //    div(class='hr-line')
+            //    div(class='profile__media__body')
+            //        each album in data.media
+            //            div(class='profile__media__body__album-card')
+            //                div(class='img profile__media__body__album-card-img')
+            //                    img(class='img profile__media__body__album-card-img__img' src=album.photo)
+            //                span(class='profile__media__body__album-card__title text text_color_normal') #{album.title}
+
+            div(class='profile__add-post profile_box layout_color_main')
+                span(class='text text_color_normal text_uppercase text_size_1-2rem') Новая запись
+                i(class='link text text_color_normal text_size_2rem add-post-button-js fas fa-plus-circle')
+
+            include ../mixins/postList
+

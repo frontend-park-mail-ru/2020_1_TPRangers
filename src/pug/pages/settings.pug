@@ -1,72 +1,16 @@
--const settingsFormItems = {
--    classes: ['form settings-form'],
--    id: 'js-settings-form',
--    formItems: {
--        avatar: {
--           title: 'Загрузите/обновите аватар',
--           name: 'avatar',
--           type: 'file',
--           class: 'form__label',
--           fa_item: 'fas fa-camera-retro',
--        },
--       name: {
--          title: 'Ваше имя',
--          name: 'name',
--          placeholder: 'Иван Иванов',
--          type: 'text',
--          errorMsg: 'Некорректное имя пользователя',
--          class: 'form__label',
--          fa_item: 'fas fa-user',
--       },
--       email: {
--          title: 'Email',
--          name: 'email',
--          placeholder: 'ivan.ivanov@mail.ru',
--          type: 'email',
--          errorMsg: 'Некорректный адрес почты',
--          class: 'form__label',
--          fa_item: 'fas fa-at',
--       },
--       phone: {
--          title: 'Телефон',
--          name: 'telephone',
--          placeholder: '+7 910 777 77 77',
--          type: 'text',
--          errorMsg: 'Некорректный телефон',
--          class: 'form__label',
--          fa_item: 'fas fa-phone',
--       },
--       date: {
--          title: 'Дата рождения',
--          name: 'date',
--          type: 'text',
--          placeholder: '22.08.1984',
--          errorMsg: 'Некорректная дата',
--          class: 'form__label',
--          fa_item: 'fas fa-birthday-cake',
--       },
--       password: {
--          title: 'Пароль',
--          name: 'pass',
--          placeholder: '',
--          type: 'password',
--          errorMsg:
--          'Пароль должен содержать одну заглавную, одну строчную букву, цифру и не менее 8 симвлолов',
--          class: 'form__label',
--          fa_item: 'fas fa-key',
--       },
--       passwordRepeat: {
--          title: 'Повторите пароль',
--          name: 'password-repeat',
--          placeholder: '',
--          type: 'password',
--          errorMsg: 'Пароли не совпадают',
--          class: 'form__label',
--          fa_item: 'fas fa-key',
--       },
--    },
--    buttonName: 'Обновить профиль',
--};
-
-include ../utils/formMixin
-+baseForm(settingsFormItems)
+div(class='settings form')
+    div(class='settings__body box-shadow layout_color_main')
+        span(class='text text_color_primary text_size_Title login__body__title') Настройки
+        form(class='form__input-holder' id = 'js-settings-form')
+            input(class='input login__input text text_color_normal text_size_1-2rem' type='file' name='avatar' true, id='avatar' placeholder='Загрузть новый аватар')
+            input(class='input login__input text text_color_normal text_size_1-2rem' type='text' name='username' true, id='name' placeholder='ФИО')
+            input(class='input login__input text text_color_normal text_size_1-2rem' type='email' name='email' true, id='email' placeholder='Email')
+            input(class='input login__input text text_color_normal text_size_1-2rem' type='text' name='phone' true, id='telephone' placeholder='Телефон')
+            input(class='input login__input text text_color_normal text_size_1-2rem' type='text' name='date' true, id='date' placeholder='Дата рождения')
+            input(class='input login__input text text_color_normal text_size_1-2rem' type='password' name='password' true, id='pass' placeholder='Пароль')
+            input(class='input login__input text text_color_normal text_size_1-2rem' type='password' name='password-repeat' true, id='password-repeat' placeholder='Повтор пароля')
+            span(class='text error hidden' id='settings-error') Текст ошибки будет тут
+            input(type="submit", value='Обновить профиль', class="input__button login__input__button button button_primary text text_color_for-buttons text_size_1-2rem")
+        div(class='login__body__fotter')
+            a(class='link' href='login' section='login')
+                span(class='link text text_color_normal text_weight_bold') Отмена

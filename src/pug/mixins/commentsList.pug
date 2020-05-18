@@ -1,0 +1,30 @@
+include ../mixins/friendMixin
+div(id='js-comments-list')
+    each comment in data.comments
+        div(class='post_full layout_color_main box-shadow')
+            div(class='post__header')
+                div(class='post__header__user-and-img')
+                    div(class='img post__header__img_small chat-card__info__last-message__img box-shadow')
+                        a(href='user/' + comment.authorUrl section='user/' + comment.authorUrl)
+                            img(class='img__img' src=comment.authorPhoto)
+                    div(class='post__header__user-and-data')
+                        a(class='link text text_color_normal' href='user/' + comment.authorUrl section='user/' + comment.authorUrl) #{comment.authorName}
+                        span(class='text text_size_0-8rem ') #{comment.date}
+            div(class='post__body__text')
+                    if comment.text != null
+                        p(class='text text_colot_normal') #{comment.text}
+            if comment.photo
+                if comment.photo.url != null
+                    div(class='img post__photo_full')
+                        img(class='post__photo_full__img img__img' src=comment.photo.url)
+
+            div(class='post__body')
+                    div(class='post__body__footer')
+                        div(class='hr-line')
+                        div(class='post__body__likes-and-comments')
+                            div(class='')
+                                if comment.wasLike
+                                    i(class='link-like-comment link-has-like-js  post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-heart' id = comment.comment_id)
+                                else
+                                    i(class='link-like-comment post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-heart' id = comment.comment_id)
+                                span(class='text text_color_normal') #{comment.likes}

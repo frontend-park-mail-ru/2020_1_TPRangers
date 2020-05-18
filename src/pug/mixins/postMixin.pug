@@ -1,0 +1,51 @@
+mixin postCard(data)
+    + postLayout(data)
+
+
+mixin postLayout(data)
+    if data.post
+        div(class='post_full layout_color_main box-shadow')
+            + postPhoto(data)
+
+
+mixin postPhoto(data)
+    div(class='post__header')
+        div(class='post__header__user-and-img')
+            div(class='img post__header__img box-shadow')
+                a(href='user/' + data.authorUrl section='user/' + data.authorUrl)
+                    img(class='img__img' src=data.authorPhoto)
+            div(class='post__header__user-and-data')
+                a(class='link text text_color_normal text_size_1-2rem' href='user/' + data.authorUrl section='user/' + data.authorUrl) #{data.authorName}
+                span(class='text text_size_0-8rem ') #{data.date}
+    div(class='post__body__text')
+        + postTitle(data)
+        + postText(data)
+
+        if data.photo.url != null
+            div(class='img post__photo_full')
+                img(class='post__photo_full__img img__img' src=data.photo.url)
+        div(class='post__body')
+            + postFotter(data)
+
+mixin postTitle(data)
+    if data.title != null
+        span(class='text text_size_2rem post__title') #{data.title}
+
+mixin postText(data)
+    if data.text != null
+        a(class='post__link text text_colot_normal' href='post/' + data.id section='post/' + data.id) #{data.text}
+
+
+mixin postFotter(data)
+    div(class='post__body__footer')
+        div(class='hr-line')
+        div(class='post__body__likes-and-comments')
+            div(class='')
+                if data.wasLike
+                    i(class='link-like link-has-like-js  post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-heart' id = data.id)
+                else
+                    i(class='link-like post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-heart' id = data.id)
+                span(class='text text_color_normal') #{data.likes}
+            div(class='')
+                a(class='link post__body__likes-and-comments__element text text_color_normal text_size_1-2rem fas fa-comment-alt' href='post/' + data.id section='post/' + data.id)
+                span(class='text text_color_normal') #{data.comment}

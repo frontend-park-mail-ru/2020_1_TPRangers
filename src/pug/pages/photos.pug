@@ -1,0 +1,9 @@
+include ../mixins/photoMixin
+div(class='photos page')
+    if main
+        include ../mixins/addPhotoMixin
+        div(class='photos__title box-shadow layout_color_main')
+            span(class='text text_color_normal text_uppercase text_size_1-2rem') #{title}
+            i(class='link add-photo-button-js text text_color_normal text_size_2rem fas fa-plus-circle')
+        each photo in body
+            + photoMixin(photo)

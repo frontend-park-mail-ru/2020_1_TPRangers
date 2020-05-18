@@ -1,5 +1,0 @@
-mixin albumMixin(data)
-    div(class="main-block__album-card boxshadow-block layout_light_secondary display_flex" style="background-image: url(" + data.photo_url + ");")
-       div(class="album-card__body boxshadow-block layout_light_secondary display_flex")
-           a(class="album-card__link" href='album/' + data.id section='album/' + data.id)
-              span(class="text album-card__text text_weight_light text_color_gray album-card__body__text display_flex") #{data.name}

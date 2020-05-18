@@ -12,15 +12,15 @@ class Observer {
       for (const sub_callback in this.subscribers[event]) {
         if (this.subscribers[event].hasOwnProperty(sub_callback)) {
           if (this.subscribers[event][sub_callback] === callback) {
-            console.log(`[DEBUG] Repeated callback for event ${event}`);
+            console.warn(`[DEBUG] Repeated callback for event ${event}`);
             return;
           }
         }
       }
-      console.log(`[DEBUG] Added new callback for event ${event}`);
+      console.info(`[DEBUG] Added new callback for event ${event}`);
       this.subscribers[event].push(callback);
     } else {
-      console.log(`[DEBUG] Created new event type: ${event}`);
+      console.info(`[DEBUG] Created new event type: ${event}`);
       this.subscribers[event] = [callback];
     }
   }
@@ -31,7 +31,7 @@ class Observer {
         callback(data);
       });
     } else {
-      console.log(`[WARNING] No event ${event} to emit`);
+      console.error(`[WARNING] No event ${event} to emit`);
     }
   }
 
@@ -44,7 +44,7 @@ class Observer {
         sub => sub !== callback
       );
     } else {
-      console.log("[WARNING] No such event or callback in this event");
+      console.warn("[WARNING] No such event or callback in this event");
     }
   }
 }

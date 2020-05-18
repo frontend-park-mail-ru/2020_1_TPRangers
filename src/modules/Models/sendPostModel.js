@@ -2,10 +2,11 @@ import { Router } from '../../Routes/routes';
 import Observer from '../../controller/observer'
 import { fetchMultipartPOST, fetchPOST } from '../../ajax/ajax';
 
+let userLoginInner;
 
-const sendPostRenderCallback = () => {
+const sendPostRenderCallback = userLogin => {
   console.log(`[DEBUG] post:render callback`);
-
+  userLoginInner = userLogin;
   const postForm = document.getElementById('js-post-form');
 
   postForm.addEventListener('submit', event => {
@@ -54,7 +55,7 @@ const afterPhotoPostCallback = response => {
 
   const text = postForm.elements.text.value;
   fetchPOST({
-    url: BACKEND_IP + `/api/v1/${Router.getFragment().split('/')[1]}/post`,
+    url: BACKEND_IP + `/api/v1/${userLoginInner}/post`,
     body: JSON.stringify({
       text,
       photo: {

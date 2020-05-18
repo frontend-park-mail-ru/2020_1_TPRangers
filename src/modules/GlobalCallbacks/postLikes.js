@@ -3,7 +3,7 @@ import { Router } from '../../Routes/routes';
 import { fetchDELETE, fetchPOST } from '../../ajax/ajax';
 
 const listenLikesCallback = () => {
-  let likes = document.getElementsByClassName('js-like-post');
+  let likes = document.getElementsByClassName('link-like');
   [].forEach.call(likes,elem => {
     elem.addEventListener('click', event => Observer.emit('event:like', event));
   })
@@ -13,14 +13,12 @@ const listenLikesCallback = () => {
 const likeEventCallback = event => {
   event.preventDefault();
   const current = event.toElement;
-  if (current.classList.contains('js-like-no')) {
-    current.classList.remove('js-like-no');
-    current.classList.add('js-like-yes');
+  if (!current.classList.contains('link-has-like-js')) {
+    current.classList.add('link-has-like-js');
     current.nextSibling.textContent++;
     Observer.emit('sendLike', current);
-  } else if (current.classList.contains('js-like-yes')) {
-    current.classList.remove('js-like-yes');
-    current.classList.add('js-like-no');
+  } else {
+    current.classList.remove('link-has-like-js');
     current.nextSibling.textContent--;
     Observer.emit('removeLike', current);
   }

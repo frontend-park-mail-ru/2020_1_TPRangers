@@ -27,7 +27,8 @@ const PAGES = fs.readdirSync(PAGES_DIR).filter(fileName => fileName.endsWith('.p
 module.exports = {
   // BASE config
   externals: {
-    paths: PATHS
+    paths: PATHS,
+    "jquery": "jQuery"
   },
   entry: {
     app: PATHS.src,
@@ -93,7 +94,17 @@ module.exports = {
           options: { sourceMap: true, config: { path: `./postcss.config.js` } }
         }
       ]
-    }]
+    }, {
+      test: /\.s[ac]ss$/i,
+      use: [
+        // Creates `style` nodes from JS strings
+        'style-loader',
+        // Translates CSS into CommonJS
+        'css-loader',
+        // Compiles Sass to CSS
+        'sass-loader',
+      ],
+    },]
   },
   plugins: [
     new ServiceWorkerWebpackPlugin({
@@ -110,7 +121,8 @@ module.exports = {
     new webpack.DefinePlugin({  // plugin to define global constants
       API_KEY: JSON.stringify(process.env.API_KEY),
       BACKEND_IP: JSON.stringify(process.env.BACKEND_IP),
-      WS_IP: JSON.stringify(process.env.WS_IP)
+      WS_IP: JSON.stringify(process.env.WS_IP),
+      CHAT_IP: JSON.stringify(process.env.CHAT_IP)
     }),
 
     ...PAGES.map(page => new HtmlWebpackPlugin({

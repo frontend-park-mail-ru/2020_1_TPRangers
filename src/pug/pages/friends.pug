@@ -1,6 +1,51 @@
-include ../utils/searchMixin
-div(class="main-block__friends display_flex_column")
-    span(class="text text_size_L friends-header") Друзья
-    div(class="hr-line")
-    +searchMixin()
+- let data = {
+-   friends: [
+-       {
+-           name: 'Lorem',
+-           surname: 'Ipsum',
+-           avatar: 'https://picsum.photos/300/350',
+-           online: true
+-       },
+-       {
+-           name: 'Lorem',
+-           surname: 'Ipsum',
+-           avatar: 'https://picsum.photos/200/300',
+-           online: true
+-       },
+-       {
+-           name: 'Lorem',
+-           surname: 'Ipsum',
+-           avatar: 'https://picsum.photos/100/400',
+-           online: true
+-       },
+-       {
+-           name: 'Lorem',
+-           surname: 'Ipsum',
+-           avatar: 'https://picsum.photos/200/150',
+-           online: false
+-       },
+-       {
+-           name: 'Lorem',
+-           surname: 'Ipsum',
+-           avatar: 'https://picsum.photos/300/350',
+-           online: true
+-       },
+-       {
+-           name: 'Lorem',
+-           surname: 'Ipsum',
+-           avatar: 'https://picsum.photos/100/100',
+-           online: false
+-       },
+-   ],
+- }
+
+
+include ../mixins/searchMixin
+
+div(class='friends page')
+    + searchMixin(true)
+    span(class='box-shadow layout_color_main layout__ultimate-padding text text_uppercase text_size_1-2rem text_color_normal') Друзья
+    if main
+        include ../mixins/friendsList
+        include ../mixins/otherUsersList
 

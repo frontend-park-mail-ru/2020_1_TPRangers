@@ -1,0 +1,6 @@
+mixin albumMixin(data)
+    - console.log(data)
+    div(class="albums-card__link box-shadow")
+        div(class="albums-card img" style="background-image: url('" + data.photo_url + "');")
+            div(class="albums-card__body")
+                a(class="text text_size_2rem text_color_for-buttons text_weight_bold albums-card__text" href='album/' + data.id section='album/' + data.id) #{data.name}

@@ -1,0 +1,10 @@
+div(class='add-post box-shadow layout_color_main hidden' id='add-post-js')
+    div(class='add-post__header')
+        span(class='text text_color_for-buttons text_uppercase text_size_1-2rem') Создание новой записи
+        i(class='link__no_speed text text_color_for-buttons text_size_2rem fas fa-times-circle close-add-post-js')
+    div(class='add-post__body')
+            form(class='form__input-holder' id='js-post-form')
+                textarea(class='add-post__body__textarea input text text_color_normal text_size_1-2rem' required type='text' name='text' true, id='text' placeholder='Введите свой текст' rows='8')
+                input(class='add-post__body__input input text text_color_normal text_size_1-2rem' type='file' name='photo' true, id='photo' placeholder='Загрузите фотографию...')
+                span(class='text error hidden' id='add-post-error') Текст ошибки будет тут
+                input(type="submit", value='Создать запись' id='add-post-submit' class="input__button login__input__button button button_primary text text_color_for-buttons text_size_1-2rem")

@@ -1,0 +1,79 @@
+.grid-container {
+	display: grid;
+
+	grid-template-areas:
+		'sidenav header'
+		'sidenav main';
+
+	grid-template-rows: $height-header 1fr;
+	grid-template-columns: max-content 1fr;
+	height: max-content;
+	margin: 0;
+}
+
+.grid-authorize {
+	display: grid;
+
+	grid-template-areas: 'sidenav main';
+
+	grid-template-rows: 1fr;
+	grid-template-columns: max-content 1fr;
+	height: max-content;
+	margin: 0;
+}
+
+.blur-background-js {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	width: 100vw;
+	background-color: $background-blur-color;
+	z-index: 2;
+}
+
+@media screen and (max-device-width: 600px) {
+	.grid-container {
+		display: grid;
+
+		grid-template-areas:
+			'header'
+			'main'
+			'sidenav';
+
+		grid-template-rows: $width-mobile-header 1fr $width-mobile-header;
+		grid-template-columns: 1fr;
+		grid-gap: 0px;
+		height: 100vh;
+		margin: 0;
+	}
+
+	.grid-authorize {
+		display: grid;
+
+		grid-template-areas:
+			'main'
+			'sidenav';
+
+		grid-template-rows: 1fr $width-mobile-header;
+		grid-template-columns: 1fr;
+		grid-gap: 0px;
+		height: 100vh;
+		margin: 0;
+	}
+}
+
+.layout__ultimate-padding {
+	width: calc(100% - 4rem);
+	padding: 1rem 2rem;
+	border-radius: 5px;
+	margin-bottom: 1rem;
+}
+
+.layout_color_main {
+	background-color: $main-color;
+}
+
+.layout_color_secondary {
+	background-color: $secondary-color;
+}

@@ -1,0 +1,4 @@
+div(class='profile__friends__body js-sub-block')
+    each user in profile.members
+        div(class='profile__friends__body__element')
+            a(class='text text_color_normal text_size_0-8rem profile__friends__body__element__name-surname' href='user/' + user.url section='user/' + user.url) #{user.name} #{user.surname}

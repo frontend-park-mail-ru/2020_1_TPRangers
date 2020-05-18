@@ -1,0 +1,150 @@
+.messages {
+	height: max-content;
+	overflow-y: hidden;
+	min-width: calc(400px + 2rem);
+
+	&__header {
+		padding: 1rem 2rem;
+		border-radius: 5px;
+		width: calc(100% - 4rem);
+		z-index: 5;
+		position: relative;
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&__body {
+		display: grid;
+		grid-template-areas: 'messages-chats';
+
+		grid-template-rows: 1fr;
+		grid-template-columns: 1fr;
+	}
+
+	&-chats {
+		grid-area: messages-chats;
+
+		display: flex;
+		flex-direction: column;
+
+		height: calc(100vh - 80px - 9.5rem);
+		z-index: 1;
+		overflow-y: scroll;
+
+		border-radius: 0 0 5px 5px;
+		padding: 1.5rem 1rem;
+		min-width: 400px;
+	}
+
+	&-input {
+		padding-bottom: 1rem;
+	}
+}
+
+.chat-card {
+	text-decoration: none;
+	margin-bottom: 1rem;
+	padding: 1rem;
+	height: 6rem;
+	display: flex;
+
+	border-radius: 5px;
+
+	&:hover {
+		background-color: $my-message-color;
+	}
+
+	&__img {
+		width: 6rem;
+		height: 100%;
+		overflow: hidden;
+		border-radius: 100px;
+	}
+
+	&__info {
+		margin-left: 1rem;
+		width: calc(100% - 7rem);
+
+		display: flex;
+		flex-direction: column;
+
+		&__chat-name {
+			height: 2rem;
+			display: flex;
+			align-items: center;
+		}
+
+		&__last-message {
+			height: calc(100% - 2rem);
+			display: flex;
+			align-items: center;
+
+			&__img {
+				width: 3rem;
+				height: 3rem;
+				overflow: hidden;
+				border-radius: 100px;
+			}
+
+			&__data {
+				margin-left: 1rem;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+			}
+		}
+	}
+}
+
+@media only screen and (max-device-width: 600px) {
+	.messages {
+		overflow-y: hidden;
+		&__body {
+			grid-template-areas: 'messages-chats';
+
+			grid-template-rows: 1fr;
+			grid-template-columns: 1fr;
+		}
+
+		&-chats {
+			max-height: calc(100vh - 200px - 12rem);
+			min-height: calc(100vh - 200px - 12rem);
+			background-color: transparent;
+			padding: 1rem 0;
+			overflow-y: scroll;
+		}
+	}
+
+	.chat-card {
+		height: 10rem;
+
+		&__img {
+			width: 10rem;
+		}
+
+		&__info {
+			width: calc(100% - 11rem);
+
+			&__chat-name {
+				height: 3rem;
+			}
+
+			&__last-message {
+				height: calc(100% - 3rem);
+
+				&__img {
+					width: 5rem;
+					height: 5rem;
+				}
+
+				&__data {
+					margin-left: 1rem;
+
+					&__name {
+						height: 3rem;
+					}
+				}
+			}
+		}
+	}
+}

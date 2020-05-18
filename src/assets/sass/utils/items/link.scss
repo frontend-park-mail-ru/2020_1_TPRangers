@@ -1,0 +1,64 @@
+.link {
+	text-decoration: none;
+	@include transition($transition-speed);
+
+	&__button {
+		padding: 0 1.5rem;
+	}
+
+	&:hover {
+		color: $main-gradient-from;
+	}
+
+	&:active {
+		color: $main-gradient-to;
+	}
+
+	&:hover .link-text {
+		color: $main-gradient-from;
+	}
+
+	&:active .link-text {
+		color: $main-gradient-to;
+	}
+
+	&-like {
+		color: $text-color;
+	}
+
+	&-like:hover {
+		color: $like-color;
+	}
+
+	&-like:active {
+		color: $like-active;
+	}
+
+	&-has-like-js {
+		color: $like-color;
+	}
+
+	&-has-like-js:hover {
+		color: $like-active;
+	}
+
+	&-has-like-js:active {
+		color: $text-color;
+	}
+
+	&__no_speed {
+		text-decoration: none;
+		@include transition(0);
+		&:hover {
+			color: $main-gradient-from;
+		}
+
+		&:active {
+			color: $main-gradient-to;
+		}
+	}
+}
+
+.link-text {
+	@include transition($transition-speed);
+}

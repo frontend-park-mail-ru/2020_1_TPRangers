@@ -1,0 +1,6 @@
+include ../mixins/friendMixin
+div(id='js-otherusers-list' class='friends__other_users')
+    if otherUsers.length > 0
+        span(class='friends__other_users__title box-shadow layout_color_main layout__ultimate-padding text text_uppercase text_size_1-2rem text_color_normal') Все пользователи
+        each friend in otherUsers
+            + friendMixin(friend)

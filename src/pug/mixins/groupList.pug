@@ -1,0 +1,7 @@
+include ../mixins/groupMixin
+div(id='js-group-list' class='mt-1')
+    if groups.length > 0
+        each group in groups
+            + groupMixin(group)
+    else
+        span(class='friends__notfound text text_size_2rem text_color_normal') Сообщества не найдены

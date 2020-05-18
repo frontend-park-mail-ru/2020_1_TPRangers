@@ -1,0 +1,6 @@
+div(class='profile__friends__body js-friends-block')
+    each friend in friends
+        div(class='profile__friends__body__element')
+            div(class='img profile__friends__body__element__avatar')
+                img(class='profile__friends__body__element__avatar__img' src=friend.photo)
+            a(class='text text_color_normal text_size_0-8rem profile__friends__body__element__name-surname' href='user/' + friend.url section='user/' + friend.url) #{friend.name} #{friend.surname}

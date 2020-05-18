@@ -1,0 +1,14 @@
+mixin searchMixin( filter)
+    div(class="box-shadow layout_color_main search")
+        form(action="#", id="js-search-form")
+            input(type="text", name="search", id="js-search", placeholder="Поиск" class="js-search-input input search__input text text_color_normal text_size_1-2rem")
+        if filter
+            div(class='display-none' id='js-show-filter')
+                div(class='hr-line_select')
+                select(id="js-age-filter" class="filter text text_color_normal text_size_1-2rem search__input"
+                    onfocus='this.size=10;'
+                    onblur='this.size=1;'
+                    onchange='this.size=1; this.blur();')
+                    option(value = "") Выберите год рождения
+                    -for (let i = 2020; i > 1969; --i)
+                        option(value = `${i}`) #{i}
