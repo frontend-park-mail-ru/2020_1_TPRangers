@@ -5,7 +5,7 @@ div(class='chat page')
         div(class='chat__header box-shadow layout_color_main')
             a(class='link text text_size_2rem text_color_normal fas fa-arrow-circle-left' href='messages' section='messages')
             div(class='chat__header__title-and-img')
-                span(class='text text_size_1-2rem text_color_normal') #{chatInfo.chatName}
+                span(class='text text_size_1-2rem text_color_normal') #{chatInfo.privateName} #{chatInfo.chatName}
                 div(class='img box-shadow chat__header__title-and-img__img')
                     img(class='img__img' src=chatInfo.chatPhoto)
         include ../mixins/messages

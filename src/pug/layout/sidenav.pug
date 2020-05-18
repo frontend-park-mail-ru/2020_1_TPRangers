@@ -52,5 +52,6 @@ mixin sidenav()
             each link in dataForLinks
                 li(class='nav-item' mobile=link.mobile)
                     span(class='link nav-link' id =  'link-' + link.link)
-                        a(href=link.link section=link.link class='text text_color_normal text_size_1-2rem  nav-item__nav-link__i ' + link.class)
-                        a(href=link.link section=link.link class='text text_color_normal nav-link__link-text') #{link.name}
+                        a(href=link.link section=link.link class="link-sidenav link")
+                            i( class='text text_color_normal text_size_1-2rem  nav-item__nav-link__i ' + link.class)
+                            i( class='text text_color_normal nav-link__link-text') #{link.name}

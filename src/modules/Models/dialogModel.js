@@ -25,6 +25,11 @@ const dialogRenderCallback = () => {
           console.log(data)
           const div = document.getElementById('js-dialogs-body');
           div.outerHTML = msgTmpl(data);
+          const container = document.getElementById('js-emodji-container');
+          const button = document.getElementById('js-chat-emodji');
+          if (!container.classList.contains('display-none')) {
+              container.classList.add('display-none');
+          }
         })
       }
     })

@@ -6,12 +6,13 @@ if page
                 div(class='profile__avatar-and-buttons profile_box layout_color_main')
                     div(class='img profile__avatar-and-buttons__avatar')
                         img(class='profile__avatar-and-buttons__avatar__img' src=user.photo)
-                    div(class='profile__avatar-and-buttons__buttons')
-                        if !isFriends
-                            span(class='js-add-friend profile__avatar-and-buttons__buttons__button text text_color_for-buttons button button_primary js-friend-button') Добавить в друзья
-                        else
-                            span(class='js-remove-friend profile__avatar-and-buttons__buttons__button text text_color_for-buttons button button_primary js-friend-button') Удалить из друзей
-                        a(section='messages' href='messages' class='profile__avatar-and-buttons__buttons__button text text_color_for-buttons button button_primary') Написать сообщение
+                    if !isMe
+                        div(class='profile__avatar-and-buttons__buttons')
+                            if !isFriends
+                                span(class='js-add-friend profile__avatar-and-buttons__buttons__button text text_color_for-buttons button button_primary js-friend-button') Добавить в друзья
+                            else
+                                span(class='js-remove-friend profile__avatar-and-buttons__buttons__button text text_color_for-buttons button button_primary js-friend-button') Удалить из друзей
+                            a(section='messages' href='messages' class='profile__avatar-and-buttons__buttons__button text text_color_for-buttons button button_primary') Написать сообщение
                 div(class='profile__friends profile_box layout_color_main')
                     div(class='profile__info__name-and-online')
                         span(class='text text_color_normal text_uppercase text_size_1-2rem') Друзья
