@@ -43,6 +43,7 @@ const createWebsocket = () => {
           if (event.wasClean) {
             console.log(`[WS] Соединение закрыто чисто, код=${event.code} причина=${event.reason}`);
           } else {
+            createWebsocket();
             console.log('[WS] Соединение прервано');
           }
         };
