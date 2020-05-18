@@ -19,3 +19,19 @@
     width: auto;
     height: 30vh;
 }
+
+.sticker {
+    height: 6rem;
+    width: 6rem;
+    margin: 0 0.5rem;
+}
+
+.sticker:hover {
+    background-color: $secondary-color;
+    border-radius: 10px;
+}
+
+.sticker-message {
+    height: 10rem;
+    width: 10rem;
+}

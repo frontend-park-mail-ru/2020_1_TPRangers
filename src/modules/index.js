@@ -29,17 +29,12 @@ const app = document.getElementById('app');
 if (!app) console.log('app not found');
 
 app.addEventListener('click', (evt) => {
-	console.log('-----------target: ' + evt.target + '----------------');
-
 	if (evt.target instanceof Element) {
-		console.log(
-			'-----------target: ' + evt.target.tagName + '----------------',
-		);
 		if (
 			evt.target.tagName === 'I' ||
 			evt.target.tagName === 'LI' ||
-			evt.target.tagName === 'IMG' ||
-			evt.target.tagName === 'DIV'
+			evt.target.tagName === 'DIV' ||
+			evt.target.tagName === 'IMG'
 		) {
 			evt.preventDefault();
 			const aNode = evt.target.parentNode;

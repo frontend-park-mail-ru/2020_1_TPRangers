@@ -6,8 +6,7 @@ const msgTmpl = require('../../pug/mixins/messages.pug')
 
 const dialogRenderCallback = () => {
   console.log(`[DEBUG] dialog:render callback`);
-  Observer.emit('dialog:listen-emodji-button');
-  Observer.emit('dialog:listen-emodji');
+  Observer.emit('dialog:listen-sticker-button');
   const messageForm = document.getElementById('js-message-form');
 
   messageForm.addEventListener('submit', event => {
@@ -45,22 +44,35 @@ const listenEmojiCallback = () => {
   }
 }
 
-const addEmodjiToText = symbol => {
-  const messageForm = document.getElementById('js-message-form');
-  messageForm.elements.text.value += symbol;
+const addEmodjiToText = src => {
+  const chatId = Router.getFragment().split('/')[1];
+  window.socket.send(JSON.stringify({chatId, sticker:src}));
+  console.log('[WS] send sticker');
+  setTimeout( fetchGET, 250, {
+    url: CHAT_IP + '/api/v1/chats/' + chatId,
+    callback: response => {
+      response.json().then(data => {
+        data.main = true;
+        console.log(data)
+        const div = document.getElementById('js-dialogs-body');
+        div.outerHTML = msgTmpl(data);
+      })
+    }
+  })
 }
 
 const listenEmojiPress = () => {
-  const emodji = document.getElementsByClassName('js-emodji');
-  [].forEach.call(emodji,val => {
+  const stickers = document.getElementsByClassName('js-sticker');
+  [].forEach.call(stickers,val => {
     val.addEventListener('click', evt => {
       evt.preventDefault();
-      Observer.emit('dialog:add-emodji',evt.target.getAttribute('symbol'));
+      console.log(evt.target.src)
+      Observer.emit('dialog:add-emodji',evt.target.src);
     })
   })
 }
 
 Observer.on('dialog:add-emodji', addEmodjiToText);
-Observer.on('dialog:listen-emodji', listenEmojiPress);
-Observer.on('dialog:listen-emodji-button', listenEmojiCallback);
+Observer.on('dialog:listen-sticker', listenEmojiPress);
+Observer.on('dialog:listen-sticker-button', listenEmojiCallback);
 Observer.on('dialog:render', dialogRenderCallback);
