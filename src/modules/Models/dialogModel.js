@@ -25,11 +25,6 @@ const dialogRenderCallback = () => {
           console.log(data)
           const div = document.getElementById('js-dialogs-body');
           div.outerHTML = msgTmpl(data);
-          const container = document.getElementById('js-emodji-container');
-          const button = document.getElementById('js-chat-emodji');
-          if (!container.classList.contains('display-none')) {
-              container.classList.add('display-none');
-          }
         })
       }
     })
@@ -53,6 +48,10 @@ const addEmodjiToText = src => {
   const chatId = Router.getFragment().split('/')[1];
   window.socket.send(JSON.stringify({chatId, sticker:src}));
   console.log('[WS] send sticker');
+  const container = document.getElementById('js-emodji-container');
+  if (!container.classList.contains('display-none')) {
+    container.classList.add('display-none');
+  }
   setTimeout( fetchGET, 250, {
     url: CHAT_IP + '/api/v1/chats/' + chatId,
     callback: response => {
