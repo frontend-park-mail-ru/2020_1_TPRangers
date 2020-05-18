@@ -33,6 +33,7 @@ export default class DialogView extends IView {
                 const container = document.getElementById('js-emodji-container');
                 container.innerHTML = stickerTmpl(data);
                 Observer.emit('dialog:listen-sticker');
+                Observer.emit('dialog:listen-next-button');
               });
             }
           })

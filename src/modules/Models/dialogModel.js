@@ -32,14 +32,27 @@ const dialogRenderCallback = () => {
 }
 
 const listenEmojiCallback = () => {
-  const container = document.getElementById('js-emodji-container');
+  const stickers = document.getElementById('js-emodji-container');
   const button = document.getElementById('js-chat-emodji');
   button.onclick = evt => {
     evt.preventDefault();
-    if (container.classList.contains('display-none')) {
-      container.classList.remove('display-none');
+
+  }
+}
+
+const listenNextButton = () => {
+  const packId1 = document.getElementById('js-pack-id1');
+  const packId2 = document.getElementById('js-pack-id2');
+  const button = document.getElementById('js-change-button');
+  console.log(button, packId1, packId2)
+  button.onclick = evt => {
+    evt.preventDefault();
+    if (packId1.classList.contains('display-none')) {
+      packId1.classList.remove('display-none');
+      packId2.classList.add('display-none');
     } else {
-      container.classList.add('display-none');
+      packId2.classList.remove('display-none');
+      packId1.classList.add('display-none');
     }
   }
 }
@@ -80,3 +93,4 @@ Observer.on('dialog:add-emodji', addEmodjiToText);
 Observer.on('dialog:listen-sticker', listenEmojiPress);
 Observer.on('dialog:listen-sticker-button', listenEmojiCallback);
 Observer.on('dialog:render', dialogRenderCallback);
+Observer.on('dialog:listen-next-button', listenNextButton);
