@@ -180,7 +180,7 @@ const reRenderPost = () => {
           const data = {
             feed: response,
           }
-          console.log(data)
+          // console.log(data)
           posts.innerHTML = postsTmpl(data);
           Observer.emit('listenPostsLikes');
         });

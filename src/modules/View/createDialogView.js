@@ -18,7 +18,7 @@ export default class CreateDialogView extends IView{
             friends: response,
             canAdd: true
           }
-          console.log(data)
+          //console.log(data)
           this.parent.innerHTML += formTmpl(data);
           Observer.emit('createDialogFriends:render');
           Observer.emit('createDialog:addListener');

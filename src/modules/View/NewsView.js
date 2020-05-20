@@ -114,7 +114,7 @@ const newsTmpl = require('../../pug/pages/news.pug');
 
         callback: response => {
           response.json().then(response => {
-            console.log(response);
+            //console.log(response);
             response.forEach(val => {
               val.post = true
               if (val.photo.url) {
@@ -130,7 +130,7 @@ const newsTmpl = require('../../pug/pages/news.pug');
               main: true,
               feed: response,
             }
-            console.log(posts)
+            //console.log(posts)
             super.clear();
             this.parent.innerHTML += newsTmpl(posts); // response.body
             Observer.emit('listenPostsLikes')

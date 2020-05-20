@@ -31,7 +31,7 @@ export default class ProfileView extends IView{
             if (!response.friends)
               response.friends = [];
             response.page = true
-            console.log(response)
+            //console.log(response)
             this.parent.innerHTML += userProfileTmpl(response); //response
             Observer.emit('listenPostsLikes');
             Observer.emit('profile:render', response.user.login);

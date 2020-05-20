@@ -37,7 +37,7 @@ const formItems =  {
 };
 
 const settingsRenderCallback =  () => {
-  console.log(`[DEBUG] settings:render callback`);
+  //console.log(`[DEBUG] settings:render callback`);
 
   const settingsForm = document.getElementById('js-settings-form');
 
@@ -77,7 +77,7 @@ const settingsRenderCallback =  () => {
 
 
 const settingsSubmitCallback = async () => {
-  console.log(`[DEBUG] settings:submit callback`);
+  //console.log(`[DEBUG] settings:submit callback`);
 
   const settingsForm = document.getElementById('js-settings-form');
 
@@ -104,7 +104,7 @@ const settingsSubmitCallback = async () => {
 };
 
 const afterPhotoCallback = (response) => {
-  console.log(`[DEBUG] settings:afterPhoto callback`);
+  //console.log(`[DEBUG] settings:afterPhoto callback`);
   const settingsForm = document.getElementById('js-settings-form');
   let photo = undefined;
   if (response) {
@@ -137,7 +137,7 @@ const afterPhotoCallback = (response) => {
 };
 
 const settingsSetInputCallback = response => {
-  console.log(`[DEBUG] settings:set-input callback`);
+  //console.log(`[DEBUG] settings:set-input callback`);
   if (response.status === 200) {
     response.json().then(data => {
       for (const elem in data) {
@@ -151,7 +151,7 @@ const settingsSetInputCallback = response => {
 };
 
 const settingAjaxCallback = response => {
-  console.log(`[DEBUG] settings:ajax callback`);
+  //console.log(`[DEBUG] settings:ajax callback`);
   if (response.status === 200) {
     Router.navigate('profile');
   } else {
@@ -162,7 +162,7 @@ const settingAjaxCallback = response => {
 };
 
 const getInfoCallback = () => {
-  console.log(`[DEBUG] settings:getInfo callback`);
+  //console.log(`[DEBUG] settings:getInfo callback`);
 
   fetchGET({
     url: BACKEND_IP + '/api/v1/settings',

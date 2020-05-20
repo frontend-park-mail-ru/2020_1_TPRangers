@@ -47,7 +47,6 @@ const afterPhotoPostCallback = response => {
 
   let photo = undefined;
   if (response) {
-    console.log(response);
     photo = 'https://social-hub.ru' + response.filename;
   }
 

@@ -115,10 +115,10 @@ export const Router = {
 
   callCurrent() {
     const fragment = this.getFragment();
-    console.log(fragment);
+    //console.log(fragment);
     const result = this.routes.find((item, index) => {
       if (fragment.match(item.re)) {
-        console.log(item.re);
+        //console.log(item.re);
         return true;
       }
       return false;

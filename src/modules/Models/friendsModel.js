@@ -25,7 +25,7 @@ const inputCallback = () => {
             const data = {
               friends: response
             }
-            console.log(response)
+            //console.log(response)
             const list = document.getElementById('js-friends-list');
             list.innerHTML = friendList(data)
           })
@@ -39,7 +39,7 @@ const inputCallback = () => {
             const data = {
               otherUsers: response
             }
-            console.log(response)
+            //console.log(response)
             const list = document.getElementById('js-otherusers-list');
             list.innerHTML = otherUsersList(data)
           })
@@ -58,7 +58,7 @@ const inputCallback = () => {
             const data = {
               friends: response,
             }
-            console.log(data);
+            //console.log(data);
             const list = document.getElementById('js-friends-list');
             const otherList = document.getElementById('js-otherusers-list');
             list.innerHTML = friendList(data)
@@ -70,7 +70,7 @@ const inputCallback = () => {
 }
 
 const friendsRenderCallback = () => {
-  console.log('friends:render');
+  //console.log('friends:render');
   const search = document.getElementById('js-search');
   const searchForm = document.getElementById('js-search-form');
   const select = document.getElementById('js-age-filter');

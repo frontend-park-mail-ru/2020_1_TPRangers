@@ -22,7 +22,7 @@ const closeForm = () => {
 
 const listenCloseButton = () => {
   const button = document.getElementsByClassName('close-add-photo-js')[0];
-  console.log(button)
+  //console.log(button)
   button.onclick = () => {
     Observer.emit('photos:close-createPhoto-form');
   };

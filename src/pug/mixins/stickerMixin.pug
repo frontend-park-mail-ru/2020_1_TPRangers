@@ -1,6 +1,5 @@
 i(class='link text text_size_1-2rem text_color_normal fas fa-arrow-circle-right link-next' id='js-change-button')
 each pack in packs
-     -console.log(pack)
      if pack.packId === 1
          div(id = "js-pack-id" + pack.packId)
              each sticker in pack.stickers

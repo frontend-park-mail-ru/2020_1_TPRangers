@@ -5,7 +5,7 @@ import { fetchGET, fetchMultipartPOST, fetchPOST } from '../../ajax/ajax';
 const commentsTmpl = require('../../pug/mixins/commentsList.pug')
 
 const singlePostRenderCallback = () => {
-  console.log(`[DEBUG] singlePost:render callback`);
+  //console.log(`[DEBUG] singlePost:render callback`);
 
   const postForm = document.getElementById('js-single-post-form');
   const backButton = document.getElementById('back-button-js');
@@ -22,7 +22,7 @@ const singlePostRenderCallback = () => {
 };
 
 const singlePostSubmitCallback = () => {
-  console.log(`[DEBUG] singlePost:submit callback`);
+  //console.log(`[DEBUG] singlePost:submit callback`);
 
   const id = Router.getFragment().split('/')[1];
   const postForm = document.getElementById('js-single-post-form');
@@ -45,7 +45,7 @@ const singlePostSubmitCallback = () => {
                 data: response,
               }
               postForm.elements.text.value = '';
-              console.log(data);
+              //console.log(data);
               commentList.innerHTML = commentsTmpl(data);
               Observer.emit('listenCommentLikes');
             })

@@ -17,7 +17,7 @@ export default class PostView extends IView {
 						data: response,
 						main: true,
 					};
-					console.log(data);
+					//console.log(data);
 					super.clear();
 					this.parent.innerHTML += postTmpl(data);
 					Observer.emit('listenPostsLikes');

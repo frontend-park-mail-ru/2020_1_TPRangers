@@ -15,7 +15,7 @@ const formItems = {
 };
 
 const loginRenderCallback = () => {
-  console.log(`[DEBUG] login:render callback`);
+  //console.log(`[DEBUG] login:render callback`);
 
   fetchGET({
     url: BACKEND_IP + '/api/v1/profile',
@@ -42,7 +42,7 @@ const loginSubmitCallback = () => {
 
   const loginForm = document.getElementById('js-login-form');
 
-  console.log(`[DEBUG] login:submit callback`);
+  //console.log(`[DEBUG] login:submit callback`);
   const email = loginForm.elements.email.value;
   const password = loginForm.elements.password.value;
   fetchPOST({
@@ -58,7 +58,7 @@ const loginSubmitCallback = () => {
 };
 
 const loginAjaxCallback = response => {
-  console.log(`[DEBUG] login:ajax callback`);
+  //console.log(`[DEBUG] login:ajax callback`);
   if (response.status === 200) {
     Observer.emit('draw-basic');
     Router.navigate('news');

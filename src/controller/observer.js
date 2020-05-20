@@ -17,10 +17,10 @@ class Observer {
           }
         }
       }
-      console.info(`[DEBUG] Added new callback for event ${event}`);
+      // console.info(`[DEBUG] Added new callback for event ${event}`);
       this.subscribers[event].push(callback);
     } else {
-      console.info(`[DEBUG] Created new event type: ${event}`);
+      // console.info(`[DEBUG] Created new event type: ${event}`);
       this.subscribers[event] = [callback];
     }
   }

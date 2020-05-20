@@ -74,7 +74,7 @@ if ('serviceWorker' in navigator) {
 		navigator.serviceWorker
 			.register('../sw.js')
 			.then(() => {
-				console.log('[DEBUG] ServiceWorker registered');
+				//console.log('[DEBUG] ServiceWorker registered');
 			})
 			.catch((err) => {
 				console.error(err);
@@ -86,29 +86,29 @@ if ('serviceWorker' in navigator) {
 Router.config({ mode: 'history' });
 
 Router.add(/news/, () => {
-	console.log('news');
+	//console.log('news');
 	let news = new NewsView(mainBlock);
 	setActive('link-news')
 	news.render();
 })
 	.add(/friends/, () => {
-		console.log('friends');
+		//console.log('friends');
 		let friends = new FriendsView(mainBlock);
 		setActive('link-friends')
 		friends.render();
 	})
 	.add(/logout/, () => {
-		console.log('logout');
+		//console.log('logout');
 		Observer.emit('logout');
 	})
 	.add(/messages/, () => {
-		console.log('messages');
+		//console.log('messages');
 		let messages = new MessagesView(mainBlock);
 		setActive('link-messages')
 		messages.render();
 	})
 	.add(/chat\/(.*)/, () => {
-		console.log('chat');
+		//console.log('chat');
 		let chat = new DialogView(mainBlock);
 		setActive('link-messages')
 		chat.render();
@@ -117,16 +117,16 @@ Router.add(/news/, () => {
 		let media = new MediaView(mainBlock);
 		setActive('link-media')
 		media.render();
-		console.log('media');
+		//console.log('media');
 	})
 	.add(/album\/(.*)/, () => {
-		console.log(Router.getFragment());
+		//console.log(Router.getFragment());
 		setActive('link-media')
 		let photos = new MediaPhotosView(mainBlock);
 		photos.render();
 	})
 	.add(/settings/, () => {
-		console.log('settings' + window.location.href);
+		//console.log('settings' + window.location.href);
 		let settings = new SettingsView(mainBlock);
 		setActive('link-settings')
 		settings.render();

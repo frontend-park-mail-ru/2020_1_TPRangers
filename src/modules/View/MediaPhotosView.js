@@ -29,7 +29,7 @@ export default class MediaPhotosView extends IView {
 
       callback: response => {
         response.json().then(response => {
-          console.log(response);
+          //console.log(response);
           const album = {
             main: true,
             id: albumUrl,
@@ -37,7 +37,7 @@ export default class MediaPhotosView extends IView {
             body: response.url ? response.url : []
           };
 
-          console.log(album);
+          //console.log(album);
           this.parent.innerHTML += mediaPhotosTmpl(album); // response.body
           Observer.emit("photos:listen-plus-button");
         });

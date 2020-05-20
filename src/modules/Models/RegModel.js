@@ -32,7 +32,7 @@ const formItems =  {
   };
 
 const regRenderCallback = () => {
-  console.log(`[DEBUG] reg:render callback`);
+  //console.log(`[DEBUG] reg:render callback`);
 
   fetchGET({
     url: BACKEND_IP + '/api/v1/profile',
@@ -71,7 +71,7 @@ const regRenderCallback = () => {
 };
 
 const regSubmitCallback = event => {
-  console.log(`[DEBUG] reg:submit callback`);
+  //console.log(`[DEBUG] reg:submit callback`);
 
   const regForm = document.getElementById('js-reg-form');
 
@@ -93,16 +93,16 @@ const regSubmitCallback = event => {
       date,
     }),
     callback: response => {
-      console.log(`[DEBUG] Response is`);
-      console.log(response);
+      //console.log(`[DEBUG] Response is`);
+      //console.log(response);
       Observer.emit('reg:ajax', response);
     }
   })
 };
 
 const regAjaxCallback = response => {
-  console.log(`[DEBUG] reg:ajax callback`);
-  console.log(response.status);
+  //console.log(`[DEBUG] reg:ajax callback`);
+  //console.log(response.status);
   if (response.status === 200) {
     Observer.emit('draw-basic');
     Router.navigate('news');

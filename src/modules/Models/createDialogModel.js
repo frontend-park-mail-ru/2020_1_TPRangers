@@ -15,7 +15,7 @@ const addListenerCallback = () => {
 }
 
 const friendsRenderCallback = () => {
-  console.log('createDialogFriends:render');
+  //console.log('createDialogFriends:render');
   const search = document.getElementById('js-search');
   search.addEventListener('input', () => {
     if (search.value) {
@@ -62,7 +62,7 @@ const addLoginCallback = evt => {
   const current = evt.toElement;
   if (current.classList.contains("fa-check-circle"))
     return;
-  console.log("[DEBUG] login added");
+  //console.log("[DEBUG] login added");
   const login = current.getAttribute("login");
   current.classList.remove("fa-plus-circle")
   current.classList.remove("js-don't-prevent")
@@ -73,7 +73,7 @@ const addLoginCallback = evt => {
 }
 
 const submitDialogCallback = () => {
-  console.log(`[DEBUG] dialog:submit callback`);
+  //console.log(`[DEBUG] dialog:submit callback`);
 
   const dialogForm = document.getElementById('js-createDialog-form');
 
@@ -99,7 +99,7 @@ const submitDialogCallback = () => {
 };
 
 const createDialogRenderCallback = () => {
-  console.log(`[DEBUG] createDialog:render callback`);
+  //console.log(`[DEBUG] createDialog:render callback`);
 
   const backButton = document.getElementById('back-button-js');
 
@@ -112,17 +112,17 @@ const createDialogRenderCallback = () => {
   const dialogForm = document.getElementById('js-createDialog-form');
   dialogForm.addEventListener('submit', event => {
     event.preventDefault();
-    console.log(dialogForm);
+    //console.log(dialogForm);
     Observer.emit('dialog:submit');
   });
 };
 
 const afterPhotoDialogCallback = response => {
-  console.log(`[DEBUG] dialog:afterPhoto callback`);
+  //console.log(`[DEBUG] dialog:afterPhoto callback`);
 
   let chatPhoto = undefined;
   if (response) {
-    console.log(response);
+    //console.log(response);
     chatPhoto = 'https://social-hub.ru' + response.filename;
   }
 
@@ -130,7 +130,7 @@ const afterPhotoDialogCallback = response => {
 
   const chatName = dialogForm.elements.text.value;
   const usersLogin = dialogForm.elements.logins.value.split(',').filter(elem => elem !== "");
-  console.log(chatName, usersLogin);
+  //console.log(chatName, usersLogin);
   fetchPOST({
     url: CHAT_IP + `/api/v1/chats`,
     body: JSON.stringify({

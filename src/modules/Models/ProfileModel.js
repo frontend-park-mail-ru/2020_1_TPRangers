@@ -29,7 +29,7 @@ const listenCloseButton = () => {
 };
 
 const profileRenderCallback = userLogin => {
-  console.log(`[DEBUG] profile:render callback`);
+  //console.log(`[DEBUG] profile:render callback`);
   Observer.emit('profile:plus-button-listen');
   userLoginInner = userLogin;
 };

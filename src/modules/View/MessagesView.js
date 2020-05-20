@@ -119,7 +119,7 @@ export default class MessagesView extends IView {
               elem.lastMessageTime = date.toLocaleTimeString();
             }
           });
-          console.log(response);
+          //console.log(response);
           const data = {
             main: true,
             dialogs: response

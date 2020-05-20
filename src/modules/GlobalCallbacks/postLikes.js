@@ -28,7 +28,7 @@ const likePost = post => {
   fetchPOST({
     url: BACKEND_IP + '/api/v1/post/' + post.id + '/like',
     callback: response => {
-      console.log(response.status);
+      //console.log(response.status);
     }
   })
 }
@@ -37,7 +37,7 @@ const removeLike = post => {
   fetchDELETE({
     url: BACKEND_IP + '/api/v1/post/' + post.id + '/like',
     callback: response => {
-      console.log(response.status);
+      //console.log(response.status);
     }
   })
 }

@@ -31,13 +31,13 @@ const listenCloseButton = () => {
 };
 
 const groupRenderCallback = () => {
-  console.log(`[DEBUG] group:render callback`);
+  //console.log(`[DEBUG] group:render callback`);
   Observer.emit('group:plus-button-listen');
   Observer.emit('group:search');
 };
 
 const formSubmitCallback = () => {
-  console.log(`[DEBUG] group:listen-submit-form-button callback`);
+  //console.log(`[DEBUG] group:listen-submit-form-button callback`);
   const form = document.getElementById('js-group-form');
   form.onsubmit = evt => {
     evt.preventDefault();
@@ -63,7 +63,7 @@ const formSubmitCallback = () => {
 }
 
 const afterPhotoCallback = data => {
-  console.log(`[DEBUG] group:afterPhoto callback`);
+  //console.log(`[DEBUG] group:afterPhoto callback`);
 
   let photoUrl = undefined;
   if (data) {
@@ -84,7 +84,7 @@ const afterPhotoCallback = data => {
     }),
     callback: response => {
       if (response.status === 200) {
-        console.log(response);
+        //console.log(response);
         Observer.emit('group:close-form');
         fetchGET({
           url: BACKEND_IP + '/api/v1/group/list',
@@ -106,7 +106,7 @@ const afterPhotoCallback = data => {
 }
 
 const searchCallback = () => {
-  console.log('group:search');
+  //console.log('group:search');
   const search = document.getElementById('js-search');
   const searchForm = document.getElementById('js-search-form');
   searchForm.addEventListener('submit', evt => {

@@ -8,7 +8,7 @@ const leftBlock = document.getElementById("left-block");
 const rightBlock = document.getElementById("right-block");
 
 const drawBasicCallback = () => {
-  console.log(`[DEBUG] draw-basic callback`);
+  //console.log(`[DEBUG] draw-basic callback`);
   Observer.emit('ws');
   const grid = document.getElementById('app');
   const header = document.getElementsByClassName('header')[0];
@@ -23,12 +23,12 @@ const drawBasicCallback = () => {
 
 const createWebsocket = () => {
   // ws register
-  console.log('[DEBUG] ws connection...')
+  //console.log('[DEBUG] ws connection...')
   fetchGET({
     url: CHAT_IP + '/api/v1/ws',
     callback: response => {
       response.json().then( response => {
-        console.log(response);
+        //console.log(response);
         window.socket = new WebSocket(`${WS_IP}/api/v1/ws/${response.token}`);
 
         window.socket.onopen = function(e) {

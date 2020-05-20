@@ -5,9 +5,9 @@ import { fetchGET } from '../../ajax/ajax';
 const msgTmpl = require('../../pug/mixins/messages.pug')
 
 const newMessageCallback = response => {
-  console.log('[DEBUG] New message callback');
+  //console.log('[DEBUG] New message callback');
   const data = JSON.parse(response.data);
-  console.log(data);
+  //console.log(data);
     if (Router.getFragment().split('/')[0] === 'chat' && Router.getFragment().split('/')[1] === data.message.chatId) {
       fetchGET({
         url:CHAT_IP + '/api/v1/chats/' + data.message.chatId,

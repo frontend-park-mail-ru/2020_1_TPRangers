@@ -16,7 +16,7 @@ export default class GroupView extends IView {
             groups: response,
             main: true,
           }
-          console.log(data)
+          //console.log(data)
           this.parent.innerHTML += groupTmpl(data);
           Observer.emit('group:render');
         });

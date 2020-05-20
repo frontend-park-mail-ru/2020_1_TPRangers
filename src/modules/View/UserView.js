@@ -18,7 +18,7 @@ export default class UserView extends IView{
             }
             if (!response.friends)
               response.friends = [];
-            console.log(response);
+            //console.log(response);
             response.page = true;
             super.clear();
             this.parent.innerHTML += userProfileTmpl(response);

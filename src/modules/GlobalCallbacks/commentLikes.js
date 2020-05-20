@@ -27,7 +27,7 @@ const likeComment = comment => {
   fetchPOST({
     url: BACKEND_IP + '/api/v1/comment/' + comment.id + '/like',
     callback: response => {
-      console.log(response.status);
+      //console.log(response.status);
     }
   })
 }
@@ -36,7 +36,7 @@ const dislikeComment = comment => {
   fetchDELETE({
     url: BACKEND_IP + '/api/v1/comment/' + comment.id + '/like',
     callback: response => {
-      console.log(response.status);
+      //console.log(response.status);
     }
   })
 }

@@ -18,7 +18,7 @@ export default class ProfileView extends IView {
             friends: response,
             otherUsers: []
           };
-          console.log(data);
+          //console.log(data);
           super.clear();
           this.parent.innerHTML += friendsTmpl(data);
           this.parent.innerHTML += otherUserList(data);

@@ -5,7 +5,7 @@ const msgTmpl = require('../../pug/mixins/messages.pug')
 
 
 const dialogRenderCallback = () => {
-  console.log(`[DEBUG] dialog:render callback`);
+  //console.log(`[DEBUG] dialog:render callback`);
   Observer.emit('dialog:listen-sticker-button');
   const messageForm = document.getElementById('js-message-form');
 
@@ -13,16 +13,16 @@ const dialogRenderCallback = () => {
     event.preventDefault();
     const chatId = Router.getFragment().split('/')[1];
     const text = messageForm.elements.text.value;
-    console.log(text)
+    //console.log(text)
     window.socket.send(JSON.stringify({chatId, text}));
-    console.log('[WS] send');
+    //console.log('[WS] send');
     messageForm.elements.text.value = '';
     setTimeout( fetchGET, 250, {
       url: CHAT_IP + '/api/v1/chats/' + chatId,
       callback: response => {
         response.json().then(data => {
           data.main = true;
-          console.log(data)
+          //console.log(data)
           const div = document.getElementById('js-dialogs-body');
           div.outerHTML = msgTmpl(data);
         })
@@ -48,7 +48,7 @@ const listenNextButton = () => {
   const packId1 = document.getElementById('js-pack-id1');
   const packId2 = document.getElementById('js-pack-id2');
   const button = document.getElementById('js-change-button');
-  console.log(button, packId1, packId2)
+  //console.log(button, packId1, packId2)
   button.onclick = evt => {
     evt.preventDefault();
     if (packId1.classList.contains('display-none')) {
@@ -64,7 +64,7 @@ const listenNextButton = () => {
 const addEmodjiToText = src => {
   const chatId = Router.getFragment().split('/')[1];
   window.socket.send(JSON.stringify({chatId, sticker:src}));
-  console.log('[WS] send sticker');
+  //console.log('[WS] send sticker');
   const container = document.getElementById('js-emodji-container');
   if (!container.classList.contains('display-none')) {
     container.classList.add('display-none');
@@ -74,7 +74,7 @@ const addEmodjiToText = src => {
     callback: response => {
       response.json().then(data => {
         data.main = true;
-        console.log(data)
+        //console.log(data)
         const div = document.getElementById('js-dialogs-body');
         div.outerHTML = msgTmpl(data);
       })
@@ -87,7 +87,7 @@ const listenEmojiPress = () => {
   [].forEach.call(stickers,val => {
     val.addEventListener('click', evt => {
       evt.preventDefault();
-      console.log(evt.target.src)
+      //console.log(evt.target.src)
       Observer.emit('dialog:add-emodji',evt.target.src);
     })
   })
