@@ -8,9 +8,6 @@ const inputCallback = () => {
   const search = document.getElementById('js-search');
   const filter = document.getElementById('js-show-filter');
   if (search.value) {
-    if (filter.classList.contains('display-none')) {
-      filter.classList.remove('display-none');
-    }
     const select = document.getElementById('js-age-filter');
     const year = select.options[select.selectedIndex].value;
     let query = ""
@@ -47,9 +44,6 @@ const inputCallback = () => {
     })
 
   } else {
-    if (!filter.classList.contains('display-none')) {
-      filter.classList.add('display-none');
-    }
     fetchGET({
       url: BACKEND_IP + '/api/v1/friends',
       callback: response => {

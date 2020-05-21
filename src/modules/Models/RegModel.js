@@ -51,6 +51,8 @@ const regRenderCallback = () => {
     formItems.passwordRepeat.name,
   );
 
+
+
   regForm.addEventListener('submit', event => {
     event.preventDefault();
     if (
