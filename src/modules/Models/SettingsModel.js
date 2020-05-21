@@ -54,21 +54,20 @@ const settingsRenderCallback =  () => {
 
   settingsForm.phone.oninput = evt => {
     evt.preventDefault();
-    settingsForm.phone.value = settingsForm.phone.value.replace(/[^0-9]*/gm,'')
-    settingsForm.phone.value = settingsForm.phone.value.replace(/^[78]/gm,"+7")
-    settingsForm.phone.value = settingsForm.phone.value.replace(/^([^\+78])/gm,"+7 $1")
-    console.log(settingsForm.phone.value.length);
-    if (settingsForm.phone.value.length < 6) {
-      settingsForm.phone.value = settingsForm.phone.value.replace(/^\+?[78]([0-9]{0,3})/gm, `+7 $1`)
-    } else if (settingsForm.phone.value.length < 9) {
-      settingsForm.phone.value = settingsForm.phone.value.replace(/^\+?[78]([0-9]{0,3})([0-9]{0,3})/gm, `+7 ($1) $2`)
-    } else if (settingsForm.phone.value.length < 12) {
-      settingsForm.phone.value = settingsForm.phone.value.replace(/^\+?[78]([0-9]{0,3})([0-9]{0,3})([0-9]{0,2})/gm, `+7 ($1) $2-$3`)
-    } else {
-      settingsForm.phone.value = settingsForm.phone.value.replace(/^\+?[78]([0-9]{0,3})([0-9]{0,3})([0-9]{0,2})([0-9]{0,2})/gm, `+7 ($1) $2-$3-$4`)
-    }
     if (settingsForm.phone.value === "+7 ") {
       settingsForm.phone.value = ""
+    }
+    settingsForm.phone.value = settingsForm.phone.value.replace(/[^0-9]*/gm,'')
+    settingsForm.phone.value = settingsForm.phone.value.replace(/^[78]/gm,"+7 ")
+    settingsForm.phone.value = settingsForm.phone.value.replace(/^([^\+78])/gm,"+7 $1")
+    if (settingsForm.phone.value.length < 7) {
+      settingsForm.phone.value = settingsForm.phone.value.replace(/^\+?[78] ([0-9]{0,3})/gm, `+7 $1`)
+    } else if (settingsForm.phone.value.length < 10) {
+      settingsForm.phone.value = settingsForm.phone.value.replace(/^\+?[78] ([0-9]{0,3})([0-9]{0,3})/gm, `+7 ($1) $2`)
+    } else if (settingsForm.phone.value.length < 13) {
+      settingsForm.phone.value = settingsForm.phone.value.replace(/^\+?[78] ([0-9]{0,3})([0-9]{0,3})([0-9]{0,2})/gm, `+7 ($1) $2-$3`)
+    } else {
+      settingsForm.phone.value = settingsForm.phone.value.replace(/^\+?[78] ([0-9]{0,3})([0-9]{0,3})([0-9]{0,2})([0-9]{0,2})/gm, `+7 ($1) $2-$3-$4`)
     }
   }
 
