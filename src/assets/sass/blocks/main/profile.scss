@@ -21,9 +21,9 @@
 
         grid-template-rows: max-content max-content max-content 1fr;
         grid-template-columns: max-content 1fr;
-        height: max-content;
         grid-gap: 1rem;
         overflow-x: hidden;
+        margin-bottom: 5rem;
 
         &__avatar-place-for-mobile {
             display: grid;
