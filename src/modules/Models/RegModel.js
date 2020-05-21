@@ -72,6 +72,12 @@ const regRenderCallback = () => {
 
   regForm.addEventListener('submit', event => {
     event.preventDefault();
+    if (regForm.phone.value.length !== 18) {
+      const err = document.getElementById(`register-error`);
+      err.classList.remove('hidden');
+      err.innerText = "Введите корректный номер телефона";
+      return;
+    }
     if (
       checkPasswordValidity({
         form: regForm,
