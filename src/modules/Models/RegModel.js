@@ -51,7 +51,25 @@ const regRenderCallback = () => {
     formItems.passwordRepeat.name,
   );
 
-
+  regForm.phone.oninput = evt => {
+    evt.preventDefault();
+    regForm.phone.value = regForm.phone.value.replace(/[^0-9]*/gm,'')
+    regForm.phone.value = regForm.phone.value.replace(/^[78]/gm,"+7")
+    regForm.phone.value = regForm.phone.value.replace(/^([^\+78])/gm,"+7 $1")
+    console.log(regForm.phone.value.length);
+    if (regForm.phone.value.length < 6) {
+      regForm.phone.value = regForm.phone.value.replace(/^\+?[78]([0-9]{0,3})/gm, `+7 $1`)
+    } else if (regForm.phone.value.length < 9) {
+      regForm.phone.value = regForm.phone.value.replace(/^\+?[78]([0-9]{0,3})([0-9]{0,3})/gm, `+7 ($1) $2`)
+    } else if (regForm.phone.value.length < 12) {
+      regForm.phone.value = regForm.phone.value.replace(/^\+?[78]([0-9]{0,3})([0-9]{0,3})([0-9]{0,2})/gm, `+7 ($1) $2-$3`)
+    } else {
+      regForm.phone.value = regForm.phone.value.replace(/^\+?[78]([0-9]{0,3})([0-9]{0,3})([0-9]{0,2})([0-9]{0,2})/gm, `+7 ($1) $2-$3-$4`)
+    }
+    if (regForm.phone.value === "+7 ") {
+      regForm.phone.value = ""
+    }
+  }
 
   regForm.addEventListener('submit', event => {
     event.preventDefault();
