@@ -39,5 +39,13 @@
             min-width: 320px;
             width: 90%;
         }
+
+        &__input {
+            margin-bottom: 0.5rem;
+
+            &__button {
+                margin-top: 0.5rem;
+            }
+        }
     }
 }

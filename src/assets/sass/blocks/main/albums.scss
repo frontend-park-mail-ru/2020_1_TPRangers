@@ -83,7 +83,7 @@
 
 .add-album {
 	position: absolute;
-	margin-left: calc(25% - 1rem);
+	margin-left: calc(30% - 1rem);
 	@include translate(-50%, 50%);
 
 	z-index: 3;
@@ -98,11 +98,10 @@
 
 @media only screen and (max-device-width: 600px) {
 	.add-album {
-		margin-left: calc(50% - 1.5rem);
+		margin-left: calc(50% - 3.5rem);
 		height: max-content;
 		width: calc(100% - 3rem);
 		min-width: calc(100% - 3rem);
 		min-height: 320px;
-		top: 25vh;
 	}
 }

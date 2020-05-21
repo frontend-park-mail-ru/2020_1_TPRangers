@@ -20,6 +20,12 @@
 
 }
 
+@media only screen and (max-device-width: 600px) {
+    .input {
+        padding: 1rem 2rem;
+    }
+}
+
 input {
     outline:none;
 }
