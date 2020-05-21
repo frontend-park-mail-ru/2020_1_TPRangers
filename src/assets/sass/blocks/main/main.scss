@@ -1,9 +1,8 @@
 .main {
     grid-area: main;
 
-
-    width: calc(100%);
     min-height: calc(100vh);
+    width: calc(100%);
     max-height: calc(100vh);
     overflow-y: scroll;
     padding: 1.5rem;
@@ -14,7 +13,6 @@
         margin-left: 0;
         width: calc(100%);
         position: static;
-        min-height: calc(100vh);
         max-height: calc(100vh);
     }
 }

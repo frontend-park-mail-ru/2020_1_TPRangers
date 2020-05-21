@@ -1,6 +1,7 @@
 .page {
     width: 70rem;
-    margin-left: 25rem;
+    margin-left: calc(50% - 35rem);
+    min-width: 70rem;
     min-height: calc(90vh - 2rem);
     max-height: calc(90vh - 2rem);
 }
