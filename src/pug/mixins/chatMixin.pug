@@ -6,7 +6,8 @@ mixin chatMixin(data)
         div(class='chat-card__info')
             i(class='chat-card__info__chat-name text text_color_normal text_size_1-2rem') #{data.chatName} #{data.privateName}
             div(class='chat-card__info__last-message')
-                div(class='img box-shadow chat-card__info__last-message__img')
-                    img(class='img__img' src=data.lastMessageAuthorPhoto)
-                div(class='chat-card__info__last-message__data')
-                    span(class='text text_color_normal text_size_0-8rem') #{data.lastMessageTxt}
+                if data.lastMessageTxt !== ""
+                    div(class='img box-shadow chat-card__info__last-message__img')
+                        img(class='img__img' src=data.lastMessageAuthorPhoto)
+                    div(class='chat-card__info__last-message__data')
+                        span(class='text text_color_normal text_size_0-8rem') #{data.lastMessageTxt}

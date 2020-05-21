@@ -13,11 +13,17 @@ export default class PostView extends IView {
 			callback: (response) => {
 				response.json().then((response) => {
 					if (!response.comments) response.comments = [];
+					let date = new Date(Date.parse(response.date));
+					response.date = date.getFullYear() + '-' + ('0' + (date.getMonth() + 1)).slice(-2) + '-' + ('0' + date.getDate()).slice(-2);
+					response.comments.forEach(val => {
+						let date = new Date(Date.parse(val.date));
+						val.date = date.getFullYear() + '-' + ('0' + (date.getMonth() + 1)).slice(-2) + '-' + ('0' + date.getDate()).slice(-2);
+					})
 					const data = {
 						data: response,
 						main: true,
 					};
-					//console.log(data);
+					console.log(data);
 					super.clear();
 					this.parent.innerHTML += postTmpl(data);
 					Observer.emit('listenPostsLikes');

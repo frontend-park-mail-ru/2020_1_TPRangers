@@ -18,20 +18,13 @@ export default class ProfileView extends IView{
             else {
               response.feed.forEach(val => {
                 val.post = true
-                if (val.photo.url) {
-                  let img = new Image();
-                  img.src = val.photo.url;
-                  img.onload = function() {
-                    val.photo.width = this.width;
-                    val.photo.height = this.height;
-                  }
-                }
+                let date = new Date(Date.parse(val.date));
+                val.date = date.getFullYear() + '-' + ('0' + (date.getMonth() + 1)).slice(-2) + '-' + ('0' + date.getDate()).slice(-2);
               })
             }
             if (!response.friends)
               response.friends = [];
             response.page = true
-            //console.log(response)
             this.parent.innerHTML += userProfileTmpl(response); //response
             Observer.emit('listenPostsLikes');
             Observer.emit('profile:render', response.user.login);

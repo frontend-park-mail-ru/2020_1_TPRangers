@@ -31,6 +31,8 @@ export default class singleGroupView extends IView {
                   .then(response => {
                     response.forEach(val => {
                       val.post = true
+                      let date = new Date(Date.parse(val.date));
+                      val.date = date.getFullYear() + '-' + ('0' + (date.getMonth() + 1)).slice(-2) + '-' + ('0' + date.getDate()).slice(-2);
                     });
                     data.feed = response;
                     this.parent.innerHTML = groupTmpl(data);
