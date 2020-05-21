@@ -1,6 +1,7 @@
 include ../mixins/postMixin
 if page
     div(class='profile page')
+        include ../mixins/addPostMixin
         div(class='profile__body')
             div(class='profile__left-block')
                 div(class='profile__avatar-and-buttons profile_box layout_color_main')
@@ -62,6 +63,9 @@ if page
             //                div(class='img profile__media__body__album-card-img')
             //                    img(class='img profile__media__body__album-card-img__img' src=album.photo)
             //                span(class='profile__media__body__album-card__title text text_color_normal') #{album.title}
-
+            div(class='profile__add-post profile_box layout_color_main')
+                span(class='text text_color_normal text_uppercase text_size_1-2rem') Новая запись
+                i(class='link text text_color_normal text_size_2rem add-post-button-js fas fa-plus-circle')
+                
             include ../mixins/postList
 

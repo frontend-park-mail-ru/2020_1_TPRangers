@@ -18,8 +18,13 @@ export default class UserView extends IView{
             }
             if (!response.friends)
               response.friends = [];
-            //console.log(response);
+            response.feed.forEach(val => {
+              val.post = true
+              let date = new Date(Date.parse(val.date));
+              val.date = date.getFullYear() + '-' + ('0' + (date.getMonth() + 1)).slice(-2) + '-' + ('0' + date.getDate()).slice(-2);
+            })
             response.page = true;
+            console.log(response)
             super.clear();
             this.parent.innerHTML += userProfileTmpl(response);
             Observer.emit('user:render');

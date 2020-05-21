@@ -4,9 +4,14 @@ import { fetchDELETE, fetchGET, fetchPOST } from '../../ajax/ajax';
 
 const friendsBlockTmpl = require('../../pug/mixins/friendsBlock.pug')
 
+let userLoginInner;
+
 const userRenderCallback = () => {
+  userLoginInner = Router.getFragment().split('/')[1];
   let friendButton = document.getElementsByClassName('js-friend-button')[0];
   let friendButtonMobile = document.getElementsByClassName('js-friend-button-mobile')[0];
+
+  Observer.emit('user:plus-button-listen');
 
   const clickFunc =  evt => {
     evt.preventDefault();
@@ -73,7 +78,36 @@ const updateFriendsBlock = () => {
   })
 }
 
+const listenPlusButton = () => {
+  const button = document.getElementsByClassName('add-post-button-js')[0];
+  button.onclick = () => {
+    const bg = document.getElementById('blur-background-js');
+    bg.classList.remove('hidden');
+    const form = document.getElementById('add-post-js');
+    form.classList.remove('hidden');
+    Observer.emit("post:render", userLoginInner);
+    Observer.emit('user:close-button-listen');
+  };
+};
+
+const closeForm = () => {
+  const bg = document.getElementById('blur-background-js');
+  bg.classList.add('hidden');
+  const form = document.getElementById('add-post-js');
+  form.classList.add('hidden');
+}
+
+const listenCloseButton = () => {
+  const button = document.getElementsByClassName('close-add-post-js')[0];
+  button.onclick = () => {
+    Observer.emit('profile:close-form');
+  };
+};
+
 Observer.on('user:friend-update', updateFriendsBlock)
 Observer.on('user:render', userRenderCallback);
 Observer.on('user:add', addFriendCallback);
 Observer.on('user:remove', removeFriendCallback);
+Observer.on('user:plus-button-listen', listenPlusButton);
+Observer.on('user:close-button-listen', listenCloseButton);
+Observer.on('user:close-form', closeForm);

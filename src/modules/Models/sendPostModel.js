@@ -63,7 +63,11 @@ const afterPhotoPostCallback = response => {
     }),
     callback: response => {
       if (response.status === 200) {
-        Router.navigate('news');
+        const bg = document.getElementById('blur-background-js');
+        if (!bg.classList.contains("hidden")) {
+          bg.classList.add('hidden');
+        }
+        Router.callCurrent();
       }
     }
   })
