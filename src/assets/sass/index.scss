@@ -12,4 +12,25 @@ html {
 
 body {
     overflow: hidden;
+    /* width */
+    ::-webkit-scrollbar {
+        width: 5px;
+        border-radius: 5px;
+        margin-left: 2rem;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: $secondary-color;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        @include linear-gradient(0, $main-gradient-from, $main-gradient-to);
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        @include linear-gradient(0, $main-gradient-to, $main-gradient-from);
+    }
 }

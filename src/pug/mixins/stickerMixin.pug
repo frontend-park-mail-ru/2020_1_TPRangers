@@ -1,10 +1,8 @@
-i(class='link text text_size_1-2rem text_color_normal fas fa-arrow-circle-right link-next' id='js-change-button')
+i(class='link text text_size_2rem text_color_normal fas fa-arrow-circle-right link-next' id='js-change-button')
+i(class='link text text_size_2rem text_color_normal fas fa-arrow-circle-left link-prev' id='js-change-button-back')
+div(id = "js-pack-id-0" class="js-sticker-active")
+    include ../mixins/emodjiMixin
 each pack in packs
-     if pack.packId === 1
-         div(id = "js-pack-id" + pack.packId)
-             each sticker in pack.stickers
-                 img(src=sticker.link class="sticker js-sticker")
-     else
-         div(id = "js-pack-id" + pack.packId class="display-none")
-             each sticker in pack.stickers
-                 img(src=sticker.link class="sticker js-sticker")
+    div(id = "js-pack-id-" + pack.packId class="display-none")
+        each sticker in pack.stickers
+            img(src=sticker.link class="sticker js-sticker")

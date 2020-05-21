@@ -31,7 +31,7 @@ const dialogRenderCallback = () => {
   });
 }
 
-const listenEmojiCallback = () => {
+const listenStickerCallback = () => {
   const stickers = document.getElementById('js-emodji-container');
   const button = document.getElementById('js-chat-emodji');
   button.onclick = evt => {
@@ -44,24 +44,37 @@ const listenEmojiCallback = () => {
   }
 }
 
+
 const listenNextButton = () => {
-  const packId1 = document.getElementById('js-pack-id1');
-  const packId2 = document.getElementById('js-pack-id2');
   const button = document.getElementById('js-change-button');
-  //console.log(button, packId1, packId2)
+  const buttonPrev = document.getElementById('js-change-button-back');
   button.onclick = evt => {
     evt.preventDefault();
-    if (packId1.classList.contains('display-none')) {
-      packId1.classList.remove('display-none');
-      packId2.classList.add('display-none');
-    } else {
-      packId2.classList.remove('display-none');
-      packId1.classList.add('display-none');
+    const activePack = document.getElementsByClassName('js-sticker-active')[0];
+    const nextPackId =  `js-pack-id-${(parseInt(activePack.id.split('-')[3],10)+1)%3}`;
+    activePack.classList.add('display-none');
+    activePack.classList.remove('js-sticker-active');
+    const nextPack = document.getElementById(nextPackId);
+    nextPack.classList.remove('display-none');
+    nextPack.classList.add('js-sticker-active');
+  }
+  buttonPrev.onclick = evt => {
+    evt.preventDefault();
+    const activePack = document.getElementsByClassName('js-sticker-active')[0];
+    let id = (parseInt(activePack.id.split('-')[3],10))-1;
+    if (id < 0) {
+      id = 2;
     }
+    const nextPackId =  `js-pack-id-${id}`;
+    activePack.classList.add('display-none');
+    activePack.classList.remove('js-sticker-active');
+    const nextPack = document.getElementById(nextPackId);
+    nextPack.classList.remove('display-none');
+    nextPack.classList.add('js-sticker-active');
   }
 }
 
-const addEmodjiToText = src => {
+const sendSticker = src => {
   const chatId = Router.getFragment().split('/')[1];
   window.socket.send(JSON.stringify({chatId, sticker:src}));
   //console.log('[WS] send sticker');
@@ -82,19 +95,32 @@ const addEmodjiToText = src => {
   })
 }
 
+const addEmodji = emodji => {
+   const textarea = document.getElementById('text');
+   textarea.value += emodji;
+}
+
 const listenEmojiPress = () => {
   const stickers = document.getElementsByClassName('js-sticker');
   [].forEach.call(stickers,val => {
     val.addEventListener('click', evt => {
       evt.preventDefault();
       //console.log(evt.target.src)
-      Observer.emit('dialog:add-emodji',evt.target.src);
+      Observer.emit('dialog:send-sticker',evt.target.src);
+    })
+  })
+  const emodji = document.getElementsByClassName('js-emodji');
+  [].forEach.call(emodji,val => {
+    val.addEventListener('click', evt => {
+      evt.preventDefault();
+      Observer.emit('dialog:add-emodji',evt.target.id);
     })
   })
 }
 
-Observer.on('dialog:add-emodji', addEmodjiToText);
+Observer.on('dialog:send-sticker', sendSticker);
+Observer.on('dialog:add-emodji', addEmodji);
 Observer.on('dialog:listen-sticker', listenEmojiPress);
-Observer.on('dialog:listen-sticker-button', listenEmojiCallback);
+Observer.on('dialog:listen-sticker-button', listenStickerCallback);
 Observer.on('dialog:render', dialogRenderCallback);
 Observer.on('dialog:listen-next-button', listenNextButton);
