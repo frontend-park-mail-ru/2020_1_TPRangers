@@ -139,8 +139,6 @@ Router.add(/news/, () => {
 		user.render(Router.getFragment().split('/')[1]);
 	})
 	.add(/profile/, () => {
-		// console.log(Router.getFragment());
-		console.log('profile');
 		setActive('link-profile')
 		let userProfile = new ProfileView(mainBlock);
 		userProfile.render();

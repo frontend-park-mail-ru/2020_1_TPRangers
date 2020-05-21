@@ -32,7 +32,7 @@ const createWebsocket = () => {
         window.socket = new WebSocket(`${WS_IP}/api/v1/ws/${response.token}`);
 
         window.socket.onopen = function(e) {
-          console.log("[WS] Соединение установлено");
+          // console.log("[WS] Соединение установлено");
         };
 
         window.socket.onmessage = function(event) {
@@ -41,10 +41,10 @@ const createWebsocket = () => {
 
         window.socket.onclose = function(event) {
           if (event.wasClean) {
-            console.log(`[WS] Соединение закрыто чисто, код=${event.code} причина=${event.reason}`);
+            // console.log(`[WS] Соединение закрыто чисто, код=${event.code} причина=${event.reason}`);
           } else {
             createWebsocket();
-            console.log('[WS] Соединение прервано');
+            // console.log('[WS] Соединение прервано');
           }
         };
 
