@@ -10,16 +10,8 @@ const startCheckCallback = () => {
         if (response.status === 200) {
           Observer.emit('draw-basic');
           Router.navigate('news');
-        } else if (response.status === 401) {
+        } else  {
           Router.navigate('login');
-        } else {
-          response.json().then( data => {
-            Observer.emit('error', {
-              status: response.status,
-              text: data.err,
-              backButton: true,
-            })
-          });
         }
       }
     });
@@ -30,8 +22,11 @@ const startCheckCallback = () => {
         if (response.status === 200) {
           Observer.emit('draw-basic');
         } else if (response.status === 401) {
-          if (!Router.getFragment() === 'register')
+          if (!(Router.getFragment() === 'register') && !(Router.getFragment() === 'login')) {
             Router.navigate('login');
+          } else {
+            Router.callCurrent();
+          }
         } else {
           Observer.emit('render:response-error', response);
         }

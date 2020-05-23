@@ -22,11 +22,15 @@ import GroupView from './View/GroupView';
 import singleGroupView from './View/singleGroupView';
 
 // const leftBlockTmpl = require("../pug/includes/modules/left-block.pug");
-const testTmpl = require('../pug/pages/news.pug');
+const layout = require('../pug/layout/layout.pug');
+
 
 const app = document.getElementById('app');
-
-if (!app) console.log('app not found');
+if (!app) {
+	console.log('app not found');
+} else {
+	app.innerHTML = layout();
+}
 
 app.addEventListener('click', (evt) => {
 	if (evt.target instanceof Element) {
