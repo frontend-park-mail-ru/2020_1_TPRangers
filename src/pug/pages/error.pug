@@ -1,0 +1,12 @@
+div(class='error-page')
+    div(class='box-shadow error-page_info')
+        div(class='error-page_block')
+            span(class='text text_color_primary text_size_2rem ') Кажется что-то пошло не так ...
+        if status
+            div(class='error-page_block')
+                span(class='text text_color_normal text_size_2rem ') Статус:
+                    span(class='error-page_block text text_color_primary text_size_2rem ') #{status}
+        if text
+            div(class='error-page_block')
+                span(class='text text_color_normal text_size_2rem ') Сообщение:
+                    span(class='error-page_block text text_color_primary text_size_2rem ') #{text}

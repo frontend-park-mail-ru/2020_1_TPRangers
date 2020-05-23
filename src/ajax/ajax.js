@@ -26,7 +26,7 @@ function fetchApi({
       console.log(err)
       Observer.emit('render:error', {
         status: 500,
-        text: 'Упс.. Скоро мы все починим :)',
+        text: 'Ошибка соеднинения с сервером',
         backButton: false,
       });
     });
