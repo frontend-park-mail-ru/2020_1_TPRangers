@@ -13,6 +13,10 @@ export default class UserView extends IView{
         callback: response => {
           response.json().then(response => {
             response.page = true;
+            if (response.isMe) {
+              Router.navigate('profile');
+              return;
+            }
             if (!response.feed) {
               response.feed = [];
             }

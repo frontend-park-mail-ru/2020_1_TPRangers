@@ -35,6 +35,7 @@ export default class singleGroupView extends IView {
                       val.date = date.getFullYear() + '-' + ('0' + (date.getMonth() + 1)).slice(-2) + '-' + ('0' + date.getDate()).slice(-2);
                     });
                     data.feed = response;
+                    console.log(data)
                     this.parent.innerHTML = groupTmpl(data);
                     Observer.emit('singleGroup:render');
                     Observer.emit('listenPostsLikes');

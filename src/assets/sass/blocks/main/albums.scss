@@ -6,7 +6,8 @@
 	justify-content: flex-start;
 
 	&__add-album {
-		width: calc(100% - 2rem);
+		margin-left: 3rem;
+		width: 100%;
 		min-width: 400px;
 		padding: 1rem;
 		display: flex;
@@ -62,7 +63,8 @@
 
 @media only screen and (max-device-width: 1024px) {
 	.album__add-album {
-		width: calc(100% - 2rem);
+		width:103%;
+		margin-left: 4rem;
 	}
 	.albums {
 		flex-wrap: nowrap;
@@ -96,12 +98,18 @@
 	flex-direction: column;
 }
 
+@media only screen and (max-device-width: 400px) {
+	.album__add-album {
+		width:97%;
+		margin-left: 0;
+	}
+}
+
 @media only screen and (max-device-width: 1024px) {
 	.add-album {
-		margin-left: calc(50% - 3.5rem);
+		margin-left: calc(40% - 3.5rem);
 		height: max-content;
-		width: calc(100% - 3rem);
-		min-width: calc(100% - 3rem);
+		width: 75%;
 		min-height: 320px;
 	}
 }

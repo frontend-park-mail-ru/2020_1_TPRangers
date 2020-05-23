@@ -175,7 +175,9 @@ const reRenderPost = () => {
       response.json()
         .then(response => {
           response.forEach(val => {
-            val.post = true
+            val.post = true;
+            let date = new Date(Date.parse(val.date));
+            val.date = date.getFullYear() + '-' + ('0' + (date.getMonth() + 1)).slice(-2) + '-' + ('0' + date.getDate()).slice(-2);
           });
           const data = {
             feed: response,

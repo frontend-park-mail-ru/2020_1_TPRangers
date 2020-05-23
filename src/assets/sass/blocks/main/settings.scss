@@ -1,7 +1,6 @@
 .settings {
     align-items: flex-start;
     height: max-content;
-    min-height: calc(100vh - 130px);
 
     margin-bottom: 1.5rem;
     &__body {
@@ -38,6 +37,7 @@
 @media only screen and  (max-device-width: 1024px) {
     .settings {
         margin-top: 10rem;
+        margin-bottom: 7rem;
         &__body {
             min-width: 320px;
             width: 90%;
