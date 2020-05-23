@@ -44,12 +44,10 @@
     }
 }
 
-@media only screen and  (max-device-width: 600px) {
+@media only screen and  (max-device-width: 1024px) {
     .add-post {
         margin-left: calc(45% - 0.4rem);
-        margin-top: 0;
-        height: max-content;
-        width:  calc(100% - 3rem);
+        width: 65%;
         &__body {
 
             &__input {

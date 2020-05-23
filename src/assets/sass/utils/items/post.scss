@@ -126,14 +126,13 @@
 	}
 }
 
-@media only screen and (max-device-width: 600px) {
+@media only screen and (max-device-width: 1024px) {
 	.post {
 		&__photo {
 			&_full {
 				width: calc(100% - 2rem);
 				max-width: 90vw;
 				height: max-content;
-				max-height: 40vh;
 
 				overflow: hidden;
 				border-radius: 10px;

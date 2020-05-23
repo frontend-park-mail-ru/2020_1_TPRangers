@@ -60,7 +60,7 @@
 	}
 }
 
-@media only screen and (max-device-width: 600px) {
+@media only screen and (max-device-width: 1024px) {
 	.album__add-album {
 		width: calc(100% - 2rem);
 	}
@@ -96,7 +96,7 @@
 	flex-direction: column;
 }
 
-@media only screen and (max-device-width: 600px) {
+@media only screen and (max-device-width: 1024px) {
 	.add-album {
 		margin-left: calc(50% - 3.5rem);
 		height: max-content;
