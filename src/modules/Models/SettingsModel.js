@@ -85,6 +85,19 @@ const settingsRenderCallback =  () => {
       err.innerText = "Введите корректный номер телефона";
       return;
     }
+    const name = settingsForm.elements.name.value.split(' ');
+    let failStatus = false;
+    name.forEach(val => {
+      if (val.length > 12) {
+        const err = document.getElementById(`register-error`);
+        err.classList.remove('hidden');
+        err.innerText = "Введите более корткое имя или фамилию";
+        failStatus = true;
+      }
+    })
+    if (failStatus) {
+      return;
+    }
     if (
       checkPasswordValidity({
         form: settingsForm,

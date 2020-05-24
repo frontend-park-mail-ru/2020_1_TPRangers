@@ -78,6 +78,19 @@ const regRenderCallback = () => {
       err.innerText = "Введите корректный номер телефона";
       return;
     }
+    const name = regForm.elements.username.value.split(' ');
+    let failStatus = false;
+    name.forEach(val => {
+      if (val.length > 12) {
+        const err = document.getElementById(`register-error`);
+        err.classList.remove('hidden');
+        err.innerText = "Введите более корткое имя или фамилию";
+        failStatus = true;
+      }
+    })
+    if (failStatus) {
+      return;
+    }
     if (
       checkPasswordValidity({
         form: regForm,
