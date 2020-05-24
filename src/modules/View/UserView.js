@@ -25,6 +25,9 @@ export default class UserView extends IView {
                     if (!response.friends) {
                       response.friends = [];
                     }
+                    response.friends.forEach(val => {
+                      val.isMe = val.url === profileResp.user.login;
+                    })
                     response.feed.forEach(val => {
                       val.post = true;
                       val.isMe = val.authorUrl === profileResp.user.login;

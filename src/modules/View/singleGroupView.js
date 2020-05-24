@@ -26,6 +26,9 @@ export default class singleGroupView extends IView {
                     if (!response.members) {
                       response.members = []
                     }
+                    response.members.forEach(val => {
+                      val.isMe = val.url === profileResp.user.login;
+                    })
                     data.profile = response;
                     fetchGET({
                       url: BACKEND_IP + `/api/v1/group/${groupId}/feed`,

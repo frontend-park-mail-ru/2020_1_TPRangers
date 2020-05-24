@@ -71,14 +71,25 @@ const removeFriendCallback = () => {
 const updateFriendsBlock = () => {
   const id = Router.getFragment().split('/')[1]
   fetchGET({
-    url: BACKEND_IP + '/api/v1/user/' + id,
-    callback: response => {
-      response.json().then(response => {
-        const friendsBlock = document.getElementsByClassName("js-friends-block")[0]
-        if (!response.friends)
-          response.friends = [];
-        friendsBlock.innerHTML = friendsBlockTmpl(response)
-      })
+    url: BACKEND_IP + '/api/v1/profile',
+    callback: profileResp => {
+      profileResp.json()
+        .then(profileResp => {
+          fetchGET({
+            url: BACKEND_IP + '/api/v1/user/' + id,
+            callback: response => {
+              response.json().then(response => {
+                const friendsBlock = document.getElementsByClassName("js-friends-block")[0]
+                if (!response.friends)
+                  response.friends = [];
+                response.friends.forEach(val => {
+                  val.isMe = val.url === profileResp.user.login;
+                })
+                friendsBlock.innerHTML = friendsBlockTmpl(response)
+              })
+            }
+          })
+        })
     }
   })
 }

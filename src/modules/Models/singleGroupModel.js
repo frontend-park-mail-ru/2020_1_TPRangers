@@ -112,20 +112,31 @@ const removeSubCallback = () => {
 }
 
 const updateSubBlock = () => {
-  const groupId = Router.getFragment().split('/')[1]
+  const groupId = Router.getFragment().split('/')[1];
   fetchGET({
-    url: BACKEND_IP + `/api/v1/group/${groupId}/profile`,
-    callback: response => {
-      response.json().then(response => {
-        const subBlock = document.getElementsByClassName("js-sub-block")[0]
-        if (!response.members) {
-          response.members = []
-        }
-        const data = {
-          profile: response
-        }
-        subBlock.innerHTML = subBlockTmpl(data);
-      })
+    url: BACKEND_IP + '/api/v1/profile',
+    callback: profileResp => {
+      profileResp.json()
+        .then(profileResp => {
+          fetchGET({
+            url: BACKEND_IP + `/api/v1/group/${groupId}/profile`,
+            callback: response => {
+              response.json().then(response => {
+                const subBlock = document.getElementsByClassName("js-sub-block")[0]
+                if (!response.members) {
+                  response.members = []
+                }
+                response.members.forEach(val => {
+                  val.isMe = val.url === profileResp.user.login;
+                })
+                const data = {
+                  profile: response
+                }
+                subBlock.innerHTML = subBlockTmpl(data);
+              })
+            }
+          })
+        })
     }
   })
 }
