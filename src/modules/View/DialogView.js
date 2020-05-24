@@ -14,8 +14,11 @@ export default class DialogView extends IView {
       url:CHAT_IP + "/api/v1/chats/" + chatId,
       callback: response => {
         response.json().then(data => {
+          if (!data.chatMessages) {
+            data.chatMessages = [];
+          }
           data.main = true;
-          //console.log(data);
+          console.log(data);
           this.parent.innerHTML += chatTmpl(data); // data
           Observer.emit("dialog:render");
           // Observer.emit("textarea:render", "js-message");
@@ -29,7 +32,7 @@ export default class DialogView extends IView {
                 const data = {
                   packs: response
                 }
-                //console.log(data);
+                // console.log(data);
                 const container = document.getElementById('js-emodji-container');
                 container.innerHTML = stickerTmpl(data);
                 Observer.emit('dialog:listen-sticker');
