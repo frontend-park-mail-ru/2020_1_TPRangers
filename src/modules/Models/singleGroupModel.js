@@ -31,14 +31,16 @@ const submitCallback = evt => {
 
 const listenPlusButton = () => {
   const button = document.getElementsByClassName('add-post-button-js')[0];
-  button.onclick = () => {
-    const bg = document.getElementById('blur-background-js');
-    bg.classList.remove('hidden');
-    const form = document.getElementById('add-post-js');
-    form.classList.remove('hidden');
-    Observer.emit('singleGroup:listen-submit-form-button');
-    Observer.emit('singleGroup:close-button-listen');
-  };
+  if (button) {
+    button.onclick = () => {
+      const bg = document.getElementById('blur-background-js');
+      bg.classList.remove('hidden');
+      const form = document.getElementById('add-post-js');
+      form.classList.remove('hidden');
+      Observer.emit('singleGroup:listen-submit-form-button');
+      Observer.emit('singleGroup:close-button-listen');
+    };
+  }
 };
 
 const closeForm = () => {
@@ -142,19 +144,19 @@ const updateSubBlock = () => {
 }
 
 const renderCallback = () => {
-  console.log(`[DEBUG] Single group render`);
+  // console.log(`[DEBUG] Single group render`);
   Observer.emit('singleGroup:plus-button-listen');
   Observer.emit('singleGroup:sub-button-listen');
 };
 
 const formSubmitCallback = () => {
-  console.log(`[DEBUG] singleGroup:listen-submit-form-button callback`);
+  // console.log(`[DEBUG] singleGroup:listen-submit-form-button callback`);
   const form = document.getElementById('js-post-form');
   form.addEventListener('submit', submitCallback)
 };
 
 const afterPhotoCallback = data => {
-  console.log(`[DEBUG] singleGroup:afterPhoto callback`);
+  // console.log(`[DEBUG] singleGroup:afterPhoto callback`);
 
   let photoUrl = undefined;
   if (data) {
