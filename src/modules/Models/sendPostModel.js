@@ -5,7 +5,7 @@ import { fetchMultipartPOST, fetchPOST } from '../../ajax/ajax';
 let userLoginInner;
 
 const sendPostRenderCallback = userLogin => {
-  console.log(`[DEBUG] post:render callback`);
+  // console.log(`[DEBUG] post:render callback`);
   userLoginInner = userLogin;
   const postForm = document.getElementById('js-post-form');
 
@@ -20,7 +20,7 @@ const submitPostCallback = userLogin => {
   if (userLogin) {
     userLoginInner = userLogin;
   }
-  console.log(`[DEBUG] post:submit callback`);
+  // console.log(`[DEBUG] post:submit callback`);
 
   const postForm = document.getElementById('js-post-form');
 
@@ -46,7 +46,7 @@ const submitPostCallback = userLogin => {
 };
 
 const afterPhotoPostCallback = response => {
-  console.log(`[DEBUG] post:afterPhoto callback`);
+  // console.log(`[DEBUG] post:afterPhoto callback`);
 
   let photo = undefined;
   if (response) {
