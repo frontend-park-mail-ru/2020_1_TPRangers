@@ -14,6 +14,7 @@ export default class UserView extends IView{
           response.json().then(response => {
             response.page = true;
             if (response.isMe) {
+              history.
               Router.navigate('profile');
               return;
             }

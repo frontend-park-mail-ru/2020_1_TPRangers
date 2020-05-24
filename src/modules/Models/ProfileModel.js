@@ -2,6 +2,11 @@ import Observer from '../../controller/observer';
 
 let userLoginInner;
 
+const submitCallback = event => {
+  event.preventDefault();
+  Observer.emit('post:submit', userLoginInner);
+}
+
 const listenPlusButton = () => {
   const button = document.getElementsByClassName('add-post-button-js')[0];
   button.onclick = () => {
@@ -9,12 +14,15 @@ const listenPlusButton = () => {
     bg.classList.remove('hidden');
     const form = document.getElementById('add-post-js');
     form.classList.remove('hidden');
-    Observer.emit("post:render", userLoginInner);
+    const postForm = document.getElementById('js-post-form');
+    postForm.addEventListener('submit', submitCallback);
     Observer.emit('profile:close-button-listen');
   };
 };
 
 const closeForm = () => {
+  const postForm = document.getElementById('js-post-form');
+  postForm.removeEventListener('submit', submitCallback);
   const bg = document.getElementById('blur-background-js');
   bg.classList.add('hidden');
   const form = document.getElementById('add-post-js');

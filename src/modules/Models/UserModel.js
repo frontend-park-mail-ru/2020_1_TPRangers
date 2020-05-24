@@ -6,6 +6,11 @@ const friendsBlockTmpl = require('../../pug/mixins/friendsBlock.pug')
 
 let userLoginInner;
 
+const submitCallback = event => {
+  event.preventDefault();
+  Observer.emit('post:submit', userLoginInner);
+}
+
 const userRenderCallback = () => {
   userLoginInner = Router.getFragment().split('/')[1];
   let friendButton = document.getElementsByClassName('js-friend-button')[0];
@@ -85,12 +90,15 @@ const listenPlusButton = () => {
     bg.classList.remove('hidden');
     const form = document.getElementById('add-post-js');
     form.classList.remove('hidden');
-    Observer.emit("post:render", userLoginInner);
+    const postForm = document.getElementById('js-post-form');
+    postForm.addEventListener('submit', submitCallback);
     Observer.emit('user:close-button-listen');
   };
 };
 
 const closeForm = () => {
+  const postForm = document.getElementById('js-post-form');
+  postForm.removeEventListener('submit', submitCallback);
   const bg = document.getElementById('blur-background-js');
   bg.classList.add('hidden');
   const form = document.getElementById('add-post-js');

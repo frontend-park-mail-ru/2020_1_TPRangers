@@ -41,6 +41,10 @@ const singlePostSubmitCallback = () => {
             response.json().then(response => {
               if (!response.comments)
                 response.comments = [];
+              response.comments.forEach(val => {
+                let date = new Date(Date.parse(val.date));
+                val.date = date.getFullYear() + '-' + ('0' + (date.getMonth() + 1)).slice(-2) + '-' + ('0' + date.getDate()).slice(-2);
+              })
               const data = {
                 data: response,
               }

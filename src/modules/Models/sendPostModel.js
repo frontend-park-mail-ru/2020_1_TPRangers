@@ -16,7 +16,10 @@ const sendPostRenderCallback = userLogin => {
 
 };
 
-const submitPostCallback = () => {
+const submitPostCallback = userLogin => {
+  if (userLogin) {
+    userLoginInner = userLogin;
+  }
   console.log(`[DEBUG] post:submit callback`);
 
   const postForm = document.getElementById('js-post-form');
