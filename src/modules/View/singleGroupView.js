@@ -12,39 +12,46 @@ export default class singleGroupView extends IView {
     const data = {
       page: true,
     }
-
     fetchGET({
-      url: BACKEND_IP + `/api/v1/group/${groupId}/profile`,
-
-      callback: response => {
-        response.json()
-          .then(response => {
-            if (!response.members) {
-              response.members = []
-            }
-            data.profile = response;
+      url: BACKEND_IP + '/api/v1/profile',
+      callback: profileResp => {
+        profileResp.json()
+          .then(profileResp => {
             fetchGET({
-              url: BACKEND_IP + `/api/v1/group/${groupId}/feed`,
+              url: BACKEND_IP + `/api/v1/group/${groupId}/profile`,
 
               callback: response => {
                 response.json()
                   .then(response => {
-                    response.forEach(val => {
-                      val.post = true
-                      let date = new Date(Date.parse(val.date));
-                      val.date = date.getFullYear() + '-' + ('0' + (date.getMonth() + 1)).slice(-2) + '-' + ('0' + date.getDate()).slice(-2);
+                    if (!response.members) {
+                      response.members = []
+                    }
+                    data.profile = response;
+                    fetchGET({
+                      url: BACKEND_IP + `/api/v1/group/${groupId}/feed`,
+
+                      callback: response => {
+                        response.json()
+                          .then(response => {
+                            response.forEach(val => {
+                              val.isMe = val.authorUrl === profileResp.user.login;
+                              val.post = true
+                              let date = new Date(Date.parse(val.date));
+                              val.date = date.getFullYear() + '-' + ('0' + (date.getMonth() + 1)).slice(-2) + '-' + ('0' + date.getDate()).slice(-2);
+                            });
+                            data.feed = response;
+                            console.log(data)
+                            this.parent.innerHTML = groupTmpl(data);
+                            Observer.emit('singleGroup:render');
+                            Observer.emit('listenPostsLikes');
+                          });
+                      }
                     });
-                    data.feed = response;
-                    console.log(data)
-                    this.parent.innerHTML = groupTmpl(data);
-                    Observer.emit('singleGroup:render');
-                    Observer.emit('listenPostsLikes');
                   });
               }
             });
-          });
+          })
       }
-    });
-
+    })
   }
 }

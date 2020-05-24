@@ -7,10 +7,17 @@ if main
                 div(class='post__header')
                     div(class='post__header__user-and-img')
                         div(class='img post__header__img box-shadow')
-                            a(href='user/' + data.authorUrl section='user/' + data.authorUrl)
-                                img(class='img__img' src=data.authorPhoto)
+                            if data.isMe
+                                a(href='profile' section='profile')
+                                    img(class='img__img' src=data.authorPhoto)
+                            else
+                                a(href='user/' + data.authorUrl section='user/' + data.authorUrl)
+                                    img(class='img__img' src=data.authorPhoto)
                         div(class='post__header__user-and-data')
-                            a(class='link text text_size_1-2rem text_color_normal' href='user/' + data.authorUrl section='user/' + data.authorUrl) #{data.authorName}
+                            if data.isMe
+                                a(class='link text text_size_1-2rem text_color_normal' href='profile' section='profile') #{data.authorName}
+                            else
+                                a(class='link text text_size_1-2rem text_color_normal' href='user/' + data.authorUrl section='user/' + data.authorUrl) #{data.authorName}
                             span(class='text text_size_0-8rem ') #{data.date}
                 div(class='post__body__text')
                     if data.title != null

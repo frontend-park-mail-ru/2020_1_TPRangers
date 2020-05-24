@@ -36,23 +36,32 @@ const singlePostSubmitCallback = () => {
       if (response.status === 200) {
         const commentList = document.getElementById('js-comments-list');
         fetchGET({
-          url: BACKEND_IP + `/api/v1/post/${id}/comments`,
-          callback: response => {
-            response.json().then(response => {
-              if (!response.comments)
-                response.comments = [];
-              response.comments.forEach(val => {
-                let date = new Date(Date.parse(val.date));
-                val.date = date.getFullYear() + '-' + ('0' + (date.getMonth() + 1)).slice(-2) + '-' + ('0' + date.getDate()).slice(-2);
+          url: BACKEND_IP + '/api/v1/profile',
+          callback: profileResp => {
+            profileResp.json()
+              .then(profileResp => {
+                fetchGET({
+                  url: BACKEND_IP + `/api/v1/post/${id}/comments`,
+                  callback: response => {
+                    response.json().then(response => {
+                      if (!response.comments)
+                        response.comments = [];
+                      response.comments.forEach(val => {
+                        let date = new Date(Date.parse(val.date));
+                        val.isMe = profileResp.user.login === val.authorUrl;
+                        val.date = date.getFullYear() + '-' + ('0' + (date.getMonth() + 1)).slice(-2) + '-' + ('0' + date.getDate()).slice(-2);
+                      })
+                      const data = {
+                        data: response,
+                      }
+                      postForm.elements.text.value = '';
+                      //console.log(data);
+                      commentList.innerHTML = commentsTmpl(data);
+                      Observer.emit('listenCommentLikes');
+                    })
+                  }
+                })
               })
-              const data = {
-                data: response,
-              }
-              postForm.elements.text.value = '';
-              //console.log(data);
-              commentList.innerHTML = commentsTmpl(data);
-              Observer.emit('listenCommentLikes');
-            })
           }
         })
       }

@@ -5,6 +5,30 @@ import {Router} from '../../Routes/routes';
 const postsTmpl = require('../../pug/mixins/postList.pug');
 const subBlockTmpl = require('../../pug/mixins/subBlock.pug');
 
+const submitCallback = evt => {
+  evt.preventDefault();
+  const form = document.getElementById('js-post-form');
+  if (form.elements.photo.files[0]) {
+
+    let body = new FormData();
+    body.append('fileData', form.elements.photo.files[0]);
+
+    fetchMultipartPOST({
+      url: 'https://social-hub.ru/upload',
+      body,
+      callback: response => {
+        response.json()
+          .then(data => {
+              Observer.emit('singleGroup:afterPhoto', data);
+            }
+          );
+      }
+    });
+  } else {
+    Observer.emit('singleGroup:afterPhoto');
+  }
+};
+
 const listenPlusButton = () => {
   const button = document.getElementsByClassName('add-post-button-js')[0];
   button.onclick = () => {
@@ -18,6 +42,8 @@ const listenPlusButton = () => {
 };
 
 const closeForm = () => {
+  const formStop = document.getElementById('js-post-form');
+  formStop.removeEventListener('submit', submitCallback)
   const bg = document.getElementById('blur-background-js');
   bg.classList.add('hidden');
   const form = document.getElementById('add-post-js');
@@ -113,28 +139,7 @@ const renderCallback = () => {
 const formSubmitCallback = () => {
   console.log(`[DEBUG] singleGroup:listen-submit-form-button callback`);
   const form = document.getElementById('js-post-form');
-  form.onsubmit = evt => {
-    evt.preventDefault();
-    if (form.elements.photo.files[0]) {
-
-      let body = new FormData();
-      body.append('fileData', form.elements.photo.files[0]);
-
-      fetchMultipartPOST({
-        url: 'https://social-hub.ru/upload',
-        body,
-        callback: response => {
-          response.json()
-            .then(data => {
-                Observer.emit('singleGroup:afterPhoto', data);
-              }
-            );
-        }
-      });
-    } else {
-      Observer.emit('singleGroup:afterPhoto');
-    }
-  };
+  form.addEventListener('submit', submitCallback)
 };
 
 const afterPhotoCallback = data => {
