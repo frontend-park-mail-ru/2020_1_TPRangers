@@ -79,7 +79,7 @@ const settingsRenderCallback =  () => {
 
   settingsForm.addEventListener('submit', event => {
     event.preventDefault();
-    if (settingsForm.phone.value.length !== 18) {
+    if (settingsForm.phone.value.length !== 18 && settingsForm.phone.value !== "") {
       const err = document.getElementById(`register-error`);
       err.classList.remove('hidden');
       err.innerText = "Введите корректный номер телефона";
