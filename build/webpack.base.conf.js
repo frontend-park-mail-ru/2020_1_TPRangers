@@ -122,7 +122,8 @@ module.exports = {
       API_KEY: JSON.stringify(process.env.API_KEY),
       BACKEND_IP: JSON.stringify(process.env.BACKEND_IP),
       WS_IP: JSON.stringify(process.env.WS_IP),
-      CHAT_IP: JSON.stringify(process.env.CHAT_IP)
+      CHAT_IP: JSON.stringify(process.env.CHAT_IP),
+      PHOTO_URL: JSON.stringify(process.env.PHOTO_URL)
     }),
 
     ...PAGES.map(page => new HtmlWebpackPlugin({

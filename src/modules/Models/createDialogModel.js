@@ -83,7 +83,7 @@ const submitDialogCallback = () => {
     body.append('fileData', dialogForm.elements.photo.files[0]);
 
     fetchMultipartPOST({
-      url:  'https://social-hub.ru/upload',
+      url:  PHOTO_URL,
       body,
       callback: response => {
         response.json().then( data => {
@@ -123,7 +123,7 @@ const afterPhotoDialogCallback = response => {
   let chatPhoto = undefined;
   if (response) {
     //console.log(response);
-    chatPhoto = 'https://social-hub.ru' + response.filename;
+    chatPhoto =  response.filename;
   }
 
   const dialogForm = document.getElementById('js-createDialog-form');

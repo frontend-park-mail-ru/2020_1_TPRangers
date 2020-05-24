@@ -16,7 +16,7 @@ const sendPhotosCallback = form => {
   let body = new FormData();
   body.append("fileData", form.elements.photo.files[0]);
   fetchMultipartPOST({
-    url: "https://social-hub.ru/upload",
+    url: PHOTO_URL,
     body,
     callback: response => {
       response.json().then(data => {
@@ -27,7 +27,7 @@ const sendPhotosCallback = form => {
 };
 
 const addPhotosAfter = data => {
-  const url = "https://social-hub.ru" + data.filename;
+  const url = data.filename;
   const album_id = Router.getFragment().split("/")[1];
   fetchPOST({
     url: BACKEND_IP + "/api/v1/album/photo",

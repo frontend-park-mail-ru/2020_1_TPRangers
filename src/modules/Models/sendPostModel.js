@@ -30,7 +30,7 @@ const submitPostCallback = userLogin => {
     body.append('fileData', postForm.elements.photo.files[0]);
 
     fetchMultipartPOST({
-      url:  'https://social-hub.ru/upload',
+      url:  PHOTO_URL,
       body,
       callback: response => {
         response.json().then( data => {
@@ -50,7 +50,7 @@ const afterPhotoPostCallback = response => {
 
   let photo = undefined;
   if (response) {
-    photo = 'https://social-hub.ru' + response.filename;
+    photo =  response.filename;
   }
 
   const postForm = document.getElementById('js-post-form');

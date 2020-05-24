@@ -111,7 +111,7 @@ const settingsSubmitCallback = async () => {
     body.append('fileData', settingsForm.elements.avatar.files[0]);
 
     fetchMultipartPOST({
-      url:  'https://social-hub.ru/upload',
+      url:  PHOTO_URL,
       body,
       callback: response => {
         response.json().then( data => {
@@ -132,7 +132,7 @@ const afterPhotoCallback = (response) => {
   const settingsForm = document.getElementById('js-settings-form');
   let photo = undefined;
   if (response) {
-    photo = 'https://social-hub.ru' + response.filename;
+    photo = response.filename;
   }
   const email = settingsForm.elements.email.value;
   const password = settingsForm.elements.pass.value;
