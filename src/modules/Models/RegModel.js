@@ -51,6 +51,25 @@ const regRenderCallback = () => {
     formItems.passwordRepeat.name,
   );
 
+  regForm.username.oninput = evt => {
+    evt.preventDefault();
+    const name = regForm.elements.username.value.split(' ');
+    name.forEach(val => {
+      if (val.length > 12) {
+        const err = document.getElementById(`register-error`);
+        if (err.classList.contains('hidden')) {
+          err.classList.remove('hidden');
+          err.innerText = "Введите более корткое имя или фамилию";
+        }
+      } else {
+        const err = document.getElementById(`register-error`);
+        if (!err.classList.contains('hidden')) {
+          err.classList.add('hidden');
+        }
+      }
+    })
+  }
+
   regForm.phone.oninput = evt => {
     evt.preventDefault();
     if (regForm.phone.value === "+7 ") {

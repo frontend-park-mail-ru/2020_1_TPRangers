@@ -52,6 +52,25 @@ const settingsRenderCallback =  () => {
     }
   })
 
+  settingsForm.name.oninput = evt => {
+    evt.preventDefault();
+    const name = settingsForm.elements.name.value.split(' ');
+    name.forEach(val => {
+      if (val.length > 12) {
+        const err = document.getElementById(`register-error`);
+        if (err.classList.contains('hidden')) {
+          err.classList.remove('hidden');
+          err.innerText = "Введите более корткое имя или фамилию";
+        }
+      } else {
+        const err = document.getElementById(`register-error`);
+        if (!err.classList.contains('hidden')) {
+          err.classList.add('hidden');
+        }
+      }
+    })
+  }
+
   settingsForm.phone.oninput = evt => {
     evt.preventDefault();
     if (settingsForm.phone.value === "+7 ") {

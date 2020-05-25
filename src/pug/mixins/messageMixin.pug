@@ -31,5 +31,9 @@ mixin isMeCheck(data)
 
 mixin messageUser(data)
     div(class='img box-shadow message__img')
-        a(src='user/' + data.authorUrl section='user/' + data.authorUrl class='link-include')
-            img(class='img__img' src=data.authorPhoto)
+        if data.isMe
+            a(src='profile' section='profile' class='link-include')
+                img(class='img__img' src=data.authorPhoto)
+        else
+            a(src='user/' + data.authorUrl section='user/' + data.authorUrl class='link-include')
+                img(class='img__img' src=data.authorPhoto)

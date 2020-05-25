@@ -40,7 +40,10 @@ if page
                             span(class='profile__info__data-block-element__data text text_color_normal') #{profile.groupInfo.about}
                         div(class='profile__info__data-block-element')
                             span(class='text text_color_normal') Владелец:
-                            a(class='profile__info__data-block-element__data link text text_color_normal' href='user/' + profile.owner.url, section = 'user/' + profile.owner.url) #{profile.owner.name} #{profile.owner.surname}
+                            if profile.owner.isOwner
+                                a(class='profile__info__data-block-element__data link text text_color_normal' href='profile', section = 'profile') #{profile.owner.name} #{profile.owner.surname}
+                            else
+                                a(class='profile__info__data-block-element__data link text text_color_normal' href='user/' + profile.owner.url, section = 'user/' + profile.owner.url) #{profile.owner.name} #{profile.owner.surname}
 
                     div(class='hr-line')
 
