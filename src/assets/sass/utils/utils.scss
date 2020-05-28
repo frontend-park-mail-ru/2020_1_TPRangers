@@ -97,3 +97,9 @@
         width: 87%;
     }
 }
+
+@media only screen and (max-device-height: 400px) {
+    .bottom-fixed{
+        margin-bottom: 3rem;
+    }
+}

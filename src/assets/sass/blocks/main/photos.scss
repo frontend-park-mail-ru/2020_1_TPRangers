@@ -23,9 +23,11 @@
 }
 
 @media only screen and (max-width: 1400px) {
-	//.photos__container {
-	//	width: calc(25% - 1rem);
-	//}
+	.photos {
+		margin-bottom: 10rem;
+		min-height: auto;
+		max-height: 1000vh;
+	}
 }
 
 @media only screen and (max-width: 1024px) {
