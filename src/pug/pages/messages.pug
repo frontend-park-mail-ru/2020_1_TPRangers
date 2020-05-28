@@ -3,8 +3,8 @@ include ../mixins/chatMixin
 div(class='messages page')
     if main
         div(class='messages__header box-shadow layout_color_main')
-            span(class='text text_uppercase text_size_1-2rem text_color_normal') Сообщения
-            a(class='link add-chat-button-js text text_color_normal text_size_2rem fas fa-plus-circle' href="createDialog" section="createDialog")
+            span(class='msg-flex text text_uppercase text_size_1-2rem text_color_normal') Сообщения
+            a(class='link mt-mobile add-chat-button-js text text_color_normal text_size_2rem fas fa-plus-circle' href="createDialog" section="createDialog")
         div(class='messages__body')
             div(class='messages-chats')
                 each chat in dialogs

@@ -2,7 +2,9 @@ div(class='settings form')
     div(class='settings__body box-shadow layout_color_main')
         span(class='text text_color_primary text_size_Title login__body__title') Настройки
         form(class='form__input-holder' id = 'js-settings-form')
-            input(class='input login__input text text_color_normal text_size_1-2rem'  type='file' name='avatar' true, id='avatar' placeholder='Загрузть новый аватар')
+            label(for='avatar' class = "input input-file-label login__input text text_color_normal text_size_1-2rem") Загрузить новый аватар
+                i(class="mt-mobile-1 fas fa-file-upload")
+            input(class='input input-file login__input text text_color_normal text_size_1-2rem'  type='file' name='avatar' true, id='avatar' placeholder='Загрузть новый аватар')
             input(class='input login__input text text_color_normal text_size_1-2rem'  type='text' name='username' true, id='name' placeholder='Имя пользователя')
             input(class='input login__input text text_color_normal text_size_1-2rem'  type='email' name='email' true, id='email' placeholder='Email')
             input(class='input login__input text text_color_normal text_size_1-2rem'  type='tel' maxlength=18 name='phone' true, id='telephone' placeholder='Телефон')

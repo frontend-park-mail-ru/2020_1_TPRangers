@@ -29,3 +29,30 @@
 input {
     outline:none;
 }
+
+.input-file {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.input-file-label {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+}
+
+.input-file-label:hover {
+    color: $main-color;
+    @include linear-gradient(0, $main-gradient-from, $main-gradient-to);
+}
+
+@media only screen and (max-device-width: 1024px) {
+    .input-file-label {
+        @include linear-gradient(0, $main-gradient-from, $main-gradient-to);
+        color: $main-color;
+    }
+}

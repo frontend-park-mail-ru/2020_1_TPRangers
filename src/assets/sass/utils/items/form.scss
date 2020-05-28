@@ -13,3 +13,10 @@
         flex-direction: column;
     }
 }
+
+@media only screen and  (max-device-width: 1024px) {
+    .form {
+        justify-content: flex-start;
+        margin-left: 1.7rem;
+    }
+}
