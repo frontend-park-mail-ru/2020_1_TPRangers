@@ -151,6 +151,7 @@
     }
 
     &__friends {
+        word-break: break-word;
         grid-area: profile-friends;
         min-width: calc(280px - 2rem);
         max-width: calc(280px - 2rem);

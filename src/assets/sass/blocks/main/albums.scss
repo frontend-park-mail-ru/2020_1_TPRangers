@@ -85,6 +85,13 @@
 	}
 }
 
+@media only screen and (max-device-width: 500px) {
+	.album__add-album{
+		margin-left: 0;
+	}
+}
+
+
 .add-album {
 	position: absolute;
 	margin-left: 23rem;

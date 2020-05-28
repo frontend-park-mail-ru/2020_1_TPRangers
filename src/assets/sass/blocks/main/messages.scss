@@ -88,6 +88,11 @@
 			}
 
 			&__data {
+				white-space: nowrap;
+				overflow-x: hidden;
+				text-overflow: ellipsis;
+				width: 80%;
+
 				margin-left: 1rem;
 				display: flex;
 				flex-direction: column;

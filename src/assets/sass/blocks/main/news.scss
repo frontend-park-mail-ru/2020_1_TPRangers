@@ -2,6 +2,7 @@
 	height: max-content;
 	display: flex;
 	flex-direction: column;
+	margin-bottom: 4rem;
 
 	&_posts {
 		width: 80%;
@@ -26,6 +27,8 @@
 
 @media only screen and (max-device-width: 1024px) {
 	.news {
+		min-height: 0;
+		max-height: fit-content;
 		&_posts {
 			width: 100%;
 			margin-bottom: 10rem;
