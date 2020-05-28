@@ -103,6 +103,15 @@ const listenPlusButton = () => {
     form.classList.remove('hidden');
     const postForm = document.getElementById('js-post-form');
     postForm.addEventListener('submit', submitCallback);
+    (function listenFileUpload() {
+      const postForm = document.getElementById('js-post-form');
+      postForm.elements.photo.oninput = evt => {
+        if (postForm.elements.photo.files[0]) {
+          const label = document.getElementsByClassName('input-file-label')[0];
+          label.innerText = "Файл добавлен";
+        }
+      }
+    })()
     Observer.emit('user:close-button-listen');
   };
 };
@@ -112,6 +121,9 @@ const closeForm = () => {
   postForm.removeEventListener('submit', submitCallback);
   const bg = document.getElementById('blur-background-js');
   bg.classList.add('hidden');
+  postForm.reset();
+  const label = document.getElementsByClassName('input-file-label')[0];
+  label.innerText = "Загрузить картинку";
   const form = document.getElementById('add-post-js');
   form.classList.add('hidden');
 }

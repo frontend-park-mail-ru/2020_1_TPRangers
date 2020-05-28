@@ -6,6 +6,15 @@ const groupList = require('../../pug/mixins/groupList.pug')
 
 const listenPlusButton = () => {
   const button = document.getElementsByClassName('add-group-button-js')[0];
+  (function listenFileUpload() {
+    const createDialogForm = document.getElementById('js-group-form');
+    createDialogForm.elements.photo.oninput = evt => {
+      if (createDialogForm.elements.photo.files[0]) {
+        const label = document.getElementsByClassName('input-file-label')[0];
+        label.innerText = "Файл добавлен";
+      }
+    }
+  })()
   button.onclick = () => {
     const bg = document.getElementById('blur-background-js');
     bg.classList.remove('hidden');
@@ -21,6 +30,10 @@ const closeForm = () => {
   bg.classList.add('hidden');
   const form = document.getElementById('add-group-js');
   form.classList.add('hidden');
+  const createDialogForm = document.getElementById('js-group-form');
+  createDialogForm.reset();
+  const label = document.getElementsByClassName('input-file-label')[0];
+  label.innerText = "Загрузить фото сообщества";
 }
 
 const listenCloseButton = () => {

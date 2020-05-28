@@ -7,6 +7,7 @@ const submitCallback = event => {
   Observer.emit('post:submit', userLoginInner);
 }
 
+
 const listenPlusButton = () => {
   const button = document.getElementsByClassName('add-post-button-js')[0];
   button.onclick = () => {
@@ -16,6 +17,15 @@ const listenPlusButton = () => {
     form.classList.remove('hidden');
     const postForm = document.getElementById('js-post-form');
     postForm.addEventListener('submit', submitCallback);
+    (function listenFileUpload() {
+      const postForm = document.getElementById('js-post-form');
+      postForm.elements.photo.oninput = evt => {
+        if (postForm.elements.photo.files[0]) {
+          const label = document.getElementsByClassName('input-file-label')[0];
+          label.innerText = "Файл добавлен";
+        }
+      }
+    })()
     Observer.emit('profile:close-button-listen');
   };
 };
@@ -23,6 +33,9 @@ const listenPlusButton = () => {
 const closeForm = () => {
   const postForm = document.getElementById('js-post-form');
   postForm.removeEventListener('submit', submitCallback);
+  postForm.reset();
+  const label = document.getElementsByClassName('input-file-label')[0];
+  label.innerText = "Загрузить картинку";
   const bg = document.getElementById('blur-background-js');
   bg.classList.add('hidden');
   const form = document.getElementById('add-post-js');

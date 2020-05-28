@@ -52,7 +52,15 @@ const settingsRenderCallback =  () => {
     }
   })
 
-  settingsForm.name.oninput = evt => {
+  settingsForm.elements.avatar.oninput = evt => {
+    console.log('input file');
+    if (settingsForm.elements.avatar.files[0]) {
+      const label = document.getElementsByClassName('input-file-label')[0];
+      label.innerText = "Файл добавлен";
+    }
+  }
+
+  settingsForm.name.onchange = evt => {
     evt.preventDefault();
     const name = settingsForm.elements.name.value.split(' ');
     name.forEach(val => {

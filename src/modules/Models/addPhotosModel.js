@@ -6,6 +6,15 @@ const addPhotosRenderCallback = () => {
   const photoForm = document.getElementById("add-photo-form-js");
   // const photoInput = document.getElementById('photos');
   // photoInput.setAttribute('multiple','');
+  (function listenFileUpload() {
+    const photoForm = document.getElementById('add-photo-form-js');
+    photoForm.elements.photo.oninput = evt => {
+      if (photoForm.elements.photo.files[0]) {
+        const label = document.getElementsByClassName('input-file-label')[0];
+        label.innerText = "Файл добавлен";
+      }
+    }
+  })()
   photoForm.addEventListener("submit", event => {
     event.preventDefault();
     Observer.emit("addPhotos:send", photoForm);

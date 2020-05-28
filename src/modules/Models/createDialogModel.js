@@ -6,6 +6,15 @@ import {fetchGET} from '../../ajax/ajax';
 const friendList = require('../../pug/mixins/friendsList.pug')
 
 const addListenerCallback = () => {
+  (function listenFileUpload() {
+    const createDialogForm = document.getElementById('js-createDialog-form');
+    createDialogForm.elements.photo.oninput = evt => {
+      if (createDialogForm.elements.photo.files[0]) {
+        const label = document.getElementsByClassName('input-file-label')[0];
+        label.innerText = "Файл добавлен";
+      }
+    }
+  })()
   let friends = document.getElementsByClassName('js-add-login');
   [].forEach.call(friends,elem => {
     elem.addEventListener('click', event => {
@@ -69,13 +78,21 @@ const addLoginCallback = evt => {
   current.classList.remove('link')
   current.classList.add("fa-check-circle")
 
-  postForm.elements.logins.value += `${login},`
+  postForm.elements.logins.value += `${login},`;
 }
 
 const submitDialogCallback = () => {
   //console.log(`[DEBUG] dialog:submit callback`);
 
   const dialogForm = document.getElementById('js-createDialog-form');
+
+  if (dialogForm.elements.logins.value.split(',').filter(elem => elem !== "").length < 3) {
+    const error = document.getElementById('add-post-error');
+    error.classList.remove('hidden');
+    error.innerText = "Вы должны выбрать не менее 3х участников для группового чата";
+    return;
+  }
+
 
   if (dialogForm.elements.photo.files[0]) {
 
