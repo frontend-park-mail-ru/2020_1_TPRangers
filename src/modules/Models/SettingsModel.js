@@ -53,7 +53,6 @@ const settingsRenderCallback =  () => {
   })
 
   settingsForm.elements.avatar.oninput = evt => {
-    console.log('input file');
     if (settingsForm.elements.avatar.files[0]) {
       const label = document.getElementsByClassName('input-file-label')[0];
       label.innerText = "Файл добавлен";

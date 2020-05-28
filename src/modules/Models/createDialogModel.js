@@ -86,10 +86,10 @@ const submitDialogCallback = () => {
 
   const dialogForm = document.getElementById('js-createDialog-form');
 
-  if (dialogForm.elements.logins.value.split(',').filter(elem => elem !== "").length < 3) {
+  if (dialogForm.elements.logins.value.split(',').filter(elem => elem !== "").length < 2) {
     const error = document.getElementById('add-post-error');
     error.classList.remove('hidden');
-    error.innerText = "Вы должны выбрать не менее 3х участников для группового чата";
+    error.innerText = "Вы должны выбрать не менее 2х участников для группового чата";
     return;
   }
 
