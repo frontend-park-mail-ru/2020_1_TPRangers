@@ -1,5 +1,6 @@
 .chat {
   height: max-content;
+  word-break: break-all;
   overflow-y: hidden;
   min-width: calc(400px + 2rem);
   display: flex;

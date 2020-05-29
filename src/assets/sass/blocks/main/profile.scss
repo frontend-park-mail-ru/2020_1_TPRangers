@@ -191,6 +191,7 @@
     }
 
     &__posts {
+        word-break: break-word;
         grid-area: profile-posts;
         min-width: 400px;
 

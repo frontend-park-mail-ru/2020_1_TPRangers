@@ -85,12 +85,17 @@ const listenSubCallback = () => {
       Observer.emit('singleGroup:remove');
     }
   }
-  subButton.onclick = evt => {
-    clickFunc(evt)
+
+  if (subButton) {
+    subButton.onclick = evt => {
+      clickFunc(evt)
+    }
   }
 
-  subButtonMobile.onclick = evt => {
-    clickFunc(evt)
+  if (subButtonMobile) {
+    subButtonMobile.onclick = evt => {
+      clickFunc(evt)
+    }
   }
 }
 
