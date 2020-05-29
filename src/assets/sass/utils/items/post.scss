@@ -79,6 +79,7 @@
 		}
 
 		&_full {
+			word-break: break-word;
 			width: calc(100% - 2rem);
 			margin-top: 1rem;
 			height: max-content;
