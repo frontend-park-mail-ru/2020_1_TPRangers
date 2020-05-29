@@ -20,11 +20,11 @@ export default class PostView extends IView {
 									if (!response.comments) response.comments = [];
 									response.isMe = profileResp.user.login === response.authorUrl;
 									let date = new Date(Date.parse(response.date));
-									response.date = date.getFullYear() + '-' + ('0' + (date.getMonth() + 1)).slice(-2) + '-' + ('0' + date.getDate()).slice(-2) + ' в ' + date.getHours() + ':' + ('0' + date.getMinutes()).slice(-2);
+									response.date =  ('0' + date.getDate()).slice(-2) +  '/' + ('0' + (date.getMonth() + 1)).slice(-2) + '/' + date.getFullYear()  + ' в ' + date.getHours() + ':' + ('0' + date.getMinutes()).slice(-2);
 									response.comments.forEach(val => {
 										val.isMe = profileResp.user.login === val.authorUrl;
 										let date = new Date(Date.parse(val.date));
-										val.date = date.getFullYear() + '-' + ('0' + (date.getMonth() + 1)).slice(-2) + '-' + ('0' + date.getDate()).slice(-2) + ' в ' + date.getHours() + ':' + ('0' + date.getMinutes()).slice(-2);
+										val.date =  ('0' + date.getDate()).slice(-2) +  '/' + ('0' + (date.getMonth() + 1)).slice(-2) + '/' + date.getFullYear()  + ' в ' + date.getHours() + ':' + ('0' + date.getMinutes()).slice(-2);
 									})
 									const data = {
 										data: response,

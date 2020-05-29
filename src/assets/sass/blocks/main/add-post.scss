@@ -1,4 +1,5 @@
 .add-post {
+    word-break: break-word;
     position: fixed;
     z-index: 7;
     height: max-content;
@@ -57,7 +58,7 @@
 
             &__textarea {
                 margin-top: 0.5rem;
-                height: 5rem;
+                height: 8rem;
                 resize: none;
             }
         }

@@ -19,6 +19,8 @@ export default class UserView extends IView {
                 response.json()
                   .then(response => {
                     response.page = true;
+                    let date = new Date(Date.parse(response.user.date));
+                    response.user.date = ('0' + date.getDate()).slice(-2) +  '/' + ('0' + (date.getMonth() + 1)).slice(-2) + '/' + date.getFullYear();
                     if (!response.feed) {
                       response.feed = [];
                     }
@@ -32,7 +34,7 @@ export default class UserView extends IView {
                       val.post = true;
                       val.isMe = val.authorUrl === profileResp.user.login;
                       let date = new Date(Date.parse(val.date));
-                      val.date = date.getFullYear() + '-' + ('0' + (date.getMonth() + 1)).slice(-2) + '-' + ('0' + date.getDate()).slice(-2) + ' в ' + date.getHours() + ':' + ('0' + date.getMinutes()).slice(-2);
+                      val.date =  ('0' + date.getDate()).slice(-2) +  '/' + ('0' + (date.getMonth() + 1)).slice(-2) + '/' + date.getFullYear()  + ' в ' + date.getHours() + ':' + ('0' + date.getMinutes()).slice(-2);
                     });
                     response.page = true;
                     super.clear();

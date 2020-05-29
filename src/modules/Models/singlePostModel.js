@@ -49,7 +49,7 @@ const singlePostSubmitCallback = () => {
                       response.comments.forEach(val => {
                         let date = new Date(Date.parse(val.date));
                         val.isMe = profileResp.user.login === val.authorUrl;
-                        val.date = date.getFullYear() + '-' + ('0' + (date.getMonth() + 1)).slice(-2) + '-' + ('0' + date.getDate()).slice(-2) + ' в ' + date.getHours() + ':' + ('0' + date.getMinutes()).slice(-2);
+                        val.date =  ('0' + date.getDate()).slice(-2) +  '/' + ('0' + (date.getMonth() + 1)).slice(-2) + '/' + date.getFullYear()  + ' в ' + date.getHours() + ':' + ('0' + date.getMinutes()).slice(-2);
                       })
                       const data = {
                         data: response,
