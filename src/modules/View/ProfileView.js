@@ -14,7 +14,7 @@ export default class ProfileView extends IView {
       callback: response => {
         response.json()
           .then(response => {
-            console.log(response)
+            // console.log(response)
             let date = new Date(Date.parse(response.user.date));
             response.user.date = ('0' + date.getDate()).slice(-2) +  '/' + ('0' + (date.getMonth() + 1)).slice(-2) + '/' + date.getFullYear();
             if (!response.feed) {
